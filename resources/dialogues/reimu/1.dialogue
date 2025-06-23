@@ -1,5 +1,12 @@
 ~ start
-Reimu Hakurei: I confessed to Marisa.
+do InteractionTracker.set_relationship("reimu", "marisa", 501)
+do InteractionTracker.set_relationship("marisa", "reimu", 501)
+Reimu Hakurei: Just passing by.\nI confessed to Marisa.
 Satori Komeiji: [#e=happy] Congratulations!\nHow did it go?
-Reimu Hakurei: meowm eowm eow
+Reimu Hakurei: Well, I suppose?
+Reimu Hakurei: [#e=relaxed] To be honest, I don't really know what's going in that girl's head.
+Reimu Hakurei: [#e=relaxed] I think she was happy though.
+Reimu Hakurei: Well, I'm not sure if anything will come out of this.\nMaybe I'll go on a date or two with her and we'll see.
+Satori Komeiji: Hm...
+do QuestTracker.create_quest("reimari0")
 => END

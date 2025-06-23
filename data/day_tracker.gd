@@ -58,8 +58,8 @@ func start_new_day() -> void:
 			print_debug("Okuurin event conditional 1 trigger; Okuu visits after Orin")
 			current_day.characters_to_visit.append(CharacterTracker.getv("okuu"))
 
-	if current_day.characters_to_visit.size() == 0:
-		print("No characters able to visit!")
+	if current_day.characters_to_visit.size() == 0 and not QuestTracker.any_quest_active():
+		print("No characters able to visit and no quest is active, game has ended!")
 		GGT.change_scene("res://gameplay/game_end.tscn")
 		return
 

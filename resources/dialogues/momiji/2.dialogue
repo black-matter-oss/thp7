@@ -1,0 +1,101 @@
+~ start
+if Ayamomi0.date()
+	do InteractionTracker.change_relationship("momiji", "aya", 200)
+	do InteractionTracker.change_relationship("aya", "momiji", 200)
+
+	Momiji Inubashiri: [#e=happy] The date was absolutely perfect!!
+	Satori Komeiji: [#e=happy] That's great to hear.\nTell me about it.
+
+	if Ayamomi0.choice0 == 0
+		Momiji Inubashiri: [#e=happy] So first, I took her to some fancy restaurant.
+		Momiji Inubashiri: [#e=relaxed] She seemed opposed to the idea at first, saying that this is way too luxurious for her.
+		Momiji Inubashiri: [#e=relaxed] But I told her "You cannot judge food without tasting it first"
+		Momiji Inubashiri: [#e=happy] She looked at me as if I was crazy, haha.\nBut she loved the food.
+	elif Ayamomi0.choice0 == 1
+		Momiji Inubashiri: [#e=happy] First, food! The takoyaki stand was a great idea, like you said!
+		Momiji Inubashiri: [#e=happy] Even I must say it was delicious, and I am not a very big street food connoisseur.
+
+	if Ayamomi0.choice1 == 0
+		Momiji Inubashiri: [#e=happy] Then we went out for some sake.
+		Momiji Inubashiri: [#e=happy] It seemed even better than ever, maybe because of the date?
+		Momiji Inubashiri: [#e=happy] We didn't drink too much, as it was quite expensive, but we had fun.
+	elif Ayamomi0.choice1 == 1
+		Momiji Inubashiri: [#e=happy] Then we went out drinking!
+		Momiji Inubashiri: [#e=happy] Beer... so much beer, ehe...
+		Momiji Inubashiri: [#e=happy] Aya challenged me to a drinking contest, you know?\nShe can drink like crazy.
+		Momiji Inubashiri: [#e=happy] I already was quite drunk after 2 jugs, but she drank...\nIn total, I'm not sure; 6, maybe 7? And she didn't even get tipsy!
+		Momiji Inubashiri: [#e=blush] I probably said some embarassing things too...
+	elif Ayamomi0.choice1 == 2
+		Momiji Inubashiri: Then we went to a winary.
+		Momiji Inubashiri: [#e=relaxed] Honestly?\nThe wine there wasn't anything special.
+
+	if Ayamomi0.choice2 == 0
+		Momiji Inubashiri: [#e=happy] And the walk in the park was very enjoyable!
+		Momiji Inubashiri: [#e=happy] We walked around for a bit, ran around for a bit, then sat down and stared at the setting sun while in each other's arms.
+		Momiji Inubashiri: [#e=blush] It was really nice, we even exchanged our first kiss...
+	elif Ayamomi0.choice2 == 2
+		Momiji Inubashiri: [#e=happy] Oh, we also went to the jazz club in the human village.
+		Momiji Inubashiri: [#e=happy] The music was quite nice and easy to listen to.
+		Momiji Inubashiri: [#e=relaxed] There were quite a lot of people, but we managed to sit in the corner together that was far enough from other people, but still close enough to hear the playing band.
+		Momiji Inubashiri: [#e=happy] And jazz...\nHonestly seems the perfect genre of music for these kinds of dates.
+		Momiji Inubashiri: [#e=blush] I found myself staring way too much at her...
+
+	if Ayamomi0.choice0 == 2
+		Momiji Inubashiri: Lastly, the picnic.
+		Momiji Inubashiri: [#e=relaxed] There weather was clear, so we were able to see the stars painted on the sky.
+		Momiji Inubashiri: [#e=happy] We ate the sandwiches that I've prepared, and Aya seemed to love them.
+		Momiji Inubashiri: [#e=relaxed] It got a bit cold later, but thankfully I brought a blanket with me, so we cuddled underneath it while watching the stars.
+		Momiji Inubashiri: [#e=blush] It's a bit embarassing to be admitting it, but...\nI-I was to tired that I fell asleep in her arms almost immediately.
+		Satori Komeiji: [#e=happy] That's a good thing, is it not?
+	
+	Momiji Inubashiri: [#e=blush] E-Either way!
+	Momiji Inubashiri: [#e=happy] I'm happy...
+	Momiji Inubashiri: [#e=happy] I'm really, truly happy.
+	Momiji Inubashiri: [#e=relaxed] And it was mostly thanks to your help.
+	Satori Komeiji: [#e=happy] I just gave you the idea, you were the one who had the courage to went along with it.
+	Momiji Inubashiri: [#e=happy] Haha, maybe.\nI better get going then; I still have my job to do.
+else
+	do InteractionTracker.change_relationship("momiji", "aya", -150)
+	do InteractionTracker.change_relationship("aya", "momiji", -150)
+
+	Momiji Inubashiri: [#e=sad] It didn't go as planned at all...
+
+	if Ayamomi0.choice0 == 0
+		Momiji Inubashiri: [#e=sad] I took her to a somewhat fancy restaurant, but I don't think she really liked the food there.
+		Momiji Inubashiri: [#e=relaxed] Maybe it wasn't fancy enough?
+	elif Ayamomi0.choice0 == 1
+		Momiji Inubashiri: [#e=sad] I even took her to eat takoyaki, and she did seem to enjoy herself, but...
+	
+	if Ayamomi0.choice1 == 0
+		Momiji Inubashiri: [#e=sad] Then we drank some sake.
+	elif Ayamomi0.choice1 == 1
+		Momiji Inubashiri: [#e=sad] Then we drank some beer.
+	elif Ayamomi0.choice1 == 2
+		Momiji Inubashiri: [#e=sad] Then we drank some wine.
+	
+	Momiji Inubashiri: [#e=relaxed] Not really much to say here, I think she loves alcohol no matter what it is.
+
+	if Ayamomi0.lh_picked
+		Momiji Inubashiri: [#e=blush] [next=auto] I-I did ask her about the... love hotel... a-and--
+		Momiji Inubashiri: [#e=blush] A-Actually, forget about it!!
+
+	if Ayamomi0.choice2 == 0
+		Momiji Inubashiri: [#e=happy] But she really enjoyed the walk in the park!
+		Momiji Inubashiri: [#e=happy] We walked around for a bit, ran around for a bit, then sat down and stared at the setting sun while in each other's arms.
+		Momiji Inubashiri: [#e=blush] It was really nice, we even exchanged our first kiss...
+	elif Ayamomi0.choice2 == 2
+		Momiji Inubashiri: The jazz club was... fine, I suppose.
+		Momiji Inubashiri: [#e=relaxed] I quite liked it, and I think Aya did too, but...\nthere was just way too many people for it to be an 'intimate' moment.
+
+	if Ayamomi0.choice0 == 2
+		Momiji Inubashiri: [#e=sad] Lastly, the picnic.
+		Momiji Inubashiri: [#e=sad] I think it was a good idea and she seemed really happy about it, and about eating my handmade sandwiches,
+		Momiji Inubashiri: [#e=sad] but the weather was getting a bit cold, so we couldn't really stay out for much longer.
+	
+	- I'm sure she still loves you.
+		Satori Komeiji: [#e=relaxed] It's unfortunate.\nBut I'm sure she still loves you.
+		Momiji Inubashiri: [#e=sad] Y-You know...\nweren't you the one who gave me all this 'advice'...?
+		Momiji Inubashiri: Maybe I should have just asked her myself...
+		do CharacterTracker.getv("momiji").set_can_visit(false)
+		do Ayamomi0.grahtewi()
+=> END

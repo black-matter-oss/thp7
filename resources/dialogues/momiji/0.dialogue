@@ -24,7 +24,14 @@ Satori Komeiji: Indeed, that is what I am doing for now.
 	- Do you enjoy when she does these things?
 		Momiji Inubashiri: [#e=blush] I-I do...
 		- She's just messing with you.
-
+			Momiji Inubashiri: [#e=confused] You... You think so?
+			Satori Komeiji: It's very possible.
+			Momiji Inubashiri: Hmm...\nAlright, I'll think about that.
+			if Ayamomi0.meowymeow()
+				do CharacterTracker.getv("momiji").set_can_visit(true)
+				set Ayamomi0.lalala = true
+			else
+				do CharacterTracker.getv("momiji").set_can_visit(false)
 		- Have you tried asking her why she's doing this?
 			Momiji Inubashiri: No...\nbut I'm a little afraid of asking her.
 			Satori Komeiji: Why so?
@@ -36,9 +43,14 @@ Satori Komeiji: Indeed, that is what I am doing for now.
 			Momiji Inubashiri: [#e=relaxed] Pretty please!
 			- Alright, alright.
 				Momiji Inubashiri: [#e=happy] Thank you very much!
-				Momiji Inubashiri: [#e=happy] Call for me when you find something out then, okay?
+				Momiji Inubashiri: [#e=happy] Call for me when you find something out, okay?
 				do QuestTracker.create_quest("ayamomi0")
 			- No can do, sorry.
 				Momiji Inubashiri: [#e=sad] Aw...
 				Momiji Inubashiri: I'll try asking her then.
+				if Ayamomi0.meowymeow2()
+					set Ayamomi0.lalala = true
+					do CharacterTracker.getv("momiji").set_can_visit(true)
+				else
+					do CharacterTracker.getv("momiji").set_can_visit(false)
 => END

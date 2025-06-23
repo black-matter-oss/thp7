@@ -1,11 +1,15 @@
 ~ start
-InteractionTracker.set_relationship("aya", "momiji", 600)
-InteractionTracker.set_relationship("momiji", "aya", 600)
+do InteractionTracker.set_relationship("aya", "momiji", 600)
+do InteractionTracker.set_relationship("momiji", "aya", 600)
 if InteractionTracker.momiji_confessed
 	Momiji Inubashiri: [#e=happy] You won't believe it, Satori!\nAya accepted my love confession!
 else
-	Momiji Inubashiri: [#e=happy] Aya confessed to me! Just yesterday!
-	Satori Komeiji: Already?\nMaybe she figured out I was up to something when reading her mind...
+	if Ayamomi0.lalala
+		Momiji Inubashiri: [#e=happy] Aya confessed to me! Just yesterday!
+		Satori Komeiji: She did, huh?
+	else
+		Momiji Inubashiri: [#e=happy] Aya confessed to me! Just yesterday!
+		Satori Komeiji: Already?\nMaybe she figured out I was up to something when reading her mind...
 Momiji Inubashiri: But what am I supposed to do know?
 Momiji Inubashiri: I guess we're officially together now, but does anything change with that?
 - A date is in order!
@@ -15,25 +19,51 @@ Momiji Inubashiri: I guess we're officially together now, but does anything chan
 	Momiji Inubashiri: I see...\nand what do I do on this date?
 	Satori Komeiji: [#e=relaxed] Let's see... First...
 	% - ...you should take her to a fancy restaurant.
-		
+		set Ayamomi0.choice0 = 0
+		Momiji Inubashiri: [#e=surprise] A fancy restaurant?\nI'm not a rich aristocrat like you.
+		Momiji Inubashiri: Though I suppose I can find something in my savings.
 	% - ...you should take her to a takoyaki stand.
+		set Ayamomi0.choice0 = 1
 		set Ayamomi0.date_success_chance += 33
+		Momiji Inubashiri: [#e=surprise] A takoyaki stand?
+		Momiji Inubashiri: Isn't that a bit... cheap?
+		Satori Komeiji: Don't worry, she loves takoyaki.
+		Momiji Inubashiri: [#e=happy] Oh, that may be a good idea then!
 	% - ...you should take her on a picnic.
+		set Ayamomi0.choice0 = 2
 		set Ayamomi0.date_success_chance += 15
+		Momiji Inubashiri: A picnic, hmm...
+		Momiji Inubashiri: [#e=happy] Yeah, a crow tengu like her would probably love to eat under the night sky!
 	Satori Komeiji: [#e=relaxed] And then...
 	% - ...drink some sake with her.
+		set Ayamomi0.choice1 = 0
 		set Ayamomi0.date_success_chance += 33
 	% - ...drink some beer with her.
-		set Ayamomi0.date_success_chance += 10
+		set Ayamomi0.choice1 = 1
+		set Ayamomi0.date_success_chance += 15
 	% - ...drink some wine with her.
-
+		set Ayamomi0.choice1 = 2
+		set Ayamomi0.date_success_chance += 7
+	Momiji Inubashiri: Of course; Aya's a huge drinker, unlike me.
 	Satori Komeiji: And to finish off, you should...
+	~ a
 	% - ...have a relaxing walk in the park together.
+		set Ayamomi0.choice2 = 0
 		set Ayamomi0.date_success_chance += 34
-	% - ...take her to a love hotel.
-		set Ayamomi0.date_success_chance += 25
+		Momiji Inubashiri: [#e=relaxed] A walk in the park at sunset does sound really nice...
+		Momiji Inubashiri: [#e=relaxed] And later we could lay down on the grass, pointing out different shapes of the clouds...
+	% - ...take her to a love hotel. [if not Ayamomi0.lh_picked]
+		set Ayamomi0.lh_picked = true
+		set Ayamomi0.date_success_chance += 5
+		Momiji Inubashiri: [#e=blush] A... A love hotel...?
+		Momiji Inubashiri: [#e=blush] [next=auto] I-Isn't that...\nI-I mean--
+		Momiji Inubashiri: [#e=blush] I-It's way too early for that, no way!!
+		=> a
 	% - ...go to the jazz club in the human village.
-		set Ayamomi0.date_success_chance += 10
+		set Ayamomi0.choice2 = 2
+		set Ayamomi0.date_success_chance += 11
+		Momiji Inubashiri: [#e=happy] Oh! I do recall seeing quite a lot of jazz records in her music collection!
+		Momiji Inubashiri: [#e=thinking] I wonder if they'll be playing something she likes...
 	Momiji Inubashiri: [#e=happy] Okay! That sounds like a plan! Thank you very much!
 	Satori Komeiji: It's not a big deal.\nCome here any time you need help with anything, okay?
 	Momiji Inubashiri: [#e=happy] Of course!

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dgg4mamphing7"
+path="res://.godot/imported/2.dialogue-31783a227f30b60af304d976b34d217b.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/momiji/2.dialogue"
+dest_files=["res://.godot/imported/2.dialogue-31783a227f30b60af304d976b34d217b.tres"]
+
+[params]
+
+defaults=true

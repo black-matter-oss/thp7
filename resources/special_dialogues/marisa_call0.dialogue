@@ -1,0 +1,28 @@
+~ start
+Marisa Kirisame: [#e=happy] Satori! What'cha up to?
+Satori Komeiji: You sound quite happy. Did anything happen?
+Marisa Kirisame: [#e=happy] 'course, yeah!\nReimu confessed to me!
+Satori Komeiji: So you do love her, then?
+Marisa Kirisame: [#e=confused] What kinda question is that?
+Marisa Kirisame: [#e=confused] Didn't I tell 'ya that I do love 'er?
+Satori Komeiji: Ah, forget about it.
+Marisa Kirisame: [#e=relaxed] I wasn't entirely honest when speaking wit'cha back then.
+Marisa Kirisame: [#e=relaxed] Reimu spoke with 'ya after she confessed, didn't she?
+- She did.
+	Marisa Kirisame: [#e=relaxed] She probably told 'ya that I didn't seem very happy.
+	Marisa Kirisame: [#e=happy] Truth is, I'm on the seventh moon.
+	Marisa Kirisame: I just wanted 'er to confess, rather than the other way around.
+	- Why is that?
+		Marisa Kirisame: She seemed lonely and closed in 'erself as of late, and I wanted to snap 'er out of it.
+		Marisa Kirisame: [#e=happy] D-Don't tell this Reimu, but 'er flustered face and stutterring voice was an absolute joy to experience!
+		Marisa Kirisame: [#e=relaxed] Either way, don't worry about me or 'er.\nI'll take 'er on a date soon enough.
+		Satori Komeiji: Good luck.
+		Marisa Kirisame: [#e=confused] Good luck?
+		Marisa Kirisame: [#e=smug] Satori, I don't think you get it.
+		Marisa Kirisame: [#e=smug] She's [i]fallen[/i] for me!\nWell, 'tis not a surprise, for I am simply irresistible.
+		Marisa Kirisame: [#e=smug] If I jus' simply kissed 'er, she'd prolly melt down on the spot!
+		Satori Komeiji: [#e=annoyed] Irresistible, eh?
+		Satori Komeiji: [#e=relaxed] By the way, I heard you borrowed some books from my dear Orin, did you not?
+		Marisa Kirisame: Sorry? Did'cha say something? The signal's cutting out!
+do QuestTracker.complete_quest("reimari0")
+=> END

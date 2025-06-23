@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://brmiee57tclta"
+path="res://.godot/imported/marisa_call0.dialogue-bb7cf10846eb29d486fbc55779e8f6ef.tres"
+
+[deps]
+
+source_file="res://resources/special_dialogues/marisa_call0.dialogue"
+dest_files=["res://.godot/imported/marisa_call0.dialogue-bb7cf10846eb29d486fbc55779e8f6ef.tres"]
+
+[params]
+
+defaults=true

@@ -11,10 +11,19 @@ static func create_quest(a: String) -> void:
 			q = Ayamomi0Quest.new()
 		"ayamomi0.1":
 			q = Ayamomi01Quest.new()
+		"reimari0":
+			q = Reimari0Quest.new()
 		_:
 			assert(false)
 	
 	add_quest(q)
+
+static func any_quest_active() -> bool:
+	for k in quests:
+		var q := quests[k]
+		if not q.is_complete:
+			return true
+	return false
 
 static func add_quest(q: Quest) -> void:
 	quests[q.id] = q

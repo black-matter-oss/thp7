@@ -32,6 +32,8 @@ func call_character(c: Character) -> void:
 
 	if c.id == "momiji" and QuestTracker.is_incomplete("ayamomi0.1"):
 		DialogueManager.show_dialogue_balloon(load("res://resources/special_dialogues/momiji_call0.dialogue"))
+	elif c.id == "marisa" and QuestTracker.is_incomplete("reimari0"):
+		DialogueManager.show_dialogue_balloon(load("res://resources/special_dialogues/marisa_call0.dialogue"))
 	else:
 		DialogueManager.show_dialogue_balloon(GenericCallDialogue.construct_for(c))
 
