@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://k6d6tgusvuyc"
+path="res://.godot/imported/1.dialogue-70270d68093da5e63170ed79d5fa6000.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/okuu/1.dialogue"
+dest_files=["res://.godot/imported/1.dialogue-70270d68093da5e63170ed79d5fa6000.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,44 @@
+~ start
+Momiji Inubashiri: Satori, hallo!
+Satori Komeiji: Momiji.
+Satori Komeiji: [#e=happy] What brings you here today?
+Momiji Inubashiri: [#e=blush] A-Aya.
+Momiji Inubashiri: Aya brings me here.
+Satori Komeiji: [#e=confused] Hm?\nDoes she want something from me?
+Momiji Inubashiri: [#e=troubled] Ah, [i]brings me here[/i], but not that way.
+Momiji Inubashiri: I heard you're assisting people and youkai with romance stuff, right?
+Satori Komeiji: Indeed, that is what I am doing for now.
+- So, something about Aya?
+	Satori Komeiji: So? You mentioned something about Aya?
+	Momiji Inubashiri: Mhm.
+	Satori Komeiji: Did you get in a fight again?
+	Momiji Inubashiri: [#e=confused] Huh? Fight?\nWe haven't fought in a very long time.
+	Momiji Inubashiri: Rather, it's the opposite.
+	Momiji Inubashiri: [#e=blush] She's wayy too dang nice to me!!
+	Momiji Inubashiri: My job as a tengu patrol is both tiring and quite boring.
+	Momiji Inubashiri: I live alone, so I tend to get quite lonely at times too.
+	Momiji Inubashiri: But, some time ago, Aya started inviting me to her cabin after work.\nAnd I don't know why.
+	Momiji Inubashiri: [#e=happy] She gives me warm food to eat, hot tea or warmed beer to heat up...
+	Momiji Inubashiri: [#e=blush] R-Recently, she told me that I don't take enough care of my tail and started to brush it with oils so much that it's super shiny and fluffy now...
+	Momiji Inubashiri: [#e=blush] E-Even when I turn into a wolf at full moon nights, she takes me in and...\ntakes care of me like a pet?
+	- Do you enjoy when she does these things?
+		Momiji Inubashiri: [#e=blush] I-I do...
+		- She's just messing with you.
+
+		- Have you tried asking her why she's doing this?
+			Momiji Inubashiri: No...\nbut I'm a little afraid of asking her.
+			Satori Komeiji: Why so?
+			Momiji Inubashiri: [#e=troubled] I don't want her to get mad in case I say something wrong...
+			Satori Komeiji: [next=auto] Well, you have to--
+			Momiji Inubashiri: W-Wait! You have your third eye, right?
+			Momiji Inubashiri: [#e=happy] You should use that to read her mind!
+			Satori Komeiji: [#e=relaxed] [next=auto] I-I can, but--
+			Momiji Inubashiri: [#e=relaxed] Pretty please!
+			- Alright, alright.
+				Momiji Inubashiri: [#e=happy] Thank you very much!
+				Momiji Inubashiri: [#e=happy] Call for me when you find something out then, okay?
+				do QuestTracker.create_quest("ayamomi0")
+			- No can do, sorry.
+				Momiji Inubashiri: [#e=sad] Aw...
+				Momiji Inubashiri: I'll try asking her then.
+=> END

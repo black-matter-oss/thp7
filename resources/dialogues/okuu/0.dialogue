@@ -1,0 +1,44 @@
+~ start
+Utsuho Reiuji: Satori!
+Satori Komeiji: Okuu? What brings you here?
+Utsuho Reiuji: I am in need of urgent help!
+Satori Komeiji: [#e=surprise] W-What happened?!
+Satori Komeiji: [#e=surprise] D-Don't tell me it's something with the furnace again...?
+Utsuho Reiuji: [#e=happy] Ahaha, no... I guess it's not that urgent after all...
+Satori Komeiji [#e=annoyed]: Ugh, you scared me there for a moment... 
+Utsuho Reiuji: [#e=relaxed] But I do need your help!
+Utsuho Reiuji: You know, me and Rin have started dating not too long ago. Or rather, later this week will--
+Satori Komeiji: [#e=surprise] Wait, wait, wait. What?
+Satori Komeiji: [#e=surprise] When did [i]that[/i] happen?
+Utsuho Reiuji: Did Rin not tell you?
+Satori Komeiji: No, I haven't heard anything from her.
+Utsuho Reiuji: Oh...
+Utsuho Reiuji: [#e=happy] Maybe I was the one who was supposed to tell you, hehe...
+Utsuho Reiuji: But it's not a problem, right?
+- It is
+	set InteractionTracker.okuu_action = 0
+	do InteractionTracker.change_relationship("okuu", "satori", -1000)
+	do InteractionTracker.change_relationship("orin", "satori", -1000)
+	
+	Satori Komeiji: [#e=annoyed] It's a huge problem.
+	Satori Komeiji: [#e=angry] I mean, you're both women! Do you have the slightest idea of how insane what you just said is?!
+	Utsuho Reiuji: [#e=sad] I--
+	Satori Komeiji: Get back to work and forget about this entire date thing.
+	Utsuho Reiuji: [#e=sad] ...
+	do CharacterTracker.getv("okuu").set_can_visit(false)
+- It isn't
+	set InteractionTracker.okuu_action = 1
+	Satori Komeiji: No, of course not.
+	Utsuho Reiuji: [#e=happy] So, as I was saying, in this week will be our first date.
+	Utsuho Reiuji: [#e=troubled] But, even though we've known each other for so long, I don't really know what Rin likes, ehe...
+	Utsuho Reiuji: [#e=troubled] So please, if you will!
+	Utsuho Reiuji: [#e=troubled] Would you try to learn from Rin what she'd like to do and where she'd like to go? I'll tell her to come here!
+	Satori Komeiji: Of course, that's not a problem.
+	Utsuho Reiuji: [#e=happy] Yay! Thank you!
+	set CharacterTracker.getv("okuu").next_visit = "ask_date"
+#	- Not a problem
+#		do InteractionTracker.change_relationship("okuu", "satori", 100)
+#	- I'm busy
+#		do InteractionTracker.change_relationship("okuu", "satori", -50)
+#		Satori Komeiji: I'm sorry Okuu, but I'm a little busy 
+=> END

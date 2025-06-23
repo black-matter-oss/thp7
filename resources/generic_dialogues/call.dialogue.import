@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://pm23ey8ivbpj"
+path="res://.godot/imported/call.dialogue-22fa1cfa6b0f69054c47e01b1e338856.tres"
+
+[deps]
+
+source_file="res://resources/generic_dialogues/call.dialogue"
+dest_files=["res://.godot/imported/call.dialogue-22fa1cfa6b0f69054c47e01b1e338856.tres"]
+
+[params]
+
+defaults=true

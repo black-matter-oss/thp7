@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cppg5ufbn1cqa"
+path="res://.godot/imported/momiji_call0.dialogue-034fdaef74e5b622e777177c9703d6cc.tres"
+
+[deps]
+
+source_file="res://resources/special_dialogues/momiji_call0.dialogue"
+dest_files=["res://.godot/imported/momiji_call0.dialogue-034fdaef74e5b622e777177c9703d6cc.tres"]
+
+[params]
+
+defaults=true

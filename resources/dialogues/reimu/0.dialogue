@@ -1,0 +1,41 @@
+~ start
+Reimu Hakurei: [#e=neutral] Komeiji.
+Satori Komeiji: [#e=neutral] Ack--
+Satori Komeiji: [#e=annoyed] The 'shrine maiden of paradise'...\nWhat is it that you want?
+Reimu Hakurei: [#e=neutral] I'm not here for trouble.
+Reimu Hakurei: [#e=neutral] Just wanted to...\nSpeak a little, I suppose?
+Reimu Hakurei: [#e=neutral] About Marisa, I mean.
+Satori Komeiji: [#e=happy] Oh? Is something the matter?
+Reimu Hakurei: [#e=neutral] I suppose...
+Reimu Hakurei: [#e=blush] W-Well, I don't know! That's what I came here for!
+Reimu Hakurei: [#e=neutral] We've known each other for a very long time.
+Reimu Hakurei: [#e=happy] And I do geniuenly enjoy her company.
+Reimu Hakurei: [#e=neutral] Sure, sometimes she can be a bit too much, sometimes a little annoying, but still...
+Reimu Hakurei: When we're alone, when she's sleeping over, when we're drinking together...
+Reimu Hakurei: I feel weirdly drawn to her.
+- Are you in love?
+	Reimu Hakurei: [#e=annoyed] Ha? Me? In love?
+	Reimu Hakurei: [#e=blush] M-Maybe so...
+	Reimu Hakurei: Thought I never thought that I could be...
+	Reimu Hakurei: But maybe you're right...?
+	Reimu Hakurei: [#e=blush] Do you think I should... y'know, try confessing to her?
+	- Yes
+		Satori Komeiji: Yes.
+		Reimu Hakurei: But what if she doesn't think of me that way?
+		Satori Komeiji: If you don't at least try, you will regret it later.
+		Reimu Hakurei: Hm...
+		Reimu Hakurei: [#e=happy] You know, you're not that bad for being a mind-reading youkai.
+		Satori Komeiji: [#e=annoyed] W-Was that supposed to be an insult?
+		Reimu Hakurei: Ah no, no! Anyway, I better get going.
+		set CharacterTracker.getv("reimu").next_visit = "confession"
+		#set CharacterTracker.getv("marisa").can_visit = func(c): return true
+		do CharacterTracker.getv("reimu").set_can_visit(false)
+		do CharacterTracker.getv("marisa").set_can_visit(true)
+	- No
+		Satori Komeiji: Don't bother. I doubt Marisa feels the same way about you.
+		Reimu Hakurei: [#e=sad] She probably doesn't.
+		Reimu Hakurei: Well, thanks either way. I should get going.
+		Satori Komeiji: Take care.
+		#set CharacterTracker.getv("reimu").can_visit = func(c): return false
+		do CharacterTracker.getv("reimu").set_can_visit(false)
+=> END

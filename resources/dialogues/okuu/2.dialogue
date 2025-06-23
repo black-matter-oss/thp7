@@ -1,0 +1,41 @@
+~ start
+if Okuurin0.date()
+	do InteractionTracker.change_relationship("okuu", "orin", 100)
+	do InteractionTracker.change_relationship("orin", "okuu", 100)
+
+	Utsuho Reiuji: [#e=happy] Saatori!
+	Satori Komeiji: Oh, Okuu! How did the date go?
+	Utsuho Reiuji: [#e=happy] It went super well!
+	Satori Komeiji: [#e=happy] Oh?
+	Utsuho Reiuji: [#e=happy] I had a lot of fun! Ate lots of food, too.
+	Satori Komeiji: Did Orin enjoy it too?
+	Utsuho Reiuji: [#e=happy] Oh, of course she did! I was even able to find and put on the dress you mentioned before, she really seemed to love it.
+	Utsuho Reiuji: [#e=happy] It was all thanks to your help, ehe.
+	Satori Komeiji: [#e=happy] I'm glad you two enjoyed yourselves. Maybe we should throw a party in the Underworld?
+	Satori Komeiji: Just kidding.
+	Satori Komeiji: [#e=happy] You are probably tired, no? Get yourself some sleep.
+	Utsuho Reiuji: [#e=happy] Of course! See you!
+else
+	do InteractionTracker.change_relationship("okuu", "orin", -50)
+	do InteractionTracker.change_relationship("orin", "okuu", -100)
+
+	Utsuho Reiuji: [#e=sad] Satori...
+	Satori Komeiji: Oh, Okuu! How did the date go?
+	Utsuho Reiuji: It was fine I suppose...
+	Utsuho Reiuji: [#e=sad] No, no really...
+	Satori Komeiji: Oh, why is that?
+	if not Okuurin0.told_clothing
+		Utsuho Reiuji: [#e=sad] First, I didn't know what to wear, so I just went with what I wear every day.
+		Utsuho Reiuji: She didn't dislike it, but...
+		Utsuho Reiuji: [#e=sad] She expected something different, maybe.
+	if not Okuurin0.told_food
+		Utsuho Reiuji: [#e=sad] I took her to a fancy restaurant for dinner, but it didn't suit her taste at all.
+	if not Okuurin0.told_drinks
+		Utsuho Reiuji: I forgot to bring anything to drink together, but we went to a cafe later, so it wasn't too bad...
+	if not Okuurin0.told_entertainment
+		Utsuho Reiuji: It was too boring for her, I think. I just didn't know where to go, what to do with her.
+		Utsuho Reiuji: [#e=sad] I'm no good with this kind of stuff...
+	Utsuho Reiuji: [#e=sad] In general she just didn't seem very happy with the date.
+	Satori Komeiji: Is that so...?
+	Utsuho Reiuji: [#e=sad] I will go take a nap, maybe.
+=> END

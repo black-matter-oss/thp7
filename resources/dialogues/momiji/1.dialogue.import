@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ce2eoiqc7vbo"
+path="res://.godot/imported/1.dialogue-9518f20c0180d57534b9507c3a3b1976.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/momiji/1.dialogue"
+dest_files=["res://.godot/imported/1.dialogue-9518f20c0180d57534b9507c3a3b1976.tres"]
+
+[params]
+
+defaults=true

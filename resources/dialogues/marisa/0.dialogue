@@ -1,0 +1,21 @@
+~ start
+Marisa Kirisame: [#e=happy] Yahoo ze~
+Marisa Kirisame: [#e=happy] Reimu told me I should come here.
+Satori Komeiji: [#e=neutral] She did? I suppose I will make this quick...
+Satori Komeiji: [#e=neutral] Do you love Reimu, Marisa?
+Marisa Kirisame: [#e=neutral] Me, Reimu...?
+Marisa Kirisame: [#e=happy] 'course I do!
+Satori Komeiji: [#e=surprise] Huh?
+Marisa Kirisame: [#e=happy] Love everything 'bout 'er!
+Marisa Kirisame: [#e=happy] Love 'er personality, love 'er hospitality, love 'er stubborness, love 'er booze too.
+Satori Komeiji: [#e=surprise] B-But like... romantically, or maybe more... platonically?
+Marisa Kirisame: [#e=thinking] Hmm... I'm not sure what that really means.
+Marisa Kirisame: [#e=happy] But love is love, no?
+Satori Komeiji: [#e=neutral] W-Well...
+Satori Komeiji: [#e=relaxed] I suppose that's fine too...
+if CharacterTracker.getv("reimu").next_visit == "confession"
+	#set CharacterTracker.getv("reimu").can_visit = func(c): return true
+	#set CharacterTracker.getv("marisa").can_visit = func(c): return false
+	do CharacterTracker.getv("reimu").set_can_visit(true)
+	do CharacterTracker.getv("marisa").set_can_visit(false)
+=> END

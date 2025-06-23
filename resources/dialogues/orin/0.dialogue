@@ -1,0 +1,62 @@
+~ start
+if InteractionTracker.okuu_action == 0
+	Rin Kaenbyou: [#e=angry] You have some nerve to be saying stuff like this...
+	Rin Kaenbyou: [#e=angry] Have you no sense of compassion or kindness?
+	Rin Kaenbyou: [#e=angry] You could've kept it to yourself, at the very least.
+	do CharacterTracker.getv("okuu").set_can_visit(false)
+	=> END
+
+Rin Kaenbyou: Hey, Satori. 'kuu asked me to come, said something about helping you prepare a picnic?
+Satori Komeiji: [#e=surprised] A picnic? Ah, right, of course; the picnic.
+Satori Komeiji: Yes, indeed.
+~ questionnaire
+- Ask about food [if not Okuurin0.asked_food]
+	set Okuurin0.asked_food = true
+	Satori Komeiji: What kinds of food would you like to eat?
+	Rin Kaenbyou: [#e=thinking] Hmm...
+	Rin Kaenbyou: I love sweets, but I suppose that wouldn't really fit a picnic, would it?
+	Satori Komeiji: Of course it will! It's not a, erm... [i]traditional[/i] picnic, per se.
+	Rin Kaenbyou: [#e=happy] Is that so...?\nThen, how about some donuts?
+	Rin Kaenbyou: [#e=happy] Or some cake... spongecake...\nBiscuits...
+	Satori Komeiji: [#e=happy] Sweets, I got it. But sweets are for dessert, you can't only eat sweets if you want to deliver the proper nutrients to your body.
+	Rin Kaenbyou: [#e=blush] E-ek! All those calories will get burn when working anyway!!
+	Satori Komeiji: [#e=blush] I-I wasn't calling you fat!
+	Rin Kaenbyou: [#e=blush] But you just did!
+	Satori Komeiji: [#e=blush] W-Whatever, let's get back on topic...
+	=> questionnaire
+- Ask about drinks [if not Okuurin0.asked_drinks]
+	set Okuurin0.asked_drinks = true
+	Satori Komeiji: Drinks are a must, so how about that?
+	Rin Kaenbyou: Tea or sake, I suppose.
+	Satori Komeiji: [#e=surprise] No coffee?
+	Rin Kaenbyou: I do like coffee, but I know that neither you nor 'kuu do, so I can do without.
+	Rin Kaenbyou: Tea's nice from time to time, too.
+	=> questionnaire
+- Ask about entertainment [if not Okuurin0.asked_entertainment]
+	set Okuurin0.asked_entertainment = true
+	Satori Komeiji: Any entertainment?
+	Rin Kaenbyou: [#e=surprise] Entertainment? What do you mean by that?
+	Satori Komeiji: Ah, well...
+	Satori Komeiji: I want to make it a [i]grand[/i] picnic, so I was thinking we would later loiter around the village for a bit?
+	Rin Kaenbyou: [#e=happy] Ahaha, that's what you meant. [i]Grand[/i], huh...
+	Rin Kaenbyou: [#e=happy] Oh! We can go to the theatre there! There's actually a play that I really want to see.
+	Satori Komeiji: Is that so? I don't see why not then.
+	=> questionnaire
+- Ask about clothing [if not Okuurin0.asked_clothing]
+	set Okuurin0.asked_clothing = true
+	Satori Komeiji: Is there anything you'd like or like us to wear?
+	Rin Kaenbyou: [#e=thinking] Now that's an intruiging question, hmm...
+	Rin Kaenbyou: Autumn's almost here, so something not too cold, but not too hot...
+	Rin Kaenbyou: For myself, I will find something in my warderobe.
+	Rin Kaenbyou: [#e=blush] As for 'kuu, mm...
+	Rin Kaenbyou: [#e=happy] I remember I saw a very beautiful orange dress in her closet.
+	Rin Kaenbyou: [#e=blush] I wonder if she still has it, I'd love to see her in it...
+	Rin Kaenbyou: As for you, I think your current dress suits you well already!
+	Satori Komeiji: [#e=happy] Ha, of course it does! I am the [i]11-point woman[/i] after all!\nI never look not good.
+	=> questionnaire
+- Goodbye [if Okuurin0.asked_clothing or Okuurin0.asked_food or Okuurin0.asked_drinks or Okuurin0.asked_entertainment]
+	Satori Komeiji: I suppose that's all then.
+	Rin Kaenbyou: Ya sure? If you need help any help setting up the whole thing, I'll be happy to do so.
+	Satori Komeiji: Ah, no worries there, thanks.
+	Rin Kaenbyou: Well, see ya then.
+=> END

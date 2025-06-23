@@ -1,0 +1,25 @@
+~ start
+% ((c)): Satori? Do you need anything?
+% ((c)): What's up?
+% ((c)): Hm? Satori?
+~ meowy
+- Goodbye
+	% ((c)): See you then.
+	% ((c)): Mhm, have a good day.
+- Read her mind... 
+	Satori Komeiji: Mind if I read your mind?
+	if CharacterTracker.getv("((c))").consents_mind_reading
+		% ((c)): I suppose not...
+		% ((c)): Fine by me.
+		% ((c)): No, not really.
+		% ((c)): I guess not?
+		Satori Komeiji: [#e=relaxed] ...
+		((c)): Relationships:\n{{CharacterTracker.getv("((c))").third_eye_0}}
+		((c)): ...\n{{CharacterTracker.getv("((c))").third_eye_1}}
+		if "((c))" == "Aya Shameimaru"
+			do QuestTracker.complete_quest("ayamomi0")
+		=> meowy
+	else
+		((c)): Not today, sorry.
+		=> meowy
+=> END

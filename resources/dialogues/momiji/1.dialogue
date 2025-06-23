@@ -1,0 +1,40 @@
+~ start
+InteractionTracker.set_relationship("aya", "momiji", 600)
+InteractionTracker.set_relationship("momiji", "aya", 600)
+if InteractionTracker.momiji_confessed
+	Momiji Inubashiri: [#e=happy] You won't believe it, Satori!\nAya accepted my love confession!
+else
+	Momiji Inubashiri: [#e=happy] Aya confessed to me! Just yesterday!
+	Satori Komeiji: Already?\nMaybe she figured out I was up to something when reading her mind...
+Momiji Inubashiri: But what am I supposed to do know?
+Momiji Inubashiri: I guess we're officially together now, but does anything change with that?
+- A date is in order!
+	Momiji Inubashiri: [#e=happy] Oh, a date!\nThat's a great idea, I think!
+	Momiji Inubashiri: [#e=thinking] What even is a date?
+	Satori Komeiji: Well, in its simplest form, a date is a day that you spend together with the person you love to get to know each other better.
+	Momiji Inubashiri: I see...\nand what do I do on this date?
+	Satori Komeiji: [#e=relaxed] Let's see... First...
+	% - ...you should take her to a fancy restaurant.
+		
+	% - ...you should take her to a takoyaki stand.
+		set Ayamomi0.date_success_chance += 33
+	% - ...you should take her on a picnic.
+		set Ayamomi0.date_success_chance += 15
+	Satori Komeiji: [#e=relaxed] And then...
+	% - ...drink some sake with her.
+		set Ayamomi0.date_success_chance += 33
+	% - ...drink some beer with her.
+		set Ayamomi0.date_success_chance += 10
+	% - ...drink some wine with her.
+
+	Satori Komeiji: And to finish off, you should...
+	% - ...have a relaxing walk in the park together.
+		set Ayamomi0.date_success_chance += 34
+	% - ...take her to a love hotel.
+		set Ayamomi0.date_success_chance += 25
+	% - ...go to the jazz club in the human village.
+		set Ayamomi0.date_success_chance += 10
+	Momiji Inubashiri: [#e=happy] Okay! That sounds like a plan! Thank you very much!
+	Satori Komeiji: It's not a big deal.\nCome here any time you need help with anything, okay?
+	Momiji Inubashiri: [#e=happy] Of course!
+=> END

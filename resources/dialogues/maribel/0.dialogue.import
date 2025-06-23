@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b4jhd56ryk1ya"
+path="res://.godot/imported/0.dialogue-3fb9649c1603eda6a797dd978c85d5a6.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/maribel/0.dialogue"
+dest_files=["res://.godot/imported/0.dialogue-3fb9649c1603eda6a797dd978c85d5a6.tres"]
+
+[params]
+
+defaults=true

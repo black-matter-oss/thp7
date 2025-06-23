@@ -1,0 +1,43 @@
+~ start
+Wriggle Nightbug: [#e=happy] Satori!
+Satori Komeiji: [#e=neutral] Oh? Wriggle? What brings you here?
+Wriggle Nightbug: [#e=blush] It's kind of a personal issue...
+Wriggle Nightbug: [#e=neutral] ...that I've had for quite some time now...
+Satori Komeiji: [#e=neutral] Is it about someone?
+Wriggle Nightbug: [#e=sad] No, it's about me...
+Satori Komeiji: [#e=neutral] Don't worry, you can tell me anything.
+Wriggle Nightbug: [#e=happy] R-Really? W-Well, then...
+Wriggle Nightbug: [#e=happy] It's just that, well...
+Wriggle Nightbug: [#e=neutral] I don't exactly know how to express this, but...
+Wriggle Nightbug: [#e=neutral] I'm a girl, right? A girlbug.
+Wriggle Nightbug: [#e=neutral] But sometimes I don't feel like one.
+Wriggle Nightbug: [#e=neutral] And those times I also want to be a boy?
+Wriggle Nightbug: [#e=sad] I don't know, it's weird...
+- Reassure her
+	set InteractionTracker.wriggle_action = 0
+	Satori Komeiji: [#e=relaxed] Wriggle.
+	Wriggle Nightbug: [#e=surprise] Y-Yes?
+	Satori Komeiji: [#e=happy] That's perfectly fine.
+	Satori Komeiji: [#e=happy] If you feel like a girl one day, but a boy another day, that's perfectly fine.
+	Satori Komeiji: [#e=happy] If one day you feel like you aren't a girl at all anymore, that's also fine.
+	Satori Komeiji: [#e=happy] If after that, you will want to go back to being a girl once again, there's no problem with that.
+	Satori Komeiji: [#e=happy] The only problem that could arise from this is if you stop being yourself.
+	Wriggle Nightbug: [#e=blush] S-Satori...
+	Satori Komeiji: [#e=happy] You should tell this to Mystia and Rumia, okay?
+	Satori Komeiji: [#e=happy] I'm sure they will both be happy for you.
+	Satori Komeiji: [#e=happy] And, do come here if you need anything, yes? You're always welcome here.
+	Wriggle Nightbug: [#e=blush] T-Thank you...
+	Wriggle Nightbug: [#e=happy] Thank you!
+	Wriggle Nightbug: [#e=happy] See you then!
+- It is weird
+	set InteractionTracker.wriggle_action = 1
+	Satori Komeiji [#e=neutral]: I'm sorry Wriggle, but...
+	Satori Komeiji [#e=neutral]: This really isn't normal.
+	Wriggle Nightbug: [#e=neutral] Y-Yeah, I thought so too...
+	Satori Komeiji: [#e=neutral] Like you said, you're a girlbug.
+	Satori Komeiji: [#e=neutral] So I think it's weird to be anything other than one.
+	Wriggle Nightbug: [#e=sad] You're right...
+	Wriggle Nightbug: [#e=sad] Thank you then... and see you...
+	Satori Komeiji [#e=neutral]: Just stay who you are now, don't let it get to you.
+	Satori Komeiji [#e=neutral]: You'll be better off this way.
+=> END

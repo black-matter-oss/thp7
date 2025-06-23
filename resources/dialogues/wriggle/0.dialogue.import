@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cit0l38vpt6x6"
+path="res://.godot/imported/0.dialogue-397ad677fbe729add4f6ce8826d89085.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/wriggle/0.dialogue"
+dest_files=["res://.godot/imported/0.dialogue-397ad677fbe729add4f6ce8826d89085.tres"]
+
+[params]
+
+defaults=true

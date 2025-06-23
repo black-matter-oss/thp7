@@ -1,0 +1,26 @@
+~ start
+Momiji Inubashiri: Hiya, you found anything out?
+- She's in love with you.
+Momiji Inubashiri: [next=auto] Hm, so she's in love with--
+Momiji Inubashiri: [#e=surprise] W-W-W-Wait, wh-what did you just say?!
+Momiji Inubashiri: [#e=surprise] Sh-she's in LOVE with ME?!
+Satori Komeiji: [#e=relaxed] That's what I said.
+Momiji Inubashiri: [#e=blush] I... I didn't expect that...
+Momiji Inubashiri: [#e=blush] I-I mean it was pretty obvious that she likes me, but still...
+Momiji Inubashiri: [#e=blush] ...
+Momiji Inubashiri: [#e=blush] S-Satori! What do I do in a situation like this?!
+Satori Komeiji: Huh?
+- Confess to her.
+	Satori Komeiji: You should confess to her. Tell her that you love her.
+	Momiji Inubashiri: L-Love...
+	Satori Komeiji: You do love her, right?
+	Momiji Inubashiri: [#e=blush] O-Of course I do! I just...\ndon't think of myself as the type of person to make the first move...
+	Momiji Inubashiri: [#e=happy] But I'll try!
+	Satori Komeiji: That's great to hear.
+	set InteractionTracker.momiji_confessed = true
+- Wait for her to make the first move.
+	Satori Komeiji: I think you should wait for her to make the first move.
+	Momiji Inubashiri: That might be a good idea.
+	Momiji Inubashiri: [#e=happy] Yes, it's a good idea.\nI'll let you know once it happens.
+do QuestTracker.complete_quest("ayamomi0.1")
+=> END

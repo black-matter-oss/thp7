@@ -1,0 +1,63 @@
+~ start
+set CharacterTracker.getv("okuu").next_visit = ""
+Utsuho Reiuji: [#e=happy] Saatori! Did Rin come to see you?
+Satori Komeiji: Ah, yes, she did.
+Utsuho Reiuji: So you know everything now?
+Satori Komeiji: Huh? Well, I guess so.
+Utsuho Reiuji: [#e=happy] Okay!
+Utsuho Reiuji: [#e=happy] So, what did you find out?
+~ nyan
+- She loves sweets [if Okuurin0.asked_food and not Okuurin0.told_food]
+	set Okuurin0.date_success_chance += 25
+	set Okuurin0.told_food = true
+	Satori Komeiji: She loves sweets. Absolutely adores them.
+	Utsuho Reiuji: [#e=happy] Ahaha, yes, she really does...
+	Satori Komeiji: Her favourite type of cake seems to be spongecake from what she's told me.
+	Utsuho Reiuji: [#e=surprise] Spongecake? Never knew that, thank you!
+	Satori Komeiji: [#e=annoyed] Donuts, biscuits too...
+	Satori Komeiji: But I advise you to take her to some proper restaurant first.
+	Utsuho Reiuji: Of course, I'll do that!
+	=> nyan
+- She loves coffee, but can compromise [if Okuurin0.asked_drinks and not Okuurin0.told_drinks]
+	set Okuurin0.date_success_chance += 25
+	set Okuurin0.told_drinks = true
+	Satori Komeiji: Orin loves her coffee, but she knows that you aren't a huge fan, and told me that she's fine with tea or alcohol.
+	Utsuho Reiuji: What type of alcohol?
+	Satori Komeiji: She said sake, but I believe she likes wine too.\nBut only red wine.
+	Utsuho Reiuji: Red wine...
+	Utsuho Reiuji: [#e=happy] Okay! I'll take note of that!
+	Utsuho Reiuji: [#e=happy] Anything else you found out?
+	=> nyan
+- She wants to go to the theatre [if Okuurin0.asked_entertainment and not Okuurin0.told_entertainment]
+	set Okuurin0.date_success_chance += 25
+	set Okuurin0.told_entertainment = true
+	Satori Komeiji: She said there's a play at the theatre in the human village that she really wants to go see.
+	Satori Komeiji: It might just be the perfect oppurtunity to get closer to her.
+	Utsuho Reiuji: [#e=happy] Ooh, a theatre! I like that!
+	Utsuho Reiuji: [#e=happy] I enjoy going to theatre too, hehe.
+	=> nyan
+- She wants to see you wearing a dress [if Okuurin0.asked_clothing and not Okuurin0.told_clothing]
+	set Okuurin0.date_success_chance += 25
+	set Okuurin0.told_clothing = true
+	Satori Komeiji: Oh, do you have an orange dress in your warderobe?
+	Utsuho Reiuji: Eh... I believe I do... why do you ask?
+	Satori Komeiji: Orin mentioned that she'd love to see you in it.
+	Utsuho Reiuji: [#e=happy] Oh! Is that so?
+	Utsuho Reiuji: [#e=blush] It might be a little small for me now, but I'll try!
+	=> nyan
+- Goodbye
+	if Okuurin0.date_success_chance == 0
+		Satori Komeiji: Uh... um... well...
+		Utsuho Reiuji: What's the problem?
+		Satori Komeiji: I... I forgot...
+		Utsuho Reiuji: [#e=surprise] Eh?
+		Utsuho Reiuji: [#e=sad] That can't be a good thing...
+		Utsuho Reiuji: Oh well, forget it! You're probably just tired.
+		Utsuho Reiuji: [#e=happy] I'll manage without. You should get some sleep.
+		=> END
+	
+	Utsuho Reiuji: [#e=happy] Okay, thank you!
+	Utsuho Reiuji: [#e=happy] I'm sure the date will be perfect now that I know about all this!
+	Utsuho Reiuji: [#e=happy] I will be sure to report back to you once we're done, okay?
+	Satori Komeiji: Take care.
+=> END
