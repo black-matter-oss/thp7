@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dicwv6l4vx7y4"]
+
+[resource]
+resource_name = "pillar"
+cull_mode = 2
+albedo_color = Color(0.0857423, 0.291455, 0.30665, 1)
+roughness = 0.877273

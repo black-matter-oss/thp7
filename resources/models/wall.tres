@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://d13qlru36l01p"]
+
+[ext_resource type="Texture2D" uid="uid://c7irbl5gdbj67" path="res://resources/models/palace_concrete.jpg" id="1_0sngl"]
+[ext_resource type="Texture2D" uid="uid://dh2lmaefed3t2" path="res://resources/models/palace_Concrete006_4K_Displacement.png" id="2_18wlf"]
+
+[resource]
+resource_name = "wall"
+cull_mode = 2
+albedo_texture = ExtResource("1_0sngl")
+roughness = 0.827273
+normal_enabled = true
+normal_texture = ExtResource("2_18wlf")
+texture_filter = 1

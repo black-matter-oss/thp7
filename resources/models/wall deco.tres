@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cvggr4yup7th6"]
+
+[ext_resource type="Texture2D" uid="uid://c2adcyjjoag8i" path="res://resources/models/palace_Concrete014_512_Color.jpg" id="1_fswds"]
+
+[resource]
+resource_name = "wall deco"
+cull_mode = 2
+albedo_texture = ExtResource("1_fswds")
+metallic = 0.25
+roughness = 0.695455
+texture_filter = 2

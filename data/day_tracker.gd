@@ -39,10 +39,10 @@ func start_new_day() -> void:
 	
 	k.shuffle()
 
-	if OS.is_debug_build():
-		DebugDraw2D.begin_text_group("character_picking")
-		for i in range(k.size()):
-			DebugDraw2D.set_text("k[" + str(i) + "]", k[i], -1, Color.WHITE, 10)
+	# if OS.is_debug_build():
+	# 	DebugDraw2D.begin_text_group("character_picking")
+	# 	for i in range(k.size()):
+	# 		DebugDraw2D.set_text("k[" + str(i) + "]", k[i], -1, Color.WHITE, 10)
 	
 	for i in range(randi_range(1, 3)):
 		if i > k.size() - 1:
