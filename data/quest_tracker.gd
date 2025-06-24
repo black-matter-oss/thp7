@@ -38,6 +38,9 @@ static func complete_quest(id: String) -> void:
 		print("Warning: quest " + id + " does not exist")
 		return
 	
+	if quests[id].is_complete:
+		return
+	
 	quests[id].is_complete = true
 	quests[id].quest_completed.emit(quests[id])
 	print("Quest complete! " + id)

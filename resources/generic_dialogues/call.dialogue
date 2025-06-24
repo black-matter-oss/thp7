@@ -3,27 +3,31 @@
 % ((c)): What's up?
 % ((c)): Hm? Satori?
 ~ meowy
+- What do you like?
+	% ((c)): Like? Hmm...
+	% ((c)): Let's see...
+	% ((c)): What do I like?
+	((c)): {{CharacterTracker.getv("((c))").likes}}
+
+	if "((c))" == "Aya Shameimaru"
+		do QuestTracker.complete_quest("ayamomi0")
+	=> meowy
+- What do you dislike?
+	% ((c)): Disike? Hmm...
+	% ((c)): Let's see...
+	% ((c)): What do I dislike?
+	((c)): {{CharacterTracker.getv("((c))").dislikes}}
+
+	if "((c))" == "Aya Shameimaru"
+		do QuestTracker.complete_quest("ayamomi0")
+	=> meowy
 - Goodbye
 	% ((c)): See you then.
 	% ((c)): Mhm, have a good day.
 	% ((c)): Goodnight.
-- Read her mind...
-	if "((c))" == "Remilia Scarlet"
-		((c)): #[e=blush] N-No way!!
-	else
-		Satori Komeiji: Mind if I read your mind?
-		if CharacterTracker.getv("((c))").consents_mind_reading
-			% ((c)): I suppose not...
-			% ((c)): Fine by me.
-			% ((c)): No, not really.
-			% ((c)): I guess not?
-			Satori Komeiji: [#e=relaxed] ...
-			((c)): Relationships:\n{{CharacterTracker.getv("((c))").third_eye_0}}
-			((c)): ...\n{{CharacterTracker.getv("((c))").third_eye_1}}
-			if "((c))" == "Aya Shameimaru"
-				do QuestTracker.complete_quest("ayamomi0")
-			=> meowy
-		else
-			((c)): Not today, sorry.
-			=> meowy
+	=> END
+if "((c))" == "Remilia Scarlet"
+	- Is there anyone you like?
+		((c)): [#e=angry] Huh?! What kind of question is that?!
+		((c)): [#e=blush] O-Of course there isn't!!
 => END

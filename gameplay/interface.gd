@@ -7,7 +7,7 @@ enum GameState {
 	IDLE
 }
 
-const idle_interface := preload("res://gameplay/idle.tscn")
+#const idle_interface := preload("res://gameplay/idle.tscn")
 const wait_interface := preload("res://gameplay/wait.tscn")
 const call_menu := preload("res://gameplay/call_menu.tscn")
 const quest_menu := preload("res://gameplay/quest_menu.tscn")
@@ -18,8 +18,17 @@ var state := GameState.WAITING
 
 var day_thread: Thread
 
+var cm: Node = call_menu.instantiate()
+var qm: Node = quest_menu.instantiate()
+
 func new_day() -> void:
 	print("New day!")
+	$%NewDayBtn.visible = false
+	$SubViewportContainer/SubViewport/World/AnimationPlayer.play("day_pass")
+	$SubViewportContainer/SubViewport/World/Lights.visible = false
+	await get_tree().create_timer(4).timeout
+	$SubViewportContainer/SubViewport/World/Lights.visible = true
+	$%NewDayBtn.visible = true
 	day_thread.wait_to_finish()
 	day_tracker.start_new_day()
 	day_thread = Thread.new()
@@ -46,6 +55,8 @@ func _init() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$SubViewportContainer/SubViewport/World/DirectionalLight3D.rotate_x(deg_to_rad(-90))
+
 	if GGT.is_changing_scene(): # this will be false if starting the scene with "Run current scene" or F6 shortcut
 		await GGT.change_finished
 
@@ -60,30 +71,36 @@ func _on_day_tracker_character_goodbye(chara:Character) -> void:
 	print_debug("Goodbye " + chara.name)
 	state = GameState.WAITING
 	Utilities.remove_all_children(sub)
+	$Toolbar.visible = true
 	sub.add_child(wait_interface.instantiate())
 	#third_eye.disabled = true
-	$%CallMenuBtn.visible = false
+	#$%CallMenuBtn.visible = false
 
 func _on_day_tracker_character_hello(chara:Character) -> void:
 	print_debug("Hello " + chara.name)
 	state = GameState.CONVERSATION
 	Utilities.remove_all_children(sub)
+	$Toolbar.visible = false
+	remove_child(cm)
+	remove_child(qm)
 	#third_eye.disabled = false
-	$%CallMenuBtn.visible = false
+	#$%CallMenuBtn.visible = false
 
 func _on_day_tracker_day_end() -> void:
 	print_debug("DAY ENDED")
 	state = GameState.IDLE
 	Utilities.remove_all_children(sub)
-	sub.add_child(idle_interface.instantiate())
+	$Toolbar.visible = true
+	#sub.add_child(idle_interface.instantiate())
 	#third_eye.disabled = true
-	$%CallMenuBtn.visible = true
+	#$%CallMenuBtn.visible = true
 
 func _on_day_tracker_day_start() -> void:
 	state = GameState.WAITING
 	Utilities.remove_all_children(sub)
 	#third_eye.disabled = true
-	$%CallMenuBtn.visible = false
+	$Toolbar.visible = true
+	#$%CallMenuBtn.visible = false
 
 func _on_third_eye_pressed() -> void:
 	match day_tracker.curernt_character.id:
@@ -91,8 +108,14 @@ func _on_third_eye_pressed() -> void:
 			InteractionTracker.reimu_knowledge = true
 
 func _on_call_menu_btn_pressed() -> void:
-	add_child(call_menu.instantiate())
-
+	#$%CallMenuBtn.visible = false
+	add_child(cm)
+	#$%CallMenuBtn.visible = true
 
 func _on_quest_menu_btn_pressed() -> void:
-	add_child(quest_menu.instantiate())
+	#$%QuestMenuBtn.visible = false
+	add_child(qm)
+	#$%QuestMenuBtn.visible = true
+
+func _on_new_day_btn_pressed() -> void:
+	new_day()

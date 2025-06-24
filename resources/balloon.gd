@@ -136,6 +136,9 @@ func change_character_image() -> void:
 	#var e := int(self.dialogue_line.character.split("~")[1])
 	#c.current_emotion = e as Character.Emotion
 
+	var sb: StyleBoxFlat = $%PanelContainer.get_theme_stylebox("panel")
+	sb.bg_color = c.dialogue_color
+
 	var e := self.dialogue_line.get_tag_value("e")
 	if not e or e.is_empty():
 		e = "neutral"

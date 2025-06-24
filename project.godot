@@ -95,10 +95,15 @@ ggt_debug_step_frame={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":46,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+camera_move={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://resources/dialogues/flandre/0.dialogue", "res://resources/dialogues/reimu/0.dialogue", "res://resources/dialogues/marisa/0.dialogue", "res://resources/dialogues/mokou/0.dialogue", "res://resources/dialogues/maribel/0.dialogue", "res://resources/dialogues/wriggle/0.dialogue", "res://resources/dialogues/orin/0.dialogue", "res://resources/dialogues/okuu/0.dialogue", "res://resources/dialogues/okuu/1.dialogue", "res://resources/dialogues/momiji/0.dialogue", "res://resources/dialogues/okuu/2.dialogue", "res://resources/dialogues/reimu/1.dialogue", "res://resources/generic_dialogues/call.dialogue", "res://resources/special_dialogues/momiji_call0.dialogue", "res://resources/dialogues/momiji/1.dialogue", "res://resources/dialogues/momiji/2.dialogue", "res://resources/dialogues/reimu/2.dialogue", "res://resources/special_dialogues/marisa_call0.dialogue", "res://resources/dialogues/sakuya/0.dialogue")
+locale/translations_pot_files=PackedStringArray("res://resources/dialogues/flandre/0.dialogue", "res://resources/dialogues/reimu/0.dialogue", "res://resources/dialogues/marisa/0.dialogue", "res://resources/dialogues/mokou/0.dialogue", "res://resources/dialogues/maribel/0.dialogue", "res://resources/dialogues/wriggle/0.dialogue", "res://resources/dialogues/orin/0.dialogue", "res://resources/dialogues/okuu/0.dialogue", "res://resources/dialogues/okuu/1.dialogue", "res://resources/dialogues/momiji/0.dialogue", "res://resources/dialogues/okuu/2.dialogue", "res://resources/dialogues/reimu/1.dialogue", "res://resources/generic_dialogues/call.dialogue", "res://resources/special_dialogues/momiji_call0.dialogue", "res://resources/dialogues/momiji/1.dialogue", "res://resources/dialogues/momiji/2.dialogue", "res://resources/dialogues/reimu/2.dialogue", "res://resources/special_dialogues/marisa_call0.dialogue", "res://resources/dialogues/sakuya/0.dialogue", "res://resources/dialogues/kyuoko/0.dialogue")
 
 [rendering]
 

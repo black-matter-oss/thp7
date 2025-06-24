@@ -18,6 +18,8 @@ var next_visit: String = ""
 
 var data: Dictionary = {}
 
+var dialogue_color: Color = Color.from_rgba8(227, 167, 111)
+
 var consents_mind_reading: bool = false
 var third_eye_0: String:
 	get:
@@ -52,6 +54,9 @@ var third_eye_0: String:
 		return a
 
 var third_eye_1: String = ""
+
+var likes: String = ""
+var dislikes: String = ""
 
 func _init(id: String, name: String):
 	self.name = name

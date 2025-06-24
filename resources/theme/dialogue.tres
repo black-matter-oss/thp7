@@ -1,0 +1,80 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://co17bgal6w6ut"]
+
+[ext_resource type="FontFile" uid="uid://30xclouba0tv" path="res://resources/fonts/Delius/Delius-Regular.ttf" id="1_dpb04"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kdkh"]
+bg_color = Color(0.235732, 0.235732, 0.235732, 1)
+border_color = Color(0.165508, 0.573206, 0.889251, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 6.0
+expand_margin_right = 6.0
+shadow_color = Color(0, 0, 0, 0.392157)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p86ka"]
+bg_color = Color(0.905769, 0.905769, 0.905769, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.165508, 0.573206, 0.889251, 1)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 6.0
+expand_margin_right = 6.0
+shadow_color = Color(0.518637, 0.561418, 1, 0.392157)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cd08o"]
+bg_color = Color(0.591114, 0.591114, 0.591114, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 6.0
+expand_margin_right = 6.0
+shadow_color = Color(0, 0, 0, 0.392157)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6v1t2"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 6.0
+expand_margin_right = 6.0
+shadow_color = Color(0, 0, 0, 0.392157)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpb04"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+expand_margin_left = 6.0
+expand_margin_right = 6.0
+shadow_color = Color(0, 0, 0, 0.392157)
+shadow_size = 4
+
+[resource]
+default_font = ExtResource("1_dpb04")
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0, 0, 0, 0.5)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_5kdkh")
+Button/styles/focus = SubResource("StyleBoxFlat_p86ka")
+Button/styles/hover = SubResource("StyleBoxFlat_cd08o")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_6v1t2")
+Button/styles/normal = SubResource("StyleBoxFlat_dpb04")
+Button/styles/pressed = SubResource("StyleBoxFlat_6v1t2")

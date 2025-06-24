@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=4 uid="uid://cauebywkv2ugs"]
+[gd_scene load_steps=107 format=4 uid="uid://cauebywkv2ugs"]
 
 [ext_resource type="Material" uid="uid://dicwv6l4vx7y4" path="res://resources/models/pillar.tres" id="1_3aytc"]
 [ext_resource type="Material" uid="uid://d13qlru36l01p" path="res://resources/models/wall.tres" id="2_a7i81"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://vg27iykkc7l7" path="res://resources/textures/check_this_out_too.png" id="4_rfe6v"]
 [ext_resource type="Texture2D" uid="uid://dqhjs1xsfsupr" path="res://resources/models/palace_Wood051_512_Displacement.png" id="5_a7i81"]
 [ext_resource type="Material" uid="uid://bwlpwdsd4dnyv" path="res://resources/models/paper.tres" id="5_vdnhq"]
+[ext_resource type="Script" uid="uid://dcb5irkwmagwv" path="res://gameplay/camera_3d.gd" id="8_vdnhq"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_q6tvu"]
 _surfaces = [{
@@ -209,7 +210,6 @@ resource_name = "floor room"
 cull_mode = 2
 albedo_color = Color(0.558954, 0.558954, 0.558954, 1)
 albedo_texture = ExtResource("4_rfe6v")
-roughness = 0.5
 uv1_scale = Vector3(10, 10, 10)
 uv1_triplanar = true
 texture_filter = 0
@@ -1199,16 +1199,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4l8mm")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfe6v"]
-transparency = 1
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7i81"]
+shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_a7i81"]
-lightmap_size_hint = Vector2i(252, 1502)
-material = SubResource("StandardMaterial3D_rfe6v")
-flip_faces = true
-add_uv2 = true
-size = Vector2(50, 300)
+[sub_resource type="BoxMesh" id="BoxMesh_rfe6v"]
+material = SubResource("StandardMaterial3D_a7i81")
+size = Vector3(50, 1, 300)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_tv7he"]
 resource_name = "palace_Cylinder"
@@ -1415,15 +1412,50 @@ material = SubResource("StandardMaterial3D_vdnhq")
 size = Vector3(4.3, 0.07, 4.3)
 
 [sub_resource type="Environment" id="Environment_iiep6"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.1
+tonemap_mode = 2
 glow_enabled = true
-glow_intensity = 2.0
-glow_hdr_threshold = 0.75
+glow_intensity = 1.5
+glow_hdr_threshold = 0.9
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.828197, 0.828197, 0.828197, 1)
-fog_light_energy = 0.15
+fog_light_energy = 0.0
 fog_density = 1.0
 fog_depth_curve = 1.10957
+adjustment_enabled = true
+
+[sub_resource type="Animation" id="Animation_a7i81"]
+resource_name = "day_pass"
+length = 4.0
+step = 4.0
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.707, 0, 0, 0.707, 1, 1, 0, 0, 0, 1, 2, 1, 0.707, 0, 0, 0.707, 3, 1, 1, 0, 0, 0, 4, 1, -0.707, 0, 0, 0.707)
+
+[sub_resource type="Animation" id="Animation_rfe6v"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vdnhq"]
+_data = {
+&"RESET": SubResource("Animation_rfe6v"),
+&"day_pass": SubResource("Animation_a7i81")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vdnhq"]
+size = Vector3(1, 1.96674, 1.08191)
 
 [node name="World" type="Node3D"]
 
@@ -1632,7 +1664,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -22.5)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 74.6)
-mesh = SubResource("PlaneMesh_a7i81")
+visible = false
+mesh = SubResource("BoxMesh_rfe6v")
 
 [node name="palace2" type="Node3D" parent="."]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 28, 0)
@@ -2051,6 +2084,34 @@ light_bake_mode = 1
 omni_range = 16.0
 omni_attenuation = 0.0
 
+[node name="SpotLight3D" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, -16.0944)
+visible = false
+light_color = Color(0.935878, 0.457744, 1, 1)
+light_energy = 5.991
+omni_range = 10.0
+
+[node name="SpotLight3D2" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, 1.64154)
+visible = false
+light_color = Color(0.935878, 0.457744, 1, 1)
+light_energy = 5.991
+omni_range = 10.0
+
+[node name="SpotLight3D3" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, 19.9736)
+visible = false
+light_color = Color(0.935878, 0.457744, 1, 1)
+light_energy = 5.991
+omni_range = 10.0
+
+[node name="SpotLight3D4" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, 37.9306)
+visible = false
+light_color = Color(0.935878, 0.457744, 1, 1)
+light_energy = 5.991
+omni_range = 10.0
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_iiep6")
 
@@ -2059,6 +2120,7 @@ transform = Transform3D(-1, -6.53035e-15, -8.74227e-08, -2.81772e-09, 0.99948, 0
 current = true
 fov = 60.0
 size = 6.505
+script = ExtResource("8_vdnhq")
 
 [node name="Camera3D2" type="Camera3D" parent="."]
 transform = Transform3D(-1, -1.66931e-15, -8.74227e-08, -9.05928e-09, 0.994616, 0.103626, 8.69521e-08, 0.103626, -0.994616, 0, 4.94822, -25.3023)
@@ -2066,5 +2128,23 @@ projection = 1
 fov = 60.0
 size = 10.0
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+shadow_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vdnhq")
+}
+
 [node name="LightmapGI" type="LightmapGI" parent="."]
 light_data = ExtResource("2_mrl3i")
+
+[node name="Colliders" type="Node3D" parent="."]
+
+[node name="Lamp" type="Area3D" parent="Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01187, 2.30766, -21.3698)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Lamp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.483368, 0.0409546)
+shape = SubResource("BoxShape3D_vdnhq")
