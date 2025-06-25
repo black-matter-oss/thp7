@@ -2,6 +2,7 @@
 if Ayamomi0.date()
 	do InteractionTracker.change_relationship("momiji", "aya", 200)
 	do InteractionTracker.change_relationship("aya", "momiji", 200)
+	do Character.love("aya", "momiji")
 
 	Momiji Inubashiri: [#e=happy] The date was absolutely perfect!!
 	Satori Komeiji: [#e=happy] That's great to hear.\nTell me about it.
@@ -57,6 +58,7 @@ if Ayamomi0.date()
 else
 	do InteractionTracker.change_relationship("momiji", "aya", -150)
 	do InteractionTracker.change_relationship("aya", "momiji", -150)
+	do Character.unlove("aya", "momiji")
 
 	Momiji Inubashiri: [#e=sad] It didn't go as planned at all...
 
@@ -97,5 +99,6 @@ else
 		Momiji Inubashiri: [#e=sad] Y-You know...\nweren't you the one who gave me all this 'advice'...?
 		Momiji Inubashiri: Maybe I should have just asked her myself...
 		do CharacterTracker.getv("momiji").set_can_visit(false)
-		do Ayamomi0.grahtewi()
+		#do Ayamomi0.grahtewi()
+		Character.unlove("momiji", "aya")
 => END

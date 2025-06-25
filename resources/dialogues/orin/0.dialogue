@@ -1,11 +1,10 @@
 ~ start
-if InteractionTracker.okuu_action == 0
-	Rin Kaenbyou: [#e=angry] You have some nerve to be saying stuff like this...
-	Rin Kaenbyou: [#e=angry] Have you no sense of compassion or kindness?
-	Rin Kaenbyou: [#e=angry] You could've kept it to yourself, at the very least.
-	do CharacterTracker.getv("okuu").set_can_visit(false)
-	=> END
-
+#if InteractionTracker.okuu_action == 0
+#	Rin Kaenbyou: [#e=angry] You have some nerve to be saying stuff like this...
+#	Rin Kaenbyou: [#e=angry] Have you no sense of compassion or kindness?
+#	Rin Kaenbyou: [#e=angry] You could've kept it to yourself, at the very least.
+#	do CharacterTracker.getv("okuu").set_can_visit(false)
+#	=> END
 Rin Kaenbyou: Hey, Satori. 'kuu asked me to come, said something about helping you prepare a picnic?
 Satori Komeiji: [#e=surprised] A picnic? Ah, right, of course; the picnic.
 Satori Komeiji: Yes, indeed.
@@ -59,4 +58,6 @@ Satori Komeiji: Yes, indeed.
 	Rin Kaenbyou: Ya sure? If you need help any help setting up the whole thing, I'll be happy to do so.
 	Satori Komeiji: Ah, no worries there, thanks.
 	Rin Kaenbyou: Well, see ya then.
+set CharacterTracker.getv("orin").set_can_visit(false)
+set CharacterTracker.getv("okuu").set_can_visit(true)
 => END

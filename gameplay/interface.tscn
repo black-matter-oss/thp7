@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctfb8dprxsk8i"]
+[gd_scene load_steps=11 format=3 uid="uid://ctfb8dprxsk8i"]
 
 [ext_resource type="Script" uid="uid://c1dqbp0765kxt" path="res://gameplay/interface.gd" id="1_ctvng"]
 [ext_resource type="PackedScene" uid="uid://cauebywkv2ugs" path="res://gameplay/world.tscn" id="1_gemis"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://blamfc3xk3g4c" path="res://resources/textures/bookb.png" id="4_4gceb"]
 [ext_resource type="Texture2D" uid="uid://bgsjtihi0vkjy" path="res://resources/textures/phoneb.png" id="5_4gceb"]
 [ext_resource type="Texture2D" uid="uid://bv8tg1prqdaos" path="res://resources/textures/arrowb.png" id="6_5qdjx"]
+[ext_resource type="Theme" uid="uid://co17bgal6w6ut" path="res://resources/theme/dialogue.tres" id="7_xehbb"]
 
 [sub_resource type="Gradient" id="Gradient_faidp"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 0, 1, 1)
@@ -13,6 +14,9 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 0, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_58vu7"]
 gradient = SubResource("Gradient_faidp")
 fill_to = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qdjx"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="Interface" type="Control"]
 layout_mode = 3
@@ -105,6 +109,49 @@ size_flags_vertical = 10
 tooltip_text = "New day"
 texture_normal = ExtResource("6_5qdjx")
 stretch_mode = 0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="DayPass" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_xehbb")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5qdjx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DayPass"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.0
+offset_top = -106.5
+offset_right = 178.0
+offset_bottom = 106.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DayInfo" type="Label" parent="DayPass/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 144
+
+[node name="CharaInfo" type="Label" parent="DayPass/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("7_xehbb")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
 
 [connection signal="character_goodbye" from="DayTracker" to="." method="_on_day_tracker_character_goodbye" flags=3]
 [connection signal="character_hello" from="DayTracker" to="." method="_on_day_tracker_character_hello" flags=3]

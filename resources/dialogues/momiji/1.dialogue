@@ -1,6 +1,7 @@
 ~ start
 do InteractionTracker.set_relationship("aya", "momiji", 600)
 do InteractionTracker.set_relationship("momiji", "aya", 600)
+do Character.love("aya", "momiji")
 if InteractionTracker.momiji_confessed
 	Momiji Inubashiri: [#e=happy] You won't believe it, Satori!\nAya accepted my love confession!
 else

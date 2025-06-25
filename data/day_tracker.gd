@@ -11,6 +11,8 @@ var current_dialogue_ended := true
 
 var curernt_character: Character
 
+var stop_what_you_are_doing := false
+
 @onready var interface: GameplayInterface = get_parent()
 
 func start_new_day() -> void:
@@ -70,6 +72,9 @@ func begin_loop() -> void:
 		start_new_day()
 	
 	while not current_day.characters_to_visit.is_empty():
+		# while stop_what_you_are_doing:
+		# 	await get_tree().create_timer(0.2).timeout
+
 		if not current_dialogue_ended:
 			continue
 		
@@ -79,6 +84,7 @@ func begin_loop() -> void:
 			idle_time = randi_range(1, 2)
 		else:
 			idle_time = randi_range(4, 10)
+		idle_time += 5 # for the day info to have time to show :D
 
 		await get_tree().create_timer(idle_time).timeout
 
@@ -101,10 +107,10 @@ func begin_loop() -> void:
 		c.visited_times += 1
 
 		# yanderedev :(
-		if c.id == "okuu" and c.next_visit == "ask_date":
-			print_debug("Okuu conditional 1")
-			c.can_visit = func(x: Character) -> bool:
-				return CharacterTracker.getv("orin").visited_times == 1
+		# if c.id == "okuu" and c.next_visit == "ask_date":
+		# 	print_debug("Okuu conditional 1")
+		# 	c.can_visit = func(x: Character) -> bool:
+		# 		return CharacterTracker.getv("orin").visited_times == 1
 		# elif c.id == "reimu" and c.next_visit == "confession":
 		# 	print_debug("Reimu conditional 1")
 		# 	c.can_visit = func(x: Character) -> bool:

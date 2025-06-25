@@ -1,0 +1,26 @@
+~start
+if not Kyoutia0.date()
+	Kyouko Kasodani: [#e=sad] Mystia said it's still too early to get engaged...
+	Satori Komeiji: [#e=sad] S-She rejected you...?
+	Kyouko Kasodani: It's fine! It just means I have to spend more time with her before going further.
+	Satori Komeiji: Are you sure you're fine...?
+	Kyouko Kasodani [#e=sad] O-Of course! It's fine, I'm fine!
+	do Character.unlove("kyouko", "mystia")
+else
+	do Character.love("kyouko", "mystia")
+	Kyouko Kasodani: [#e=happy] Satori! You really are a big-brained satori!
+	Satori Komeiji: I'm guessing it went well with Mystia?
+	Kyouko Kasodani: [#e=happy] 'course! She was absolutely delighted!\nAnd she loves the ring I gave her too...
+	Satori Komeiji: Did you end up going along with my idea?
+	if Kyoutia0.choice == 0 or Kyoutia0.choice == 1
+		% Kyouko Kasodani: [#e=happy] Mhm!\nI made her some grilled lamprey!
+		% Kyouko Kasodani: [#e=happy] Mhm!\nI made her miso soup!
+		% Kyouko Kasodani: [#e=happy] Mhm!\nI made her pancakes with maple syrup!
+		% Kyouko Kasodani: [#e=happy] Mhm!\nI made her risotto!
+		% Kyouko Kasodani: [#e=happy] Mhm!\nI made her an omelette!
+		Kyouko Kasodani: [#e=happy] And she loved it!\nThat probably helped my proposal quite a bit, ehe.
+		Kyouko Kasodani: [#e=happy] She said that my cooking skills have improved a lot.
+	elif Kyoutia.choice == 2
+		Kyouko Kasodani: nyohoho
+	Satori Komeiji: Will you be getting married soon, then?
+=> END

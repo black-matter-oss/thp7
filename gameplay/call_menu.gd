@@ -10,7 +10,7 @@ func _ready() -> void:
 		var cn: String = CharacterTracker._characters.keys()[i]
 		var c := CharacterTracker.getv(cn)
 
-		if c.id == "satori":
+		if c.id == "satori" or c.id == "koishi":
 			continue
 
 		var hbc := HBoxContainer.new()

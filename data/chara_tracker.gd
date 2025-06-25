@@ -5,13 +5,14 @@ static var _characters : Dictionary[String, Character]
 
 static func load() -> void:
 	var satori := addv(Character.new("satori", "Satori Komeiji"))
+	var koishi := addv(Character.new("koishi", "Koishi Komeiji"))
 	satori.dialogue_color = Color.from_rgba8(216, 138, 206)
 
 	var remilia := addv(Character.new("remilia", "Remilia Scarlet"))
 	remilia.dialogue_color = Color.from_rgba8(149, 139, 242)
 
-	var flandre := addv(Character.new("flandre", "Flandre Scarlet"))
-	flandre.relationships[satori] = 100
+	# var flandre := addv(Character.new("flandre", "Flandre Scarlet"))
+	# flandre.relationships[satori] = 100
 	#flandre.dialogue_color = Color.from_rgba8()
 
 	# var wriggle := addv(Character.new("wriggle", "Wriggle Nightbug"))
@@ -36,21 +37,22 @@ static func load() -> void:
 	# marisa.relationships[reimu] = 200
 	# marisa.set_can_visit(false)
 
-	var kyouko := addv(Character.new("kyouko", "Kyouko Kasodani"))
-	kyouko.dialogue_color = Color.from_rgba8(78, 105, 81)
-	var mystia := addv(Character.new("mystia", "Mystia Lorelei"))
-	mystia.dialogue_color = Color.from_rgba8(138, 109, 136)
-	mystia.likes = "I like homemade food,\npunk rock,\nand Kyouko!"
-	mystia.dislikes = "I absolutely hate junk and fast food.\nAnd people who don't collect their trash."
+	# var kyouko := addv(Character.new("kyouko", "Kyouko Kasodani"))
+	# kyouko.dialogue_color = Color.from_rgba8(78, 105, 81)
+	# var mystia := addv(Character.new("mystia", "Mystia Lorelei"))
+	# mystia.dialogue_color = Color.from_rgba8(138, 109, 136)
+	# mystia.likes = "I like homemade food,\npunk rock,\nand Kyouko!"
+	# mystia.dislikes = "I absolutely hate junk and fast food.\nAnd people who don't collect their trash."
 
-	# var okuu := addv(Character.new("okuu", "Utsuho Reiuji"))
-	# var orin := addv(Character.new("orin", "Rin Kaenbyou"))
-	# orin.dialogue_color = Color.from_rgba8(156, 61, 61)
-	# okuu.dialogue_color = Color.from_rgba8(156, 86, 41)
-	# okuu.relationships[orin] = 700
-	# orin.relationships[okuu] = 650
-	# orin.can_visit = func(x: Character) -> bool:
-	# 	return CharacterTracker.getv("okuu").visited_times == 1
+	var okuu := addv(Character.new("okuu", "Utsuho Reiuji"))
+	var orin := addv(Character.new("orin", "Rin Kaenbyou"))
+	orin.dialogue_color = Color.from_rgba8(156, 61, 61)
+	okuu.dialogue_color = Color.from_rgba8(156, 86, 41)
+	okuu.relationships[orin] = 700
+	orin.relationships[okuu] = 650
+	orin.set_can_visit(false)
+	#orin.can_visit = func(x: Character) -> bool:
+	#	return CharacterTracker.getv("okuu").visited_times == 1
 
 	# var momiji := addv(Character.new("momiji", "Momiji Inubashiri"))
 	# momiji.dialogue_color = Color.from_rgba8(150, 150, 150)
@@ -87,3 +89,21 @@ static func addv(v: Character) -> Character:
 
 static func getv(id: String) -> Character:
 	return _characters[id]
+
+static func love(a: String, b: String) -> void:
+	var ca = CharacterTracker.getv(a)
+	var cb = CharacterTracker.getv(b)
+	ca.loves = cb
+	cb.loves = ca
+
+static func unlove(a: String, b: String) -> void:
+	var ca = CharacterTracker.getv(a)
+	var cb = CharacterTracker.getv(b)
+	ca.loves = null
+	cb.loves = null
+	GlobalAudio.play2d(GlobalAudio.SFX_HIT_HURT)
+
+static func is_love(a: String, b: String) -> bool:
+	var ca = CharacterTracker.getv(a)
+	var cb = CharacterTracker.getv(b)
+	return ca.loves == cb and cb.loves == ca

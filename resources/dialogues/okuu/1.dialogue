@@ -54,6 +54,10 @@ Utsuho Reiuji: [#e=happy] So, what did you find out?
 		Utsuho Reiuji: [#e=sad] That can't be a good thing...
 		Utsuho Reiuji: Oh well, forget it! You're probably just tired.
 		Utsuho Reiuji: [#e=happy] I'll manage without. You should get some sleep.
+		#do CharacterTracker.getv("okuu").reset()
+		#do CharacterTracker.getv("orin").reset()
+		#do CharacterTracker.getv("okuu").set_can_visit(false)
+		set Okuurin0.date_success_chance = 50
 		=> END
 	
 	Utsuho Reiuji: [#e=happy] Okay, thank you!

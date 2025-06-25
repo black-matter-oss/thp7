@@ -50,4 +50,5 @@ Satori Komeiji: Indeed, that is what I am doing for now.
 					do CharacterTracker.getv("momiji").set_can_visit(true)
 				else
 					do CharacterTracker.getv("momiji").set_can_visit(false)
+				Koishi Komeiji: [next=auto] B-But you could've...
 => END

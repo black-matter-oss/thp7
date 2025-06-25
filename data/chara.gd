@@ -58,9 +58,20 @@ var third_eye_1: String = ""
 var likes: String = ""
 var dislikes: String = ""
 
+var loves: Character = null
+
 func _init(id: String, name: String):
 	self.name = name
 	self.id = id
+
+func reset() -> void:
+	loves = null
+	dialogue_progress = 0
+	visited_times = 0
+	set_can_visit(true)
+	next_visit = ""
+	print("Character reset: " + name)
+	GlobalAudio.play2d(GlobalAudio.SFX_TONE)
 
 func load_dialogues() -> void:
 	const base_path := "res://resources/dialogues/"

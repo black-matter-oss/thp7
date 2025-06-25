@@ -8,38 +8,59 @@ var mouse_sens: float = 0.005
 const oshader := preload("res://resources/outline.gdshader")
 var osm := ShaderMaterial.new()
 
+@onready var reset_rot := self.rotation
+@onready var reset_rot_p = get_parent().rotation
+const RESET_DURATION := 0.5
+const RESET_STEPS := 30
+
 var raycast_result: Dictionary
 
-@onready var gi := get_parent().get_parent().get_parent().get_parent() as GameplayInterface
+# yippie
+@onready var gi := get_parent().get_parent().get_parent().get_parent().get_parent().get_parent() as GameplayInterface
 
-@onready var lamp_area := get_parent().get_node("Colliders/Lamp")
+@onready var world: Node3D = get_parent().get_parent().get_parent()
+
+@onready var lamp_area := world.get_node("Colliders/Lamp")
 @onready var lamp: Array[MeshInstance3D] = [
-	get_parent().get_node("palace/Sphere") as MeshInstance3D,
-	get_parent().get_node("palace/Cylinder_002") as MeshInstance3D,
-	get_parent().get_node("palace/Cylinder_003") as MeshInstance3D
+	world.get_node("palace/Sphere") as MeshInstance3D,
+	world.get_node("palace/Cylinder_002") as MeshInstance3D,
+	world.get_node("palace/Cylinder_003") as MeshInstance3D
 ]
 
-@onready var phone_area := get_parent().get_node("Colliders/Phone")
+@onready var phone_area := world.get_node("Colliders/Phone")
 @onready var phone: Array[MeshInstance3D] = [
-	get_parent().get_node("telephone/Cube") as MeshInstance3D,
-	get_parent().get_node("telephone/Cube_001") as MeshInstance3D,
-	get_parent().get_node("telephone/Cube_002") as MeshInstance3D,
-	get_parent().get_node("telephone/Cube_003") as MeshInstance3D,
-	get_parent().get_node("telephone/Cylinder") as MeshInstance3D,
-	get_parent().get_node("telephone/Cylinder_002") as MeshInstance3D
+	world.get_node("telephone/Cube") as MeshInstance3D,
+	world.get_node("telephone/Cube_001") as MeshInstance3D,
+	world.get_node("telephone/Cube_002") as MeshInstance3D,
+	world.get_node("telephone/Cube_003") as MeshInstance3D,
+	world.get_node("telephone/Cylinder") as MeshInstance3D,
+	world.get_node("telephone/Cylinder_002") as MeshInstance3D
 ]
 
-@onready var book_area := get_parent().get_node("Colliders/Book")
+@onready var book_area := world.get_node("Colliders/Book")
 @onready var book: Array[MeshInstance3D] = [
-	get_parent().get_node("book/Cube") as MeshInstance3D,
-	get_parent().get_node("book/Cube_002") as MeshInstance3D,
-	get_parent().get_node("book/Cube_003") as MeshInstance3D
+	world.get_node("book/Cube") as MeshInstance3D,
+	world.get_node("book/Cube_002") as MeshInstance3D,
+	world.get_node("book/Cube_003") as MeshInstance3D
 ]
+
+func reset_rotation() -> void:
+	mm = Input.MOUSE_MODE_VISIBLE
+
+	var delta1 := reset_rot - rotation
+	var delta2 = reset_rot_p - get_parent().rotation
+	
+	var delta1_step := delta1 / RESET_STEPS
+	var delta2_step = delta2 / RESET_STEPS
+
+	for i in range(RESET_STEPS):
+		rotation += delta1_step
+		get_parent().rotation += delta2_step
+		await get_tree().create_timer(RESET_DURATION / RESET_STEPS).timeout
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	osm.shader = oshader
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -106,12 +127,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT and not raycast_result.is_empty():
 			if raycast_result["collider"] == lamp_area:
-				(get_parent().get_node("Lights/Desk") as Node3D).visible = !(get_parent().get_node("Lights/Desk") as Node3D).visible
+				(world.get_node("Lights/Desk") as Node3D).visible = !(world.get_node("Lights/Desk") as Node3D).visible
 			elif raycast_result["collider"] == phone_area:
 				gi._on_call_menu_btn_pressed()
 			elif raycast_result["collider"] == book_area:
 				gi._on_quest_menu_btn_pressed()
 	
 	if event is InputEventMouseMotion and mm == Input.MOUSE_MODE_CAPTURED:
-		rotate_y(-event.relative.x * mouse_sens)
-		rotation.x = clamp(rotation.x - event.relative.y * mouse_sens, deg_to_rad(-89.9), deg_to_rad(89.9))
+		get_parent().rotate_y(-event.relative.x * mouse_sens)
+		#get_parent().get_node("satori").rotate_y(-event.relative.x * mouse_sens)
+		rotation.x = clamp(rotation.x - event.relative.y * mouse_sens, deg_to_rad(-45), deg_to_rad(75))

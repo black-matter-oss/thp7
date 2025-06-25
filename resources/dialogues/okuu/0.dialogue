@@ -22,10 +22,14 @@ Utsuho Reiuji: But it's not a problem, right?
 	
 	Satori Komeiji: [#e=annoyed] It's a huge problem.
 	Satori Komeiji: [#e=angry] I mean, you're both women! Do you have the slightest idea of how insane what you just said is?!
-	Utsuho Reiuji: [#e=sad] I--
+	Utsuho Reiuji: [#e=sad] [next=auto] I--
 	Satori Komeiji: Get back to work and forget about this entire date thing.
 	Utsuho Reiuji: [#e=sad] ...
 	do CharacterTracker.getv("okuu").set_can_visit(false)
+	% Koishi Komeiji: [next=auto] Huh...?
+	% Koishi Komeiji: [next=auto] No...
+	% Koishi Komeiji: [next=auto] ??!!!!?!
+	#do CharacterTracker.getv("okuu").reset()
 - It isn't
 	set InteractionTracker.okuu_action = 1
 	Satori Komeiji: No, of course not.
@@ -35,7 +39,9 @@ Utsuho Reiuji: But it's not a problem, right?
 	Utsuho Reiuji: [#e=troubled] Would you try to learn from Rin what she'd like to do and where she'd like to go? I'll tell her to come here!
 	Satori Komeiji: Of course, that's not a problem.
 	Utsuho Reiuji: [#e=happy] Yay! Thank you!
-	set CharacterTracker.getv("okuu").next_visit = "ask_date"
+	#set CharacterTracker.getv("okuu").next_visit = "ask_date"
+	set CharacterTracker.getv("okuu").set_can_visit(false)
+	set CharacterTracker.getv("orin").set_can_visit(true)
 #	- Not a problem
 #		do InteractionTracker.change_relationship("okuu", "satori", 100)
 #	- I'm busy

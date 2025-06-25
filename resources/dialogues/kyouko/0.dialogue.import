@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://kw6vji5jgvf4"
+path="res://.godot/imported/0.dialogue-206c0d71c06a8a3d380dc3845e011caa.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/kyouko/0.dialogue"
+dest_files=["res://.godot/imported/0.dialogue-206c0d71c06a8a3d380dc3845e011caa.tres"]
+
+[params]
+
+defaults=true

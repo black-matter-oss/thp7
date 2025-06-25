@@ -2,6 +2,7 @@
 if Okuurin0.date()
 	do InteractionTracker.change_relationship("okuu", "orin", 100)
 	do InteractionTracker.change_relationship("orin", "okuu", 100)
+	do CharacterTracker.love("okuu", "orin")
 
 	Utsuho Reiuji: [#e=happy] Saatori!
 	Satori Komeiji: Oh, Okuu! How did the date go?
@@ -38,4 +39,5 @@ else
 	Utsuho Reiuji: [#e=sad] In general she just didn't seem very happy with the date.
 	Satori Komeiji: Is that so...?
 	Utsuho Reiuji: [#e=sad] I will go take a nap, maybe.
+	do CharacterTracker.unlove("okuu", "orin")
 => END

@@ -1,6 +1,7 @@
 ~ start
 do InteractionTracker.set_relationship("reimu", "marisa", 501)
 do InteractionTracker.set_relationship("marisa", "reimu", 501)
+do Character.love("reimu", "marisa")
 Reimu Hakurei: Just passing by.\nI confessed to Marisa.
 Satori Komeiji: [#e=happy] Congratulations!\nHow did it go?
 Reimu Hakurei: Well, I suppose?
