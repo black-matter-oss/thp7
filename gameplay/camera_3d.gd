@@ -4,18 +4,36 @@ extends Camera3D
 var mm = Input.MOUSE_MODE_VISIBLE
 var mlp = Vector2(0, 0)
 var mouse_sens: float = 0.005
-var do_raycast := true
 
 const oshader := preload("res://resources/outline.gdshader")
 var osm := ShaderMaterial.new()
 
 var raycast_result: Dictionary
 
+@onready var gi := get_parent().get_parent().get_parent().get_parent() as GameplayInterface
+
 @onready var lamp_area := get_parent().get_node("Colliders/Lamp")
 @onready var lamp: Array[MeshInstance3D] = [
 	get_parent().get_node("palace/Sphere") as MeshInstance3D,
 	get_parent().get_node("palace/Cylinder_002") as MeshInstance3D,
 	get_parent().get_node("palace/Cylinder_003") as MeshInstance3D
+]
+
+@onready var phone_area := get_parent().get_node("Colliders/Phone")
+@onready var phone: Array[MeshInstance3D] = [
+	get_parent().get_node("telephone/Cube") as MeshInstance3D,
+	get_parent().get_node("telephone/Cube_001") as MeshInstance3D,
+	get_parent().get_node("telephone/Cube_002") as MeshInstance3D,
+	get_parent().get_node("telephone/Cube_003") as MeshInstance3D,
+	get_parent().get_node("telephone/Cylinder") as MeshInstance3D,
+	get_parent().get_node("telephone/Cylinder_002") as MeshInstance3D
+]
+
+@onready var book_area := get_parent().get_node("Colliders/Book")
+@onready var book: Array[MeshInstance3D] = [
+	get_parent().get_node("book/Cube") as MeshInstance3D,
+	get_parent().get_node("book/Cube_002") as MeshInstance3D,
+	get_parent().get_node("book/Cube_003") as MeshInstance3D
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -28,7 +46,7 @@ func _process(delta: float) -> void:
 	Input.mouse_mode = mm
 
 func _physics_process(delta: float) -> void:
-	if not do_raycast:
+	if not gi.do_raycast:
 		return
 	
 	var space_state := get_world_3d().direct_space_state
@@ -40,16 +58,28 @@ func _physics_process(delta: float) -> void:
 	query.collide_with_areas = true
 
 	raycast_result = space_state.intersect_ray(query)
-	print(raycast_result)
+	#print(raycast_result)
 
 	if raycast_result.is_empty():
 		_unhighlight(lamp)
+		_unhighlight(phone)
+		_unhighlight(book)
 		return
 
 	if raycast_result["collider"] == lamp_area:
 		_highlight(lamp)
 	else:
 		_unhighlight(lamp)
+
+	if raycast_result["collider"] == book_area:
+		_highlight(book)
+	else:
+		_unhighlight(book)
+	
+	if raycast_result["collider"] == phone_area:
+		_highlight(phone)
+	else:
+		_unhighlight(phone)
 
 	#do_raycast = false
 
@@ -74,8 +104,13 @@ func _unhandled_input(event: InputEvent) -> void:
 				mm = Input.MOUSE_MODE_VISIBLE
 				#get_viewport().warp_mouse(mlp)
 		
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			do_raycast = true
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT and not raycast_result.is_empty():
+			if raycast_result["collider"] == lamp_area:
+				(get_parent().get_node("Lights/Desk") as Node3D).visible = !(get_parent().get_node("Lights/Desk") as Node3D).visible
+			elif raycast_result["collider"] == phone_area:
+				gi._on_call_menu_btn_pressed()
+			elif raycast_result["collider"] == book_area:
+				gi._on_quest_menu_btn_pressed()
 	
 	if event is InputEventMouseMotion and mm == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sens)

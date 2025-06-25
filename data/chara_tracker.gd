@@ -52,21 +52,21 @@ static func load() -> void:
 	# orin.can_visit = func(x: Character) -> bool:
 	# 	return CharacterTracker.getv("okuu").visited_times == 1
 
-	var momiji := addv(Character.new("momiji", "Momiji Inubashiri"))
-	momiji.dialogue_color = Color.from_rgba8(150, 150, 150)
-	var aya := addv(Character.new("aya", "Aya Shameimaru"))
-	momiji.relationships[aya] = 350
-	aya.relationships[momiji] = 480
-	aya.likes = "I love takoyaki and ramen. Of course, some strong alcohol is a necessity to each meal.\nMusic is a great addition too."
-	aya.dislikes = "I don't really drink wine, sake or beer is much prefered.\nI also don't like crowded places."
-	aya.third_eye_1 = "Wants to enter a romantic relationship with Momiji\n" + \
-		"Loves takoyaki and ramen\n" + \
-		"Loves strong alcohol\n" + \
-		"Likes quiet places\n" + \
-		"Likes music\n" + \
-		"Dislikes wine\n" + \
-		"Dislikes fancy restaurants"
-	aya.dialogue_color = Color.from_rgba8(112, 112, 112)
+	# var momiji := addv(Character.new("momiji", "Momiji Inubashiri"))
+	# momiji.dialogue_color = Color.from_rgba8(150, 150, 150)
+	# var aya := addv(Character.new("aya", "Aya Shameimaru"))
+	# momiji.relationships[aya] = 350
+	# aya.relationships[momiji] = 480
+	# aya.likes = "I love takoyaki and ramen. Of course, some strong alcohol is a necessity to each meal.\nMusic is a great addition too."
+	# aya.dislikes = "I don't really drink wine, sake or beer is much prefered.\nI also don't like crowded places."
+	# aya.third_eye_1 = "Wants to enter a romantic relationship with Momiji\n" + \
+	# 	"Loves takoyaki and ramen\n" + \
+	# 	"Loves strong alcohol\n" + \
+	# 	"Likes quiet places\n" + \
+	# 	"Likes music\n" + \
+	# 	"Dislikes wine\n" + \
+	# 	"Dislikes fancy restaurants"
+	# aya.dialogue_color = Color.from_rgba8(112, 112, 112)
 
 	#print("Setting up starting relationships")
 

@@ -18,8 +18,13 @@ var state := GameState.WAITING
 
 var day_thread: Thread
 
-var cm: Node = call_menu.instantiate()
-var qm: Node = quest_menu.instantiate()
+var cm: Node
+var qm: Node
+
+var global: GameplayInterface
+
+@onready var camera: WorldCamera = $SubViewportContainer/SubViewport/World/Camera3D
+var do_raycast := true
 
 func new_day() -> void:
 	print("New day!")
@@ -35,6 +40,8 @@ func new_day() -> void:
 	day_thread.start(day_tracker.begin_loop)
 
 func call_character(c: Character) -> void:
+	do_raycast = false
+
 	print_debug("Character called: " + c.name)
 	$%CallMenuBtn.visible = false
 	DialogueManager.dialogue_ended.connect(_call_end)
@@ -47,10 +54,12 @@ func call_character(c: Character) -> void:
 		DialogueManager.show_dialogue_balloon(GenericCallDialogue.construct_for(c))
 
 func _call_end(r: DialogueResource) -> void:
+	do_raycast = true
 	$%CallMenuBtn.visible = true
 	DialogueManager.dialogue_ended.disconnect(_call_end)
 
 func _init() -> void:
+	global = self
 	CharacterTracker.load()
 
 # Called when the node enters the scene tree for the first time.
@@ -94,6 +103,7 @@ func _on_day_tracker_day_end() -> void:
 	#sub.add_child(idle_interface.instantiate())
 	#third_eye.disabled = true
 	#$%CallMenuBtn.visible = true
+	do_raycast = true
 
 func _on_day_tracker_day_start() -> void:
 	state = GameState.WAITING
@@ -101,6 +111,7 @@ func _on_day_tracker_day_start() -> void:
 	#third_eye.disabled = true
 	$Toolbar.visible = true
 	#$%CallMenuBtn.visible = false
+	do_raycast = false
 
 func _on_third_eye_pressed() -> void:
 	match day_tracker.curernt_character.id:
@@ -109,11 +120,15 @@ func _on_third_eye_pressed() -> void:
 
 func _on_call_menu_btn_pressed() -> void:
 	#$%CallMenuBtn.visible = false
+	do_raycast = false
+	cm = call_menu.instantiate()
 	add_child(cm)
 	#$%CallMenuBtn.visible = true
 
 func _on_quest_menu_btn_pressed() -> void:
 	#$%QuestMenuBtn.visible = false
+	do_raycast = false
+	qm = quest_menu.instantiate()
 	add_child(qm)
 	#$%QuestMenuBtn.visible = true
 

@@ -1,13 +1,14 @@
 shader_type spatial;
-render_mode cull_front, unshaded;
+render_mode blend_mix, cull_front, unshaded, depth_test_disabled;
 
-uniform vec3 color : source_color = vec3(0,0,0);
-uniform float thickness : hint_range(0.0, 1.0, 0.01) = 0.15;
+uniform vec4 color : source_color = vec4(0,0,0,0.5);
+uniform float size : hint_range(1.0, 1.5, 0.01) = 1.1;
 
 void vertex() {
-	VERTEX += thickness*NORMAL;
+	VERTEX *= size;
 }
 
 void fragment() {
-	ALBEDO = color;
+	ALBEDO = color.rgb;
+	ALPHA = color.a;
 }
