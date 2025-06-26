@@ -74,6 +74,8 @@ func begin_loop() -> void:
 	while not current_day.characters_to_visit.is_empty():
 		if not current_dialogue_ended:
 			continue
+
+		#print("uyoyhuuoyou")
 		
 		# TODO activities when waiting for visitors
 		var idle_time := 0

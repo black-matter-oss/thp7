@@ -1,4 +1,3 @@
-@tool
 class_name GameplayInterface
 extends Control
 
@@ -27,6 +26,8 @@ static var global: GameplayInterface
 @onready var camera: WorldCamera = $SubViewportContainer/SubViewport/World/Player/satori/Camera3D
 var do_raycast := true
 
+@onready var radio_player: AudioStreamPlayer3D = $SubViewportContainer/SubViewport/World/RadioPlayer
+
 func new_day() -> void:
 	print("New day!")
 	$%NewDayBtn.visible = false
@@ -39,6 +40,7 @@ func new_day() -> void:
 
 func show_day_count(d: int) -> void:
 	#$DayPass.modulate.a = 0
+
 	$DayPass.visible = true
 	$%DayInfo.text = "Day " + str(d)
 	$%CharaInfo.text = "Today's visitors:"
@@ -61,7 +63,6 @@ func show_day_count(d: int) -> void:
 		await get_tree().create_timer(0.01).timeout
 	
 	$DayPass.modulate.a = 0
-	
 	$DayPass.visible = false
 
 func call_character(c: Character) -> void:
@@ -116,10 +117,10 @@ func _process(delta: float) -> void:
 func _on_day_tracker_character_goodbye(chara:Character) -> void:
 	print_debug("Goodbye " + chara.name)
 
-	GlobalAudio.play2d(GlobalAudio.SFX_FOOTSTEP1)
-	await GlobalAudio.player2d.finished
-	GlobalAudio.play2d(GlobalAudio.SFX_FOOTSTEP1)
-	await GlobalAudio.player2d.finished
+	GlobalAudio.play2d_p($Footstep, GlobalAudio.SFX_FOOTSTEP1)
+	await $Footstep.finished
+	GlobalAudio.play2d_p($Footstep, GlobalAudio.SFX_FOOTSTEP1)
+	await $Footstep.finished
 
 	state = GameState.WAITING
 	Utilities.remove_all_children(sub)
@@ -131,10 +132,15 @@ func _on_day_tracker_character_goodbye(chara:Character) -> void:
 func _on_day_tracker_character_hello(chara:Character) -> void:
 	print_debug("Hello " + chara.name)
 
-	GlobalAudio.play2d(GlobalAudio.SFX_FOOTSTEP1)
-	await GlobalAudio.player2d.finished
-	GlobalAudio.play2d(GlobalAudio.SFX_FOOTSTEP1)
-	await GlobalAudio.player2d.finished
+	GlobalAudio.play2d_p($Footstep, GlobalAudio.SFX_FOOTSTEP1)
+	await $Footstep.finished
+	GlobalAudio.play2d_p($Footstep, GlobalAudio.SFX_FOOTSTEP1)
+	await $Footstep.finished
+
+	if not radio_player.stream:
+		radio_player.finished.connect(_radio_in)
+		chattered = true
+		_radio_in()
 
 	state = GameState.CONVERSATION
 	Utilities.remove_all_children(sub)
@@ -168,6 +174,8 @@ func _on_day_tracker_day_end() -> void:
 	do_raycast = true
 
 func _on_day_tracker_day_start() -> void:
+	print("DAY STARTED")
+
 	var we := $SubViewportContainer/SubViewport/World/WorldEnvironment.environment as Environment
 	while we.ambient_light_energy < 0.7:
 		we.ambient_light_energy += 0.025
@@ -179,6 +187,8 @@ func _on_day_tracker_day_start() -> void:
 	#$SubViewportContainer/SubViewport/World/Lights.visible = true
 	$%NewDayBtn.visible = true
 	#day_tracker.stop_what_you_are_doing = false
+
+	#($SubViewportContainer/SubViewport/World/clocks as Clocks).set_volume(0)
 
 	state = GameState.WAITING
 	Utilities.remove_all_children(sub)
@@ -208,3 +218,41 @@ func _on_quest_menu_btn_pressed() -> void:
 
 func _on_new_day_btn_pressed() -> void:
 	new_day()
+
+func _radio_toggle() -> void:
+	if radio_player.playing and not radio_player.stream_paused:
+		radio_player.stream_paused = true
+	else:
+		radio_player.stream_paused = false
+
+var chattered := false
+
+func _radio_in() -> void:
+	if not chattered:
+		radio_player.stream = GlobalAudio.random_chatter()
+		radio_player.play()
+		chattered = true
+		#get_tree().create_timer(radio_player.stream.get_length() + 0.1).timeout.connect(func() -> void:
+			#print("radio chatter done")
+			#radio_player.stop()
+			#_radio_in())
+		return
+	
+	#radio_player.
+	chattered = false
+
+	var fx: AudioEffectAmplify = AudioServer.get_bus_effect(2, 1)
+	fx.volume_db = -40
+
+	radio_player.stream = GlobalAudio.random_bgm()
+	radio_player.play()
+
+	#_rfx(fx)
+
+	while fx.volume_db < 0:
+		fx.volume_db += 1
+		print(fx.volume_db)
+		await get_tree().create_timer(0.05).timeout
+
+func _radio_out() -> void:
+	pass

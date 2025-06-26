@@ -7,38 +7,38 @@ script = ExtResource("1_4n7bt")
 metadata/_custom_type_script = "uid://d3fj5tm8aonpq"
 
 [node name="RaycastDown" type="RayCast3D" parent="."]
-target_position = Vector3(0, -100, 0)
+target_position = Vector3(0, -30, 0)
 
 [node name="RaycastLeft" type="RayCast3D" parent="."]
-target_position = Vector3(100, 0, 0)
+target_position = Vector3(30, 0, 0)
 
 [node name="RaycastRight" type="RayCast3D" parent="."]
-target_position = Vector3(-100, 0, 0)
+target_position = Vector3(-30, 0, 0)
 
 [node name="RaycastForward" type="RayCast3D" parent="."]
-target_position = Vector3(0, 0, 100)
+target_position = Vector3(0, 0, 30)
 
 [node name="RaycastForwardLeft" type="RayCast3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
-target_position = Vector3(0, 0, 100)
+target_position = Vector3(0, 0, 30)
 
 [node name="RaycastForwardRight" type="RayCast3D" parent="."]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
-target_position = Vector3(0, 0, 100)
+target_position = Vector3(0, 0, 30)
 
 [node name="RaycastBackwardRight" type="RayCast3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
-target_position = Vector3(0, 0, -100)
+target_position = Vector3(0, 0, -30)
 
 [node name="RaycastBackwardLeft" type="RayCast3D" parent="."]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
-target_position = Vector3(0, 0, -100)
+target_position = Vector3(0, 0, -30)
 
 [node name="RaycastBackward" type="RayCast3D" parent="."]
-target_position = Vector3(0, 0, -100)
+target_position = Vector3(0, 0, -30)
 
 [node name="RaycastUp" type="RayCast3D" parent="."]
-target_position = Vector3(0, 100, 0)
+target_position = Vector3(0, 30, 0)
 
 [node name="RaycastPlayer" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, 0)

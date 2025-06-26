@@ -1,3 +1,4 @@
+#@tool
 class_name SpatialAudioPlayer3D extends AudioStreamPlayer3D
 
 @export var max_raycast_distance : float = 30.0			#How far we will cast rays for spatial audio
@@ -68,9 +69,15 @@ func _ready():
 	_raycast_array.append($RaycastBackwardLeft)
 	_raycast_array.append($RaycastBackward)
 	_raycast_array.append($RaycastUp)
+	
+	print(_raycast_array)
 
 func _physics_process(delta):
 	_last_update_time += delta
+	
+	if _raycast_array.size() < 10:
+		print_debug("Warning: _raycast_array size wrong")
+		return
 	
 	#Should we update the raycast distance values
 	if _update_distances:

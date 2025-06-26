@@ -44,6 +44,12 @@ var raycast_result: Dictionary
 	world.get_node("book/Cube_003") as MeshInstance3D
 ]
 
+@onready var radio_area := world.get_node("Colliders/Radio")
+@onready var radio: Array[MeshInstance3D] = [
+	world.get_node("radio/Cube") as MeshInstance3D,
+	world.get_node("radio/Cube_001") as MeshInstance3D
+]
+
 func reset_rotation() -> void:
 	mm = Input.MOUSE_MODE_VISIBLE
 
@@ -68,6 +74,11 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if not gi.do_raycast:
+		raycast_result = {}
+		_unhighlight(lamp)
+		_unhighlight(phone)
+		_unhighlight(book)
+		_unhighlight(radio)
 		return
 	
 	var space_state := get_world_3d().direct_space_state
@@ -85,12 +96,13 @@ func _physics_process(delta: float) -> void:
 		_unhighlight(lamp)
 		_unhighlight(phone)
 		_unhighlight(book)
+		_unhighlight(radio)
 		return
 
-	if raycast_result["collider"] == lamp_area:
-		_highlight(lamp)
-	else:
-		_unhighlight(lamp)
+	# if raycast_result["collider"] == lamp_area:
+	# 	_highlight(lamp)
+	# else:
+	# 	_unhighlight(lamp)
 
 	if raycast_result["collider"] == book_area:
 		_highlight(book)
@@ -101,6 +113,11 @@ func _physics_process(delta: float) -> void:
 		_highlight(phone)
 	else:
 		_unhighlight(phone)
+	
+	if raycast_result["collider"] == radio_area:
+		_highlight(radio)
+	else:
+		_unhighlight(radio)
 
 	#do_raycast = false
 
@@ -126,12 +143,14 @@ func _unhandled_input(event: InputEvent) -> void:
 				#get_viewport().warp_mouse(mlp)
 		
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT and not raycast_result.is_empty():
-			if raycast_result["collider"] == lamp_area:
-				(world.get_node("Lights/Desk") as Node3D).visible = !(world.get_node("Lights/Desk") as Node3D).visible
-			elif raycast_result["collider"] == phone_area:
+			# if raycast_result["collider"] == lamp_area:
+			# 	(world.get_node("Lights/Desk") as Node3D).visible = !(world.get_node("Lights/Desk") as Node3D).visible
+			if raycast_result["collider"] == phone_area:
 				gi._on_call_menu_btn_pressed()
 			elif raycast_result["collider"] == book_area:
 				gi._on_quest_menu_btn_pressed()
+			elif raycast_result["collider"] == radio_area:
+				gi._radio_toggle()
 	
 	if event is InputEventMouseMotion and mm == Input.MOUSE_MODE_CAPTURED:
 		get_parent().rotate_y(-event.relative.x * mouse_sens)

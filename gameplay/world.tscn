@@ -1,4 +1,4 @@
-[gd_scene load_steps=143 format=4 uid="uid://cauebywkv2ugs"]
+[gd_scene load_steps=153 format=4 uid="uid://cauebywkv2ugs"]
 
 [ext_resource type="Texture2D" uid="uid://vg27iykkc7l7" path="res://resources/textures/check_this_out_too.png" id="1_5nygg"]
 [ext_resource type="Material" uid="uid://d13qlru36l01p" path="res://resources/models/wall.tres" id="2_a7i81"]
@@ -13,8 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://db6f3qh6frm45" path="res://resources/textures/flame.png" id="10_sc5ct"]
 [ext_resource type="Texture2D" uid="uid://dw00eqsw4wb31" path="res://resources/blender/satori_Atlas_00002.png" id="10_tv7he"]
 [ext_resource type="Script" uid="uid://bd82i04n0i2tu" path="res://gameplay/clocks.gd" id="12_5nygg"]
-[ext_resource type="PackedScene" uid="uid://dlt2sb7ksgl7p" path="res://spatial_audio.tscn" id="12_e8dm4"]
 [ext_resource type="Script" uid="uid://g7r5thmi6lxc" path="res://gameplay/flame_light.gd" id="12_wrmeg"]
+[ext_resource type="Texture2D" uid="uid://kfxivt7ea2ok" path="res://resources/blender/radio_okean.jpg" id="13_e8dm4"]
+[ext_resource type="Script" uid="uid://d3fj5tm8aonpq" path="res://spatial_audio.gd" id="17_2lqfd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54ldx"]
 albedo_texture = ExtResource("1_5nygg")
@@ -2625,6 +2626,89 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_l4ra4")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3wix"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("13_e8dm4")
+metallic = 0.0772727
+roughness = 0.840909
+metadata/extras = {
+"mmd_material": {}
+}
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_d4f02"]
+_surfaces = [{
+"aabb": AABB(-1.44197, -1, -1, 2.88394, 2, 2),
+"format": 34896613377,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAAAEAAEABQACAAMABQAAAAIABgAEAAAABgAAAAUABAAHAAEABAAGAAcAAQAHAAMABQAHAAYABQADAAcACAAJAAoACgAJAAsACgALAAwACAANAAkADgANAAgADwALAAkADAALAA8ADwAJAA0ADAAPAA4ADgAPAA0AEAARABIAEwAQABIAEAAUABEAEwASABUAFQASABEAFgATABUAFAAXABEAFAAWABcAFQARABcAFgAVABcA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("OycAAP//AAA7J///AAAAADsn/////wAAw9j/////AAA7JwAAAAAAAMPYAAD//wAAw9gAAAAAAADD2P//AAAAAMPY3vsgBAAA///78fvxAADD2N773vsAAP//Aw778QAAw9ggBN77AAD///vxAw4AAMPYIAQgBAAA//8DDgMOAAA7J977IAQAAAAA+/H78QAAAAD78QMOAAA7JyAEIAQAADsn3vve+wAAAAADDgMOAAA7JyAE3vsAAAAAAw778QAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_57e0y"]
+resource_name = "radio_Cube_001"
+_surfaces = [{
+"aabb": AABB(-1.44197, -1, -1, 2.88394, 2, 2),
+"attribute_data": PackedByteArray("UaNvmu1Sfx4qoycdYVJJmPszNtN2H6g0JjegNPYe6d9IXIAjlGbVjUhcQZKUZuwn9h7p3yY3oDQiH/At+zM204yjwJhuUikejKMpHm5SwJhIXEGSlGbsJ0hcgCOUZtWNSFyAI5Rm1Y1IXEGSlGbsJ0hcQZKUZuwnSFyAI5Rm1Y1Ro2+a7VJ/HmFSSZgqoycdnVsLkYVlvCqFZcqMnVt7JhEf7914NYF6Ox+bfLgze9IsH5x8zjN50hYf/t10NXp6+avOnfX72CGo+jyezKoPIp1beyaFZcqMhWW8Kp1bC5GdWwuRhWW8KoVlyoydW3smnVt7JoVlyoyFZbwqnVsLkQ=="),
+"format": 34896613399,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOAA7ADkAPAA9AD4APAA/AD0A"),
+"material": SubResource("StandardMaterial3D_r3wix"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 64,
+"vertex_data": PackedByteArray("OycAAP//AMA7J///AAD/vzsn//////+/OycAAAAA/787JwAAAAD//8PY//8AAP//Oyf//wAA///D2AAAAAD//8PY3vsgBE3A///78fvxTcDD2N773vtNwP//+/EDDk3Aw9gAAP//5wI7J/////+3AcPY/////5cAOycAAP//lwD//wMOAw7/v///+/H78f+////78QMO/7///wMO+/H/v8PYIAQgBAAA///78QMOAADD2N77IAQAAP//Aw4DDgAAw9je+977DIf//wMO+/EMh8PYIATe+wyH///78fvxDIfD2CAE3vuxP///Aw4DDrE/w9ggBCAEsT///wMO+/GxP8PYAAD//34Aw9j//wAAUQDD2AAAAAAWAMPY/////xYAOyfe+yAEA/sAAPvx+/ED+wAA+/EDDgP7Oyfe+977A/vD2AAAAABfAzsnAAD//7AAw9gAAP//CAI7JwAAAAAIAjsn//8AAAzAw9j/////DMA7J/////8jwMPY//8AAADAAAADDgMO/78AAPvx+/H/vwAAAw778f+/AAD78QMO/787JyAEIAQNBwAA+/EDDg0HAAADDgMODQc7J977IAQNBzsn3vve+///AAADDvvx//8AAPvx+/H//zsnIATe+///OycgBN77+wQAAAMOAw77BAAAAw778fsEOycgBCAE+wQpgun+TX+a/mSAzP9kgMz/qn2q/ap9qv38f/v/bHts+xLtiXYS7Yl2Eu2JdhLtiXb/f/9///////9//3//f/9//38AAP9/AAD/fwAA/38AAMf1/3/H9f9/x/X/f8f1/3//fwAA/38AAP9/AAD/fwAAdgkTbXYJE212CRNtdgkTbYwAuT/Sv6V/GQDzPxkA8z+tela9rXpWva16Vr2tela9WXzSQTx/YUDHfRtBx30bQYP3PYSD9z2Ef/K/hvj8goEcgPD/HIDw/26Ax//jf8f//3////9/////f////3///8d1/3/Hdf9/x3X/f8d1/3+owqz6qMKs+qjCrPqowqz6")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_d4f02")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cyhws"]
+resource_name = "Material.002"
+cull_mode = 2
+albedo_color = Color(0.117562, 0.117562, 0.117562, 1)
+roughness = 0.390909
+metadata/extras = {
+"mmd_material": {}
+}
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_en2nh"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAwACAAEAAwAEAAAABQAAAAQABQABAAAABgAEAAMAAwABAAYABgAHAAQABQAEAAcABgAIAAcABQAHAAgACQAGAAEACQAIAAYAAQAFAAoACQABAAoABQAIAAsACgAFAAsADAALAAgADQAJAAoACgALAA4ADAAOAAsACgAOAA0ACAAPAAwACAAJAA8ADgAMAA8ADQAPAAkADgAPAA0A"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAAAACHqAADjCv//G/UAAAAAAAD//wAA//8AAP//AAD//wAAIeoAAMsItM4h6gAAG/X//xv1AAAz97TOIeoAADP3tM7dFQAAG/X//+MKAADjCv//4woAAMsItM7dFQAA//8AAN0VAAAAAAAAAAAAAAAAAADdFQAA//8AAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1t5ky"]
+resource_name = "radio_Cube_003"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/1+H+v+f////X///rJOI/P+f/7+sk3bD/192xf9f/7//X/+//5//f/+f/7//X/9/rJOIfP9f/3//X4h6/5//f/+f/z+sk3ZD/193Rf9f/z//X/8//58AAP+f/z//XwAA/1//P/8fd0X/H/8//193Rf8fiHr/X/9//x//f/9fiHr/n/9//9//P//f/3//n/8/Umz2k/+fNKv/n8qUUmwIrP+fyhRSbAgs/581K1Js9hM0y/8/ybT/fzTL/3/JtP8/"),
+"format": 34896613399,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAQADAAQABAADAAUABAAFAAYABAAGAAcACAAJAAoACAALAAkADAANAA4ADAAPAA0ADwAMABAAEAAMABEAEAARABIAEAASABMAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0A"),
+"material": SubResource("StandardMaterial3D_cyhws"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("AAAAACHqU9XjCv//G/Un1QAAAAD//1TVywi0ziHqE9XjCv//4wqs08sItM7dFX3TAAAAAN0VXdMAAAAAAABc0wAAAAAAAMX+G/X//+MKxf7jCv//4wq+/v//AAAAAMz+M/e0zt0VM9f//wAAAABE1///AADdFUPXG/X//+MKMtcb9f//G/Wn1TP3tM4h6nfV//8AACHqVdX//wAA//9U1f//AAD//+q/4wr//xv1BMAb9f//G/W+wQAAAAD//0m+//8AAP///78AAAAAIer/vwAAAAD///+///8AACHq/78AAAAA3RX/v///AAAAAP+/AAAAAAAA/7///wAA3RX/vxv1///jCv//4wr//xv1///jCv//4wr//xv1//8b9f////8AAN0V/z/LCLTO3RX/PzP3tM7dFf8/AAAAAN0V/z/LCLTOIeoAAP//AAAh6gAAM/e0ziHqAAAAAAAAIeoAAMsItM4h6gAAM/e0zt0VAADLCLTO3RUAADP3tM4h6gAAJteI0/LWodMo14fT2das0xvVgtTf1J/UtdSz1LTUtNQ/v2a/U79Sv67A/r33vafAQyr9KS8qByowKgYqRCr8KRMsCylNLOwodizXKHcs1ihi/Z0CYv2cAmL9gAJj/bgCAAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+///////////////////////+//7//v/+//7//v/+//7//f/8//3//P/9//z//f/8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_en2nh")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odudt"]
 resource_name = "Material"
 cull_mode = 2
@@ -2997,7 +3081,10 @@ size = Vector3(0.823303, 1.39147, 0.878372)
 size = Vector3(0.8963, 0.497612, 0.934669)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ohx2"]
-size = Vector3(0.598083, 0.144043, 0.886232)
+size = Vector3(0.681137, 0.225708, 0.972779)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2lqfd"]
+size = Vector3(0.669906, 0.504517, 0.708985)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tv7he"]
 size = Vector3(34.4376, 15.9152, 132.499)
@@ -3005,7 +3092,7 @@ size = Vector3(34.4376, 15.9152, 132.499)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5nygg"]
 size = Vector3(75.9979, 15.9152, 10.2616)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vdnhq"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e8dm4"]
 gravity = Vector3(0, 1, 0)
 scale_min = 0.5
 scale_max = 1.2
@@ -3029,6 +3116,22 @@ particles_anim_loop = false
 [sub_resource type="QuadMesh" id="QuadMesh_sc5ct"]
 material = SubResource("StandardMaterial3D_2lqfd")
 size = Vector2(0.15, 0.15)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2lqfd"]
+gravity = Vector3(0, 1, 0)
+scale_min = 0.5
+scale_max = 1.2
+turbulence_enabled = true
+turbulence_noise_strength = 0.27
+turbulence_noise_scale = 7.2
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vdnhq"]
+gravity = Vector3(0, 1, 0)
+scale_min = 0.5
+scale_max = 1.2
+turbulence_enabled = true
+turbulence_noise_strength = 0.3
+turbulence_noise_scale = 7.0
 
 [node name="World" type="Node3D"]
 
@@ -3180,16 +3283,19 @@ skeleton = NodePath("")
 
 [node name="Sphere" type="MeshInstance3D" parent="palace"]
 transform = Transform3D(0.219, 0, 0, 0, 0.219, 0, 0, 0, 0.219, 1.9509, 1.58727, -21.6152)
+visible = false
 mesh = SubResource("ArrayMesh_6kfru")
 skeleton = NodePath("")
 
 [node name="Cylinder_002" type="MeshInstance3D" parent="palace"]
 transform = Transform3D(0.05, 0, 0, 0, 0.439, 0, 0, 0, 0.05, 1.9518, 2.18903, -21.6154)
+visible = false
 mesh = SubResource("ArrayMesh_wljhb")
 skeleton = NodePath("")
 
 [node name="Cylinder_003" type="MeshInstance3D" parent="palace"]
 transform = Transform3D(0.188, 0, 0, 0, 0.188, 0, 0, 0, 0.188, 1.94985, 2.71739, -21.615)
+visible = false
 mesh = SubResource("ArrayMesh_873jf")
 skeleton = NodePath("")
 
@@ -3258,6 +3364,7 @@ shape = SubResource("BoxShape3D_vlnye")
 
 [node name="Desk" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95439, 2.7116, -21.6151)
+visible = false
 light_color = Color(1, 0.945098, 0.878431, 1)
 light_energy = 2.0
 light_bake_mode = 1
@@ -7994,7 +8101,7 @@ mesh = SubResource("ArrayMesh_53ofl")
 skeleton = NodePath("")
 
 [node name="Pivot0" type="Node3D" parent="clocks/clock"]
-transform = Transform3D(-0.989776, 0, -0.142629, 0, 1, 0, 0.142629, 0, -0.989776, 0, 0, 0)
+transform = Transform3D(0.827078, 0, -0.562082, 0, 1, 0, 0.562082, 0, 0.827078, 0, 0, 0)
 
 [node name="hand_big" type="MeshInstance3D" parent="clocks/clock/Pivot0"]
 transform = Transform3D(0, 0, -0.0365325, 0, 0.0295389, 0, 0.424636, 0, 0, 0, 0.0158623, -0.445402)
@@ -8002,7 +8109,7 @@ mesh = SubResource("ArrayMesh_ircjp")
 skeleton = NodePath("")
 
 [node name="Pivot1" type="Node3D" parent="clocks/clock"]
-transform = Transform3D(-0.241922, 0, -0.970296, 0, 1, 0, 0.970296, 0, -0.241922, 0, 0, 0)
+transform = Transform3D(-0.5373, 0, -0.843391, 0, 1, 0, 0.843391, 0, -0.5373, 0, 0, 0)
 
 [node name="hand_small" type="MeshInstance3D" parent="clocks/clock/Pivot1"]
 transform = Transform3D(0, 0, -0.0295389, 0, 0.0295389, 0, 0.32904, 0, 0, -0.000651151, 0.00750073, -0.351634)
@@ -8010,22 +8117,78 @@ mesh = SubResource("ArrayMesh_1v4f1")
 skeleton = NodePath("")
 
 [node name="Pivot2" type="Node3D" parent="clocks/clock"]
-transform = Transform3D(-0.669131, 0, 0.743145, 0, 1, 0, -0.743145, 0, -0.669131, 0, 0, 0)
+transform = Transform3D(-0.309017, 0, 0.951056, 0, 1, 0, -0.951056, 0, -0.309017, 0, 0, 0)
 
 [node name="hand_seconds" type="MeshInstance3D" parent="clocks/clock/Pivot2"]
 transform = Transform3D(0, 0, 0.00795126, 0, 0.0295389, 0, -0.415982, 0, 0, 0.000678837, -0.00762448, -0.447065)
 mesh = SubResource("ArrayMesh_57snf")
 skeleton = NodePath("")
 
-[node name="SpatialAudioPlayer3D" parent="clocks/clock" instance=ExtResource("12_e8dm4")]
-transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 8.1615, 4.3165)
+[node name="SpatialAudioPlayer3D" type="AudioStreamPlayer3D" parent="clocks/clock"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.294, 0)
 attenuation_model = 3
 volume_db = 5.0
+unit_size = 200.0
+panning_strength = 1.2
 bus = &"SFX"
-max_raycast_distance = 50.0
+script = ExtResource("17_2lqfd")
+max_raycast_distance = 200.0
+max_reverb_wetness = 0.3
+wall_lowpass_cutoff_amount = 700
+metadata/_custom_type_script = "uid://d3fj5tm8aonpq"
+
+[node name="RaycastDown" type="RayCast3D" parent="clocks/clock/SpatialAudioPlayer3D"]
+target_position = Vector3(0, -30, 0)
+
+[node name="RaycastLeft" type="RayCast3D" parent="clocks/clock/SpatialAudioPlayer3D"]
+target_position = Vector3(30, 0, 0)
+
+[node name="RaycastRight" type="RayCast3D" parent="clocks/clock/SpatialAudioPlayer3D"]
+target_position = Vector3(-30, 0, 0)
+
+[node name="RaycastForward" type="RayCast3D" parent="clocks/clock/SpatialAudioPlayer3D"]
+target_position = Vector3(0, 0, 30)
+
+[node name="RaycastForwardLeft" type="RayCast3D" parent="clocks/clock/SpatialAudioPlayer3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+target_position = Vector3(0, 0, 30)
+
+[node name="RaycastForwardRight" type="RayCast3D" parent="clocks/clock/SpatialAudioPlayer3D"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+target_position = Vector3(0, 0, 30)
+
+[node name="RaycastBackwardRight" type="RayCast3D" parent="clocks/clock/SpatialAudioPlayer3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+target_position = Vector3(0, 0, -30)
+
+[node name="RaycastBackwardLeft" type="RayCast3D" parent="clocks/clock/SpatialAudioPlayer3D"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+target_position = Vector3(0, 0, -30)
+
+[node name="RaycastBackward" type="RayCast3D" parent="clocks/clock/SpatialAudioPlayer3D"]
+target_position = Vector3(0, 0, -30)
+
+[node name="RaycastUp" type="RayCast3D" parent="clocks/clock/SpatialAudioPlayer3D"]
+target_position = Vector3(0, 30, 0)
+
+[node name="RaycastPlayer" type="RayCast3D" parent="clocks/clock/SpatialAudioPlayer3D"]
+target_position = Vector3(0, 0, 0)
+
+[node name="radio" type="Node3D" parent="."]
+transform = Transform3D(0.24319, 0, -0.278853, 0, 0.37, 0, 0.278853, 0, 0.24319, 1.83533, 1.80025, -21.4963)
+
+[node name="Cube" type="MeshInstance3D" parent="radio"]
+transform = Transform3D(0.262778, 0, 0, 0, 0.615149, 0, 0, 0, 1, 0, 0.0929395, 0)
+mesh = SubResource("ArrayMesh_57e0y")
+skeleton = NodePath("")
+
+[node name="Cube_001" type="MeshInstance3D" parent="radio"]
+transform = Transform3D(0.107932, 0, 0, 0, 0.207262, 0, 0, 0, 0.951349, 0, 0.915351, 0)
+mesh = SubResource("ArrayMesh_1t5ky")
+skeleton = NodePath("")
 
 [node name="book" type="Node3D" parent="."]
-transform = Transform3D(-0.334233, 0, -0.0430951, 0, 0.337, 0, 0.0430951, 0, -0.334233, 1.13901, 1.65826, -21.9432)
+transform = Transform3D(-0.334233, 0, -0.0430951, 0, 0.337, 0, 0.0430951, 0, -0.334233, -0.249777, 1.65826, -21.6587)
 
 [node name="Cube" type="MeshInstance3D" parent="book"]
 transform = Transform3D(0.702274, 0, 0, 0, 0.149386, 0, 0, 0, 1, 0, 0, 0)
@@ -8081,6 +8244,7 @@ skeleton = NodePath("")
 
 [node name="Lamp" type="Area3D" parent="Colliders"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01187, 2.30766, -21.6106)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Lamp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.066803, -0.0308604, -0.0262833)
@@ -8094,11 +8258,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0845028, -0.0962553, -0.057
 shape = SubResource("BoxShape3D_sc5ct")
 
 [node name="Book" type="Area3D" parent="Colliders"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13159, 1.73451, -21.9977)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.257197, 1.73451, -21.7132)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Book"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00552368, -0.064209, 0.043211)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00771326, -0.055481, 0.0457134)
 shape = SubResource("BoxShape3D_0ohx2")
+
+[node name="Radio" type="Area3D" parent="Colliders"]
+transform = Transform3D(0.995121, 0, -0.0986598, 0, 1, 0, 0.0986598, 0, 0.995121, 1.82263, 1.73451, -21.5192)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Radio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0206528, 0.116028, 0.0441875)
+shape = SubResource("BoxShape3D_2lqfd")
 
 [node name="PalaceArea" type="Area3D" parent="Colliders"]
 
@@ -8116,13 +8287,96 @@ shape = SubResource("BoxShape3D_tv7he")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.155098, 7.45758, 3.93982)
 shape = SubResource("BoxShape3D_5nygg")
 
+[node name="RadioPlayer" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(0.789009, 0, 0.614381, 0, 1, 0, -0.614381, 0, 0.789009, 1.81451, 1.75987, -21.5116)
+bus = &"BGM"
+emission_angle_enabled = true
+emission_angle_degrees = 60.0
+emission_angle_filter_attenuation_db = -20.0
+script = ExtResource("17_2lqfd")
+max_reverb_wetness = 0.4
+metadata/_custom_type_script = "uid://d3fj5tm8aonpq"
+
+[node name="RaycastDown" type="RayCast3D" parent="RadioPlayer"]
+target_position = Vector3(0, -30, 0)
+
+[node name="RaycastLeft" type="RayCast3D" parent="RadioPlayer"]
+target_position = Vector3(30, 0, 0)
+
+[node name="RaycastRight" type="RayCast3D" parent="RadioPlayer"]
+target_position = Vector3(-30, 0, 0)
+
+[node name="RaycastForward" type="RayCast3D" parent="RadioPlayer"]
+target_position = Vector3(0, 0, 30)
+
+[node name="RaycastForwardLeft" type="RayCast3D" parent="RadioPlayer"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+target_position = Vector3(0, 0, 30)
+
+[node name="RaycastForwardRight" type="RayCast3D" parent="RadioPlayer"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+target_position = Vector3(0, 0, 30)
+
+[node name="RaycastBackwardRight" type="RayCast3D" parent="RadioPlayer"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+target_position = Vector3(0, 0, -30)
+
+[node name="RaycastBackwardLeft" type="RayCast3D" parent="RadioPlayer"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+target_position = Vector3(0, 0, -30)
+
+[node name="RaycastBackward" type="RayCast3D" parent="RadioPlayer"]
+target_position = Vector3(0, 0, -30)
+
+[node name="RaycastUp" type="RayCast3D" parent="RadioPlayer"]
+target_position = Vector3(0, 30, 0)
+
+[node name="RaycastPlayer" type="RayCast3D" parent="RadioPlayer"]
+target_position = Vector3(0, 0, 0)
+
 [node name="Candles" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47148, 1.81291, -23.5275)
+transform = Transform3D(0.953496, 0, -0.301405, 0, 1, 0, 0.301405, 0, 0.953496, 1.41036, 1.81291, -23.1765)
 
 [node name="candle" parent="Candles" instance=ExtResource("10_0ohx2")]
-transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.703074, -0.217152, -0.576302)
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.614583, -0.217152, -0.502707)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Candles/candle"]
+transform = Transform3D(12.5, 0, 0, 0, 12.5, 0, 0, 0, 12.5, 0, 2.10765, 0)
+amount = 6
+lifetime = 1.5
+randomness = 0.8
+process_material = SubResource("ParticleProcessMaterial_e8dm4")
+draw_pass_1 = SubResource("QuadMesh_sc5ct")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
+light_color = Color(0.72, 0.558, 0.3312, 1)
+light_energy = 0.613416
+omni_range = 0.62107
+script = ExtResource("12_wrmeg")
+
+[node name="candle2" parent="Candles" instance=ExtResource("10_0ohx2")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.278619, -0.217152, -0.293783)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Candles/candle2"]
+transform = Transform3D(12.5, 0, 0, 0, 12.5, 0, 0, 0, 12.5, 0, 2.10765, 0)
+amount = 6
+lifetime = 1.5
+randomness = 0.7
+process_material = SubResource("ParticleProcessMaterial_2lqfd")
+draw_pass_1 = SubResource("QuadMesh_sc5ct")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
+light_color = Color(0.72, 0.558, 0.3312, 1)
+light_energy = 0.718296
+omni_range = 0.62107
+script = ExtResource("12_wrmeg")
+
+[node name="candle3" parent="Candles" instance=ExtResource("10_0ohx2")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.167604, -0.217152, -0.652596)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Candles/candle3"]
 transform = Transform3D(12.5, 0, 0, 0, 12.5, 0, 0, 0, 12.5, 0, 2.10765, 0)
 amount = 6
 lifetime = 1.5
@@ -8130,10 +8384,10 @@ randomness = 0.8
 process_material = SubResource("ParticleProcessMaterial_vdnhq")
 draw_pass_1 = SubResource("QuadMesh_sc5ct")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.798524
+light_energy = 0.406464
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 

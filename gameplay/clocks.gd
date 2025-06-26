@@ -1,3 +1,5 @@
+#@tool
+class_name Clocks
 extends Node3D
 
 static var one := true
@@ -10,6 +12,19 @@ static var last_sec: float = 0
 func _ready() -> void:
 	pass # Replace with function body.
 
+func set_volume(v: float) -> void:
+	for cl in get_children():
+		(cl.get_node("SpatialAudioPlayer3D") as SpatialAudioPlayer3D).volume_db = v
+
+func _play_sound(cl: Node3D) -> void:
+	if one:
+		#print("tick")
+		GlobalAudio.play3d_p(cl.get_node("SpatialAudioPlayer3D"), GlobalAudio.SFX_CLOCK1)
+		one = false
+	else:
+		#print("tock")
+		GlobalAudio.play3d_p(cl.get_node("SpatialAudioPlayer3D"), GlobalAudio.SFX_CLOCK2)
+		one = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -28,14 +43,7 @@ func _process(delta: float) -> void:
 		var csec := cl.get_node("Pivot2") as Node3D
 
 		if sec != last_sec:
-			if one:
-				print("tick")
-				GlobalAudio.play3d_p(cl.get_node("SpatialAudioPlayer3D"), GlobalAudio.SFX_CLOCK1)
-				one = false
-			else:
-				print("tock")
-				GlobalAudio.play3d_p(cl.get_node("SpatialAudioPlayer3D"), GlobalAudio.SFX_CLOCK2)
-				one = true
+			_play_sound(cl)
 
 		cbig.rotation_degrees.y = big
 		csm.rotation_degrees.y = sm

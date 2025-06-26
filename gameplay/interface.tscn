@@ -115,6 +115,10 @@ stretch_mode = 0
 volume_db = 5.0
 bus = &"SFX"
 
+[node name="Footstep" type="AudioStreamPlayer2D" parent="."]
+volume_db = 15.0
+bus = &"SFX"
+
 [node name="DayPass" type="Panel" parent="."]
 visible = false
 layout_mode = 1
@@ -156,10 +160,10 @@ theme = ExtResource("7_xehbb")
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 
-[connection signal="character_goodbye" from="DayTracker" to="." method="_on_day_tracker_character_goodbye" flags=3]
-[connection signal="character_hello" from="DayTracker" to="." method="_on_day_tracker_character_hello" flags=3]
-[connection signal="day_end" from="DayTracker" to="." method="_on_day_tracker_day_end" flags=3]
-[connection signal="day_start" from="DayTracker" to="." method="_on_day_tracker_day_start" flags=3]
+[connection signal="character_goodbye" from="DayTracker" to="." method="_on_day_tracker_character_goodbye"]
+[connection signal="character_hello" from="DayTracker" to="." method="_on_day_tracker_character_hello"]
+[connection signal="day_end" from="DayTracker" to="." method="_on_day_tracker_day_end"]
+[connection signal="day_start" from="DayTracker" to="." method="_on_day_tracker_day_start"]
 [connection signal="pressed" from="ThirdEye" to="." method="_on_third_eye_pressed"]
 [connection signal="pressed" from="Toolbar/VBoxContainer/QuestMenuBtn" to="." method="_on_quest_menu_btn_pressed"]
 [connection signal="pressed" from="Toolbar/VBoxContainer/CallMenuBtn" to="." method="_on_call_menu_btn_pressed"]
