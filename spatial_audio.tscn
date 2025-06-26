@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlt2sb7ksgl7p"]
+
+[ext_resource type="Script" uid="uid://d3fj5tm8aonpq" path="res://spatial_audio.gd" id="1_4n7bt"]
+
+[node name="SpatialAudioPlayer3D" type="AudioStreamPlayer3D"]
+script = ExtResource("1_4n7bt")
+metadata/_custom_type_script = "uid://d3fj5tm8aonpq"
+
+[node name="RaycastDown" type="RayCast3D" parent="."]
+target_position = Vector3(0, -100, 0)
+
+[node name="RaycastLeft" type="RayCast3D" parent="."]
+target_position = Vector3(100, 0, 0)
+
+[node name="RaycastRight" type="RayCast3D" parent="."]
+target_position = Vector3(-100, 0, 0)
+
+[node name="RaycastForward" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 100)
+
+[node name="RaycastForwardLeft" type="RayCast3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+target_position = Vector3(0, 0, 100)
+
+[node name="RaycastForwardRight" type="RayCast3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+target_position = Vector3(0, 0, 100)
+
+[node name="RaycastBackwardRight" type="RayCast3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+target_position = Vector3(0, 0, -100)
+
+[node name="RaycastBackwardLeft" type="RayCast3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+target_position = Vector3(0, 0, -100)
+
+[node name="RaycastBackward" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -100)
+
+[node name="RaycastUp" type="RayCast3D" parent="."]
+target_position = Vector3(0, 100, 0)
+
+[node name="RaycastPlayer" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 0)

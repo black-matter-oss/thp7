@@ -32,7 +32,7 @@ var raycast_result: Dictionary
 	world.get_node("telephone/Cube") as MeshInstance3D,
 	world.get_node("telephone/Cube_001") as MeshInstance3D,
 	world.get_node("telephone/Cube_002") as MeshInstance3D,
-	world.get_node("telephone/Cube_003") as MeshInstance3D,
+	world.get_node("telephone/phone handle") as MeshInstance3D,
 	world.get_node("telephone/Cylinder") as MeshInstance3D,
 	world.get_node("telephone/Cylinder_002") as MeshInstance3D
 ]

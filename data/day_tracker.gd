@@ -72,9 +72,6 @@ func begin_loop() -> void:
 		start_new_day()
 	
 	while not current_day.characters_to_visit.is_empty():
-		# while stop_what_you_are_doing:
-		# 	await get_tree().create_timer(0.2).timeout
-
 		if not current_dialogue_ended:
 			continue
 		
@@ -93,6 +90,9 @@ func begin_loop() -> void:
 		character_hello.emit.call_deferred(c)
 
 		curernt_character = c
+
+		while interface.state != GameplayInterface.GameState.CONVERSATION:
+			await get_tree().create_timer(0.1).timeout
 
 		# character dialogue
 		current_dialogue_ended = false
@@ -125,6 +125,9 @@ func begin_loop() -> void:
 		if c.dialogue_progress > c.dialogues.size() - 1:
 			print(c.name + " has no more dialogues left")
 			c.set_can_visit(false)
+	
+		while interface.state != GameplayInterface.GameState.WAITING:
+			await get_tree().create_timer(0.1).timeout
 
 	day_end.emit.call_deferred()
 

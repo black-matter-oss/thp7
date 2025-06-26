@@ -31,7 +31,7 @@ func new_day() -> void:
 	print("New day!")
 	$%NewDayBtn.visible = false
 	#$SubViewportContainer/SubViewport/World/AnimationPlayer.play("day_pass")
-	$SubViewportContainer/SubViewport/World/Lights.visible = false
+	#$SubViewportContainer/SubViewport/World/Lights.visible = false
 	day_thread.wait_to_finish()
 	day_tracker.start_new_day()
 	day_thread = Thread.new()
@@ -41,7 +41,7 @@ func show_day_count(d: int) -> void:
 	#$DayPass.modulate.a = 0
 	$DayPass.visible = true
 	$%DayInfo.text = "Day " + str(d)
-	$%CharaInfo.text = "Characters to visit today:"
+	$%CharaInfo.text = "Today's visitors:"
 
 	for c in day_tracker.current_day.characters_to_visit:
 		$%CharaInfo.text += "\n" + c.name
@@ -51,6 +51,9 @@ func show_day_count(d: int) -> void:
 		await get_tree().create_timer(0.01).timeout
 	
 	$DayPass.modulate.a = 1
+	var we := $SubViewportContainer/SubViewport/World/WorldEnvironment.environment as Environment
+	we.background_mode = Environment.BG_CLEAR_COLOR
+	($SubViewportContainer/SubViewport/World/Player as CharacterBody3D).position = Vector3(0, -0.2, -24.5)
 	await get_tree().create_timer(3).timeout
 
 	while $DayPass.modulate.a > 0:
@@ -112,6 +115,12 @@ func _process(delta: float) -> void:
 
 func _on_day_tracker_character_goodbye(chara:Character) -> void:
 	print_debug("Goodbye " + chara.name)
+
+	GlobalAudio.play2d(GlobalAudio.SFX_FOOTSTEP1)
+	await GlobalAudio.player2d.finished
+	GlobalAudio.play2d(GlobalAudio.SFX_FOOTSTEP1)
+	await GlobalAudio.player2d.finished
+
 	state = GameState.WAITING
 	Utilities.remove_all_children(sub)
 	$Toolbar.visible = true
@@ -121,6 +130,12 @@ func _on_day_tracker_character_goodbye(chara:Character) -> void:
 
 func _on_day_tracker_character_hello(chara:Character) -> void:
 	print_debug("Hello " + chara.name)
+
+	GlobalAudio.play2d(GlobalAudio.SFX_FOOTSTEP1)
+	await GlobalAudio.player2d.finished
+	GlobalAudio.play2d(GlobalAudio.SFX_FOOTSTEP1)
+	await GlobalAudio.player2d.finished
+
 	state = GameState.CONVERSATION
 	Utilities.remove_all_children(sub)
 	$Toolbar.visible = false
@@ -132,6 +147,18 @@ func _on_day_tracker_character_hello(chara:Character) -> void:
 
 func _on_day_tracker_day_end() -> void:
 	print_debug("DAY ENDED")
+
+	GlobalAudio.play2d(GlobalAudio.SFX_BELL_LARGE)
+
+	var we := $SubViewportContainer/SubViewport/World/WorldEnvironment.environment as Environment
+	while we.ambient_light_energy > 0.1:
+		we.ambient_light_energy -= 0.025
+		await get_tree().create_timer(0.05).timeout
+	we.ambient_light_energy = 0.1
+	we.background_mode = Environment.BG_KEEP
+
+	($SubViewportContainer/SubViewport/World/Player as CharacterBody3D).translate(Vector3(0, 0.2, 0))
+
 	state = GameState.IDLE
 	Utilities.remove_all_children(sub)
 	$Toolbar.visible = true
@@ -141,9 +168,15 @@ func _on_day_tracker_day_end() -> void:
 	do_raycast = true
 
 func _on_day_tracker_day_start() -> void:
+	var we := $SubViewportContainer/SubViewport/World/WorldEnvironment.environment as Environment
+	while we.ambient_light_energy < 0.7:
+		we.ambient_light_energy += 0.025
+		await get_tree().create_timer(0.05).timeout
+	we.ambient_light_energy = 0.7
+
 	#day_tracker.stop_what_you_are_doing = true
 	await show_day_count(day_tracker.current_day.number)
-	$SubViewportContainer/SubViewport/World/Lights.visible = true
+	#$SubViewportContainer/SubViewport/World/Lights.visible = true
 	$%NewDayBtn.visible = true
 	#day_tracker.stop_what_you_are_doing = false
 
