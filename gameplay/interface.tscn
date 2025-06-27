@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctfb8dprxsk8i"]
+[gd_scene load_steps=12 format=3 uid="uid://ctfb8dprxsk8i"]
 
 [ext_resource type="Script" uid="uid://c1dqbp0765kxt" path="res://gameplay/interface.gd" id="1_ctvng"]
 [ext_resource type="PackedScene" uid="uid://cauebywkv2ugs" path="res://gameplay/world.tscn" id="1_gemis"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://blamfc3xk3g4c" path="res://resources/textures/bookb.png" id="4_4gceb"]
 [ext_resource type="Texture2D" uid="uid://bgsjtihi0vkjy" path="res://resources/textures/phoneb.png" id="5_4gceb"]
 [ext_resource type="Texture2D" uid="uid://bv8tg1prqdaos" path="res://resources/textures/arrowb.png" id="6_5qdjx"]
+[ext_resource type="AudioStream" uid="uid://56pnfpstucol" path="res://resources/sfx/noise0.wav" id="7_uv42p"]
 [ext_resource type="Theme" uid="uid://co17bgal6w6ut" path="res://resources/theme/dialogue.tres" id="7_xehbb"]
 
 [sub_resource type="Gradient" id="Gradient_faidp"]
@@ -115,8 +116,14 @@ stretch_mode = 0
 volume_db = 5.0
 bus = &"SFX"
 
+[node name="NoisePlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_uv42p")
+volume_db = 10.0
+autoplay = true
+bus = &"SFX_Noise"
+
 [node name="Footstep" type="AudioStreamPlayer2D" parent="."]
-volume_db = 15.0
+volume_db = 20.0
 bus = &"SFX"
 
 [node name="DayPass" type="Panel" parent="."]

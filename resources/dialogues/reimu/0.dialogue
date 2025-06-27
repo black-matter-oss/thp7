@@ -16,7 +16,7 @@ Reimu Hakurei: I feel weirdly drawn to her.
 - Are you in love?
 	Reimu Hakurei: [#e=annoyed] Ha? Me? In love?
 	Reimu Hakurei: [#e=blush] M-Maybe so...
-	Reimu Hakurei: Thought I never thought that I could be...
+	Reimu Hakurei: Though I never thought that I could be...
 	Reimu Hakurei: But maybe you're right...?
 	Reimu Hakurei: [#e=blush] Do you think I should... y'know, try confessing to her?
 	- Yes
@@ -32,6 +32,7 @@ Reimu Hakurei: I feel weirdly drawn to her.
 		do CharacterTracker.getv("reimu").set_can_visit(false)
 		do CharacterTracker.getv("marisa").set_can_visit(true)
 	- No
+		do InteractionTracker.bad_choice()
 		Satori Komeiji: Don't bother. I doubt Marisa feels the same way about you.
 		Reimu Hakurei: [#e=sad] She probably doesn't.
 		Reimu Hakurei: Well, thanks either way. I should get going.
@@ -40,5 +41,5 @@ Reimu Hakurei: I feel weirdly drawn to her.
 		do CharacterTracker.getv("reimu").set_can_visit(false)
 		% Koishi Komeiji: [next=auto] What...?
 		% Koishi Komeiji: [next=auto] Why...?
-		#do CharacterTracker.getv("reimu").reset()
+		do CharacterTracker.getv("reimu").reset()
 => END

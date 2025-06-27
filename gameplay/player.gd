@@ -20,9 +20,10 @@ const JUMP_VELOCITY = 4.5
 @onready var thingies: Array[Node3D] = [
 	get_parent().get_node("book"),
 	get_parent().get_node("telephone"),
-	get_parent().get_node("Lights/Desk"),
+	#get_parent().get_node("Lights/Desk"),
 	get_parent().get_node("Candles"),
-	get_parent().get_node("clocks")
+	get_parent().get_node("clocks"),
+	get_parent().get_node("radio")
 ]
 
 func _physics_process(delta: float) -> void:
@@ -47,6 +48,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED * delta)
 		velocity.z = move_toward(velocity.z, 0, SPEED * delta)
+
+	if velocity != Vector3.ZERO and not $SpatialAudioPlayer3D.playing:
+		$SpatialAudioPlayer3D.play()
 
 	move_and_slide()
 

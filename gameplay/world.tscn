@@ -1,6 +1,7 @@
-[gd_scene load_steps=153 format=4 uid="uid://cauebywkv2ugs"]
+[gd_scene load_steps=156 format=4 uid="uid://cauebywkv2ugs"]
 
 [ext_resource type="Texture2D" uid="uid://vg27iykkc7l7" path="res://resources/textures/check_this_out_too.png" id="1_5nygg"]
+[ext_resource type="Script" uid="uid://bpvevfcpch2n7" path="res://gameplay/world.gd" id="1_54ldx"]
 [ext_resource type="Material" uid="uid://d13qlru36l01p" path="res://resources/models/wall.tres" id="2_a7i81"]
 [ext_resource type="Texture2D" uid="uid://db687qkbhpk1" path="res://resources/models/palace_wood.jpg" id="3_a7i81"]
 [ext_resource type="Material" uid="uid://cvggr4yup7th6" path="res://resources/models/wall deco.tres" id="3_rfe6v"]
@@ -12,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://byof7n4m3sgf8" path="res://resources/blender/candle.blend" id="10_0ohx2"]
 [ext_resource type="Texture2D" uid="uid://db6f3qh6frm45" path="res://resources/textures/flame.png" id="10_sc5ct"]
 [ext_resource type="Texture2D" uid="uid://dw00eqsw4wb31" path="res://resources/blender/satori_Atlas_00002.png" id="10_tv7he"]
+[ext_resource type="AudioStream" uid="uid://bdomwp0nojfs8" path="res://resources/sfx/footstep1.wav" id="11_2lqfd"]
 [ext_resource type="Script" uid="uid://bd82i04n0i2tu" path="res://gameplay/clocks.gd" id="12_5nygg"]
 [ext_resource type="Script" uid="uid://g7r5thmi6lxc" path="res://gameplay/flame_light.gd" id="12_wrmeg"]
 [ext_resource type="Texture2D" uid="uid://kfxivt7ea2ok" path="res://resources/blender/radio_okean.jpg" id="13_e8dm4"]
@@ -25,6 +27,9 @@ texture_filter = 0
 [sub_resource type="PlaneMesh" id="PlaneMesh_3smun"]
 material = SubResource("StandardMaterial3D_54ldx")
 size = Vector2(200, 200)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lf3pc"]
+data = PackedVector3Array(100, 0, 100, -100, 0, 100, 100, 0, -100, -100, 0, 100, -100, 0, -100, 100, 0, -100)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tv7he"]
 load_path = "res://.godot/imported/corridor_check_this_out_too.jpg-b482d0d9348d505109e0b164266077bf.s3tc.ctex"
@@ -987,10 +992,10 @@ shadow_mesh = SubResource("ArrayMesh_s7hry")
 size = Vector3(18.4828, 14.9814, 0.001)
 
 [sub_resource type="Environment" id="Environment_iiep6"]
-ambient_light_source = 2
+background_color = Color(0.607302, 0.607302, 0.607302, 1)
+ambient_light_source = 1
 ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.7
-reflected_light_source = 1
+ambient_light_energy = 0.0
 tonemap_mode = 4
 glow_enabled = true
 glow_intensity = 1.5
@@ -3134,9 +3139,15 @@ turbulence_noise_strength = 0.3
 turbulence_noise_scale = 7.0
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_54ldx")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_3smun")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_lf3pc")
 
 [node name="palace" type="Node3D" parent="."]
 
@@ -3375,28 +3386,28 @@ light_bake_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.2635, -24.0174)
 light_color = Color(1, 0.945098, 0.878431, 1)
 light_bake_mode = 1
-omni_range = 16.0
+omni_range = 20.0
 omni_attenuation = 0.0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lights/Chalendier"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.2635, -20.9829)
 light_color = Color(1, 0.945098, 0.878431, 1)
 light_bake_mode = 1
-omni_range = 16.0
+omni_range = 20.0
 omni_attenuation = 0.0
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Lights/Chalendier"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51927, 12.2635, -22.4908)
 light_color = Color(1, 0.945098, 0.878431, 1)
 light_bake_mode = 1
-omni_range = 16.0
+omni_range = 20.0
 omni_attenuation = 0.0
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="Lights/Chalendier"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5144, 12.2635, -22.4908)
 light_color = Color(1, 0.945098, 0.878431, 1)
 light_bake_mode = 1
-omni_range = 16.0
+omni_range = 20.0
 omni_attenuation = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -8062,11 +8073,56 @@ script = ExtResource("8_vdnhq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.589227, 0.0207409)
 shape = SubResource("CapsuleShape3D_vlnye")
 
+[node name="SpatialAudioPlayer3D" type="AudioStreamPlayer3D" parent="Player"]
+transform = Transform3D(0.454545, 0, 0, 0, 0.454545, 0, 0, 0, 0.454545, 0, 0.418735, 0)
+stream = ExtResource("11_2lqfd")
+volume_db = 12.0
+bus = &"SFX"
+script = ExtResource("17_2lqfd")
+max_raycast_distance = 50.0
+wall_lowpass_cutoff_amount = 800
+metadata/_custom_type_script = "uid://d3fj5tm8aonpq"
+
+[node name="RaycastDown" type="RayCast3D" parent="Player/SpatialAudioPlayer3D"]
+target_position = Vector3(0, -30, 0)
+
+[node name="RaycastLeft" type="RayCast3D" parent="Player/SpatialAudioPlayer3D"]
+target_position = Vector3(30, 0, 0)
+
+[node name="RaycastRight" type="RayCast3D" parent="Player/SpatialAudioPlayer3D"]
+target_position = Vector3(-30, 0, 0)
+
+[node name="RaycastForward" type="RayCast3D" parent="Player/SpatialAudioPlayer3D"]
+target_position = Vector3(0, 0, 30)
+
+[node name="RaycastForwardLeft" type="RayCast3D" parent="Player/SpatialAudioPlayer3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+target_position = Vector3(0, 0, 30)
+
+[node name="RaycastForwardRight" type="RayCast3D" parent="Player/SpatialAudioPlayer3D"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+target_position = Vector3(0, 0, 30)
+
+[node name="RaycastBackwardRight" type="RayCast3D" parent="Player/SpatialAudioPlayer3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+target_position = Vector3(0, 0, -30)
+
+[node name="RaycastBackwardLeft" type="RayCast3D" parent="Player/SpatialAudioPlayer3D"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+target_position = Vector3(0, 0, -30)
+
+[node name="RaycastBackward" type="RayCast3D" parent="Player/SpatialAudioPlayer3D"]
+target_position = Vector3(0, 0, -30)
+
+[node name="RaycastUp" type="RayCast3D" parent="Player/SpatialAudioPlayer3D"]
+target_position = Vector3(0, 30, 0)
+
+[node name="RaycastPlayer" type="RayCast3D" parent="Player/SpatialAudioPlayer3D"]
+target_position = Vector3(0, 0, 0)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
-visible = false
-light_energy = 0.5
-shadow_enabled = true
+light_energy = 1.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -8134,7 +8190,7 @@ bus = &"SFX"
 script = ExtResource("17_2lqfd")
 max_raycast_distance = 200.0
 max_reverb_wetness = 0.3
-wall_lowpass_cutoff_amount = 700
+wall_lowpass_cutoff_amount = 0
 metadata/_custom_type_script = "uid://d3fj5tm8aonpq"
 
 [node name="RaycastDown" type="RayCast3D" parent="clocks/clock/SpatialAudioPlayer3D"]
@@ -8342,6 +8398,7 @@ transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.614583, -0.217152,
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Candles/candle"]
 transform = Transform3D(12.5, 0, 0, 0, 12.5, 0, 0, 0, 12.5, 0, 2.10765, 0)
+visible = false
 amount = 6
 lifetime = 1.5
 randomness = 0.8
@@ -8351,7 +8408,7 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.613416
+light_energy = 0.307279
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 
@@ -8360,6 +8417,7 @@ transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.278619, -0.217152,
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Candles/candle2"]
 transform = Transform3D(12.5, 0, 0, 0, 12.5, 0, 0, 0, 12.5, 0, 2.10765, 0)
+visible = false
 amount = 6
 lifetime = 1.5
 randomness = 0.7
@@ -8369,7 +8427,7 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.718296
+light_energy = 0.333123
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 
@@ -8378,6 +8436,7 @@ transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.167604, -0.217152,
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Candles/candle3"]
 transform = Transform3D(12.5, 0, 0, 0, 12.5, 0, 0, 0, 12.5, 0, 2.10765, 0)
+visible = false
 amount = 6
 lifetime = 1.5
 randomness = 0.8
@@ -8387,8 +8446,10 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.406464
+light_energy = 0.878927
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
+
+[node name="Dolls" type="Node3D" parent="."]
 
 [connection signal="body_entered" from="corridors/CorridorMoveArea" to="." method="_on_corridor_move_area_body_entered"]

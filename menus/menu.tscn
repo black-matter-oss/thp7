@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://c2gocuhw2o7py"]
 
 [ext_resource type="FontFile" uid="uid://da2t6lyf41wty" path="res://resources/fonts/open-sans/open-sans-bold.ttf" id="4"]
-[ext_resource type="Script" uid="uid://dfnwymtygg1to" path="res://main_menu/game_version.gd" id="4_3hod2"]
-[ext_resource type="Script" uid="uid://cvc42inud8fxx" path="res://main_menu/menu.gd" id="5"]
-[ext_resource type="Script" uid="uid://baky6bgu7psf2" path="res://main_menu/godot_version.gd" id="5_fdyjp"]
+[ext_resource type="Script" uid="uid://dfnwymtygg1to" path="res://menus/game_version.gd" id="4_3hod2"]
+[ext_resource type="Script" uid="uid://cvc42inud8fxx" path="res://menus/menu.gd" id="5"]
+[ext_resource type="Script" uid="uid://baky6bgu7psf2" path="res://menus/godot_version.gd" id="5_fdyjp"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -74,6 +74,13 @@ focus_neighbor_bottom = NodePath("../ExitButton")
 focus_next = NodePath("../ExitButton")
 text = "START"
 
+[node name="OptionsButton" type="Button" parent="MarginContainer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../ExitButton")
+focus_next = NodePath("../ExitButton")
+text = "SETTINGS"
+
 [node name="ExitButton" type="Button" parent="MarginContainer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(200, 70)
 layout_mode = 2
@@ -142,4 +149,5 @@ theme_override_colors/font_color = Color(0.886275, 0.87451, 0.87451, 1)
 text = "Developer 3"
 
 [connection signal="pressed" from="MarginContainer/Control/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Control/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]

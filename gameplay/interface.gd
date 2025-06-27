@@ -11,8 +11,9 @@ enum GameState {
 const wait_interface := preload("res://gameplay/wait.tscn")
 const call_menu := preload("res://gameplay/call_menu.tscn")
 const quest_menu := preload("res://gameplay/quest_menu.tscn")
+const pause_menu := preload("res://menus/pause.tscn")
 
-@onready var day_tracker := $DayTracker
+@onready var day_tracker := $DayTracker as DayTracker
 @onready var sub := $SubInterface
 var state := GameState.WAITING
 
@@ -27,6 +28,8 @@ static var global: GameplayInterface
 var do_raycast := true
 
 @onready var radio_player: AudioStreamPlayer3D = $SubViewportContainer/SubViewport/World/RadioPlayer
+
+static var no_input := false
 
 func new_day() -> void:
 	print("New day!")
@@ -53,10 +56,13 @@ func show_day_count(d: int) -> void:
 		await get_tree().create_timer(0.01).timeout
 	
 	$DayPass.modulate.a = 1
+	camera.mm = Input.MOUSE_MODE_VISIBLE
 	var we := $SubViewportContainer/SubViewport/World/WorldEnvironment.environment as Environment
 	we.background_mode = Environment.BG_CLEAR_COLOR
 	($SubViewportContainer/SubViewport/World/Player as CharacterBody3D).position = Vector3(0, -0.2, -24.5)
 	await get_tree().create_timer(3).timeout
+	camera.mm = Input.MOUSE_MODE_VISIBLE
+	camera.reset_rotation(true)
 
 	while $DayPass.modulate.a > 0:
 		$DayPass.modulate.a -= 0.01
@@ -72,6 +78,10 @@ func call_character(c: Character) -> void:
 	$%CallMenuBtn.visible = false
 	DialogueManager.dialogue_ended.connect(_call_end)
 
+	if InteractionTracker.get_relationship(c.name, "satori") < -100:
+		DialogueManager.show_dialogue_balloon(load("res://resources/generic_dialogues/call_no_answer.dialogue"))
+		return
+	
 	if c.id == "momiji" and QuestTracker.is_incomplete("ayamomi0.1"):
 		DialogueManager.show_dialogue_balloon(load("res://resources/special_dialogues/momiji_call0.dialogue"))
 	elif c.id == "marisa" and QuestTracker.is_incomplete("reimari0"):
@@ -91,8 +101,20 @@ func _init() -> void:
 	global = self
 	CharacterTracker.load()
 
+func _input(event: InputEvent) -> void:
+	if no_input or $DayPass.visible:
+		return
+
+	if Input.is_action_pressed("pause") and state == GameState.IDLE:
+		add_child(pause_menu.instantiate())
+		no_input = true
+
+	camera._stuff(event)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$SubViewportContainer.stretch_shrink = 3 if GameOptions.low_res else 1
+
 	if Engine.is_editor_hint():
 		$DayPass.visible = false
 		return
@@ -102,7 +124,7 @@ func _ready() -> void:
 
 	GlobalAudio.player2d = $AudioStreamPlayer2D
 	GlobalAudio.player3d = $SubViewportContainer/SubViewport/World/AudioStreamPlayer3D
-	$SubViewportContainer/SubViewport/World/DirectionalLight3D.rotate_x(deg_to_rad(-90))
+	$SubViewportContainer/SubViewport/World/DirectionalLight3D.rotate_x(deg_to_rad(-60))
 
 	if GGT.is_changing_scene(): # this will be false if starting the scene with "Run current scene" or F6 shortcut
 		await GGT.change_finished
@@ -112,7 +134,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	var fx := AudioServer.get_bus_effect(3, 0) as AudioEffectAmplify
+	fx.volume_db = clamp(pow((camera.global_position - radio_player.global_position).length() * 0.22, 2) - 80, -80.0, 0.0)
+	#print(fx.volume_db)
 
 func _on_day_tracker_character_goodbye(chara:Character) -> void:
 	print_debug("Goodbye " + chara.name)
@@ -122,11 +146,16 @@ func _on_day_tracker_character_goodbye(chara:Character) -> void:
 	GlobalAudio.play2d_p($Footstep, GlobalAudio.SFX_FOOTSTEP1)
 	await $Footstep.finished
 
+	#GlobalAudio.no = false
+	if radio_player.stream_paused:
+		radio_player.stream_paused = false
+
 	state = GameState.WAITING
 	Utilities.remove_all_children(sub)
 	$Toolbar.visible = true
 	sub.add_child(wait_interface.instantiate())
 	#third_eye.disabled = true
+	$%NewDayBtn.visible = false
 	#$%CallMenuBtn.visible = false
 
 func _on_day_tracker_character_hello(chara:Character) -> void:
@@ -157,11 +186,18 @@ func _on_day_tracker_day_end() -> void:
 	GlobalAudio.play2d(GlobalAudio.SFX_BELL_LARGE)
 
 	var we := $SubViewportContainer/SubViewport/World/WorldEnvironment.environment as Environment
-	while we.ambient_light_energy > 0.1:
-		we.ambient_light_energy -= 0.025
-		await get_tree().create_timer(0.05).timeout
-	we.ambient_light_energy = 0.1
+	# while we.ambient_light_energy > 0.1:
+	# 	we.ambient_light_energy -= 0.025
+	# 	await get_tree().create_timer(0.05).timeout
+	# we.ambient_light_energy = 0.1
 	we.background_mode = Environment.BG_KEEP
+
+	var dl := $SubViewportContainer/SubViewport/World/DirectionalLight3D as DirectionalLight3D
+	while dl.light_energy > 0.1:
+		dl.light_energy -= 0.025
+		await get_tree().create_timer(0.05).timeout
+	dl.light_energy = 0.1
+	#dl.shadow_enabled = false
 
 	($SubViewportContainer/SubViewport/World/Player as CharacterBody3D).translate(Vector3(0, 0.2, 0))
 
@@ -170,20 +206,32 @@ func _on_day_tracker_day_end() -> void:
 	$Toolbar.visible = true
 	#sub.add_child(idle_interface.instantiate())
 	#third_eye.disabled = true
+	$%NewDayBtn.visible = true
 	#$%CallMenuBtn.visible = true
 	do_raycast = true
 
 func _on_day_tracker_day_start() -> void:
 	print("DAY STARTED")
 
-	var we := $SubViewportContainer/SubViewport/World/WorldEnvironment.environment as Environment
-	while we.ambient_light_energy < 0.7:
-		we.ambient_light_energy += 0.025
+	# var we := $SubViewportContainer/SubViewport/World/WorldEnvironment.environment as Environment
+	# while we.ambient_light_energy < 0.7:
+	# 	we.ambient_light_energy += 0.025
+	# 	await get_tree().create_timer(0.05).timeout
+	# we.ambient_light_energy = 0.7
+
+	var dl := $SubViewportContainer/SubViewport/World/DirectionalLight3D as DirectionalLight3D
+	while dl.light_energy < 1.5:
+		dl.light_energy += 0.025
 		await get_tree().create_timer(0.05).timeout
-	we.ambient_light_energy = 0.7
+	dl.light_energy = 1.5
+	#dl.shadow_enabled = true
 
 	#day_tracker.stop_what_you_are_doing = true
+	
+	_radio_out()
 	await show_day_count(day_tracker.current_day.number)
+	chattered = true
+	_radio_in()
 	#$SubViewportContainer/SubViewport/World/Lights.visible = true
 	$%NewDayBtn.visible = true
 	#day_tracker.stop_what_you_are_doing = false
@@ -194,6 +242,7 @@ func _on_day_tracker_day_start() -> void:
 	Utilities.remove_all_children(sub)
 	#third_eye.disabled = true
 	$Toolbar.visible = true
+	$%NewDayBtn.visible = false
 	#$%CallMenuBtn.visible = false
 	do_raycast = false
 
@@ -207,6 +256,7 @@ func _on_call_menu_btn_pressed() -> void:
 	do_raycast = false
 	cm = call_menu.instantiate()
 	add_child(cm)
+	no_input = true
 	#$%CallMenuBtn.visible = true
 
 func _on_quest_menu_btn_pressed() -> void:
@@ -214,6 +264,7 @@ func _on_quest_menu_btn_pressed() -> void:
 	do_raycast = false
 	qm = quest_menu.instantiate()
 	add_child(qm)
+	no_input = true
 	#$%QuestMenuBtn.visible = true
 
 func _on_new_day_btn_pressed() -> void:
@@ -251,8 +302,21 @@ func _radio_in() -> void:
 
 	while fx.volume_db < 0:
 		fx.volume_db += 1
-		print(fx.volume_db)
+		#print(fx.volume_db)
 		await get_tree().create_timer(0.05).timeout
 
 func _radio_out() -> void:
-	pass
+	var fx: AudioEffectAmplify = AudioServer.get_bus_effect(2, 1)
+	#fx.volume_db = 
+
+	# radio_player.stream = GlobalAudio.random_bgm()
+	# radio_player.play()
+
+	#_rfx(fx)
+
+	while fx.volume_db > -50:
+		fx.volume_db -= 1
+		#print(fx.volume_db)
+		await get_tree().create_timer(0.05).timeout
+	
+	radio_player.stop()

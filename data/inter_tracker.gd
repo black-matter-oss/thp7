@@ -8,6 +8,24 @@ static var momiji_confessed: bool = false
 static var kyouko_funny: bool = false
 static var kyouko_propose: int = -1
 
+static func bad_choice() -> void:
+	#GlobalAudio.no = true
+	GameplayInterface.global.radio_player.stream_paused = true
+	GlobalAudio.play2d(GlobalAudio.SFX_NOISE1)
+
+	var doll := Doll.make_random(GameplayInterface.global.day_tracker.curernt_character.dialogue_color)
+	GameWorld.global.get_node("Dolls").add_child(doll)
+	doll.position = Vector3(
+		randf_range(-16, 16),
+		20,
+		randf_range(-46, -3)
+	)
+	doll.rotation_degrees = Vector3(
+		randf_range(0, 360),
+		randf_range(0, 360),
+		randf_range(0, 360)
+	)
+
 static func change_relationship(a: String, b: String, change: int) -> void:
 	var ca := CharacterTracker.getv(a)
 	var cb := CharacterTracker.getv(b)
@@ -17,6 +35,7 @@ static func change_relationship(a: String, b: String, change: int) -> void:
 	else:
 		ca.relationships[cb] += change
 	
+	print(ca.relationships)
 	print_debug("Changed relationship of " + cb.name + " to " + ca.name + " by " + str(change))
 
 static func set_relationship(a: String, b: String, v: int) -> void:

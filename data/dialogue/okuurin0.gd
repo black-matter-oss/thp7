@@ -19,3 +19,15 @@ static func date() -> bool:
 		else:
 			date_success = 0
 	return date_success == 1
+
+static func reset() -> void:
+	asked_food = false
+	asked_drinks = false
+	asked_entertainment = false
+	asked_clothing = false
+	told_food = false
+	told_drinks = false
+	told_entertainment = false
+	told_clothing = false
+	date_success_chance = 0
+	date_success = -1

@@ -40,4 +40,8 @@ else
 	Satori Komeiji: Is that so...?
 	Utsuho Reiuji: [#e=sad] I will go take a nap, maybe.
 	do CharacterTracker.unlove("okuu", "orin")
+	do Okuurin0.reset()
+	do CharacterTracker.getv("okuu").reset()
+	do CharacterTracker.getv("orin").reset()
+	set CharacterTracker.getv("orin").set_can_visit(false)
 => END

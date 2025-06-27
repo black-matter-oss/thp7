@@ -12,7 +12,7 @@ config_version=5
 
 config/name="godot-game-template"
 config/version="0.0.1"
-run/main_scene="res://main_menu/menu.tscn"
+run/main_scene="res://menus/menu.tscn"
 config/features=PackedStringArray("4.4")
 config/icon="res://resources/sprites/icon.png"
 
@@ -161,7 +161,7 @@ move_right={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://resources/dialogues/flandre/0.dialogue", "res://resources/dialogues/reimu/0.dialogue", "res://resources/dialogues/marisa/0.dialogue", "res://resources/dialogues/mokou/0.dialogue", "res://resources/dialogues/maribel/0.dialogue", "res://resources/dialogues/wriggle/0.dialogue", "res://resources/dialogues/orin/0.dialogue", "res://resources/dialogues/okuu/0.dialogue", "res://resources/dialogues/okuu/1.dialogue", "res://resources/dialogues/momiji/0.dialogue", "res://resources/dialogues/okuu/2.dialogue", "res://resources/dialogues/reimu/1.dialogue", "res://resources/generic_dialogues/call.dialogue", "res://resources/special_dialogues/momiji_call0.dialogue", "res://resources/dialogues/momiji/1.dialogue", "res://resources/dialogues/momiji/2.dialogue", "res://resources/dialogues/reimu/2.dialogue", "res://resources/special_dialogues/marisa_call0.dialogue", "res://resources/dialogues/sakuya/0.dialogue", "res://resources/dialogues/kyouko/0.dialogue", "res://resources/dialogues/kyouko/1.dialogue", "res://resources/dialogues/yukari/0.dialogue")
+locale/translations_pot_files=PackedStringArray("res://resources/dialogues/flandre/0.dialogue", "res://resources/dialogues/reimu/0.dialogue", "res://resources/dialogues/marisa/0.dialogue", "res://resources/dialogues/mokou/0.dialogue", "res://resources/dialogues/maribel/0.dialogue", "res://resources/dialogues/wriggle/0.dialogue", "res://resources/dialogues/orin/0.dialogue", "res://resources/dialogues/okuu/0.dialogue", "res://resources/dialogues/okuu/1.dialogue", "res://resources/dialogues/momiji/0.dialogue", "res://resources/dialogues/okuu/2.dialogue", "res://resources/dialogues/reimu/1.dialogue", "res://resources/generic_dialogues/call.dialogue", "res://resources/special_dialogues/momiji_call0.dialogue", "res://resources/dialogues/momiji/1.dialogue", "res://resources/dialogues/momiji/2.dialogue", "res://resources/dialogues/reimu/2.dialogue", "res://resources/special_dialogues/marisa_call0.dialogue", "res://resources/dialogues/sakuya/0.dialogue", "res://resources/dialogues/kyouko/0.dialogue", "res://resources/dialogues/kyouko/1.dialogue", "res://resources/dialogues/yukari/0.dialogue", "res://resources/generic_dialogues/call_no_answer.dialogue")
 
 [rendering]
 

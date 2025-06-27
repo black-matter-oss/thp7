@@ -60,6 +60,8 @@ var dislikes: String = ""
 
 var loves: Character = null
 
+var to_reset := false
+
 func _init(id: String, name: String):
 	self.name = name
 	self.id = id
@@ -70,8 +72,13 @@ func reset() -> void:
 	visited_times = 0
 	set_can_visit(true)
 	next_visit = ""
+	to_reset = true
 	print("Character reset: " + name)
 	GlobalAudio.play2d(GlobalAudio.SFX_TONE)
+
+func reset2() -> void:
+	relationships[CharacterTracker.getv("satori")] = 0
+	to_reset = false
 
 func load_dialogues() -> void:
 	const base_path := "res://resources/dialogues/"
@@ -172,6 +179,12 @@ func show_next_dialogue() -> void:
 
 func set_can_visit(can: bool) -> void:
 	can_visit = func(c: Character) -> bool: return can
+
+static func unlove(a: String, b: String) -> void:
+	pass
+
+static func love(a: String, b: String) -> void:
+	pass
 
 # enum Emotion {
 

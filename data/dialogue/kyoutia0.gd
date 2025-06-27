@@ -10,3 +10,7 @@ static func date() -> bool:
 		else:
 			date_success = 0
 	return date_success == 1
+
+static func reset() -> void:
+	choice = -1
+	date_success = -1

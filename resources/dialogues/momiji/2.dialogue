@@ -98,7 +98,9 @@ else
 		Satori Komeiji: [#e=relaxed] It's unfortunate.\nBut I'm sure she still loves you.
 		Momiji Inubashiri: [#e=sad] Y-You know...\nweren't you the one who gave me all this 'advice'...?
 		Momiji Inubashiri: Maybe I should have just asked her myself...
-		do CharacterTracker.getv("momiji").set_can_visit(false)
+		do CharacterTracker.getv("momiji").reset()
 		#do Ayamomi0.grahtewi()
+		do InteractionTracker.change_relationship("momiji", "satori", -1000)
 		Character.unlove("momiji", "aya")
+		do Ayamomi0.reset()
 => END

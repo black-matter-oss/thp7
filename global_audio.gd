@@ -8,12 +8,16 @@ const SFX_FOOTSTEP2 := preload("res://resources/sfx/footstep2.wav")
 const SFX_BELL_LARGE := preload("res://resources/sfx/bell_large.wav")
 const SFX_CLOCK1 := preload("res://resources/sfx/clock0.ogg")
 const SFX_CLOCK2 := preload("res://resources/sfx/clock1.ogg")
+const SFX_NOISE0 := preload("res://resources/sfx/noise0.wav")
+const SFX_NOISE1 := preload("res://resources/sfx/noise1.ogg")
 
 const BGM_DIR = "res://resources/music"
 const CHATTER_DIR = "res://resources/sfx/chatter"
 
 static var player2d : AudioStreamPlayer2D
 static var player3d : AudioStreamPlayer3D
+
+static var last_bgm: String
 
 static func play2d(audio) -> void:
 	play2d_p(player2d, audio)
@@ -43,6 +47,10 @@ static func random_bgm() -> AudioStream:
 		files.append(x)
 	
 	var file: String = files.pick_random()
+
+	if last_bgm == file:
+		return random_bgm()
+	last_bgm = file
 
 	print("Random BGM picked: " + file)
 

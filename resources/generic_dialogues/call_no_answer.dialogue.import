@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cqjnou4wrvn"
+path="res://.godot/imported/call_no_answer.dialogue-33615fade03ab0eae27f9e63cb299bb4.tres"
+
+[deps]
+
+source_file="res://resources/generic_dialogues/call_no_answer.dialogue"
+dest_files=["res://.godot/imported/call_no_answer.dialogue-33615fade03ab0eae27f9e63cb299bb4.tres"]
+
+[params]
+
+defaults=true

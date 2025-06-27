@@ -28,3 +28,7 @@ func _on_ExitButton_pressed() -> void:
 		await transitions.anim.animation_finished
 		await get_tree().create_timer(0.3).timeout
 	get_tree().quit()
+
+
+func _on_options_button_pressed() -> void:
+	GGT.change_scene("res://menus/options.tscn")

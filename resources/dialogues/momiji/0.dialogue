@@ -37,18 +37,22 @@ Satori Komeiji: Indeed, that is what I am doing for now.
 			Satori Komeiji: Why so?
 			Momiji Inubashiri: [#e=troubled] I don't want her to get mad in case I say something wrong...
 			Satori Komeiji: [next=auto] Well, you have to--
-			Momiji Inubashiri: J-Just call her! Pretty please!
+			Momiji Inubashiri: Y-You should call her instead!
+			Satori Komeiji: [next=auto] No, this is something that you--
+			Momiji Inubashiri: Pretty please!
 			- Alright, alright.
 				Momiji Inubashiri: [#e=happy] Thank you very much!
-				Momiji Inubashiri: [#e=happy] Call for me when you find something out, okay?
+				Momiji Inubashiri: [#e=happy] Call me back when you find something out, okay?
 				do QuestTracker.create_quest("ayamomi0")
 			- No can do, sorry.
+				do InteractionTracker.bad_choice()
 				Momiji Inubashiri: [#e=sad] Aw...
 				Momiji Inubashiri: I'll try asking her then.
+				Koishi Komeiji: [next=auto] B-But you could've...
 				if Ayamomi0.meowymeow2()
 					set Ayamomi0.lalala = true
 					do CharacterTracker.getv("momiji").set_can_visit(true)
 				else
-					do CharacterTracker.getv("momiji").set_can_visit(false)
-				Koishi Komeiji: [next=auto] B-But you could've...
+					do Ayamomi0.reset()
+					do CharacterTracker.getv("momiji").reset()
 => END

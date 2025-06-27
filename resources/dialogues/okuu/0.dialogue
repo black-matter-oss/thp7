@@ -16,6 +16,7 @@ Utsuho Reiuji: Oh...
 Utsuho Reiuji: [#e=happy] Maybe I was the one who was supposed to tell you, hehe...
 Utsuho Reiuji: But it's not a problem, right?
 - It is
+	do InteractionTracker.bad_choice()
 	set InteractionTracker.okuu_action = 0
 	do InteractionTracker.change_relationship("okuu", "satori", -1000)
 	do InteractionTracker.change_relationship("orin", "satori", -1000)
@@ -26,10 +27,11 @@ Utsuho Reiuji: But it's not a problem, right?
 	Satori Komeiji: Get back to work and forget about this entire date thing.
 	Utsuho Reiuji: [#e=sad] ...
 	do CharacterTracker.getv("okuu").set_can_visit(false)
-	% Koishi Komeiji: [next=auto] Huh...?
-	% Koishi Komeiji: [next=auto] No...
-	% Koishi Komeiji: [next=auto] ??!!!!?!
-	#do CharacterTracker.getv("okuu").reset()
+	#% Koishi Komeiji: [next=auto] Huh...?
+	#% Koishi Komeiji: [next=auto] No...
+	#% Koishi Komeiji: [next=auto] ??!!!!?!
+	do CharacterTracker.getv("okuu").reset()
+	do Okuurin0.reset()
 - It isn't
 	set InteractionTracker.okuu_action = 1
 	Satori Komeiji: No, of course not.

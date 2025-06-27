@@ -37,3 +37,17 @@ static func grahtewi() -> void:
 	else:
 		InteractionTracker.change_relationship("aya", "momiji", -70)
 		InteractionTracker.change_relationship("momiji", "aya", -70)
+
+static func reset() -> void:
+	date_success_chance = 0
+	date_success = -1
+
+	lalala = false
+
+	lh_picked = false
+	choice0 = -1
+	choice1 = -1
+	choice2 = -1
+
+	QuestTracker.remove_quest("ayamomi0")
+	QuestTracker.remove_quest("ayamomi0.1")

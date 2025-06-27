@@ -30,6 +30,8 @@ Wriggle Nightbug: [#e=sad] I don't know, it's weird...
 	Wriggle Nightbug: [#e=happy] Thank you!
 	Wriggle Nightbug: [#e=happy] See you then!
 - It is weird
+	do InteractionTracker.bad_choice()
+	do InteractionTracker.change_relationship("wriggle", "satori", -1000)
 	set InteractionTracker.wriggle_action = 1
 	Satori Komeiji [#e=neutral]: I'm sorry Wriggle, but...
 	Satori Komeiji [#e=neutral]: This really isn't normal.
@@ -40,4 +42,5 @@ Wriggle Nightbug: [#e=sad] I don't know, it's weird...
 	Wriggle Nightbug: [#e=sad] Thank you then... and see you...
 	Satori Komeiji [#e=neutral]: Just stay who you are now, don't let it get to you.
 	Satori Komeiji [#e=neutral]: You'll be better off this way.
+	do CharacterTracker.getv("wriggle").reset()
 => END

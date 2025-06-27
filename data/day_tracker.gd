@@ -34,6 +34,10 @@ func start_new_day() -> void:
 			continue
 
 		var ch := CharacterTracker.getv(c)
+
+		if ch.to_reset:
+			ch.reset2()
+
 		if ch.can_visit.call(ch) == false:
 			continue
 
@@ -83,9 +87,12 @@ func begin_loop() -> void:
 			idle_time = randi_range(1, 2)
 		else:
 			idle_time = randi_range(4, 10)
-		idle_time += 5 # for the day info to have time to show :D
+		idle_time += 6 # for the day info to have time to show :D
 
 		await get_tree().create_timer(idle_time).timeout
+
+		while stop_what_you_are_doing:
+			await get_tree().create_timer(0.1).timeout
 
 		# new character visits
 		var c := current_day.characters_to_visit[0]

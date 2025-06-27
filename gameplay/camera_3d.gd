@@ -50,19 +50,22 @@ var raycast_result: Dictionary
 	world.get_node("radio/Cube_001") as MeshInstance3D
 ]
 
-func reset_rotation() -> void:
+func reset_rotation(quick: bool = false) -> void:
 	mm = Input.MOUSE_MODE_VISIBLE
 
-	var delta1 := reset_rot - rotation
-	var delta2 = reset_rot_p - get_parent().rotation
-	
-	var delta1_step := delta1 / RESET_STEPS
-	var delta2_step = delta2 / RESET_STEPS
+	if quick:
+		rotation = reset_rot
+	else:
+		var delta1 := reset_rot - rotation
+		var delta2 = reset_rot_p - get_parent().rotation
+		
+		var delta1_step := delta1 / RESET_STEPS
+		var delta2_step = delta2 / RESET_STEPS
 
-	for i in range(RESET_STEPS):
-		rotation += delta1_step
-		get_parent().rotation += delta2_step
-		await get_tree().create_timer(RESET_DURATION / RESET_STEPS).timeout
+		for i in range(RESET_STEPS):
+			rotation += delta1_step
+			get_parent().rotation += delta2_step
+			await get_tree().create_timer(RESET_DURATION / RESET_STEPS).timeout
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -132,7 +135,7 @@ func _unhighlight(a: Array[MeshInstance3D]) -> void:
 		var mat := mesh.surface_get_material(0)
 		mat.next_pass = null
 
-func _unhandled_input(event: InputEvent) -> void:
+func _stuff(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			if event.pressed:
@@ -140,6 +143,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				mm = Input.MOUSE_MODE_CAPTURED
 			else:
 				mm = Input.MOUSE_MODE_VISIBLE
+
+				if GameplayInterface.global.state == GameplayInterface.GameState.CONVERSATION:
+					reset_rotation()
 				#get_viewport().warp_mouse(mlp)
 		
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT and not raycast_result.is_empty():

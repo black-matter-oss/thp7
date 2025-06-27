@@ -50,5 +50,6 @@ func _process(delta: float) -> void:
 
 func _on_close_pressed() -> void:
 	(get_parent() as GameplayInterface).do_raycast = true
+	GameplayInterface.no_input = false
 	get_parent().remove_child(self)
 	self.queue_free()

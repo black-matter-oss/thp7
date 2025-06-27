@@ -56,3 +56,6 @@ static func is_incomplete(id: String) -> bool:
 	if id not in quests:
 		return false
 	return not quests[id].is_complete
+
+static func remove_quest(id: String) -> bool:
+	return quests.erase(id)
