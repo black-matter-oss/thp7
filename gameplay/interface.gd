@@ -28,6 +28,7 @@ static var global: GameplayInterface
 var do_raycast := true
 
 @onready var radio_player: AudioStreamPlayer3D = $SubViewportContainer/SubViewport/World/RadioPlayer
+@onready var world := $SubViewportContainer/SubViewport/World as GameWorld
 
 static var no_input := false
 
@@ -141,10 +142,13 @@ func _process(delta: float) -> void:
 func _on_day_tracker_character_goodbye(chara:Character) -> void:
 	print_debug("Goodbye " + chara.name)
 
-	GlobalAudio.play2d_p($Footstep, GlobalAudio.SFX_FOOTSTEP1)
-	await $Footstep.finished
-	GlobalAudio.play2d_p($Footstep, GlobalAudio.SFX_FOOTSTEP1)
-	await $Footstep.finished
+	# GlobalAudio.play2d_p($Footstep, GlobalAudio.SFX_FOOTSTEP1)
+	# await $Footstep.finished
+	# GlobalAudio.play2d_p($Footstep, GlobalAudio.SFX_FOOTSTEP1)
+	# await $Footstep.finished
+
+	#world.change_character_sprite(chara.get_current_portrait())
+	await world.character_walkout($Footstep)
 
 	#GlobalAudio.no = false
 	if radio_player.stream_paused:
@@ -161,10 +165,13 @@ func _on_day_tracker_character_goodbye(chara:Character) -> void:
 func _on_day_tracker_character_hello(chara:Character) -> void:
 	print_debug("Hello " + chara.name)
 
-	GlobalAudio.play2d_p($Footstep, GlobalAudio.SFX_FOOTSTEP1)
-	await $Footstep.finished
-	GlobalAudio.play2d_p($Footstep, GlobalAudio.SFX_FOOTSTEP1)
-	await $Footstep.finished
+	# GlobalAudio.play2d_p($Footstep, GlobalAudio.SFX_FOOTSTEP1)
+	# await $Footstep.finished
+	# GlobalAudio.play2d_p($Footstep, GlobalAudio.SFX_FOOTSTEP1)
+	# await $Footstep.finished
+
+	world.change_character_sprite(chara.get_current_portrait())
+	await world.character_walkin($Footstep)
 
 	if not radio_player.stream:
 		radio_player.finished.connect(_radio_in)

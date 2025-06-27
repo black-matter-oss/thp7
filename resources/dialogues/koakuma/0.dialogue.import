@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dwuqitba4oxhl"
+path="res://.godot/imported/0.dialogue-38575126be4cb664a304fa0ec67d11df.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/koakuma/0.dialogue"
+dest_files=["res://.godot/imported/0.dialogue-38575126be4cb664a304fa0ec67d11df.tres"]
+
+[params]
+
+defaults=true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l0w8mdmorqdr"
-path="res://.godot/imported/blush.png-7a278ace5ee3c7597d52d11f78a2df2c.ctex"
+uid="uid://byx3fhgrppp1u"
+path="res://.godot/imported/surprise.png-31bddb61cd81119b276b521fa4a07bb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/characters/remilia/blush.png"
-dest_files=["res://.godot/imported/blush.png-7a278ace5ee3c7597d52d11f78a2df2c.ctex"]
+source_file="res://resources/characters/orin/surprise.png"
+dest_files=["res://.godot/imported/surprise.png-31bddb61cd81119b276b521fa4a07bb5.ctex"]
 
 [params]
 

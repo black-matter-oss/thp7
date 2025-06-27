@@ -1,4 +1,4 @@
-[gd_scene load_steps=156 format=4 uid="uid://cauebywkv2ugs"]
+[gd_scene load_steps=161 format=4 uid="uid://cauebywkv2ugs"]
 
 [ext_resource type="Texture2D" uid="uid://vg27iykkc7l7" path="res://resources/textures/check_this_out_too.png" id="1_5nygg"]
 [ext_resource type="Script" uid="uid://bpvevfcpch2n7" path="res://gameplay/world.gd" id="1_54ldx"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://g7r5thmi6lxc" path="res://gameplay/flame_light.gd" id="12_wrmeg"]
 [ext_resource type="Texture2D" uid="uid://kfxivt7ea2ok" path="res://resources/blender/radio_okean.jpg" id="13_e8dm4"]
 [ext_resource type="Script" uid="uid://d3fj5tm8aonpq" path="res://spatial_audio.gd" id="17_2lqfd"]
+[ext_resource type="Texture2D" uid="uid://c0xc27olajvcp" path="res://resources/characters/remilia/neutral.png" id="19_54ldx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54ldx"]
 albedo_texture = ExtResource("1_5nygg")
@@ -2356,6 +2357,129 @@ tracks/1/path = NodePath("telephone/phone handle")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 1.09642, 0)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterSprite")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 8)
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterSprite:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_3smun"]
+resource_name = "chara_walk"
+length = 0.8
+loop_mode = 1
+step = 1.0
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.2, 1, 0, 0, -0.130526, 0.991445, 0.4, 1, 0, 0, 0, 1, 0.6, 1, 0, 0, 0.130526, 0.991445)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("CharacterSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 8, 0.2, 1, 0, 0.75, 8, 0.4, 1, 0, 0, 8, 0.6, 1, 0, 0.75, 8)
+
+[sub_resource type="Animation" id="Animation_54ldx"]
+resource_name = "chara_walkin"
+length = 3.2
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 8, 0.2, 1, 0, 0.75, 6.3, 0.4, 1, 0, 0, 4.6, 0.6, 1, 0, 0.75, 2.9, 0.8, 1, 0, 0, 1.2, 1, 1, 0, 0.75, -0.5, 1.2, 1, 0, 0, -2.2, 1.4, 1, 0, 0.75, -3.9, 1.6, 1, 0, 0, -5.6, 1.8, 1, 0, 0.75, -7.3, 2, 1, 0, 0, -9, 2.2, 1, 0, 0.75, -10.7, 2.4, 1, 0, 0, -12.4, 2.6, 1, 0, 0.75, -14.1, 2.8, 1, 0, 0, -15.8, 3, 1, 0, 0.75, -17.5, 3.2, 1, 0, 0, -19)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.2, 1, 0, 0, -0.131, 0.991, 0.4, 1, 0, 0, 0, 1, 0.6, 1, 0, 0, 0.131, 0.991, 0.8, 1, 0, 0, 0, 1, 1, 1, 0, 0, -0.131, 0.991, 1.2, 1, 0, 0, 0, 1, 1.4, 1, 0, 0, 0.131, 0.991, 1.6, 1, 0, 0, 0, 1, 1.8, 1, 0, 0, -0.131, 0.991, 2, 1, 0, 0, 0, 1, 2.2, 1, 0, 0, 0.131, 0.991, 2.4, 1, 0, 0, 0, 1, 2.6, 1, 0, 0, -0.131, 0.991, 2.8, 1, 0, 0, 0, 1, 3, 1, 0, 0, 0.131, 0.991, 3.2, 1, 0, 0, 0, 1)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("CharacterSprite:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_lxr5k"]
+resource_name = "chara_walkout"
+length = 2.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("CharacterSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.5, 1, 0, 0, -18.5, 2, 1, 0, 0, 8)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.4, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.334744, 0.334744, 0.334744, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterSprite")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0.0333333, 1, 0, 0, 0, 1, 0.5, 1, 0, 1, 0, 4.37114e-08)
 
 [sub_resource type="Animation" id="Animation_a7i81"]
 resource_name = "day_pass"
@@ -2388,9 +2512,55 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
 
+[sub_resource type="Animation" id="Animation_67lv7"]
+resource_name = "chara_walkout_new"
+length = 3.7
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 8, 0.2, 1, 0, 0.75, 6.3, 0.4, 1, 0, 0, 4.6, 0.6, 1, 0, 0.75, 2.9, 0.8, 1, 0, 0, 1.2, 1, 1, 0, 0.75, -0.5, 1.2, 1, 0, 0, -2.2, 1.4, 1, 0, 0.75, -3.9, 1.6, 1, 0, 0, -5.6, 1.8, 1, 0, 0.75, -7.3, 2, 1, 0, 0, -9, 2.2, 1, 0, 0.75, -10.7, 2.4, 1, 0, 0, -12.4, 2.6, 1, 0, 0.75, -14.1, 2.8, 1, 0, 0, -15.8, 3, 1, 0, 0.75, -17.5, 3.2, 1, 0, 0, -19)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.2, 1, 0, 0, -0.131, 0.991, 0.4, 1, 0, 0, 0, 1, 0.6, 1, 0, 0, 0.131, 0.991, 0.8, 1, 0, 0, 0, 1, 1, 1, 0, 0, -0.131, 0.991, 1.2, 1, 0, 0, 0, 1, 1.4, 1, 0, 0, 0.131, 0.991, 1.6, 1, 0, 0, 0, 1, 1.8, 1, 0, 0, -0.131, 0.991, 2, 1, 0, 0, 0, 1, 2.2, 1, 0, 0, 0.131, 0.991, 2.4, 1, 0, 0, 0, 1, 2.6, 1, 0, 0, -0.131, 0.991, 2.8, 1, 0, 0, 0, 1, 3, 1, 0, 0, 0.131, 0.991, 3.2, 1, 0, 1, 0, 0, 3.7, 1, 0, 0, 0, 1)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterSprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 3.2, 3.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0.338473, 0.338473, 0.338473, 0.867568), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("CharacterSprite:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vdnhq"]
 _data = {
 &"RESET": SubResource("Animation_rfe6v"),
+&"chara_walk": SubResource("Animation_3smun"),
+&"chara_walkin": SubResource("Animation_54ldx"),
+&"chara_walkout": SubResource("Animation_lxr5k"),
+&"chara_walkout_new": SubResource("Animation_67lv7"),
 &"day_pass": SubResource("Animation_a7i81"),
 &"phone_call": SubResource("Animation_tv7he")
 }
@@ -8129,6 +8299,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_vdnhq")
 }
 
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vdnhq")
+}
+
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vdnhq")
+}
+
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(-1, -3.05101e-09, 8.73695e-08, 0, 0.999391, 0.0348995, -8.74228e-08, 0.0348995, -0.999391, 8.27652e-07, 2.06291, -19.562)
 unit_size = 25.0
@@ -8408,7 +8588,7 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.307279
+light_energy = 0.326551
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 
@@ -8427,7 +8607,7 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.333123
+light_energy = 0.781099
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 
@@ -8446,10 +8626,18 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.878927
+light_energy = 0.9
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 
 [node name="Dolls" type="Node3D" parent="."]
+
+[node name="CharacterSprite" type="Sprite3D" parent="."]
+transform = Transform3D(-0.535828, 0, 0.844327, 0, 1, 0, -0.844327, 0, -0.535828, 0, 0, 8)
+centered = false
+offset = Vector2(-218.5, 0)
+flip_h = true
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("19_54ldx")
 
 [connection signal="body_entered" from="corridors/CorridorMoveArea" to="." method="_on_corridor_move_area_body_entered"]

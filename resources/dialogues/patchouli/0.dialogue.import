@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://boumgd4f1240t"
+path="res://.godot/imported/0.dialogue-327b6f3e9063cb51a91cdbc309089afd.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/patchouli/0.dialogue"
+dest_files=["res://.godot/imported/0.dialogue-327b6f3e9063cb51a91cdbc309089afd.tres"]
+
+[params]
+
+defaults=true
