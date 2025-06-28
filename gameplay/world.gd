@@ -9,15 +9,21 @@ static var global: GameWorld
 func _ready() -> void:
 	global = self
 
+func _process(delta: float) -> void:
+	if QuestTracker.any_quest_active():
+		$book/Warning.visible = true
+	else:
+		$book/Warning.visible = false
+
 func change_character_sprite(t: Texture2D) -> void:
 	character_sprite.texture = t
 	character_sprite.offset = Vector2(-t.get_size().x / 2, 0)
 
 func character_walkin(ap: AudioStreamPlayer2D) -> void:
-	character_sprite.visible = true
-
 	$AnimationPlayer.play("chara_walkin")
 	#$AnimationPlayer2.play("chara_walk")
+
+	character_sprite.visible = true
 
 	GlobalAudio.play2d_p(ap, GlobalAudio.SFX_FOOTSTEP1_LOOP)
 

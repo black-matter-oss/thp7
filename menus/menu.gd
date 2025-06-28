@@ -1,8 +1,11 @@
+class_name MainMenu
 extends Control
 
 @onready var btn_play = $MarginContainer/Control/VBoxContainer/PlayButton
 @onready var btn_exit = $MarginContainer/Control/VBoxContainer/ExitButton
 
+static var no_kagumokou := false
+static var calm_mode := false
 
 func _ready():
 	# needed for gamepads to work
@@ -32,3 +35,15 @@ func _on_ExitButton_pressed() -> void:
 
 func _on_options_button_pressed() -> void:
 	GGT.change_scene("res://menus/options.tscn")
+
+
+func _on_credits_button_pressed() -> void:
+	GGT.change_scene("res://menus/credits.tscn")
+
+
+func _on_check_button_toggled(toggled_on:bool) -> void:
+	no_kagumokou = toggled_on
+
+
+func _on_check_button_2_toggled(toggled_on:bool) -> void:
+	calm_mode = toggled_on

@@ -27,7 +27,7 @@ Fujiwara no Mokou: [#e=annoyed] It was a peaceful night.
 Fujiwara no Mokou: [#e=annoyed] No wind, full moon high in the sky; perfect night to relax in the forest.
 Fujiwara no Mokou: [#e=annoyed] So there I was, laying down on the grass, pulling out a cig outta my pocket.
 Fujiwara no Mokou: [#e=annoyed] And suddenly Kaguya appears right above me!
-Fujiwara no Mokou: [#e=annoyed] [i]Ugh, not now...[/i] I thought to myself as she started right at me.
+Fujiwara no Mokou: [#e=annoyed] "Ugh, not now..." I thought to myself as she started right at me.
 Fujiwara no Mokou: [#e=angry] And then guess what?
 Satori Komeiji: [#e=neutral] She stabbed you?
 Fujiwara no Mokou: [#e=angry] No! She pulled out a match, stole my ciggarette, lit it, and started smoking right at my face!
@@ -36,5 +36,14 @@ Fujiwara no Mokou: [#e=neutral] Well, yeah. I also had one more cig in my pocket
 Fujiwara no Mokou: [#e=annoyed] But that's not it! That's not what made me this mad.
 Satori Komeiji: [#e=relaxed] (sigh)
 Satori Komeiji: [#e=neutral] What was it then?
-Fujiwara no Mokou: [#e=neutral] ...
+Fujiwara no Mokou: [#e=neutral] She waterboarded me with alcohol and gasoline.
+Satori Komeiji: [#e=surprise] ...
+Satori Komeiji: [#e=surprise] She did WHAT?!
+Satori Komeiji: [#e=surprise] T-That's torture!
+Fujiwara no Mokou: [#e=annoyed] Exactly! That's why I need to plan revenge on her!
+Satori Komeiji: Ugh... I understand you, but... I can't condone such a thing.
+Fujiwara no Mokou: [#e=relaxed] Eh, kinda expected you to not agree.
+Fujiwara no Mokou: Whatever, I'll come up with something myself.
+do CharacterTracker.getv("mokou").set_can_visit(false)
+do CharacterTracker.getv("kaguya").set_can_visit(true)
 => END

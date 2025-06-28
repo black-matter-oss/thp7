@@ -100,7 +100,7 @@ else
 		Momiji Inubashiri: Maybe I should have just asked her myself...
 		do CharacterTracker.getv("momiji").reset()
 		#do Ayamomi0.grahtewi()
-		do InteractionTracker.change_relationship("momiji", "satori", -1000)
+		#do InteractionTracker.change_relationship("momiji", "satori", -1000)
 		Character.unlove("momiji", "aya")
 		do Ayamomi0.reset()
 => END

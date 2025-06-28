@@ -130,11 +130,18 @@ func apply_dialogue_line() -> void:
 
 func change_character_image() -> void:
 	if self.dialogue_line.character.is_empty():
+		$%ImageLeft.texture = null
+		$%ImageRight.texture = null
 		return
 	
 	var c := CharacterTracker.getv(self.dialogue_line.character)
 	#var e := int(self.dialogue_line.character.split("~")[1])
 	#c.current_emotion = e as Character.Emotion
+
+	if c.id == "koishi":
+		$%ImageLeft.texture = null
+		$%ImageRight.texture = null
+		return
 
 	if c.id != "koishi":
 		var sb: StyleBoxFlat = $%PanelContainer.get_theme_stylebox("panel")
@@ -151,6 +158,7 @@ func change_character_image() -> void:
 	else:
 		$%ImageRight.texture = c.get_current_portrait()
 		$%ImageLeft.texture = null
+		GameWorld.global.change_character_sprite(c.get_current_portrait())
 
 ## Go to the next line
 func next(next_id: String) -> void:
@@ -199,3 +207,7 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 #endregion
+
+
+func _on_dialogue_label_spoke(letter:String, letter_index:int, speed:float) -> void:
+	$BlipPlayer.play()

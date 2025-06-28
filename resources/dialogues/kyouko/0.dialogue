@@ -8,7 +8,7 @@ Kyouko Kasodani: [#e=blush] We've been together for... quite some time.
 Kyouko Kasodani: [#e=happy] And I want to propose to her.\nI want to marry her.
 Kyouko Kasodani: But here's the problem:
 Kyouko Kasodani: [#e=happy] I don't want my confession to be a normal one!
-Satori Komeiji: Not [i]normal[/i]? In what way?
+Satori Komeiji: Not [u]normal[/u]? In what way?
 Kyouko Kasodani: I'm not the type of person to go on dates; that's not really my thing.
 Kyouko Kasodani: I don't think Mystia would like to be proposed to in some luxurious place.
 Kyouko Kasodani: And proposing in front of her out of the blue is not an option either.
@@ -26,9 +26,9 @@ Kyouko Kasodani: [#e=sad] But I have ran out of ideas...
 	- Before the meal
 		set Kyoutia0.choice = 0
 		Satori Komeiji: You should propose to her before the meal.
-		Kyouko Kasodani: After the meal... there won't be an element of surprise.
+		Kyouko Kasodani: Before the meal? Then there won't be an element of surprise.
 		Satori Komeiji: Maybe not, but I think it will make the meal even more enjoyable, even if you accidentally ruin it.
-		Kyouko Kasodani: [#e=happy] I see!\nThat is a good idea!
+		Kyouko Kasodani: [#e=happy] I see!\nThat is some good thinking, Satori!
 		set InteractionTracker.kyouko_propose = 0
 	- After the meal
 		set Kyoutia0.choice = 1
@@ -40,7 +40,7 @@ Kyouko Kasodani: [#e=sad] But I have ran out of ideas...
 	- In the meal? [if not InteractionTracker.kyouko_funny]
 		set InteractionTracker.kyouko_funny = true
 		Satori Komeiji: Here's a crazy idea...
-		Satori Komeiji: Get an engagement ring and stuff it [i]inside[/i] the food.
+		Satori Komeiji: Get an engagement ring and stuff it [u]inside[/u] the food.
 		Kyouko Kasodani: Inside...?
 		Satori Komeiji: Inside.
 		Kyouko Kasodani: What if she chokes on it?

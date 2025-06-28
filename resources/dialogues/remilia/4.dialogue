@@ -1,0 +1,25 @@
+~ start
+Remilia Scarlet: [#e=blush_surprise] S-Satori...
+Remilia Scarlet: Our call disconnected last time for some reason, but there's something I need to tell you.
+Remilia Scarlet: And, well, it's better to tell you this in person either way.
+Remilia Scarlet: [#e=blush] Please go out with me!
+Satori Komeiji: [#e=blush] R-Remilia?!
+Remilia Scarlet: [#e=blush] I-I love you Satori, I love you...
+Satori Komeiji: [#e=blush] R-Remi... I-In my whole life... I-I never thought that I could be loved...
+Satori Komeiji: [#e=happy] Because I'm a satori...
+Remilia Scarlet: [#e=happy2] I don't care! That doesn't matter!
+Remilia Scarlet: [#e=happy] I love Satori [u]because[/u] she's a satori!
+Remilia Scarlet: [#e=happy2] And besides, you've learned to close your third eye at will, so it matters even less!
+Remilia Scarlet: [#e=happy2] Will you go out with me, Satori?
+~ love_protocol
+- Yes [if not InteractionTracker.love_protocol]
+	do InteractionTracker.bad_choice()
+	set InteractionTracker.love_protocol = true
+	=> love_protocol
+- No [if InteractionTracker.love_protocol]
+	#if not InteractionTracker.love_protocol:
+	#	do InteractionTracker.bad_choice()
+	Satori Komeiji: I cannot.
+	Remilia Scarlet: [#e=surprise] W-What...?
+	Remilia Scarlet: [#e=sad] ...
+=> END

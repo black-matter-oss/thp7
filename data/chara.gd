@@ -7,7 +7,7 @@ var id: String
 var relationships: Dictionary[Character, int]
 
 var dialogue_progress: int
-var dialogues: Array[Resource]
+var dialogues: Array[DialogueResource]
 
 var portraits: Dictionary[String, Texture2D]
 var current_emotion: String = "neutral"
@@ -61,8 +61,9 @@ var dislikes: String = ""
 var loves: Character = null
 
 var to_reset := false
+var was_reset := false
 
-func _init(id: String, name: String):
+func _init(id: String = "", name: String = ""):
 	self.name = name
 	self.id = id
 
@@ -75,6 +76,7 @@ func reset() -> void:
 	to_reset = true
 	print("Character reset: " + name)
 	GlobalAudio.play2d(GlobalAudio.SFX_TONE)
+	was_reset = true
 
 func reset2() -> void:
 	relationships[CharacterTracker.getv("satori")] = 0
@@ -85,7 +87,7 @@ func load_dialogues() -> void:
 
 	var dir := DirAccess.open(base_path + id)
 	if not dir:
-		can_visit = func(c: Character) -> bool: return false
+		set_can_visit(false)
 		print("Warning: " + name + " has no dialogues; cannot visit")
 		return
 	
@@ -104,6 +106,11 @@ func load_dialogues() -> void:
 		#file = dir.get_next()
 	
 	#dir.list_dir_end()
+
+	if dialogues.size() == 0:
+		set_can_visit(false)
+		print("Warning: " + name + " has no dialogues; cannot visit")
+		return
 
 func load_portraits() -> void:
 	const base_path := "res://resources/characters/"

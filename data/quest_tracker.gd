@@ -13,6 +13,8 @@ static func create_quest(a: String) -> void:
 			q = Ayamomi01Quest.new()
 		"reimari0":
 			q = Reimari0Quest.new()
+		"satoremi0":
+			q = Satoremi0Quest.new()
 		_:
 			assert(false)
 	

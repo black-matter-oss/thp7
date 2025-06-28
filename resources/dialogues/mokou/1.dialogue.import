@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cuuvrgo5gpy7i"
+path="res://.godot/imported/1.dialogue-2edd85258db020e4ad141af20cc58f18.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/mokou/1.dialogue"
+dest_files=["res://.godot/imported/1.dialogue-2edd85258db020e4ad141af20cc58f18.tres"]
+
+[params]
+
+defaults=true

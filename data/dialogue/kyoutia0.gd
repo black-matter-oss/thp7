@@ -1,6 +1,6 @@
 class_name Kyoutia0
 
-static var choice: bool = -1
+static var choice: int = -1
 static var date_success: int = -1
 
 static func date() -> bool:

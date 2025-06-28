@@ -11,7 +11,7 @@ enum GameState {
 const wait_interface := preload("res://gameplay/wait.tscn")
 const call_menu := preload("res://gameplay/call_menu.tscn")
 const quest_menu := preload("res://gameplay/quest_menu.tscn")
-const pause_menu := preload("res://menus/pause.tscn")
+const pause_menu := preload("res://menus/options.tscn")
 
 @onready var day_tracker := $DayTracker as DayTracker
 @onready var sub := $SubInterface
@@ -31,6 +31,8 @@ var do_raycast := true
 @onready var world := $SubViewportContainer/SubViewport/World as GameWorld
 
 static var no_input := false
+static var pause := false
+static var nnd_quest := false
 
 func new_day() -> void:
 	print("New day!")
@@ -51,13 +53,16 @@ func show_day_count(d: int) -> void:
 
 	for c in day_tracker.current_day.characters_to_visit:
 		$%CharaInfo.text += "\n" + c.name
+	
+	if day_tracker.current_day.characters_to_visit.size() == 0:
+		$%CharaInfo.text += "\nNone\nIt's time to do your quests!"
 
 	while $DayPass.modulate.a < 1:
 		$DayPass.modulate.a += 0.01
 		await get_tree().create_timer(0.01).timeout
 	
 	$DayPass.modulate.a = 1
-	camera.mm = Input.MOUSE_MODE_VISIBLE
+	#camera.mm = Input.MOUSE_MODE_VISIBLE
 	var we := $SubViewportContainer/SubViewport/World/WorldEnvironment.environment as Environment
 	we.background_mode = Environment.BG_CLEAR_COLOR
 	($SubViewportContainer/SubViewport/World/Player as CharacterBody3D).position = Vector3(0, -0.2, -24.5)
@@ -87,12 +92,17 @@ func call_character(c: Character) -> void:
 		DialogueManager.show_dialogue_balloon(load("res://resources/special_dialogues/momiji_call0.dialogue"))
 	elif c.id == "marisa" and QuestTracker.is_incomplete("reimari0"):
 		DialogueManager.show_dialogue_balloon(load("res://resources/special_dialogues/marisa_call0.dialogue"))
+	elif c.id == "aya" and QuestTracker.is_incomplete("ayamomi0"):
+		DialogueManager.show_dialogue_balloon(load("res://resources/special_dialogues/aya_call0.dialogue"))
+	elif c.id == "remilia" and QuestTracker.is_incomplete("satoremi0"):
+		DialogueManager.show_dialogue_balloon(load("res://resources/special_dialogues/remilia_call0.dialogue"))
 	else:
 		DialogueManager.show_dialogue_balloon(GenericCallDialogue.construct_for(c))
 
 func _call_end(r: DialogueResource) -> void:
 	do_raycast = true
 	$%CallMenuBtn.visible = true
+	GlobalAudio.play2d(GlobalAudio.SFX_DISCONNECT)
 	DialogueManager.dialogue_ended.disconnect(_call_end)
 
 func _init() -> void:
@@ -106,15 +116,18 @@ func _input(event: InputEvent) -> void:
 	if no_input or $DayPass.visible:
 		return
 
-	if Input.is_action_pressed("pause") and state == GameState.IDLE:
+	if Input.is_action_pressed("pause"):
 		add_child(pause_menu.instantiate())
 		no_input = true
+		pause = true	
+		#do_raycast = false
 
 	camera._stuff(event)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$SubViewportContainer.stretch_shrink = 3 if GameOptions.low_res else 1
+	world.get_node("AnimationPlayer3").play("warning_flash")
 
 	if Engine.is_editor_hint():
 		$DayPass.visible = false
@@ -139,6 +152,24 @@ func _process(delta: float) -> void:
 	fx.volume_db = clamp(pow((camera.global_position - radio_player.global_position).length() * 0.22, 2) - 80, -80.0, 0.0)
 	#print(fx.volume_db)
 
+	if pause:
+		#day_tracker.stop_what_you_are_doing = true
+		var dialg := get_node_or_null("ExampleBalloon") as CanvasLayer
+		if dialg:
+			dialg.visible = false
+	else:
+		#day_tracker.stop_what_you_are_doing = false
+		var dialg := get_node_or_null("ExampleBalloon") as CanvasLayer
+		if dialg:
+			dialg.visible = true
+
+	if QuestTracker.any_quest_active():
+		$%NewDayBtn.visible = false
+		nnd_quest = true
+	else:
+		if nnd_quest and not day_tracker.final_day:
+			$%NewDayBtn.visible = true
+
 func _on_day_tracker_character_goodbye(chara:Character) -> void:
 	print_debug("Goodbye " + chara.name)
 
@@ -148,11 +179,18 @@ func _on_day_tracker_character_goodbye(chara:Character) -> void:
 	# await $Footstep.finished
 
 	#world.change_character_sprite(chara.get_current_portrait())
-	await world.character_walkout($Footstep)
+	if chara.was_reset:
+		world.get_node("CharacterSprite").visible = false
+		chara.was_reset = false
+	else:
+		await world.character_walkout($Footstep)
 
 	#GlobalAudio.no = false
 	if radio_player.stream_paused:
-		radio_player.stream_paused = false
+		if day_tracker.final_day:
+			radio_player.stop()
+		else:
+			radio_player.stream_paused = false
 
 	state = GameState.WAITING
 	Utilities.remove_all_children(sub)
@@ -169,6 +207,16 @@ func _on_day_tracker_character_hello(chara:Character) -> void:
 	# await $Footstep.finished
 	# GlobalAudio.play2d_p($Footstep, GlobalAudio.SFX_FOOTSTEP1)
 	# await $Footstep.finished
+
+	# The magical infinite boundry of dialogue emotion prediction
+	var twond := chara.dialogues[chara.dialogue_progress].raw_text.split("\n")[1].split(" ")
+	if not twond[2].begins_with("[#e="):
+		chara.current_emotion = "neutral"
+	else:
+		var e := twond[2].replace("[#e=", "").replace("]", "")
+		chara.current_emotion = e
+	
+	print("Starting dialogue emotion: " + chara.current_emotion)
 
 	world.change_character_sprite(chara.get_current_portrait())
 	await world.character_walkin($Footstep)
@@ -192,13 +240,6 @@ func _on_day_tracker_day_end() -> void:
 
 	GlobalAudio.play2d(GlobalAudio.SFX_BELL_LARGE)
 
-	var we := $SubViewportContainer/SubViewport/World/WorldEnvironment.environment as Environment
-	# while we.ambient_light_energy > 0.1:
-	# 	we.ambient_light_energy -= 0.025
-	# 	await get_tree().create_timer(0.05).timeout
-	# we.ambient_light_energy = 0.1
-	we.background_mode = Environment.BG_KEEP
-
 	var dl := $SubViewportContainer/SubViewport/World/DirectionalLight3D as DirectionalLight3D
 	while dl.light_energy > 0.1:
 		dl.light_energy -= 0.025
@@ -208,14 +249,27 @@ func _on_day_tracker_day_end() -> void:
 
 	($SubViewportContainer/SubViewport/World/Player as CharacterBody3D).translate(Vector3(0, 0.2, 0))
 
+	var we := $SubViewportContainer/SubViewport/World/WorldEnvironment.environment as Environment
+	# while we.ambient_light_energy > 0.1:
+	# 	we.ambient_light_energy -= 0.025
+	# 	await get_tree().create_timer(0.05).timeout
+	# we.ambient_light_energy = 0.1
+	we.background_mode = Environment.BG_KEEP
+
 	state = GameState.IDLE
 	Utilities.remove_all_children(sub)
 	$Toolbar.visible = true
 	#sub.add_child(idle_interface.instantiate())
 	#third_eye.disabled = true
-	$%NewDayBtn.visible = true
-	#$%CallMenuBtn.visible = true
+	if not day_tracker.final_day:
+		$%NewDayBtn.visible = true
+	if not QuestTracker.any_quest_active():
+		$%CallMenuBtn.visible = true
 	do_raycast = true
+
+	if day_tracker.final_day:
+		(world.get_node("AnimationPlayer2") as AnimationPlayer).play("pcall")
+		(world.get_node("telephone/SpatialAudioPlayer3D") as SpatialAudioPlayer3D).play()
 
 func _on_day_tracker_day_start() -> void:
 	print("DAY STARTED")
@@ -226,12 +280,17 @@ func _on_day_tracker_day_start() -> void:
 	# 	await get_tree().create_timer(0.05).timeout
 	# we.ambient_light_energy = 0.7
 
+	$%NewDayBtn.visible = false
+
 	var dl := $SubViewportContainer/SubViewport/World/DirectionalLight3D as DirectionalLight3D
 	while dl.light_energy < 1.5:
 		dl.light_energy += 0.025
 		await get_tree().create_timer(0.05).timeout
 	dl.light_energy = 1.5
 	#dl.shadow_enabled = true
+
+	no_input = true
+	do_raycast = false
 
 	#day_tracker.stop_what_you_are_doing = true
 	
@@ -240,7 +299,7 @@ func _on_day_tracker_day_start() -> void:
 	chattered = true
 	_radio_in()
 	#$SubViewportContainer/SubViewport/World/Lights.visible = true
-	$%NewDayBtn.visible = true
+	#$%NewDayBtn.visible = true
 	#day_tracker.stop_what_you_are_doing = false
 
 	#($SubViewportContainer/SubViewport/World/clocks as Clocks).set_volume(0)
@@ -249,9 +308,8 @@ func _on_day_tracker_day_start() -> void:
 	Utilities.remove_all_children(sub)
 	#third_eye.disabled = true
 	$Toolbar.visible = true
-	$%NewDayBtn.visible = false
-	#$%CallMenuBtn.visible = false
-	do_raycast = false
+	$%CallMenuBtn.visible = false
+	no_input = false
 
 func _on_third_eye_pressed() -> void:
 	match day_tracker.curernt_character.id:
@@ -259,6 +317,10 @@ func _on_third_eye_pressed() -> void:
 			InteractionTracker.reimu_knowledge = true
 
 func _on_call_menu_btn_pressed() -> void:
+	if day_tracker.final_day:
+		print("The end is never the end is never the end is never the end")
+		return
+
 	#$%CallMenuBtn.visible = false
 	do_raycast = false
 	cm = call_menu.instantiate()
@@ -267,6 +329,9 @@ func _on_call_menu_btn_pressed() -> void:
 	#$%CallMenuBtn.visible = true
 
 func _on_quest_menu_btn_pressed() -> void:
+	if day_tracker.final_day:
+		return
+	
 	#$%QuestMenuBtn.visible = false
 	do_raycast = false
 	qm = quest_menu.instantiate()
@@ -275,6 +340,8 @@ func _on_quest_menu_btn_pressed() -> void:
 	#$%QuestMenuBtn.visible = true
 
 func _on_new_day_btn_pressed() -> void:
+	if state != GameState.IDLE:
+		return
 	new_day()
 
 func _radio_toggle() -> void:

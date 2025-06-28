@@ -1,23 +1,46 @@
 ~ start
 Koakuma: Good day, miss Komeiji.
-Satori Komeiji: The Scarlet Devil Mansion's demon librarian? No need to be formal with me.
+Satori Komeiji: The Scarlet Devil Mansion's demon librarian, Koakuma? No need to be formal with me.
 Satori Komeiji: Since you came here, I assume you're seeking my help, yes?
 Koakuma: Yes. I am looking for ways to make someone fall in love with me.
 Koakuma: Perhaps a magic book, a spell, or a potion.
 Satori Komeiji: You're out of luck then.
 Satori Komeiji: Such a thing doesn't exist. And even if it did, it would be highly immoral.
 Satori Komeiji: Love cannot exist without the consent of both parties.
-Koakuma: B-But it's impossible! I'm so head over heels for her, yet she doesn't see me as anyone more than her colleague!
-Koakuma: Do you know the things I've tried?
+Koakuma: [#e=angry] B-But it's impossible! I'm so head over heels for her, yet she doesn't see me as anyone more than her colleague!
+Koakuma: [#e=annoyed] Do you know the things I've tried?
 Koakuma: I've started helping her more, serving her more, wearing more revealing outfits around her, sleeping with her... and nothing!
 Satori Komeiji: Nothing...?
-Satori Komeiji: Sleeping with each other is not something regular coworkers do, you know.
+Satori Komeiji: [#e=smug] Sleeping with each other is not something regular coworkers do, you know.
 Koakuma: How so? Lately, she's even been closing herself in her room more often.
 Koakuma: When I try to bring her tea or snacks, she either pretends she's sleeping or tells me that she's busy doing important research.
 Satori Komeiji: You're trying too hard.
 Satori Komeiji: Your love interest is Patchouli, am I right?
-Koakuma: H-How did you know...?
-Satori Komeiji: I read your mind...
-Koakuma: ...
-Satori Komeiji: Just kidding. Me and Patchouli are good friends, she visited me some time ago.
+Koakuma: [#e=surprise] H-How did you know...?
+do GlobalAudio.play2d(GlobalAudio.SFX_HIT_HURT)
+Satori Komeiji: [#e=smug] I read your mind...
+Koakuma: [#e=angry] ...
+Satori Komeiji: [#e=happy] J-Just kidding! Me and Patchouli are good friends, she visited me some time ago.
+Koakuma: [#e=surprise] She did?
+Satori Komeiji: Yes, and she told me quite a lot about you.
+Koakuma: [#e=sad] She... she doesn't love me, does she?
+Satori Komeiji: [#e=smug] She does. She loves you a lot.
+Koakuma: T-Then why...?
+Satori Komeiji: Because you're trying too hard.
+Satori Komeiji: She doesn't [u]not[/u] appreciate your gestrures. But for her current state, it's too much.
+Satori Komeiji: You need to take things slow, not rush it.
+Koakuma: Y-You think so...?
+Satori Komeiji: Start small; learn to brew tea from Remilia's head maid, and hand her some whenever she wants or is tired.
+Satori Komeiji: Don't try to help her with every single thing. Patchouli is the type of person who doesn't like any distractions when working.
+Satori Komeiji: If she ever gets mad, don't take it as if she doesn't love you anymore.
+Koakuma: O... Okay.
+Satori Komeiji: After some time, take her on a date.
+Satori Komeiji: Nothing too special, even just a small walk around the mansion would be enough.
+Koakuma: [#e=blush] A date, huh...
+Satori Komeiji: [#e=smug] You're not very experienced in this, are you?
+Koakuma: [#e=relaxed] A-Ah, it's not that I'm not, just...
+Koakuma: [#e=relaxed] Not in this way, I guess.
+Satori Komeiji: [#e=happy] What does that mean?
+Koakuma: [#e=relaxed] E-Everyone has some secrets, okay?!
+Koakuma: [#e=happy] Anyway, thank you for your help!
 => END

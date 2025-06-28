@@ -1,0 +1,16 @@
+~ start
+Aya Shameimaru: Satori, how are you doing this fine evening?
+Satori Komeiji: I'm doing well. I'm calling you to speak about Momiji.
+Aya Shameimaru: Momiji, hmm... What about her?
+Satori Komeiji: She came to my mansion a while ago.
+Satori Komeiji: She's a little shy so I'm calling you in her name, but I'm going to be blunt.
+Satori Komeiji: [#e=smug] She has a crush on you and is wondering if feel the same way.
+Aya Shameimaru: Hahaha, she couldn't ask me that herself?
+Aya Shameimaru: Oh, she's too cute, that Momiji...
+Aya Shameimaru: Of course I love her.\nBut she's so cute, I wanted to tease her a bit longer before moving forward.
+Aya Shameimaru: Is that all you wanted?
+Satori Komeiji: [#e=happy] I suppose so.
+Satori Komeiji: Have a good night.
+Aya Shameimaru: Good night.
+do QuestTracker.complete_quest("ayamomi0")
+=> END

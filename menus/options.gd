@@ -1,5 +1,5 @@
 class_name GameOptions
-extends Control
+extends CanvasLayer
 
 static var low_res := false
 
@@ -7,7 +7,7 @@ static var low_res := false
 func _ready() -> void:
 	$%MasterSlider.value = AudioServer.get_bus_volume_linear(0) * 50.0
 	$%SFXSlide.value = AudioServer.get_bus_volume_linear(1) * 50.0
-	$%BGMSlide.value = AudioServer.get_bus_volume_linear(0) * 50.0
+	$%BGMSlide.value = AudioServer.get_bus_volume_linear(2) * 50.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -18,13 +18,15 @@ func _process(delta: float) -> void:
 func _on_master_slider_value_changed(value:float) -> void:
 	AudioServer.set_bus_volume_linear(0, value / 50.0)
 
+
 func _on_back_pressed() -> void:
-	if get_parent().name != "Pause":
+	if get_parent().name != "Interface":
 		GGT.change_scene("res://menus/menu.tscn")
 	else:
+		GameplayInterface.no_input = false
+		GameplayInterface.pause = false
 		get_parent().remove_child(self)
 		queue_free()
-
 
 func _on_sfx_slide_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_linear(1, value / 50.0)

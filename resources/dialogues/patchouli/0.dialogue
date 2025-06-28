@@ -1,19 +1,36 @@
 ~ start
-Patchouli Knowledge: Satori, please help me.
-Satori Komeiji: P-Patchouli?! You don't look to well...
-Patchouli Knowledge: Koakuma, she...
-Satori Komeiji: Koakuma?
+Patchouli Knowledge: [#e=troubled] Satori, please help me.
+Satori Komeiji: [#e=surprise] P-Patchouli?! You don't look too well...
+Patchouli Knowledge: [#e=troubled] Koakuma, she...
+Satori Komeiji: [#e=surprise] Koakuma?
 Patchouli Knowledge: My demon helper. She has long red hair and helps around the library. You've definitely seen her a few times.
 Satori Komeiji: Ah... yes. What about her?
-Patchouli Knowledge: I believe she has a crush on me.
+Patchouli Knowledge: [#e=troubled] I believe she has a crush on me.
 Satori Komeiji: Huh... and what makes you think so?
-Patchouli Knowledge: It's obvious. She's [the things she has been doing]
-Satori Komeiji: So you know that she's in love with you, but you haven't done anything about it... Is it one-sided?
-Patchouli Knowledge: Quite honestly... I love her too. I do, but...
-Patchouli Knowledge: It's just too much. I can't handle it.
+Patchouli Knowledge: It's obvious.
+Patchouli Knowledge: The way she speaks with me, the way she's looking at me, the infinite ways she's been trying to get closer to me as of late...
+Satori Komeiji: So you know that she's in love with you, but you haven't done anything about it...\nIs it one-sided?
+Patchouli Knowledge: [#e=sad] Quite honestly... I love her too. I do, but...
+Patchouli Knowledge: [#e=sad] It's just too much. I can't handle it.
 Patchouli Knowledge: She's clinging to me too much. She's trying to be by my every step.
-[...]
 Patchouli Knowledge: I don't have the courage to tell her 'no,' so could you please speak with her if she ever comes here?
-Yes
-No
+Satori Komeiji: [u]No[/u]? Even though you also have feelings for her, you're set on rejecting her?
+Patchouli Knowledge: [#e=annoyed] You don't understand!
+Patchouli Knowledge: [#e=annoyed] I don't have the same vigor as I had in my youth!
+Patchouli Knowledge: And Koakuma, she... She's quite the opposite, let's just say.
+Patchouli Knowledge: Please, just speak with her.
+- Fine
+	Satori Komeiji: I'll... see what I can do.
+	Satori Komeiji: But if I find a way, will you accept Koakuma's love?
+	Patchouli Knowledge: If you find a way...?
+	Patchouli Knowledge: [#e=happy] I would love to.
+	Patchouli Knowledge: [#e=happy] After all... it really isn't one-sided...
+	do CharacterTracker.getv("patchouli").set_can_visit(false)
+	do CharacterTracker.getv("koakuma").set_can_visit(true)
+- No
+	do InteractionTracker.bad_choice()
+	Satori Komeiji: I'm afraid this is something you must handle yourself, Patchy.
+	Patchouli Knowledge: That's a shame...
+	Patchouli Knowledge: [#e=sad] But I understand.
+	do CharacterTracker.getv("patchouli").reset()
 => END

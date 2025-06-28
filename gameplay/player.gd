@@ -27,7 +27,7 @@ const JUMP_VELOCITY = 4.5
 ]
 
 func _physics_process(delta: float) -> void:
-	if GameplayInterface.global.state != GameplayInterface.GameState.IDLE:
+	if GameplayInterface.global.state != GameplayInterface.GameState.IDLE or GameplayInterface.global.no_input:
 		return
 	
 	# Add the gravity.

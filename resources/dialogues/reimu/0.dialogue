@@ -39,7 +39,7 @@ Reimu Hakurei: I feel weirdly drawn to her.
 		Satori Komeiji: Take care.
 		#set CharacterTracker.getv("reimu").can_visit = func(c): return false
 		do CharacterTracker.getv("reimu").set_can_visit(false)
-		% Koishi Komeiji: [next=auto] What...?
-		% Koishi Komeiji: [next=auto] Why...?
+		#% Koishi Komeiji: [next=auto] What...?
+		#% Koishi Komeiji: [next=auto] Why...?
 		do CharacterTracker.getv("reimu").reset()
 => END

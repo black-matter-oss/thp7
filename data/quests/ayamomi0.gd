@@ -4,8 +4,8 @@ extends Quest
 func _init() -> void:
 	self.id = "ayamomi0"
 	self.title = "Help Momiji find out Aya's intentions"
-	self.description = "Check how Aya feels about Momiji by using your third eye when she comes over"
-	self.help = "Call Aya over through the call menu and use your third eye on her"
+	self.description = "Call Aya and check how she feels about Momiji"
+	self.help = "Call Aya over the phone"
 
 	self.quest_started.connect(func(q) -> void:
 		CharacterTracker.getv("momiji").set_can_visit(false)

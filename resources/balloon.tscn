@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://q3rc21kog8po"]
+[gd_scene load_steps=9 format=3 uid="uid://q3rc21kog8po"]
 
 [ext_resource type="Script" uid="uid://e18reoe1l7ot" path="res://resources/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
@@ -6,9 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://pwyy5o4r6r35" path="res://resources/characters/satori/neutral.png" id="2_kx4vl"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
 [ext_resource type="Texture2D" uid="uid://l0w8mdmorqdr" path="res://resources/characters/remilia/blush.png" id="3_avp63"]
+[ext_resource type="AudioStream" uid="uid://d4jv527wikha6" path="res://resources/sfx/blip.wav" id="7_6cssk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avp63"]
-bg_color = Color(0.54, 0.4266, 0.53244, 1)
+bg_color = Color(0.72, 0.17016, 0.1512, 1)
 border_width_left = 10
 border_width_top = 10
 border_width_right = 10
@@ -40,7 +41,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -300.0
+offset_top = -324.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -65,6 +66,7 @@ expand_mode = 3
 
 [node name="ImageRight" type="TextureRect" parent="Balloon/MarginContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 10
 texture = ExtResource("3_avp63")
@@ -99,6 +101,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
+skip_action = &""
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
@@ -124,5 +127,10 @@ response_template = NodePath("ResponseExample")
 layout_mode = 2
 text = "Response example"
 
+[node name="BlipPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_6cssk")
+bus = &"SFX"
+
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="spoke" from="Balloon/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]
 [connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

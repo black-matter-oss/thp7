@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6q56sljqdsga"]
+[gd_scene load_steps=10 format=3 uid="uid://8kdy3rokrnoi"]
 
 [ext_resource type="Texture2D" uid="uid://pwyy5o4r6r35" path="res://resources/characters/satori/neutral.png" id="1_lk6kc"]
 [ext_resource type="Texture2D" uid="uid://l0w8mdmorqdr" path="res://resources/characters/remilia/blush.png" id="2_pkymo"]

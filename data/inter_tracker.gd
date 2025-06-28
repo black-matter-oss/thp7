@@ -7,6 +7,7 @@ static var reimu_knowledge: bool = false
 static var momiji_confessed: bool = false
 static var kyouko_funny: bool = false
 static var kyouko_propose: int = -1
+static var love_protocol: bool = false
 
 static func bad_choice() -> void:
 	#GlobalAudio.no = true
@@ -15,11 +16,18 @@ static func bad_choice() -> void:
 
 	var doll := Doll.make_random(GameplayInterface.global.day_tracker.curernt_character.dialogue_color)
 	GameWorld.global.get_node("Dolls").add_child(doll)
-	doll.position = Vector3(
-		randf_range(-16, 16),
-		20,
-		randf_range(-46, -3)
-	)
+	if GameplayInterface.global.day_tracker.final_day:
+		doll.position = Vector3(
+			randf_range(-2, 2),
+			20,
+			randf_range(-22, -19)
+		)
+	else:
+		doll.position = Vector3(
+			randf_range(-16, 16),
+			20,
+			randf_range(-46, -3)
+		)
 	doll.rotation_degrees = Vector3(
 		randf_range(0, 360),
 		randf_range(0, 360),

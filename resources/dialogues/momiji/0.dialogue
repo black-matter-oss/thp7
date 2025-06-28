@@ -5,7 +5,7 @@ Satori Komeiji: [#e=happy] What brings you here today?
 Momiji Inubashiri: [#e=blush] A-Aya.
 Momiji Inubashiri: Aya brings me here.
 Satori Komeiji: [#e=confused] Hm?\nDoes she want something from me?
-Momiji Inubashiri: [#e=troubled] Ah, [i]brings me here[/i], but not that way.
+Momiji Inubashiri: [#e=troubled] Ah, "brings me here", but not in that way.
 Momiji Inubashiri: I heard you're assisting people and youkai with romance stuff, right?
 Satori Komeiji: Indeed, that is what I am doing for now.
 - So, something about Aya?
@@ -31,7 +31,9 @@ Satori Komeiji: Indeed, that is what I am doing for now.
 				do CharacterTracker.getv("momiji").set_can_visit(true)
 				set Ayamomi0.lalala = true
 			else
-				do CharacterTracker.getv("momiji").set_can_visit(false)
+				#do CharacterTracker.getv("momiji").set_can_visit(false)
+				do Ayamomi0.reset()
+				do CharacterTracker.getv("momiji").reset()
 		- Have you tried asking her why she's doing this?
 			Momiji Inubashiri: No...\nbut I'm a little afraid of asking her.
 			Satori Komeiji: Why so?
@@ -48,7 +50,7 @@ Satori Komeiji: Indeed, that is what I am doing for now.
 				do InteractionTracker.bad_choice()
 				Momiji Inubashiri: [#e=sad] Aw...
 				Momiji Inubashiri: I'll try asking her then.
-				Koishi Komeiji: [next=auto] B-But you could've...
+				#Koishi Komeiji: [next=auto] B-But you could've...
 				if Ayamomi0.meowymeow2()
 					set Ayamomi0.lalala = true
 					do CharacterTracker.getv("momiji").set_can_visit(true)

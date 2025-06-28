@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://eltyl175exfm"
+path="res://.godot/imported/0.dialogue-adf428bb0d5e7906fe86b2a747abe193.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/kaguya/0.dialogue"
+dest_files=["res://.godot/imported/0.dialogue-adf428bb0d5e7906fe86b2a747abe193.tres"]
+
+[params]
+
+defaults=true

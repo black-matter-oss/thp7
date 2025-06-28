@@ -1,0 +1,8 @@
+~ start
+Remilia Scarlet: [#e=happy2] Satori! Do you want to come to my mansion today?
+- I cannot.
+Satori Komeiji: [#e=sad] Sorry, I can't right now...
+Remilia Scarlet: [#e=sad2] O-Oh, that's too bad...
+Remilia Scarlet: [#e=worried] B-But do remember to call me later today, okay?
+do QuestTracker.create_quest("satoremi0")
+=> END

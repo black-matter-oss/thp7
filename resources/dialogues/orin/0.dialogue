@@ -14,7 +14,7 @@ Satori Komeiji: Yes, indeed.
 	Satori Komeiji: What kinds of food would you like to eat?
 	Rin Kaenbyou: [#e=thinking] Hmm...
 	Rin Kaenbyou: I love sweets, but I suppose that wouldn't really fit a picnic, would it?
-	Satori Komeiji: Of course it will! It's not a, erm... [i]traditional[/i] picnic, per se.
+	Satori Komeiji: Of course it will! It's not a, erm... "traditional" picnic, per se.
 	Rin Kaenbyou: [#e=happy] Is that so...?\nThen, how about some donuts?
 	Rin Kaenbyou: [#e=happy] Or some cake... spongecake...\nBiscuits...
 	Satori Komeiji: [#e=happy] Sweets, I got it. But sweets are for dessert, you can't only eat sweets if you want to deliver the proper nutrients to your body.
@@ -36,8 +36,8 @@ Satori Komeiji: Yes, indeed.
 	Satori Komeiji: Any entertainment?
 	Rin Kaenbyou: [#e=surprise] Entertainment? What do you mean by that?
 	Satori Komeiji: Ah, well...
-	Satori Komeiji: I want to make it a [i]grand[/i] picnic, so I was thinking we would later loiter around the village for a bit?
-	Rin Kaenbyou: [#e=happy] Ahaha, that's what you meant. [i]Grand[/i], huh...
+	Satori Komeiji: I want to make it a [u]grand[/u] picnic, so I was thinking we would later loiter around the village for a bit?
+	Rin Kaenbyou: [#e=happy] Ahaha, that's what you meant. Grand, huh...
 	Rin Kaenbyou: [#e=happy] Oh! We can go to the theatre there! There's actually a play that I really want to see.
 	Satori Komeiji: Is that so? I don't see why not then.
 	=> questionnaire
@@ -51,7 +51,7 @@ Satori Komeiji: Yes, indeed.
 	Rin Kaenbyou: [#e=happy] I remember I saw a very beautiful orange dress in her closet.
 	Rin Kaenbyou: [#e=blush] I wonder if she still has it, I'd love to see her in it...
 	Rin Kaenbyou: As for you, I think your current dress suits you well already!
-	Satori Komeiji: [#e=happy] Ha, of course it does! I am the [i]11-point woman[/i] after all!\nI never look not good.
+	Satori Komeiji: [#e=happy] Ha, of course it does! I am the 11-point woman after all!\nI never not look good.
 	=> questionnaire
 - Goodbye [if Okuurin0.asked_clothing or Okuurin0.asked_food or Okuurin0.asked_drinks or Okuurin0.asked_entertainment]
 	Satori Komeiji: I suppose that's all then.

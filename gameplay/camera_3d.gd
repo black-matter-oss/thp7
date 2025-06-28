@@ -31,10 +31,7 @@ var raycast_result: Dictionary
 @onready var phone: Array[MeshInstance3D] = [
 	world.get_node("telephone/Cube") as MeshInstance3D,
 	world.get_node("telephone/Cube_001") as MeshInstance3D,
-	world.get_node("telephone/Cube_002") as MeshInstance3D,
-	world.get_node("telephone/phone handle") as MeshInstance3D,
-	world.get_node("telephone/Cylinder") as MeshInstance3D,
-	world.get_node("telephone/Cylinder_002") as MeshInstance3D
+	world.get_node("telephone/phone handle") as MeshInstance3D
 ]
 
 @onready var book_area := world.get_node("Colliders/Book")
@@ -55,6 +52,7 @@ func reset_rotation(quick: bool = false) -> void:
 
 	if quick:
 		rotation = reset_rot
+		get_parent().rotation = reset_rot_p
 	else:
 		var delta1 := reset_rot - rotation
 		var delta2 = reset_rot_p - get_parent().rotation
@@ -136,6 +134,10 @@ func _unhighlight(a: Array[MeshInstance3D]) -> void:
 		mat.next_pass = null
 
 func _stuff(event: InputEvent) -> void:
+	if GameplayInterface.global.no_input:
+		mm = Input.MOUSE_MODE_VISIBLE
+		return
+	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			if event.pressed:

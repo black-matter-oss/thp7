@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bscswr5ifl0na"
+path="res://.godot/imported/epilogue0.dialogue-47f8dc90e32ba3564a63a4d269494d96.tres"
+
+[deps]
+
+source_file="res://resources/special_dialogues/epilogue0.dialogue"
+dest_files=["res://.godot/imported/epilogue0.dialogue-47f8dc90e32ba3564a63a4d269494d96.tres"]
+
+[params]
+
+defaults=true

@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://co17bgal6w6ut"]
 
-[ext_resource type="FontFile" uid="uid://30xclouba0tv" path="res://resources/fonts/Delius/Delius-Regular.ttf" id="1_dpb04"]
+[ext_resource type="FontFile" uid="uid://bi7n4gg1texah" path="res://resources/fonts/Sour_Gummy/static/SourGummy-Light.ttf" id="1_dpb04"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kdkh"]
 bg_color = Color(0.235732, 0.235732, 0.235732, 1)

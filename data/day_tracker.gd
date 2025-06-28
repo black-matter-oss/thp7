@@ -15,6 +15,8 @@ var stop_what_you_are_doing := false
 
 @onready var interface: GameplayInterface = get_parent()
 
+var final_day := false
+
 func start_new_day() -> void:
 	if not current_day:
 		current_day = Day.new(1)
@@ -65,15 +67,25 @@ func start_new_day() -> void:
 			current_day.characters_to_visit.append(CharacterTracker.getv("okuu"))
 
 	if current_day.characters_to_visit.size() == 0 and not QuestTracker.any_quest_active():
-		print("No characters able to visit and no quest is active, game has ended!")
-		GGT.change_scene("res://gameplay/game_end.tscn")
-		return
+		if not final_day:
+			print("Activating the final day protocol")
+			final_day = true
+
+			current_day.characters_to_visit.append(CharacterTracker.getv("kyouko"))
+			current_day.characters_to_visit.append(CharacterTracker.getv("remilia"))
+		else:
+			print("No characters able to visit and no quest is active, game has ended!")
+			GGT.change_scene("res://gameplay/game_end.tscn")
+			return
 
 	day_start.emit.call_deferred()
 
 func begin_loop() -> void:
 	if not current_day:
 		start_new_day()
+	
+	# if current_day.characters_to_visit.size() == 0 and QuestTracker.any_quest_active():
+	# 	await get_tree().create_timer(10).timeout
 	
 	while not current_day.characters_to_visit.is_empty():
 		if not current_dialogue_ended:

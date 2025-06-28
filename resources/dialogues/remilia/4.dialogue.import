@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bcicuwedwhuwv"
+path="res://.godot/imported/4.dialogue-a18d24736d16594edcf04da50e7ada65.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/remilia/4.dialogue"
+dest_files=["res://.godot/imported/4.dialogue-a18d24736d16594edcf04da50e7ada65.tres"]
+
+[params]
+
+defaults=true

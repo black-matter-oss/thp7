@@ -9,7 +9,7 @@ Satori Komeiji [#e=annoyed]: Ugh, you scared me there for a moment...
 Utsuho Reiuji: [#e=relaxed] But I do need your help!
 Utsuho Reiuji: You know, me and Rin have started dating not too long ago. Or rather, later this week will--
 Satori Komeiji: [#e=surprise] Wait, wait, wait. What?
-Satori Komeiji: [#e=surprise] When did [i]that[/i] happen?
+Satori Komeiji: [#e=surprise] When did [u]that[/u] happen?
 Utsuho Reiuji: Did Rin not tell you?
 Satori Komeiji: No, I haven't heard anything from her.
 Utsuho Reiuji: Oh...
@@ -22,11 +22,12 @@ Utsuho Reiuji: But it's not a problem, right?
 	do InteractionTracker.change_relationship("orin", "satori", -1000)
 	
 	Satori Komeiji: [#e=annoyed] It's a huge problem.
-	Satori Komeiji: [#e=angry] I mean, you're both women! Do you have the slightest idea of how insane what you just said is?!
+	Satori Komeiji: [#e=angry] You've got a job at this, and I don't want you slacking off.
+	#Satori Komeiji: [#e=angry] I mean, you're both women! Do you have the slightest idea of how insane what you just said is?!
 	Utsuho Reiuji: [#e=sad] [next=auto] I--
-	Satori Komeiji: Get back to work and forget about this entire date thing.
+	Satori Komeiji: Get back to work and forget about this entire relationship.
 	Utsuho Reiuji: [#e=sad] ...
-	do CharacterTracker.getv("okuu").set_can_visit(false)
+	#do CharacterTracker.getv("okuu").set_can_visit(false)
 	#% Koishi Komeiji: [next=auto] Huh...?
 	#% Koishi Komeiji: [next=auto] No...
 	#% Koishi Komeiji: [next=auto] ??!!!!?!

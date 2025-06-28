@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dw3fm75rc6p6f"
+path="res://.godot/imported/remilia_call0.dialogue-a6fae2cd2d59d6171dff834f1e3a7104.tres"
+
+[deps]
+
+source_file="res://resources/special_dialogues/remilia_call0.dialogue"
+dest_files=["res://.godot/imported/remilia_call0.dialogue-a6fae2cd2d59d6171dff834f1e3a7104.tres"]
+
+[params]
+
+defaults=true
