@@ -34,6 +34,10 @@ static var no_input := false
 static var pause := false
 static var nnd_quest := false
 
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		GameConfig.save()
+
 func new_day() -> void:
 	print("New day!")
 	$%NewDayBtn.visible = false
@@ -319,7 +323,17 @@ func _on_third_eye_pressed() -> void:
 func _on_call_menu_btn_pressed() -> void:
 	if day_tracker.final_day:
 		print("The end is never the end is never the end is never the end")
-		return
+		
+		var n := 0
+		while n < 500:
+			world.rotate_x(0.01)
+			world.scale.y += 0.01
+			world.rotate_y(-0.01)
+			n += 1
+			print(n)
+			await get_tree().create_timer(0.007).timeout
+		
+		print("okay!")
 
 	#$%CallMenuBtn.visible = false
 	do_raycast = false

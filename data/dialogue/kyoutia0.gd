@@ -5,7 +5,7 @@ static var date_success: int = -1
 
 static func date() -> bool:
 	if date_success == -1:
-		if randi_range(1, 100) <= 80:
+		if randi_range(1, 100) <= 90:
 			date_success = 1
 		else:
 			date_success = 0

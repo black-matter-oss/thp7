@@ -17,12 +17,12 @@ Kaguya Houraisan: I heard the birds chirping outside my palace, the sun shining 
 Kaguya Houraisan: "Oh, what a beautiful day!" I thought to myself.
 Kaguya Houraisan: I stood up, looked around for a bit, and noticed that my clothes were missing.
 Kaguya Houraisan: That's fine; Eirin probably took them to wash.
-Kaguya Houraisai: [#e=angry] So I ask Keine, and what does she say?\nThat she didn't take any of my clothes!
-Kaguya Houraisai: [#e=angry] I look out the window, and who do I see there?\nMokou hanging my clothes on a tree!
-Kaguya Houraisai: [#e=angry] D-Do you realise how embarassing it was for me to climb up the tree first thing in the morning, while Mokou was staring at me and laughing?!
+Kaguya Houraisan: [#e=angry] So I ask Keine, and what does she say?\nThat she didn't take any of my clothes!
+Kaguya Houraisan: [#e=angry] I look out the window, and who do I see there?\nMokou hanging my clothes on a tree!
+Kaguya Houraisan: [#e=angry] D-Do you realise how embarassing it was for me to climb up the tree first thing in the morning, while Mokou was staring at me and laughing?!
 Satori Komeiji: I... I suppose I don't...
-Kaguya Houraisai: [#e=angry] Of course you don't!
-Kaguya Houraisai: Agh, I need to do something even more humiliating to her...
+Kaguya Houraisan: [#e=angry] Of course you don't!
+Kaguya Houraisan: Agh, I need to do something even more humiliating to her...
 do CharacterTracker.getv("mokou").set_can_visit(true)
 do CharacterTracker.getv("kaguya").set_can_visit(false)
 => END

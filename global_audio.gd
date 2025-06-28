@@ -10,8 +10,12 @@ const SFX_CLOCK1 := preload("res://resources/sfx/clock0.ogg")
 const SFX_CLOCK2 := preload("res://resources/sfx/clock1.ogg")
 const SFX_NOISE0 := preload("res://resources/sfx/noise0.wav")
 const SFX_NOISE1 := preload("res://resources/sfx/noise1.ogg")
+const SFX_NOISE2 := preload("res://resources/sfx/noise2.ogg")
 const SFX_FOOTSTEP1_LOOP := preload("res://resources/sfx/footstep1_loop.wav")
 const SFX_DISCONNECT := preload("res://resources/sfx/disconnect.wav")
+
+const BGM_ENDING := preload("res://resources/music/special/Reunited.mp3")
+const BGM_TITLE := preload("res://resources/music/special/Danse Morialta.mp3")
 
 const BGM_DIR = "res://resources/music"
 const CHATTER_DIR = "res://resources/sfx/chatter"

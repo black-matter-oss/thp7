@@ -18,13 +18,15 @@ static func load() -> void:
 	# wriggle.relationships[satori] = 160
 	# wriggle.dialogue_color = Color.from_rgba8(96, 148, 72)
 
-	if not MainMenu.no_kagumokou:
-		var mokou := addv(Character.new("mokou", "Fujiwara no Mokou"))
-		var kaguya := addv(Character.new("kaguya", "Kaguya Houraisan"))
-		mokou.relationships[kaguya] = -50
-		kaguya.relationships[mokou] = 250
-		mokou.dialogue_color = Color.from_rgba8(207, 94, 50)
-		kaguya.dialogue_color = Color.from_rgba8(80, 80, 80)
+	# if not MainMenu.no_kagumokou:
+	#	print("Excluding Kagumokou")
+	# 	var mokou := addv(Character.new("mokou", "Fujiwara no Mokou"))
+	# 	var kaguya := addv(Character.new("kaguya", "Kaguya Houraisan"))
+	# 	mokou.relationships[kaguya] = -50
+	# 	kaguya.relationships[mokou] = 250
+	# 	mokou.dialogue_color = Color.from_rgba8(207, 94, 50)
+	# 	kaguya.dialogue_color = Color.from_rgba8(80, 80, 80)
+	# 	kaguya.set_can_visit(false)
 
 	# var reimu := addv(Character.new("reimu", "Reimu Hakurei"))
 	# reimu.dialogue_color = Color.from_rgba8(207, 91, 91)
@@ -86,6 +88,8 @@ static func addv(v: Character) -> Character:
 	return v
 
 static func getv(id: String) -> Character:
+	if id not in _characters:
+		return null
 	return _characters[id]
 
 static func love(a: String, b: String) -> void:

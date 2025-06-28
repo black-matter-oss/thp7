@@ -1,3 +1,4 @@
+class_name DialogueBalloon
 extends CanvasLayer
 ## A basic dialogue balloon for use with Dialogue Manager.
 
@@ -135,6 +136,10 @@ func change_character_image() -> void:
 		return
 	
 	var c := CharacterTracker.getv(self.dialogue_line.character)
+	if not c:
+		$%ImageLeft.texture = null
+		$%ImageRight.texture = null
+		return
 	#var e := int(self.dialogue_line.character.split("~")[1])
 	#c.current_emotion = e as Character.Emotion
 

@@ -2,12 +2,18 @@ class_name GameOptions
 extends CanvasLayer
 
 static var low_res := false
+static var read_user_data := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$%MasterSlider.value = AudioServer.get_bus_volume_linear(0) * 50.0
-	$%SFXSlide.value = AudioServer.get_bus_volume_linear(1) * 50.0
-	$%BGMSlide.value = AudioServer.get_bus_volume_linear(2) * 50.0
+	# if read_user_data:
+	# 	$%MasterSlider.value = AudioServer.get_bus_volume_linear(0) * 50.0
+	# 	$%SFXSlide.value = AudioServer.get_bus_volume_linear(1) * 50.0
+	# 	$%BGMSlide.value = AudioServer.get_bus_volume_linear(2) * 50.0
+	# else:
+	$%MasterSlider.value = GameConfig.file.get_value("options", "vol_master", 50.0)
+	$%SFXSlide.value = GameConfig.file.get_value("options", "vol_sfx", 50.0)
+	$%BGMSlide.value = GameConfig.file.get_value("options", "vol_bgm", 50.0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -17,9 +23,11 @@ func _process(delta: float) -> void:
 
 func _on_master_slider_value_changed(value:float) -> void:
 	AudioServer.set_bus_volume_linear(0, value / 50.0)
-
+	GameConfig.file.set_value("options", "vol_master", value)
 
 func _on_back_pressed() -> void:
+	GameConfig.save()
+
 	if get_parent().name != "Interface":
 		GGT.change_scene("res://menus/menu.tscn")
 	else:
@@ -31,10 +39,11 @@ func _on_back_pressed() -> void:
 func _on_sfx_slide_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_linear(1, value / 50.0)
 	AudioServer.set_bus_volume_linear(3, value / 50.0)
+	GameConfig.file.set_value("options", "vol_sfx", value)
 
 func _on_bgm_slide_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_linear(2, value / 50.0)
-
+	GameConfig.file.set_value("options", "vol_bgm", value)
 
 func _on_check_box_toggled(toggled_on: bool) -> void:
 	low_res = toggled_on

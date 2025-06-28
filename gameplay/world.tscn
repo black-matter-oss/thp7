@@ -11,8 +11,8 @@
 [ext_resource type="Script" uid="uid://b65lvcut3da8u" path="res://gameplay/player.gd" id="8_tv7he"]
 [ext_resource type="Script" uid="uid://dcb5irkwmagwv" path="res://gameplay/camera_3d.gd" id="8_vdnhq"]
 [ext_resource type="PackedScene" uid="uid://byof7n4m3sgf8" path="res://resources/blender/candle.blend" id="10_0ohx2"]
+[ext_resource type="Texture2D" uid="uid://pwyy5o4r6r35" path="res://resources/characters/satori/neutral.png" id="10_1or1s"]
 [ext_resource type="Texture2D" uid="uid://db6f3qh6frm45" path="res://resources/textures/flame.png" id="10_sc5ct"]
-[ext_resource type="Texture2D" uid="uid://dw00eqsw4wb31" path="res://resources/blender/satori_Atlas_00002.png" id="10_tv7he"]
 [ext_resource type="AudioStream" uid="uid://bdomwp0nojfs8" path="res://resources/sfx/footstep1.wav" id="11_2lqfd"]
 [ext_resource type="Script" uid="uid://bd82i04n0i2tu" path="res://gameplay/clocks.gd" id="12_5nygg"]
 [ext_resource type="Script" uid="uid://g7r5thmi6lxc" path="res://gameplay/flame_light.gd" id="12_wrmeg"]
@@ -1020,7 +1020,6 @@ volumetric_fog_density = 0.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lb1bw"]
 resource_name = "material_atlas_00002_1"
-albedo_texture = ExtResource("10_tv7he")
 roughness = 0.5
 metadata/extras = {
 "mmd_material": {}
@@ -3589,9 +3588,16 @@ environment = SubResource("Environment_iiep6")
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, -0.2, -23.9106)
 script = ExtResource("8_tv7he")
 
+[node name="Sprite3D" type="Sprite3D" parent="Player"]
+transform = Transform3D(4.3, 0, 0, 0, 4.3, 0, 0, 0, 4.3, 0, 0.702732, 0)
+pixel_size = 0.001
+billboard = 2
+texture = ExtResource("10_1or1s")
+
 [node name="satori" type="Node3D" parent="Player"]
 
 [node name="î├û╛Æné│é╞éΦVer1_0" type="Node3D" parent="Player/satori"]
+visible = false
 metadata/extras = {
 "import_folder": "/home/default/Documents/MMD/MiyÄ« î├û╛Æné│é╞éΦVer1.0",
 "mmd_root": {
@@ -8669,7 +8675,7 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.446994
+light_energy = 0.667968
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 
@@ -8688,7 +8694,7 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.527333
+light_energy = 0.350196
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 
@@ -8707,7 +8713,7 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.61658
+light_energy = 0.625429
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 
