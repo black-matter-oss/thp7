@@ -22,6 +22,7 @@ GGT="*res://addons/ggt-core/ggt.gd"
 GGT_DebugShortcuts="*res://addons/ggt-debug-shortcuts/autoload/debug_shortcuts.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GlobalAudioPlayer="*res://global_audio_player.tscn"
+DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 
 [category]
 
@@ -49,7 +50,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/ggt-core/plugin.cfg", "res://addons/ggt-debug-shortcuts/plugin.cfg")
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/ggt-core/plugin.cfg", "res://addons/ggt-debug-shortcuts/plugin.cfg")
 
 [gui]
 
@@ -82,6 +83,8 @@ scene={
 "blender/nodes/modifiers": 1,
 "blender/nodes/punctual_lights": true,
 "blender/nodes/visible": 1,
+"gltf/embedded_image_handling": 2,
+"gltf/naming_version": 1,
 "import_script/path": "",
 "meshes/create_shadow_meshes": true,
 "meshes/ensure_tangents": true,

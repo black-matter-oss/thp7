@@ -11,8 +11,9 @@ static func load() -> void:
 	var remilia := addv(Character.new("remilia", "Remilia Scarlet"))
 	remilia.dialogue_color = Color.from_rgba8(149, 139, 242)
 
-	# var flandre := addv(Character.new("flandre", "Flandre Scarlet"))
-	# flandre.relationships[satori] = 100
+	var flandre := addv(Character.new("flandre", "Flandre Scarlet"))
+	flandre.relationships[satori] = 100
+	flandre.dialogue_color = Color.from_rgba8(55, 69, 53)
 
 	# var wriggle := addv(Character.new("wriggle", "Wriggle Nightbug"))
 	# wriggle.relationships[satori] = 160

@@ -7,6 +7,8 @@ extends Control
 static var no_kagumokou := false
 static var calm_mode := false
 
+#static var just_finished := false
+
 func _ready():
 	GameConfig.init()
 
@@ -17,11 +19,11 @@ func _ready():
 	AudioServer.set_bus_volume_linear(3, GameConfig.file.get_value("options", "vol_sfx", 50.0) / 50.0)
 	AudioServer.set_bus_volume_linear(2, GameConfig.file.get_value("options", "vol_bgm", 50.0) / 50.0)
 
-	if GameConfig.file.get_value("game", "completed", false) and GlobalAudioPlayer.playing:
+	if GameConfig.file.get_value("game", "completed", false) and not GlobalAudioPlayer.playing:
 		GlobalAudioPlayer.stream = GlobalAudio.BGM_TITLE
 		GlobalAudioPlayer.play()
 		#$AudioStreamPlayer2D.play()
-	elif "ending" in scene_params:
+	else:
 		#$AudioStreamPlayer2D.stream = GlobalAudio.BGM_ENDING
 		GlobalAudioPlayer.finished.connect(_play_title_theme_after_ending_theme)
 		#$AudioStreamPlayer2D.play()

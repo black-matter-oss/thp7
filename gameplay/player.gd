@@ -7,6 +7,7 @@ const JUMP_VELOCITY = 4.5
 @onready var satori := $satori as Node3D
 
 @onready var floor := get_parent().get_node("Floor") as MeshInstance3D
+@onready var ceiling := get_parent().get_node("Ceiling") as MeshInstance3D
 @onready var corridors := get_parent().get_node("corridors") as Node3D
 @onready var palace_area := get_parent().get_node("Colliders/PalaceArea2") as Area3D
 @onready var palace_area2 := get_parent().get_node("Colliders/PalaceArea2") as Area3D
@@ -54,7 +55,8 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	floor.global_position = Vector3(round(global_position.x), 0, round(global_position.z))
+	floor.global_position = Vector3(round(global_position.x), floor.global_position.y, round(global_position.z))
+	ceiling.global_position = Vector3(round(global_position.x / 50.0) * 50, ceiling.global_position.y, round(global_position.z / 50.0) * 50)
 	
 	if palace_area2.overlaps_body(self):
 		corridors.global_position = Vector3.ZERO

@@ -1,9 +1,12 @@
 class_name GameWorld
 extends Node3D
 
+signal graphic_options_change()
+
 static var global: GameWorld
 
 @onready var character_sprite: Sprite3D = $CharacterSprite
+@onready var environment: Environment = $WorldEnvironment.environment
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,3 +56,31 @@ func character_walkout(ap: AudioStreamPlayer2D) -> void:
 	ap.stop()
 
 	character_sprite.visible = false
+
+func get_all_children(in_node,arr: Array[Node]=[]) -> Array[Node]:
+	arr.push_back(in_node)
+	for child in in_node.get_children():
+		arr = get_all_children(child,arr)
+	return arr
+
+func _on_graphic_options_change() -> void:
+	match GameOptions.shadows:
+		0: # disabled
+			for x in get_all_children(self):
+				if x is Light3D:
+					x.shadow_enabled = false
+		1: # some (directional lights)
+			for x in get_all_children(self):
+				if x is DirectionalLight3D:
+					x.shadow_enabled = true
+				elif x is Light3D:
+					x.shadow_enabled = false
+		2: # all
+			for x in get_all_children(self):
+				if x.get_parent().name.begins_with("candle"):
+					continue
+				if x is Light3D:
+					x.shadow_enabled = true
+	
+	environment.sdfgi_enabled = GameOptions.lights
+	environment.ssr_enabled = GameOptions.reflections

@@ -88,7 +88,9 @@ func _physics_process(delta: float) -> void:
 	var origin = project_ray_origin(mousepos)
 	var end = origin + project_ray_normal(mousepos) * 1000
 	var query := PhysicsRayQueryParameters3D.create(origin, end)
+	query.collide_with_bodies = false
 	query.collide_with_areas = true
+	query.collision_mask = 2
 
 	raycast_result = space_state.intersect_ray(query)
 	#print(raycast_result)
@@ -163,4 +165,4 @@ func _stuff(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and mm == Input.MOUSE_MODE_CAPTURED:
 		get_parent().rotate_y(-event.relative.x * mouse_sens)
 		#get_parent().get_node("satori").rotate_y(-event.relative.x * mouse_sens)
-		rotation.x = clamp(rotation.x - event.relative.y * mouse_sens, deg_to_rad(-45), deg_to_rad(75))
+		rotation.x = clamp(rotation.x - event.relative.y * mouse_sens, deg_to_rad(-60), deg_to_rad(65))

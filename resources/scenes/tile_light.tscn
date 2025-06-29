@@ -1,0 +1,135 @@
+[gd_scene load_steps=13 format=4 uid="uid://4ggsrqh1cc8o"]
+
+[ext_resource type="Texture2D" uid="uid://bvsni7xh8s611" path="res://resources/textures/mosaic/mosaic_albedo.png" id="1_eh11h"]
+[ext_resource type="Texture2D" uid="uid://pnono3llunij" path="res://resources/textures/mosaic/mosaic_emission.png" id="2_slvpe"]
+[ext_resource type="Texture2D" uid="uid://vhoj6he7ldoj" path="res://resources/textures/mosaic/mosaic_displacement.png" id="3_lxd2v"]
+[ext_resource type="Texture2D" uid="uid://phgmcqthmbjh" path="res://resources/textures/mosaic/mosaic_metallic.png" id="4_f5c6s"]
+[ext_resource type="Texture2D" uid="uid://dsqxdjp6kb2c3" path="res://resources/textures/mosaic/mosaic_normal.png" id="5_opg7s"]
+[ext_resource type="Texture2D" uid="uid://djlwamrauy230" path="res://resources/textures/mosaic/mosaic_roughness.png" id="6_rvt21"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pi0il"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.715264, 0.410948, 0.91615, 1)
+roughness = 0.5
+emission_enabled = true
+emission = Color(0.442344, 0.176801, 0.567986, 1)
+emission_energy_multiplier = 0.65
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_knsn2"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAAAEAAEAAwAFAAIABQAAAAIABgAEAAAABQAGAAAABwABAAQABwADAAEABgAHAAQABQADAAcABQAHAAYA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAD///////8AAAAAAAAAAAAA//8AAAAAAAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5cvfl"]
+resource_name = "tile_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("/5//f//f/z//3/9//5//P/9f/z//nwAA/5//P/9fAAD/X////5//v/+f////X/+//x//f/9f/z//X/9//x//P/9f/3//n/8//5//f/9f/z//X/+//5//f/+f/7//X/9/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_pi0il"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////wAA//8AAP///////wAA//8AAP///////////////wAA////vwAA//////+//////////78AAAAA////vwAAAAD//1TVAAD//wAAVNUAAP////9U1QAAAAAAAFTVAAAAAAAA/7///wAA////v///AAAAAP+/AAAAAP///7///wAAAABU1f///////1TV/////wAAVNX//wAA//9U1QAAAAAAAP///////wAA//8AAP//AAD/////AAAAAP///3//v/9//7//f/+//3//v/////////////////////9U1VTVVNVU1VTVVNVU1VTVAAD/fwAA/38AAP9/AAD/f6oqqiqqKqoqqiqqKqoqqir/v/+//7//v/+//7//v/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_knsn2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1gt8"]
+resource_name = "Material.001"
+transparency = 4
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+albedo_texture = ExtResource("1_eh11h")
+metallic = 1.0
+metallic_texture = ExtResource("4_f5c6s")
+roughness_texture = ExtResource("6_rvt21")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 10.0
+emission_operator = 1
+emission_texture = ExtResource("2_slvpe")
+normal_enabled = true
+normal_texture = ExtResource("5_opg7s")
+heightmap_enabled = true
+heightmap_scale = 2.0
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("3_lxd2v")
+subsurf_scatter_strength = 0.39
+backlight = Color(1, 1, 1, 1)
+refraction_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1akfo"]
+_surfaces = [{
+"aabb": AABB(-1.03237, -1.04572, -1.03237, 2.06475, 2.91582, 2.06475),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAAAEAAEAAwAFAAIABQAAAAIABgAEAAAABQAGAAAABwABAAQABwADAAEABgAHAAQABQADAAcABQAHAAYA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAD///////8AAAAAAAAAAAAA//8AAAAAAAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vxfiu"]
+resource_name = "tile_Cube_001"
+_surfaces = [{
+"aabb": AABB(-1.03237, -1.04572, -1.03237, 2.06475, 2.91582, 2.06475),
+"attribute_data": PackedByteArray("/v//f/9/+P//f/9//v/4//L/Avj/f/f/8f////9/BfgBgAGA94fu//6HAoAEgO7//3//f/7/+P/+//9//3/4/wH4AYD3/+7///8CgAX47v//f/iH8v8CgAGA+3/y//SH"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_p1gt8"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(2.00005, 2.00038, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////wAA/78AAP//////vwAA//8AAP+//////////7///wAA///+fwAA/////+l/////////y38AAAAA///lfwAAAAD//6oqAAD//wAAqioAAP////+qKgAAAAAAAKoqAAAAAAAA/z///wAA////P///AAAAAP8/AAAAAP///z///wAAAACqKv///////6oq/////wAAqir//wAA//+qKgAAAAAAAAAA/////wAAAAAAAP//AAAAAP//AAAAAAAA////f////3////9/////f/9//3//f/9//3//f/////9U1VTVVNVU1VTVVNVU1VTVAAD/fwAA/38AAP9/AAD/f6oqqiqqKqoqqiqqKqoqqir3/waA3f8hgK3/UIDW/9d/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1akfo")
+
+[node name="TileLight" type="Node3D"]
+
+[node name="tile" type="Node3D" parent="."]
+
+[node name="Cube" type="MeshInstance3D" parent="tile"]
+transform = Transform3D(1, 0, 0, 0, 0.0448731, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+mesh = SubResource("ArrayMesh_5cvfl")
+skeleton = NodePath("")
+
+[node name="Cube_001" type="MeshInstance3D" parent="tile"]
+transform = Transform3D(1, 0, 0, 0, 0.0448731, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("ArrayMesh_vxfiu")
+skeleton = NodePath("")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="tile"]
+transform = Transform3D(1, 0, 0, 0, 2.98023e-08, -1, 0, 1, 2.98023e-08, 0, -0.0049067, 0)
+light_color = Color(0.994785, 0.582315, 1, 1)
+light_energy = 15.0
+spot_range = 20.0
+spot_angle = 80.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="tile"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.173533, 0)
+visible = false
+omni_range = 10.0
+omni_attenuation = 3.822

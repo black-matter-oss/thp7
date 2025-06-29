@@ -49,9 +49,9 @@ Kyouko Kasodani: [#e=sad] But I have ran out of ideas...
 	=> yippie
 - What about your band?
 	set Kyoutia0.choice = 2
-	Kyouko Kasodani: [#e=confused] Our band? What about it?
+	Kyouko Kasodani: [#e=confused] My band?
 	Satori Komeiji: You're in a punk rock band together with Mystia, right?
-	Kyouko Kasodani: I am, yeah. We were the ones who started it.
+	Kyouko Kasodani: Oh, you mean Choujuu Gigaku! What about it?
 	Satori Komeiji: What if you put on a special concert just for her?
 	Kyouko Kasodani: Huh... and I propose to her on the stage?
 	Satori Komeiji: Exactly.

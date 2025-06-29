@@ -67,8 +67,8 @@ func show_day_count(d: int) -> void:
 	
 	$DayPass.modulate.a = 1
 	#camera.mm = Input.MOUSE_MODE_VISIBLE
-	var we := $SubViewportContainer/SubViewport/World/WorldEnvironment.environment as Environment
-	we.background_mode = Environment.BG_CLEAR_COLOR
+	#var we := $SubViewportContainer/SubViewport/World/WorldEnvironment.environment as Environment
+	#we.background_mode = Environment.BG_CLEAR_COLOR
 	($SubViewportContainer/SubViewport/World/Player as CharacterBody3D).position = Vector3(0, -0.2, -24.5)
 	await get_tree().create_timer(3).timeout
 	camera.mm = Input.MOUSE_MODE_VISIBLE
@@ -110,11 +110,10 @@ func _call_end(r: DialogueResource) -> void:
 	DialogueManager.dialogue_ended.disconnect(_call_end)
 
 func _init() -> void:
-	if Engine.is_editor_hint():
-		return
-	
 	global = self
 	CharacterTracker.load()
+
+	ResourceLoader.load_threaded_request("res://epilogue/test.tscn")
 
 func _input(event: InputEvent) -> void:
 	if no_input or $DayPass.visible:
@@ -130,7 +129,9 @@ func _input(event: InputEvent) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$SubViewportContainer.stretch_shrink = 3 if GameOptions.low_res else 1
+	print("Setting graphics settings for viewport")
+	GameOptions.set_viewport_options($SubViewportContainer/SubViewport)
+
 	world.get_node("AnimationPlayer3").play("warning_flash")
 
 	if Engine.is_editor_hint():
@@ -142,7 +143,7 @@ func _ready() -> void:
 
 	GlobalAudio.player2d = $AudioStreamPlayer2D
 	GlobalAudio.player3d = $SubViewportContainer/SubViewport/World/AudioStreamPlayer3D
-	$SubViewportContainer/SubViewport/World/DirectionalLight3D.rotate_x(deg_to_rad(-60))
+	#$SubViewportContainer/SubViewport/World/DirectionalLight3D.rotate_x(deg_to_rad(-60))
 
 	if GGT.is_changing_scene(): # this will be false if starting the scene with "Run current scene" or F6 shortcut
 		await GGT.change_finished
@@ -253,12 +254,12 @@ func _on_day_tracker_day_end() -> void:
 
 	($SubViewportContainer/SubViewport/World/Player as CharacterBody3D).translate(Vector3(0, 0.2, 0))
 
-	var we := $SubViewportContainer/SubViewport/World/WorldEnvironment.environment as Environment
+	#var we := $SubViewportContainer/SubViewport/World/WorldEnvironment.environment as Environment
 	# while we.ambient_light_energy > 0.1:
 	# 	we.ambient_light_energy -= 0.025
 	# 	await get_tree().create_timer(0.05).timeout
 	# we.ambient_light_energy = 0.1
-	we.background_mode = Environment.BG_KEEP
+	#we.background_mode = Environment.BG_KEEP
 
 	state = GameState.IDLE
 	Utilities.remove_all_children(sub)
@@ -323,17 +324,34 @@ func _on_third_eye_pressed() -> void:
 func _on_call_menu_btn_pressed() -> void:
 	if day_tracker.final_day:
 		print("The end is never the end is never the end is never the end")
+		var we := $SubViewportContainer/SubViewport/World/WorldEnvironment.environment as Environment
+		we.background_color = Environment.BG_KEEP
 		
 		var n := 0
 		while n < 500:
-			world.rotate_x(0.01)
-			world.scale.y += 0.01
-			world.rotate_y(-0.01)
+			var m: float = 0.0003 * (n / 2.0)
+
+			world.rotate_x(m)
+			world.scale.x += m / 4.0
+			world.scale.y += m
+			world.rotate_y(-m)
 			n += 1
 			print(n)
 			await get_tree().create_timer(0.007).timeout
 		
-		print("okay!")
+		#print("okay!")
+		var epilogue: PackedScene = ResourceLoader.load_threaded_get("res://epilogue/test.tscn")
+		assert(epilogue)
+
+		var inst := epilogue.instantiate()
+
+		var dolls := world.get_node("Dolls")
+		for doll in dolls.get_children(): # TODO does this work fine?
+			inst.add_child(doll.duplicate())
+
+		get_tree().root.add_child(inst)
+		get_tree().root.remove_child(self)
+		queue_free()
 
 	#$%CallMenuBtn.visible = false
 	do_raycast = false

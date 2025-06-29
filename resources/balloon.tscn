@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://d4jv527wikha6" path="res://resources/sfx/blip.wav" id="7_6cssk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avp63"]
-bg_color = Color(0.198254, 0.324741, 0.175713, 1)
+bg_color = Color(0.2, 0.32549, 0.176471, 1)
 border_width_left = 10
 border_width_top = 10
 border_width_right = 10

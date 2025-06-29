@@ -127,24 +127,101 @@ size_flags_horizontal = 3
 
 [node name="MarginContainer2" type="MarginContainer" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Graphics"
 
-[node name="CheckBox" type="CheckBox" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="PixelArtCheckbox" type="CheckBox" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Low resolution mode"
+
+[node name="Label3" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Anti-Aliasing"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MSAA"
+
+[node name="MSAAOption" type="OptionButton" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 1
+item_count = 4
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "2X"
+popup/item_1/id = 1
+popup/item_2/text = "4X"
+popup/item_2/id = 2
+popup/item_3/text = "8X"
+popup/item_3/id = 3
+
+[node name="FXAACheckBox" type="CheckBox" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Enable FXAA"
+
+[node name="TAACheckBox" type="CheckBox" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Enable TAA"
+
+[node name="Label4" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Shadows"
+horizontal_alignment = 1
+
+[node name="ShadowOptions" type="OptionButton" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Some"
+popup/item_1/id = 1
+popup/item_2/text = "All"
+popup/item_2/id = 2
+
+[node name="Label5" type="Label" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Lighting Quality"
+horizontal_alignment = 1
+
+[node name="LightingQualityOption" type="OptionButton" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 1
+item_count = 2
+popup/item_0/text = "Low"
+popup/item_0/id = 0
+popup/item_1/text = "High"
+popup/item_1/id = 1
+
+[node name="SSRCheckBox" type="CheckBox" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reflections"
 
 [node name="Back" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -155,5 +232,11 @@ text = "Back"
 [connection signal="value_changed" from="Control/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="Control/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/SFXSlide" to="." method="_on_sfx_slide_value_changed"]
 [connection signal="value_changed" from="Control/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/BGMSlide" to="." method="_on_bgm_slide_value_changed"]
-[connection signal="toggled" from="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/PixelArtCheckbox" to="." method="_on_check_box_toggled"]
+[connection signal="item_selected" from="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/MSAAOption" to="." method="_on_option_button_item_selected"]
+[connection signal="toggled" from="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/FXAACheckBox" to="." method="_on_fxaa_check_box_toggled"]
+[connection signal="toggled" from="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/TAACheckBox" to="." method="_on_taa_check_box_toggled"]
+[connection signal="item_selected" from="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/ShadowOptions" to="." method="_on_shadow_options_item_selected"]
+[connection signal="item_selected" from="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/LightingQualityOption" to="." method="_on_lighting_quality_option_item_selected"]
+[connection signal="toggled" from="Control/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer2/PanelContainer/ScrollContainer/MarginContainer/VBoxContainer/SSRCheckBox" to="." method="_on_ssr_check_box_toggled"]
 [connection signal="pressed" from="Control/VBoxContainer/Back" to="." method="_on_back_pressed"]

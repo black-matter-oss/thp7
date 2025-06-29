@@ -2,10 +2,25 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if not Engine.is_editor_hint():
+		if not MainMenu.calm_mode:
+			$%TextureRect.visible = true
+		else:
+			$%ColorRect.visible = true
+		
+		$AudioStreamPlayer2D.play()
+		await get_tree().create_timer(2.5).timeout
+
 	$%koimesh["blend_shapes/strike_before"] = 0
 	$%koimesh["blend_shapes/strike_after"] = 0
 
 	await get_tree().create_timer(1.0).timeout
+
+	if $AudioStreamPlayer2D.playing:
+		$AudioStreamPlayer2D.stop()
+	$%TextureRect.visible = false
+	$%ColorRect.visible = false
+
 	DialogueManager.dialogue_ended.connect(_next)
 	DialogueManager.show_dialogue_balloon(load("res://resources/special_dialogues/epilogue0.dialogue"))
 
@@ -134,7 +149,11 @@ func _finish(d) -> void:
 	print("Please send regards to the entire team (me) :)")
 	print("Congratulations!!")
 
-	GGT.change_scene("res://menus/menu.tscn", { "ending": true })
+	#GGT.change_scene("res://menus/menu.tscn", { "ending": true })
+	var menu = load("res://menus/menu.tscn").instantiate()
+	get_tree().root.add_child(menu)
+	get_tree().root.remove_child(self)
+	queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

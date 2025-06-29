@@ -99,6 +99,7 @@ vertical_alignment = 1
 [node name="Label11" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "https://cc0-textures.com/ - Licensed under CC0
+https://ambientcg.com/ - Licensed under CC0
 https://free-3dtextureshd.com/
 "
 horizontal_alignment = 1
