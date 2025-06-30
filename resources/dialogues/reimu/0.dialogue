@@ -17,14 +17,14 @@ Reimu Hakurei: I feel weirdly drawn to her.
 	Reimu Hakurei: [#e=annoyed] Ha? Me? In love?
 	Reimu Hakurei: [#e=blush] M-Maybe so...
 	Reimu Hakurei: Though I never thought that I could be...
-	Reimu Hakurei: But maybe you're right...?
+	Reimu Hakurei: But maybe you're right?
 	Reimu Hakurei: [#e=blush] Do you think I should... y'know, try confessing to her?
 	- Yes
 		Satori Komeiji: Yes.
 		Reimu Hakurei: But what if she doesn't think of me that way?
 		Satori Komeiji: If you don't at least try, you will regret it later.
 		Reimu Hakurei: Hm...
-		Reimu Hakurei: [#e=happy] You know, you're not that bad for being a mind-reading youkai.
+		Reimu Hakurei: [#e=happy] You know, you're not that bad for a mind-reading youkai.
 		Satori Komeiji: [#e=annoyed] W-Was that supposed to be an insult?
 		Reimu Hakurei: Ah no, no! Anyway, I better get going.
 		set CharacterTracker.getv("reimu").next_visit = "confession"

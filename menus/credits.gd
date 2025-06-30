@@ -12,4 +12,5 @@ func _process(delta: float) -> void:
 
 
 func _on_back_btn_pressed() -> void:
-	GGT.change_scene("res://menus/menu.tscn")
+	get_parent().remove_child(self)
+	queue_free()

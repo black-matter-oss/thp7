@@ -1,5 +1,7 @@
 extends Node3D
 
+@onready var env := $Environment as EpilogueEnvironment
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if not Engine.is_editor_hint():
@@ -10,6 +12,8 @@ func _ready() -> void:
 		
 		$AudioStreamPlayer2D.play()
 		await get_tree().create_timer(2.5).timeout
+	
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 	$%koimesh["blend_shapes/strike_before"] = 0
 	$%koimesh["blend_shapes/strike_after"] = 0
@@ -96,47 +100,48 @@ func _finish(d) -> void:
 	GlobalAudioPlayer.play()
 
 	$AudioStreamPlayer2D2.stop()
-	$AnimationPlayer.play("happy_day")
+	#$AnimationPlayer.play("happy_day")
+	await env.lighten_sky()
 	
-	var ps := ($WorldEnvironment.environment as Environment).sky.sky_material as PhysicalSkyMaterial
-	#ps.rayleigh_color
+	# var ps := ($WorldEnvironment.environment as Environment).sky.sky_material as PhysicalSkyMaterial
+	# #ps.rayleigh_color
 
-	var target := Color.from_rgba8(33, 59, 102)
+	# var target := Color.from_rgba8(33, 59, 102)
 
-	#print("lalala")
+	# #print("lalala")
 
-	#print(ps.rayleigh_color)
-	#print(target)
+	# #print(ps.rayleigh_color)
+	# #print(target)
 
-	var secs = 3.0
-	var perSec = 20.0
-	var steps = secs * perSec
-	var stepR = (target.r - ps.rayleigh_color.r) / steps
-	var stepG = (target.g - ps.rayleigh_color.g) / steps
-	var stepB = (target.b - ps.rayleigh_color.b) / steps
-	var step = 0
+	# var secs = 3.0
+	# var perSec = 20.0
+	# var steps = secs * perSec
+	# var stepR = (target.r - ps.rayleigh_color.r) / steps
+	# var stepG = (target.g - ps.rayleigh_color.g) / steps
+	# var stepB = (target.b - ps.rayleigh_color.b) / steps
+	# var step = 0
 
-	# print(target.r)
-	# print(ps.rayleigh_color.r)
-	# print(target.g)
-	# print(ps.rayleigh_color.g)
-	# print(target.b)
-	# print(ps.rayleigh_color.b)
+	# # print(target.r)
+	# # print(ps.rayleigh_color.r)
+	# # print(target.g)
+	# # print(ps.rayleigh_color.g)
+	# # print(target.b)
+	# # print(ps.rayleigh_color.b)
 
-	print(stepR)
-	print(stepG)
-	print(stepB)
+	# print(stepR)
+	# print(stepG)
+	# print(stepB)
 
-	while step < steps:
-		ps.rayleigh_color.r += stepR
-		ps.rayleigh_color.g += stepG
-		ps.rayleigh_color.b += stepB
+	# while step < steps:
+	# 	ps.rayleigh_color.r += stepR
+	# 	ps.rayleigh_color.g += stepG
+	# 	ps.rayleigh_color.b += stepB
 
-		#print(ps.rayleigh_color.r)
-		#print(ps.rayleigh)
+	# 	#print(ps.rayleigh_color.r)
+	# 	#print(ps.rayleigh)
 
-		step += 1
-		await get_tree().create_timer(1.0 / perSec).timeout
+	# 	step += 1
+	# 	await get_tree().create_timer(1.0 / perSec).timeout
 
 	#print("lilili")
 
@@ -151,6 +156,7 @@ func _finish(d) -> void:
 
 	#GGT.change_scene("res://menus/menu.tscn", { "ending": true })
 	var menu = load("res://menus/menu.tscn").instantiate()
+	GameConfig.save()
 	get_tree().root.add_child(menu)
 	get_tree().root.remove_child(self)
 	queue_free()
@@ -158,5 +164,7 @@ func _finish(d) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	const a := 0.0001
+	const b := 1.0
 	if $knife.visible:
 		$knife.position += Vector3(randf_range(-a, a), randf_range(-a, a), randf_range(-a, a))
+		$knife.rotation_degrees += Vector3(randf_range(-a, a), randf_range(-a, a), randf_range(-a, a))

@@ -7,10 +7,13 @@ static var global: GameWorld
 
 @onready var character_sprite: Sprite3D = $CharacterSprite
 @onready var environment: Environment = $WorldEnvironment.environment
+@onready var player: GamePlayer = $Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	global = self
+	print("Setting initial graphics settings for world")
+	graphic_options_change.emit()
 
 func _process(delta: float) -> void:
 	if QuestTracker.any_quest_active():
@@ -71,14 +74,18 @@ func _on_graphic_options_change() -> void:
 					x.shadow_enabled = false
 		1: # some (directional lights)
 			for x in get_all_children(self):
+				if x.get_meta("no_shadow", false):
+					return
+				
 				if x is DirectionalLight3D:
 					x.shadow_enabled = true
 				elif x is Light3D:
 					x.shadow_enabled = false
 		2: # all
 			for x in get_all_children(self):
-				if x.get_parent().name.begins_with("candle"):
-					continue
+				if x.get_meta("no_shadow", false):
+					return
+				
 				if x is Light3D:
 					x.shadow_enabled = true
 	

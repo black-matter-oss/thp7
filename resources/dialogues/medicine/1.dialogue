@@ -1,0 +1,24 @@
+~ start
+set InteractionTracker.rumicine_poison = false
+if Rumicine0.test()
+	Medicine Melancholy: [#e=happy] They really like me! Even Wriggle became friends with me!
+	Medicine Melancholy: [#e=happy] A-And they all threw a huge picnic just for me! It made me really happy!
+	if Rumicine0.antipoison
+		Medicine Melancholy: [#e=happy] Alice even got me some potion that got rid of my poison!
+	else
+		Medicine Melancholy: [#e=happy] And I even managed to control my poison!
+	Satori Komeiji: [#e=relaxed] I'm glad. Will you be playing with them more often now?
+	Medicine Melancholy: [#e=happy] Mhm! They're all waiting for me already.
+	Satori Komeiji: [#e=happy] You better get going then.
+else
+	do InteractionTracker.bad_choice()
+	Medicine Melancholy: ...
+	Medicine Melancholy: My poison killed them.
+	Medicine Melancholy: No.
+	Medicine Melancholy: I'm a murderer.\n[u]I[/u] killed them.
+	do CharacterTracker.getv("medicine").reset()
+	do CharacterTracker.getv("rumia").reset()
+	do CharacterTracker.getv("wriggle").reset()
+	do CharacterTracker.getv("rumia").set_can_visit(false)
+	do Rumicine0.reset()
+=> END

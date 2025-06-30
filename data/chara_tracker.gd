@@ -6,18 +6,19 @@ static var _characters : Dictionary[String, Character]
 static func load() -> void:
 	var satori := addv(Character.new("satori", "Satori Komeiji"))
 	var koishi := addv(Character.new("koishi", "Koishi Komeiji"))
-	satori.dialogue_color = Color.from_rgba8(216, 138, 206)
+	satori.dialogue_color = Color.from_rgba8(145, 89, 138)
 
 	var remilia := addv(Character.new("remilia", "Remilia Scarlet"))
 	remilia.dialogue_color = Color.from_rgba8(149, 139, 242)
+	remilia.can_call = true
 
 	var flandre := addv(Character.new("flandre", "Flandre Scarlet"))
 	flandre.relationships[satori] = 100
-	flandre.dialogue_color = Color.from_rgba8(55, 69, 53)
+	flandre.dialogue_color = Color.from_rgba8(166, 133, 66)
 
-	# var wriggle := addv(Character.new("wriggle", "Wriggle Nightbug"))
-	# wriggle.relationships[satori] = 160
-	# wriggle.dialogue_color = Color.from_rgba8(96, 148, 72)
+	var wriggle := addv(Character.new("wriggle", "Wriggle Nightbug"))
+	wriggle.relationships[satori] = 160
+	wriggle.dialogue_color = Color.from_rgba8(96, 148, 72)
 
 	# if not MainMenu.no_kagumokou:
 	#	print("Excluding Kagumokou")
@@ -29,18 +30,19 @@ static func load() -> void:
 	# 	kaguya.dialogue_color = Color.from_rgba8(80, 80, 80)
 	# 	kaguya.set_can_visit(false)
 
-	# var reimu := addv(Character.new("reimu", "Reimu Hakurei"))
-	# reimu.dialogue_color = Color.from_rgba8(207, 91, 91)
-	# var marisa := addv(Character.new("marisa", "Marisa Kirisame"))
-	# marisa.dialogue_color = Color.from_rgba8(163, 144, 75)
-	# reimu.relationships[marisa] = 350
-	# marisa.relationships[reimu] = 200
-	# marisa.set_can_visit(false)
+	var reimu := addv(Character.new("reimu", "Reimu Hakurei"))
+	reimu.dialogue_color = Color.from_rgba8(207, 91, 91)
+	var marisa := addv(Character.new("marisa", "Marisa Kirisame"))
+	marisa.dialogue_color = Color.from_rgba8(163, 144, 75)
+	reimu.relationships[marisa] = 350
+	marisa.relationships[reimu] = 200
+	marisa.set_can_visit(false)
 
 	var kyouko := addv(Character.new("kyouko", "Kyouko Kasodani"))
 	kyouko.dialogue_color = Color.from_rgba8(78, 105, 81)
 	var mystia := addv(Character.new("mystia", "Mystia Lorelei"))
 	mystia.dialogue_color = Color.from_rgba8(138, 109, 136)
+	mystia.can_call = true
 	mystia.likes = "I like homemade food,\npunk rock,\nand Kyouko!"
 	mystia.dislikes = "I absolutely hate junk and fast food.\nAnd people who don't collect their trash."
 
@@ -68,20 +70,33 @@ static func load() -> void:
 	# 	"Dislikes fancy restaurants"
 	# aya.dialogue_color = Color.from_rgba8(112, 112, 112)
 
-	# var patchouli := addv(Character.new("patchouli", "Patchouli Knowledge"))
-	# patchouli.dialogue_color = Color.from_rgba8(167, 74, 184)
-	# var koakuma := addv(Character.new("koakuma", "Koakuma"))
-	# koakuma.dialogue_color = Color.from_rgba8(184, 43, 39)
-	# koakuma.set_can_visit(false)
+	var patchouli := addv(Character.new("patchouli", "Patchouli Knowledge"))
+	patchouli.dialogue_color = Color.from_rgba8(167, 74, 184)
+	var koakuma := addv(Character.new("koakuma", "Koakuma"))
+	koakuma.dialogue_color = Color.from_rgba8(184, 43, 39)
+	koakuma.set_can_visit(false)
 
-	for id in _characters:
-		if id.contains(" "):
-			continue
+	var rumia := addv(Character.new("rumia", "Rumia"))
+	rumia.dialogue_color = Color.from_rgba8(0, 0, 0)
+	rumia.set_can_visit(false)
+	var medicine := addv(Character.new("medicine", "Medicine Melancholy"))
+	medicine.dialogue_color = Color.from_rgba8(130, 115, 69)
+
+	var alice := addv(Character.new("alice", "Alice Margatroid"))
+	alice.dialogue_color = Color.from_rgba8(130, 115, 69)
+
+	var rinnosuke := addv(Character.new("rinnosuke", "Rinnosuke Morichika"))
+	rinnosuke.dialogue_color = Color.from_rgba8(100, 100, 100)
+	rinnosuke.can_call = true
+
+	for i in range(0, CharacterTracker._characters.size(), 2):
+		var cn: String = CharacterTracker._characters.keys()[i]
+		var c := _characters[cn]
 		
-		print("Loading dialogues for " + id)
-		_characters[id].load_dialogues()
-		print("Loading portraits for " + id)
-		_characters[id].load_portraits()
+		print("Loading dialogues for " + cn)
+		c.load_dialogues()
+		print("Loading portraits for " + cn)
+		c.load_portraits()
 
 static func addv(v: Character) -> Character:
 	_characters[v.id] = v

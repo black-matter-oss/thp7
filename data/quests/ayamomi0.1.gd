@@ -7,5 +7,9 @@ func _init() -> void:
 	self.description = "Call Momiji back and tell her what you found out about Aya"
 	self.help = "Call Momiji through the phone and speak with her"
 
+	self.quest_started.connect(func(q) -> void:
+		CharacterTracker.getv("momiji").can_call = true)
+
 	self.quest_completed.connect(func(q) -> void:
-		CharacterTracker.getv("momiji").set_can_visit(true))
+		CharacterTracker.getv("momiji").set_can_visit(true)
+		CharacterTracker.getv("momiji").can_call = false)

@@ -1,10 +1,18 @@
 ~ start
 Fujiwara no Mokou: [#e=angry] That cunt kissed me! She k-kissed me!
 Fujiwara no Mokou: [#e=angry] Fucking twat stole my first kiss!
-Satori Komeiji: [#e=angry] I thought I told you not to use such language in my palace!
-Fujiwara no Mokou: [#e=sad] S-Sorry, it's just...
-Satori Komeiji: [#e=annoyed] I know how you feel, but I'm not going to be the mediator in your silly dabbles!
-Fujiwara no Mokou: Yeah, I'm sorry...
-Fujiwara no Mokou: I'll stop bothering you.
-Satori Komeiji: ...
+- Kiss her back
+	Satori Komeiji: Kiss her back then.
+	Fujiwara no Mokou: [#e=annoyed] Ha? Why the hell would I kiss someone I hate?
+	Satori Komeiji: [#e=relaxed] They say that love is the most powerful weapon.
+	Satori Komeiji: Just kidding.
+	Satori Komeiji: [#e=smug] It would be really funny if you did, though.
+- Get out
+	Satori Komeiji: [#e=angry] I thought I told you not to use such language in my palace!
+	Fujiwara no Mokou: [#e=sad] S-Sorry, it's just...
+	Satori Komeiji: [#e=annoyed] I know how you feel, but I'm not going to be the mediator in your silly dabbles!
+	Fujiwara no Mokou: Yeah, I'm sorry...
+	Fujiwara no Mokou: I'll stop bothering you.
+	Satori Komeiji: ...
+	do CharacterTracker.getv("mokou").set_can_visit(false)
 => END

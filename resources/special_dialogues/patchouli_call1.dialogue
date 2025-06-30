@@ -1,0 +1,19 @@
+~ start
+Satori Komeiji: Patchy! I have a mission for you.
+Patchouli Knowledge: A mission...?
+Satori Komeiji: I asked Marisa for a poison negation potion, but she says she needs more knowledge about the topic to procure it.
+Satori Komeiji: So I want you to lend her some of your books!
+Patchouli Knowledge: R-Really? That 'magician' who 'borrows' by stealing...?
+Satori Komeiji: Please, Patchy! We're good friends, aren't we?
+Patchouli Knowledge: Ugh...\nI'll let it slide this time.
+Patchouli Knowledge: [size=12]Koakuma, books about neutralising poison, please.[/size]
+Patchouli Knowledge: ...\n...
+Patchouli Knowledge: I believe all these will be useful.
+Patchouli Knowledge: Is she already on her way?
+Satori Komeiji: I believe so.
+Patchouli Knowledge: Then I'll be waiting.
+Satori Komeiji: Thanks a lot, Patchy.
+do QuestTracker.complete_quest("rumicine2")
+set Rumicine0.antipoison = true
+do CharacterTracker.getv("patchouli").set_can_call(false)
+=> END

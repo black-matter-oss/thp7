@@ -1,0 +1,27 @@
+~ start
+set InteractionTracker.rumicine_poison = false
+Marisa Kirisame: Satori! What's up?
+Satori Komeiji: The sky. I need your help with something.
+Marisa Kirisame: What's that?
+Satori Komeiji: I want to order from you a potion to neutralise poison.
+Marisa Kirisame: Oh, that's simple! Wha' kind of poison?
+- All of them.
+	Marisa Kirisame: Eh? All of 'em?
+	Marisa Kirisame: I can only make a potion 'gainst poisonous plants or animals.
+	Marisa Kirisame: Not all of 'em either.
+	Satori Komeiji: What if I give you some of Patchy's books?\nWill you be able to then?
+	Marisa Kirisame: Oh, now yer talkin'!
+	Marisa Kirisame: But how are 'ya going to give me them?
+	Marisa Kirisame: Last time I went to the mansion's library, Koakuma kicked me out immediately.
+	Satori Komeiji: That's because you're a thief.
+	Marisa Kirisame: I'm not a filthy thief. I borrow things fair 'n square.
+	Satori Komeiji: Mhm.
+	Satori Komeiji: I will call Patchy and tell her to expect you.
+	Marisa Kirisame: And she will give me the books? Just 'ike that?
+	Satori Komeiji: She will. I'm on good terms with her.
+	Marisa Kirisame: Okay, that's a plan!
+	Satori Komeiji: Bring the potion to Alice when you're done, okay? Don't bring it to me.
+do QuestTracker.create_quest("rumicine2")
+do CharacterTracker.getv("marisa").set_can_call(false)
+do CharacterTracker.getv("patchouli").set_can_call(true)
+=> END

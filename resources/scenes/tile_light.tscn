@@ -122,14 +122,9 @@ mesh = SubResource("ArrayMesh_vxfiu")
 skeleton = NodePath("")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="tile"]
-transform = Transform3D(1, 0, 0, 0, 2.98023e-08, -1, 0, 1, 2.98023e-08, 0, -0.0049067, 0)
+transform = Transform3D(1, 0, 0, 0, 2.98023e-08, -1, 0, 1, 2.98023e-08, 0, 0.112869, 0)
 light_color = Color(0.994785, 0.582315, 1, 1)
 light_energy = 15.0
-spot_range = 20.0
+spot_range = 16.0
 spot_angle = 80.0
-
-[node name="OmniLight3D" type="OmniLight3D" parent="tile"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.173533, 0)
-visible = false
-omni_range = 10.0
-omni_attenuation = 3.822
+metadata/no_shadow = false

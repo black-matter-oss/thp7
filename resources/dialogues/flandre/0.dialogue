@@ -1,11 +1,17 @@
 ~ start
-Flandre Scarlet: [#e=neutral] Satori-oneechan, what is love?
-- Baby don't hurt me
-	Flandre Scarlet [#e=thinking]: Huh...
-- (ramble ramble ramble)
-	Satori Komeiji: [#e=neutral] Love is deeply biological.
-	Satori Komeiji: [#e=neutral] It pervades every aspect of our lives and has inspired countless works of art.
-	Satori Komeiji: [#e=neutral] Love also has a profound effect on our mental and physical state. A ‘broken heart’ or a failed relationship can have disastrous effects; bereavement disrupts human physiology and might even precipitate death.
-	Satori Komeiji: [#e=neutral] [next=auto] Without loving relationships, humans fail to flourish--
-	Flandre Scarlet: [#e=neutral] Sounds boring...
+Flandre Scarlet: Satori-oneechan, do you know what [s]love[/s] is?
+- Love is an emotion
+	Satori Komeiji: Love is something you feel deep within you.
+- Love is a social construct
+	Satori Komeiji: Love is when two people form a strong bond with each other and spend a lot of time together.
+- Love is instincts
+	Satori Komeiji: Love is something people hide their survival insticts behind.
+- Love is the unknown
+	Satori Komeiji: Love is something people chase after without knowing what it is.
+- Love is not real
+	Satori Komeiji: There is no such thing as love.
+	Flandre Scarlet: That's not true.
+	=> END
+Flandre Scarlet: How do I find [s]love[/s]?
+Satori Komeiji: That's something you have to look for yourself.
 => END

@@ -63,6 +63,8 @@ var loves: Character = null
 var to_reset := false
 var was_reset := false
 
+var can_call := false
+
 func _init(id: String = "", name: String = ""):
 	self.name = name
 	self.id = id
@@ -85,6 +87,7 @@ func reset2() -> void:
 func load_dialogues() -> void:
 	const base_path := "res://resources/dialogues/"
 
+	print_debug("Dialogue directory for character: " + base_path + id)
 	var dir := DirAccess.open(base_path + id)
 	if not dir:
 		set_can_visit(false)
@@ -93,6 +96,7 @@ func load_dialogues() -> void:
 	
 	var files := dir.get_files()
 	#var file := dir.get_next()
+	print_debug("Files: " + ",".join(files))
 
 	#while file != "":
 	for file in files:
@@ -182,10 +186,14 @@ func show_next_dialogue() -> void:
 	dialogue_progress += 1
 
 	# if dialogue_progress >= dialogues.size() - 1:
-	# 	can_visit = func(c: Character) -> bool: return false
+	# 	set_can_visit(false)
+	# 	print(name + " has no dialogues left and won't be able to visit anymore")
 
 func set_can_visit(can: bool) -> void:
 	can_visit = func(c: Character) -> bool: return can
+
+func set_can_call(can: bool) -> void:
+	can_call = can
 
 static func unlove(a: String, b: String) -> void:
 	pass

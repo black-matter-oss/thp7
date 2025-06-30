@@ -8,6 +8,7 @@ static var momiji_confessed: bool = false
 static var kyouko_funny: bool = false
 static var kyouko_propose: int = -1
 static var love_protocol: bool = false
+static var rumicine_poison: bool = false
 
 static func bad_choice() -> void:
 	#GlobalAudio.no = true
@@ -18,15 +19,15 @@ static func bad_choice() -> void:
 	GameWorld.global.get_node("Dolls").add_child(doll)
 	if GameplayInterface.global.day_tracker.final_day:
 		doll.position = Vector3(
-			randf_range(-2, 2),
-			20,
-			randf_range(-22, -19)
+			randf_range(-8, 8),
+			21,
+			randf_range(-20, -5)
 		)
 	else:
 		doll.position = Vector3(
-			randf_range(-16, 16),
-			20,
-			randf_range(-46, -3)
+			randf_range(-11, 11),
+			21,
+			randf_range(-42, -28)
 		)
 	doll.rotation_degrees = Vector3(
 		randf_range(0, 360),

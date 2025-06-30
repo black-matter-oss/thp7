@@ -8,6 +8,8 @@ func _init() -> void:
 	self.help = "Call Marisa"
 
 	self.quest_started.connect(func(q) -> void:
+		CharacterTracker.getv("marisa").can_call = true
 		CharacterTracker.getv("reimu").set_can_visit(false))
 	self.quest_completed.connect(func(q) -> void:
+		CharacterTracker.getv("marisa").can_call = false
 		CharacterTracker.getv("reimu").set_can_visit(true))

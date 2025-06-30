@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dacbg688s1o3j"
+path="res://.godot/imported/0.dialogue-9c45310297e5fec60bc0bcbe958dde40.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/rinnosuke/0.dialogue"
+dest_files=["res://.godot/imported/0.dialogue-9c45310297e5fec60bc0bcbe958dde40.tres"]
+
+[params]
+
+defaults=true

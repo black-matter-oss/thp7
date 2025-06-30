@@ -11,6 +11,6 @@ Satori Komeiji: Remi, hello?
 Satori Komeiji: Are you still there?
 Remilia Scarlet: I-I said too much...
 Remilia Scarlet: [next=auto] ...Satori... What would you say if I told you that--
-#do GlobalAudio.play2d(GlobalAudio.SFX_DISCONNECT)
+do GlobalAudio.play2d(GlobalAudio.SFX_DISCONNECT)
 do QuestTracker.complete_quest("satoremi0")
 => END

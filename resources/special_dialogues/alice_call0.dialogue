@@ -1,0 +1,32 @@
+~ start
+Alice Margatroid: Hallo, Satori?
+Satori Komeiji: Hope I didn't wake you up, Alice.
+Alice Margatroid: No, I'm still awake. Is something the matter?
+Satori Komeiji: You know, Medicine visited me today.
+Alice Margatroid: She did? Oh, that little rascal!
+Alice Margatroid: She told me she was going to a friend in the morning and I haven't seen her all day up until an hour ago!
+Satori Komeiji: Medicine is quite a handful, isn't she?
+Alice Margatroid: Hmm...\nI don't think so; she actually listens to me and helps me around the house all the time.
+Alice Margatroid: She's a good girl.
+Satori Komeiji: I see. Either way, there's something I need your help with.\nOf course, it also relates to Medicine.
+Alice Margatroid: It does?
+Satori Komeiji: Medicine is a pretty quiet and shy girl, is she not?
+Alice Margatroid: Yes, why...?
+Satori Komeiji: She told me that she wants to be friends with Rumia, but she's worried that she might be afraid of her poison.
+Alice Margatroid: Oh, my poor girl...\nWhat can we do...?
+Satori Komeiji: Do you know Rumia personally?
+Alice Margatroid: Hmm...\nI have seen her a few times, but that's more-or-less about it.
+Satori Komeiji: Then... Hmm...\nI suppose it should be fine if you introduce yourself to her and explain the situation.
+Alice Margatroid: Do you have a plan?
+Satori Komeiji: Yes, although I'm not completely sure if it will work.
+Satori Komeiji: We will organise a 'friendship' picnic for Medicine, Rumia, and Wriggle.
+Satori Komeiji: Rumia and Wriggle are already good friends, and I'm sure Wriggle will have no issue with Medicine.
+Satori Komeiji: If you see Rumia, ask her what she likes to eat and prepare some small meals for everyone to take to the picnic.
+Satori Komeiji: I guess Rumia or Wriggle will have to come visit you at night when Medicine is asleep to not spoil the surprise.
+Alice Margatroid: That's fine, I can do that.\nIs that all?
+Satori Komeiji: Oh, also tell Rumia to visit me some time before the picnic.
+Alice Margatroid: Okay, of course!
+Satori Komeiji: That's all. Have a good night.
+Alice Margatroid: Good night!
+do QuestTracker.complete_quest("rumicine0")
+=> END

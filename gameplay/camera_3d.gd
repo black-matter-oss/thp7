@@ -18,7 +18,7 @@ var raycast_result: Dictionary
 # yippie
 @onready var gi := get_parent().get_parent().get_parent().get_parent().get_parent().get_parent() as GameplayInterface
 
-@onready var world: Node3D = get_parent().get_parent().get_parent()
+@onready var world := get_parent().get_parent().get_parent() as GameWorld
 
 #@onready var lamp_area := world.get_node("Colliders/Lamp")
 #@onready var lamp: Array[MeshInstance3D] = [
@@ -47,12 +47,27 @@ var raycast_result: Dictionary
 	world.get_node("radio/Cube_001") as MeshInstance3D
 ]
 
+@onready var chair_area := world.get_node("Chair/Area3D")
+@onready var chair: Array[MeshInstance3D] = [
+	world.get_node("Chair/Chair/chair/Cube_007") as MeshInstance3D,
+	world.get_node("Chair/Chair/chair/Cube_008") as MeshInstance3D,
+	world.get_node("Chair/Chair/chair/Cube") as MeshInstance3D,
+	world.get_node("Chair/Chair/chair/Cylinder") as MeshInstance3D,
+	world.get_node("Chair/Chair/chair/Cube_001") as MeshInstance3D,
+	world.get_node("Chair/Chair/chair/Cube_002") as MeshInstance3D,
+	world.get_node("Chair/Chair/chair/Cube_005") as MeshInstance3D
+]
+
 func reset_rotation(quick: bool = false) -> void:
 	mm = Input.MOUSE_MODE_VISIBLE
+
+	var start_rot := rotation
+	var start_rot_p = get_parent().rotation
 
 	if quick:
 		rotation = reset_rot
 		get_parent().rotation = reset_rot_p
+		return
 	else:
 		var delta1 := reset_rot - rotation
 		var delta2 = reset_rot_p - get_parent().rotation
@@ -61,9 +76,12 @@ func reset_rotation(quick: bool = false) -> void:
 		var delta2_step = delta2 / RESET_STEPS
 
 		for i in range(RESET_STEPS):
-			rotation += delta1_step
-			get_parent().rotation += delta2_step
+			rotation = start_rot + delta1_step * i
+			get_parent().rotation = start_rot_p + delta2_step * i
 			await get_tree().create_timer(RESET_DURATION / RESET_STEPS).timeout
+	
+	rotation = reset_rot
+	get_parent().rotation = reset_rot_p
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -100,6 +118,7 @@ func _physics_process(delta: float) -> void:
 		_unhighlight(phone)
 		_unhighlight(book)
 		_unhighlight(radio)
+		_unhighlight(chair)
 		return
 
 	# if raycast_result["collider"] == lamp_area:
@@ -121,6 +140,11 @@ func _physics_process(delta: float) -> void:
 		_highlight(radio)
 	else:
 		_unhighlight(radio)
+	
+	if raycast_result["collider"] == chair_area and not world.player.sitting:
+		_highlight(chair)
+	else:
+		_unhighlight(chair)
 
 	#do_raycast = false
 
@@ -150,17 +174,21 @@ func _stuff(event: InputEvent) -> void:
 
 				if GameplayInterface.global.state == GameplayInterface.GameState.CONVERSATION:
 					reset_rotation()
+					#return
 				#get_viewport().warp_mouse(mlp)
 		
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT and not raycast_result.is_empty():
 			# if raycast_result["collider"] == lamp_area:
 			# 	(world.get_node("Lights/Desk") as Node3D).visible = !(world.get_node("Lights/Desk") as Node3D).visible
+			#print(raycast_result)
 			if raycast_result["collider"] == phone_area:
 				gi._on_call_menu_btn_pressed()
 			elif raycast_result["collider"] == book_area:
 				gi._on_quest_menu_btn_pressed()
 			elif raycast_result["collider"] == radio_area:
 				gi._radio_toggle()
+			elif raycast_result["collider"] == chair_area and not world.player.sitting:
+				world.player.sitting = true
 	
 	if event is InputEventMouseMotion and mm == Input.MOUSE_MODE_CAPTURED:
 		get_parent().rotate_y(-event.relative.x * mouse_sens)

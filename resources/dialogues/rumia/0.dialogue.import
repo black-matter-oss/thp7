@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dqjls73cjdxk3"
+path="res://.godot/imported/0.dialogue-22dd1a2643900f2435d0e792423cc910.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/rumia/0.dialogue"
+dest_files=["res://.godot/imported/0.dialogue-22dd1a2643900f2435d0e792423cc910.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,29 @@
+~ start
+set InteractionTracker.rumicine_poison = false
+Patchouli Knowledge: Satori?\nYou don't usually call this late?
+Satori Komeiji: It's a bit urgent.
+Satori Komeiji: Do you know how of a way to neutralise poison?
+Satori Komeiji: Ideally something in the form of a drink, and only temporarily.
+Patchouli Knowledge: Let's see...
+Patchouli Knowledge: [size=12]Koakuma! Books about neutralising poison, please![/size]
+Patchouli Knowledge: ...\n...
+Patchouli Knowledge: I have books about neutralising poisons of various animals, plants, neutrotoxins, chemicals... All kinds pretty much.
+Patchouli Knowledge: Anything specific you need?
+- All of them.
+	Patchouli Knowledge: A-All of them?!
+	Patchouli Knowledge: In what world would you need all of them?!
+	Satori Komeiji: It's for Medicine Melancholy.\nShe has the ability to manipulate poisons of all kind.
+	Patchouli Knowledge: I-I see...
+	Patchouli Knowledge: Still, I only have the knowledge.\nI can't really do anything with it.
+	Patchouli Knowledge: And if you want to combine all of them into a single potion, you'll need an extremely skilled magician.
+	- Marisa?
+		Patchouli Knowledge: Marisa, eh?
+		Patchouli Knowledge: She still hasn't returned me those books...
+		Patchouli Knowledge: But if it's for you, I can let it slide.
+		Patchouli Knowledge: Call her and tell her that Koakuma's on her way.
+		Satori Komeiji: Thanks, Patchy. Have a good night.
+		Patchouli Knowledge: Good night.
+do QuestTracker.create_quest("rumicine1")
+do CharacterTracker.getv("marisa").can_call(true)
+do CharacterTracker.getv("patchouli").can_call(false)
+=> END

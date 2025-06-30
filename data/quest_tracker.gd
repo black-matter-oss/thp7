@@ -15,6 +15,8 @@ static func create_quest(a: String) -> void:
 			q = Reimari0Quest.new()
 		"satoremi0":
 			q = Satoremi0Quest.new()
+		"rumicine0":
+			q = Rumicine0Quest.new()
 		_:
 			assert(false)
 	
@@ -32,6 +34,8 @@ static func add_quest(q: Quest) -> void:
 	q.quest_started.emit(q)
 	print("Quest started! " + q.id)
 
+	GlobalAudio.play2d(GlobalAudio.SFX_DING)
+
 static func has_quest(id: String) -> bool:
 	return id in quests
 
@@ -47,6 +51,8 @@ static func complete_quest(id: String) -> void:
 	quests[id].quest_completed.emit(quests[id])
 	print("Quest complete! " + id)
 	#quests.erase(id)
+
+	GlobalAudio.play2d(GlobalAudio.SFX_DING)
 
 static func is_complete(id: String) -> bool:
 	if id not in quests:

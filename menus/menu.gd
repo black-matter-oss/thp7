@@ -7,6 +7,9 @@ extends Control
 static var no_kagumokou := false
 static var calm_mode := false
 
+const options := preload("res://menus/options.tscn")
+const credits := preload("res://menus/credits.tscn")
+
 #static var just_finished := false
 
 func _ready():
@@ -54,22 +57,23 @@ func _on_ExitButton_pressed() -> void:
 	GameConfig.save()
 
 	# gently shutdown the game
-	var transitions = get_node_or_null("/root/GGT_Transitions")
-	if transitions:
-		transitions.fade_in({
-			'show_progress_bar': false
-		})
-		await transitions.anim.animation_finished
-		await get_tree().create_timer(0.3).timeout
+	# var transitions = get_node_or_null("/root/GGT_Transitions")
+	# if transitions:
+	# 	transitions.fade_in({
+	# 		'show_progress_bar': false
+	# 	})
+	# 	await transitions.anim.animation_finished
+	# 	await get_tree().create_timer(0.3).timeout
 	get_tree().quit()
 
 
 func _on_options_button_pressed() -> void:
-	GGT.change_scene("res://menus/options.tscn")
+	#GGT.change_scene("res://menus/options.tscn")
+	add_child(options.instantiate())
 
 
 func _on_credits_button_pressed() -> void:
-	GGT.change_scene("res://menus/credits.tscn")
+	add_child(credits.instantiate())
 
 
 func _on_check_button_toggled(toggled_on:bool) -> void:

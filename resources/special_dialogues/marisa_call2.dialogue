@@ -1,0 +1,16 @@
+~ start
+Satori Komeiji: Marisa, are you taking orders on potions?
+Marisa Kirisame: Yeah, sure. What'cha need?
+Satori Komeiji: I need a potion for neutralising poisons of all kinds.
+Marisa Kirisame: All kinds...?\nI'm a magician, sure, but not a god.
+Satori Komeiji: I have called Patchouli and she said she's fine with lending you some books about the topic.
+Satori Komeiji: Her assistant is currently on her way to you with them.
+Marisa Kirisame: Books, eh? Well, I'll see what I can do.
+Satori Komeiji: Deliver them to Alice once you're done, if you will.
+Marisa Kirisame: Sure, no problem. That all?
+Satori Komeiji: Mhm, thanks.
+Marisa Kirisame: Hangin' up then. See ya.
+do QuestTracker.complete_quest("rumicine1")
+set Rumicine0.antipoison = true
+do CharacterTracker.getv("marisa").set_can_call(false)
+=> END

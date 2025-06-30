@@ -15,6 +15,7 @@ var stop_what_you_are_doing := false
 
 @onready var interface: GameplayInterface = get_parent()
 
+var first_chara := false
 var final_day := false
 
 func start_new_day() -> void:
@@ -67,17 +68,18 @@ func start_new_day() -> void:
 			current_day.characters_to_visit.append(CharacterTracker.getv("okuu"))
 
 	if current_day.characters_to_visit.size() == 0 and not QuestTracker.any_quest_active():
-		# if not final_day:
-		# 	print("Activating the final day protocol")
-		# 	final_day = true
+		if not final_day:
+			print("Activating the final day protocol")
+			final_day = true
 
-		# 	current_day.characters_to_visit.append(CharacterTracker.getv("kyouko"))
-		# 	current_day.characters_to_visit.append(CharacterTracker.getv("remilia"))
-		# else:
-		print("No characters able to visit and no quest is active, game has ended!")
-		GGT.change_scene("res://gameplay/game_end.tscn")
-		return
+			current_day.characters_to_visit.append(CharacterTracker.getv("kyouko"))
+			current_day.characters_to_visit.append(CharacterTracker.getv("remilia"))
+		else:
+			print("No characters able to visit and no quest is active, game has ended!")
+			GGT.change_scene("res://gameplay/game_end.tscn")
+			return
 
+	first_chara = false
 	day_start.emit.call_deferred()
 
 func begin_loop() -> void:
@@ -94,17 +96,21 @@ func begin_loop() -> void:
 		#print("uyoyhuuoyou")
 		
 		# TODO activities when waiting for visitors
-		var idle_time := 0
+		var idle_time := 0.0
 		if OS.is_debug_build():
-			idle_time = randi_range(1, 2)
+			#idle_time = randf_range(0, 1)
+			pass
 		else:
-			idle_time = randi_range(4, 10)
-		idle_time += 6 # for the day info to have time to show :D
-
-		await get_tree().create_timer(idle_time).timeout
+			idle_time = randf_range(2, 10)
+		
+		#if first_chara:
+		#	idle_time += 6 # for the day info to have time to show :D
+		#	first_chara = false
 
 		while stop_what_you_are_doing:
 			await get_tree().create_timer(0.1).timeout
+
+		await get_tree().create_timer(idle_time).timeout
 
 		# new character visits
 		var c := current_day.characters_to_visit[0]
@@ -114,6 +120,10 @@ func begin_loop() -> void:
 
 		while interface.state != GameplayInterface.GameState.CONVERSATION:
 			await get_tree().create_timer(0.1).timeout
+
+		# print(c.name + ":")
+		# print(c.dialogue_progress)
+		# print(c.dialogues.size())
 
 		# character dialogue
 		current_dialogue_ended = false
@@ -136,12 +146,19 @@ func begin_loop() -> void:
 		# 	print_debug("Reimu conditional 1")
 		# 	c.can_visit = func(x: Character) -> bool:
 		# 		return CharacterTracker.getv("marisa").visited_times == 1
-
 		curernt_character = null
 		character_goodbye.emit.call_deferred(c)
 		current_day.characters_to_visit.remove_at(0)
 
+		# print(c.name + ":")
+		# print(c.dialogue_progress)
+		# print(c.dialogues.size())
+
 		DialogueManager.dialogue_ended.disconnect(_on_dialogue_ended)
+
+		# print(c.name + ":")
+		# print(c.dialogue_progress)
+		# print(c.dialogues.size())
 
 		if c.dialogue_progress > c.dialogues.size() - 1:
 			print(c.name + " has no more dialogues left")

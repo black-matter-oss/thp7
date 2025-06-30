@@ -1,3 +1,7 @@
+#
+# https://www.youtube.com/watch?v=mHokBQyB_08
+#
+
 #@tool
 class_name SpatialAudioPlayer3D extends AudioStreamPlayer3D
 
@@ -70,7 +74,7 @@ func _ready():
 	_raycast_array.append($RaycastBackward)
 	_raycast_array.append($RaycastUp)
 	
-	print(_raycast_array)
+	#print(_raycast_array)
 
 func _physics_process(delta):
 	_last_update_time += delta

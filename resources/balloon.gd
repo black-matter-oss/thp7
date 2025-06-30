@@ -163,7 +163,8 @@ func change_character_image() -> void:
 	else:
 		$%ImageRight.texture = c.get_current_portrait()
 		$%ImageLeft.texture = null
-		GameWorld.global.change_character_sprite(c.get_current_portrait())
+		if GameWorld.global:
+			GameWorld.global.change_character_sprite(c.get_current_portrait())
 
 ## Go to the next line
 func next(next_id: String) -> void:

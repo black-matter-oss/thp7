@@ -43,6 +43,9 @@ static func set_viewport_options(viewport: SubViewport) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if get_parent().name != "Interface":
+		$ColorRect.visible = true
+
 	# if read_user_data:
 	# 	$%MasterSlider.value = AudioServer.get_bus_volume_linear(0) * 50.0
 	# 	$%SFXSlide.value = AudioServer.get_bus_volume_linear(1) * 50.0
@@ -88,13 +91,12 @@ func _on_master_slider_value_changed(value:float) -> void:
 func _on_back_pressed() -> void:
 	GameConfig.save()
 
-	if get_parent().name != "Interface":
-		GGT.change_scene("res://menus/menu.tscn")
-	else:
+	if get_parent().name == "Interface":
 		GameplayInterface.no_input = false
 		GameplayInterface.pause = false
-		get_parent().remove_child(self)
-		queue_free()
+
+	get_parent().remove_child(self)
+	queue_free()
 
 func _on_sfx_slide_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_linear(1, value / 50.0)

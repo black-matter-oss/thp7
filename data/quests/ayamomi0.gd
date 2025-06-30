@@ -9,8 +9,8 @@ func _init() -> void:
 
 	self.quest_started.connect(func(q) -> void:
 		CharacterTracker.getv("momiji").set_can_visit(false)
-		CharacterTracker.getv("aya").consents_mind_reading = true)
+		CharacterTracker.getv("aya").can_call = true)
 	self.quest_completed.connect(func(q) -> void:
 		#CharacterTracker.getv("momiji").set_can_visit(true)
 		QuestTracker.add_quest(Ayamomi01Quest.new())
-		CharacterTracker.getv("aya").consents_mind_reading = false)
+		CharacterTracker.getv("aya").can_call = false)

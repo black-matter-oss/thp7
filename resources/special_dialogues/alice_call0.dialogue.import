@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://caohe0wxvmjj"
+path="res://.godot/imported/alice_call0.dialogue-8857a68efbf3c06b76deb566d6a59016.tres"
+
+[deps]
+
+source_file="res://resources/special_dialogues/alice_call0.dialogue"
+dest_files=["res://.godot/imported/alice_call0.dialogue-8857a68efbf3c06b76deb566d6a59016.tres"]
+
+[params]
+
+defaults=true

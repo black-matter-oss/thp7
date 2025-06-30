@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://ducfept6pmkkm"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://ducfept6pmkkm"]
 
 [ext_resource type="FontFile" uid="uid://cawekr44fruhm" path="res://resources/fonts/open-sans/open-sans-regular.ttf" id="1_6yttj"]
 
@@ -84,6 +84,8 @@ expand_margin_left = 2.0
 expand_margin_right = 2.0
 shadow_color = Color(1, 1, 1, 0.6)
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_i3yxg"]
+
 [resource]
 default_font = ExtResource("1_6yttj")
 default_font_size = 20
@@ -93,6 +95,7 @@ Button/styles/hover = SubResource("StyleBoxFlat_1woxf")
 Button/styles/hover_pressed = SubResource("StyleBoxFlat_1woxf")
 Button/styles/normal = SubResource("StyleBoxFlat_cqdqd")
 Button/styles/pressed = SubResource("StyleBoxFlat_22m66")
+HSeparator/styles/separator = SubResource("StyleBoxLine_i3yxg")
 LabelSmall/base_type = &"Label"
 LabelSmall/font_sizes/font_size = 16
 MarginContainer/constants/margin_bottom = 32

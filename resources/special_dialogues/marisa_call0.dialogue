@@ -14,7 +14,7 @@ Marisa Kirisame: [#e=relaxed] Reimu spoke with 'ya after she confessed, didn't s
 	Marisa Kirisame: I just wanted 'er to confess, rather than the other way around.
 	- Why is that?
 		Marisa Kirisame: She seemed lonely and closed in 'erself as of late, and I wanted to snap 'er out of it.
-		Marisa Kirisame: [#e=happy] D-Don't tell this Reimu, but 'er flustered face and stutterring voice was an absolute joy to experience!
+		Marisa Kirisame: [#e=happy] D-Don't tell this Reimu, but 'er flustered face and stutterring voice was an absolute joy to see!
 		Marisa Kirisame: [#e=relaxed] Either way, don't worry about me or 'er.\nI'll take 'er on a date soon enough.
 		Satori Komeiji: Good luck.
 		Marisa Kirisame: [#e=confused] Good luck?
@@ -22,7 +22,7 @@ Marisa Kirisame: [#e=relaxed] Reimu spoke with 'ya after she confessed, didn't s
 		Marisa Kirisame: [#e=smug] She's [u]fallen[/u] for me!\nWell, 'tis not a surprise, for I am simply irresistible.
 		Marisa Kirisame: [#e=smug] If I jus' simply kissed 'er, she'd prolly melt down on the spot!
 		Satori Komeiji: [#e=annoyed] Irresistible, eh?
-		Satori Komeiji: [#e=relaxed] By the way, I heard you borrowed some books from my dear Orin, did you not?
+		Satori Komeiji: [#e=relaxed] By the way, I heard you borrowed some books from my dear Patchouli, did you not?
 		Marisa Kirisame: Sorry? Did'cha say something? The signal's cutting out!
 do QuestTracker.complete_quest("reimari0")
 => END

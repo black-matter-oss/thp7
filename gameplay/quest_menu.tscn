@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn0iw8l7m0vim"]
+[gd_scene load_steps=7 format=3 uid="uid://bn0iw8l7m0vim"]
 
 [ext_resource type="Script" uid="uid://bgqw4pofjka8n" path="res://gameplay/quest_menu.gd" id="1_751ra"]
+[ext_resource type="Theme" uid="uid://ducfept6pmkkm" path="res://resources/theme/theme-main.tres" id="1_kqqax"]
+[ext_resource type="Texture2D" uid="uid://8kxqourd1u8g" path="res://resources/textures/open_book.png" id="2_cia4j"]
+[ext_resource type="Shortcut" uid="uid://cawrv4macnrb0" path="res://resources/esc_close_shortcut.tres" id="4_rslga"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cia4j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rslga"]
+font_size = 20
+font_color = Color(0, 0, 0, 1)
 
 [node name="QuestMenu" type="Control"]
 layout_mode = 3
@@ -9,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_kqqax")
 script = ExtResource("1_751ra")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -18,17 +28,68 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_cia4j")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+layout_mode = 2
+texture = ExtResource("2_cia4j")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 220
+theme_override_constants/margin_right = 220
+theme_override_constants/margin_bottom = 90
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Completed" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/ScrollContainer/Completed"]
+layout_mode = 2
+text = "Complete"
+label_settings = SubResource("LabelSettings_rslga")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/HBoxContainer/ScrollContainer/Completed"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/ScrollContainer"]
+[node name="ScrollContainer2" type="ScrollContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
+size_flags_horizontal = 3
 
-[node name="Close" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Started" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/ScrollContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/ScrollContainer2/Started"]
+layout_mode = 2
+text = "Incomplete"
+label_settings = SubResource("LabelSettings_rslga")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/HBoxContainer/ScrollContainer2/Started"]
+layout_mode = 2
+
+[node name="Close" type="Button" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+shortcut = ExtResource("4_rslga")
 text = "Close"
+metadata/no_click = true
 
-[connection signal="pressed" from="PanelContainer/ScrollContainer/VBoxContainer/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="PanelContainer/Close" to="." method="_on_close_pressed"]

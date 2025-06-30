@@ -1,0 +1,225 @@
+[gd_scene load_steps=15 format=3 uid="uid://b183t3d2h20ah"]
+
+[ext_resource type="Script" uid="uid://cd4b5a5yq7g4i" path="res://epilogue/environment.gd" id="1_jbyx7"]
+[ext_resource type="Texture2D" uid="uid://d0ip1obb37ova" path="res://resources/textures/grass_1024/Grass001_4K_Color.jpg" id="1_p2w16"]
+[ext_resource type="Texture2D" uid="uid://dxckiqh71i45r" path="res://resources/textures/grass_1024/Grass001_4K_Displacement.png" id="2_jbyx7"]
+[ext_resource type="Texture2D" uid="uid://jnptiln2ybmb" path="res://resources/textures/grass_1024/Grass001_4K_NormalGL.jpg" id="3_qni2h"]
+[ext_resource type="Texture2D" uid="uid://dp2akb0bqc7gr" path="res://resources/textures/grass_1024/Grass001_4K_Roughness.png" id="4_o0xel"]
+
+[sub_resource type="Shader" id="Shader_p2w16"]
+code = "shader_type sky;
+render_mode use_debanding;
+
+uniform vec4 sky_top_color : source_color = vec4(0.385, 0.454, 0.55, 1.0);
+uniform vec4 sky_horizon_color : source_color = vec4(0.646, 0.656, 0.67, 1.0);
+uniform float sky_curve : hint_range(0, 1) = 0.15;
+uniform float sky_energy = 1.0; // In Lux.
+uniform sampler2D sky_cover : filter_linear, source_color, hint_default_black;
+uniform vec4 sky_cover_modulate : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform vec4 ground_bottom_color : source_color = vec4(0.2, 0.169, 0.133, 1.0);
+uniform vec4 ground_horizon_color : source_color = vec4(0.646, 0.656, 0.67, 1.0);
+uniform float ground_curve : hint_range(0, 1) = 0.02;
+uniform float ground_energy = 1.0;
+uniform float sun_angle_max = 30.0;
+uniform float sun_curve : hint_range(0, 1) = 0.15;
+uniform float exposure : hint_range(0, 128) = 1.0;
+
+// Wind offset direction (x and y only)
+uniform vec2 wind_offset_direction = vec2(0.5, 0.1); // Control direction of offset (x, y)
+uniform float wind_speed : hint_range(0.0, 25.0) = 1.0; // Speed of the noise movement over time
+
+// Cloud change settings
+uniform bool clouds_change = true; // Whether to change the cloud layer or not
+uniform float cloud_change_rate : hint_range(0.0, 5.0) = .40; // Rate at which the cloud effect changes
+
+// Pole blending parameters
+uniform float pole_blend_shape : hint_range(0.0, 2.0) = 0.05; // How much the noise affects the blend shape
+uniform float pole_blend_strength : hint_range(0, 1) = 0.05; // Control blending intensity at poles
+uniform float pole_blend_brightness : hint_range(0.0, 1.0) = .3;
+
+// Horizon blending parameters - similar to pole blending
+uniform float horizon_blend_shape : hint_range(0.0, 2.0) = 0.05; // How much the noise affects the horizon blend shape
+uniform float horizon_blend_strength : hint_range(0, 1) = 0.05; // Control blending intensity at horizon
+uniform float horizon_blend_brightness : hint_range(0.0, 1.0) = .3;
+uniform float horizon_blend_width : hint_range(0.0, 0.5) = 0.1; // Width of the horizon blend region
+
+void sky() {
+    float v_angle = acos(clamp(EYEDIR.y, -1.0, 1.0));
+    float c = (1.0 - v_angle / (PI * 0.5));
+    vec3 sky = mix(sky_horizon_color.rgb, sky_top_color.rgb, clamp(1.0 - pow(1.0 - c, 1.0 / sky_curve), 0.0, 1.0));
+    sky *= sky_energy;
+
+    if (LIGHT0_ENABLED) {
+        float sun_angle = acos(dot(LIGHT0_DIRECTION, EYEDIR));
+        if (sun_angle < LIGHT0_SIZE) {
+            sky = LIGHT0_COLOR * LIGHT0_ENERGY;
+        } else if (sun_angle < sun_angle_max) {
+            float c2 = (sun_angle - LIGHT0_SIZE) / (sun_angle_max - LIGHT0_SIZE);
+            sky = mix(LIGHT0_COLOR * LIGHT0_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+        }
+    }
+
+    if (LIGHT1_ENABLED) {
+        float sun_angle = acos(dot(LIGHT1_DIRECTION, EYEDIR));
+        if (sun_angle < LIGHT1_SIZE) {
+            sky = LIGHT1_COLOR * LIGHT1_ENERGY;
+        } else if (sun_angle < sun_angle_max) {
+            float c2 = (sun_angle - LIGHT1_SIZE) / (sun_angle_max - LIGHT1_SIZE);
+            sky = mix(LIGHT1_COLOR * LIGHT1_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+        }
+    }
+
+    if (LIGHT2_ENABLED) {
+        float sun_angle = acos(dot(LIGHT2_DIRECTION, EYEDIR));
+        if (sun_angle < LIGHT2_SIZE) {
+            sky = LIGHT2_COLOR * LIGHT2_ENERGY;
+        } else if (sun_angle < sun_angle_max) {
+            float c2 = (sun_angle - LIGHT2_SIZE) / (sun_angle_max - LIGHT2_SIZE);
+            sky = mix(LIGHT2_COLOR * LIGHT2_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+        }
+    }
+
+    if (LIGHT3_ENABLED) {
+        float sun_angle = acos(dot(LIGHT3_DIRECTION, EYEDIR));
+        if (sun_angle < LIGHT3_SIZE) {
+            sky = LIGHT3_COLOR * LIGHT3_ENERGY;
+        } else if (sun_angle < sun_angle_max) {
+            float c2 = (sun_angle - LIGHT3_SIZE) / (sun_angle_max - LIGHT3_SIZE);
+            sky = mix(LIGHT3_COLOR * LIGHT3_ENERGY, sky, clamp(1.0 - pow(1.0 - c2, 1.0 / sun_curve), 0.0, 1.0));
+        }
+    }
+
+    // Sample the sky cover texture with dynamic offset (only x and y direction)
+    vec2 noise_coords = SKY_COORDS.xy + wind_offset_direction * wind_speed * TIME * 0.01;
+
+    // Wrap UVs to keep tiling seamless
+    noise_coords = mod(noise_coords, 1.0);
+
+    // Sample the original noise texture
+    vec4 sky_cover_texture = texture(sky_cover, noise_coords);
+
+    // Sample flipped noise for Z-offset effect
+    vec4 flipped_noise = texture(sky_cover, vec2(noise_coords.x, 1.0 - noise_coords.y));
+
+    // Z blending (cloud change) logic
+    float cloud_blend_factor = 0.0;
+    if (clouds_change) {
+        // Use a sine wave to blend clouds smoothly over time based on the cloud_change_rate
+        cloud_blend_factor = 0.5 + 0.5 * sin(TIME * cloud_change_rate);
+    }
+
+    // Blend between the original and flipped noise using cloud_blend_factor
+    vec4 blended_noise_texture = mix(sky_cover_texture, flipped_noise, cloud_blend_factor);
+
+    // Pole blending
+    float base_pole_blend_factor = abs(EYEDIR.y);  // Original blend factor (circular)
+    float noise_pole_blend = blended_noise_texture.r * pole_blend_shape;
+    float pole_blend_factor = smoothstep(1.0 - pole_blend_strength, 1.0, base_pole_blend_factor + noise_pole_blend);
+    
+    // Horizon blending - detect when we're near the horizon
+    float horizon_distance = abs(EYEDIR.y);  // This will be close to 0 near the horizon
+    float horizon_factor = 1.0 - smoothstep(0.0, horizon_blend_width, horizon_distance);
+    float noise_horizon_blend = blended_noise_texture.g * horizon_blend_shape;
+    float horizon_blend_factor = smoothstep(1.0 - horizon_blend_strength, 1.0, horizon_factor + noise_horizon_blend);
+    
+    // Combine both blend factors (poles and horizon)
+    float combined_blend_factor = max(pole_blend_factor, horizon_blend_factor);
+    
+    // Blend noise with brightness value based on the combined factor
+    vec3 blended_noise = mix(blended_noise_texture.rgb, vec3(pole_blend_brightness), pole_blend_factor);
+    blended_noise = mix(blended_noise, vec3(horizon_blend_brightness), horizon_blend_factor);
+
+    sky += (blended_noise * sky_cover_modulate.rgb) * blended_noise_texture.a * sky_cover_modulate.a * sky_energy;
+
+    // Ground blending
+    c = (v_angle - (PI * 0.5)) / (PI * 0.5);
+    vec3 ground = mix(ground_horizon_color.rgb, ground_bottom_color.rgb, clamp(1.0 - pow(1.0 - c, 1.0 / ground_curve), 0.0, 1.0));
+    ground *= ground_energy;
+
+    COLOR = mix(ground, sky, step(0.0, EYEDIR.y)) * exposure;
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p2w16"]
+noise_type = 3
+frequency = 0.0506
+fractal_lacunarity = 1.7
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jbyx7"]
+seamless = true
+noise = SubResource("FastNoiseLite_p2w16")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbyx7"]
+shader = SubResource("Shader_p2w16")
+shader_parameter/sky_top_color = Color(0.403066, 0.489045, 0.851528, 1)
+shader_parameter/sky_horizon_color = Color(0.646, 0.656, 0.67, 1)
+shader_parameter/sky_curve = 1.0
+shader_parameter/sky_energy = 0.9
+shader_parameter/sky_cover = SubResource("NoiseTexture2D_jbyx7")
+shader_parameter/sky_cover_modulate = Color(1, 1, 1, 1)
+shader_parameter/ground_bottom_color = Color(0.0813337, 0.180878, 0.070275, 1)
+shader_parameter/ground_horizon_color = Color(0.646, 0.656, 0.67, 1)
+shader_parameter/ground_curve = 0.02
+shader_parameter/ground_energy = 0.5
+shader_parameter/sun_angle_max = 0.523599
+shader_parameter/sun_curve = 0.15
+shader_parameter/exposure = 1.0
+shader_parameter/wind_offset_direction = Vector2(0.505, 0.21)
+shader_parameter/wind_speed = 1.0
+shader_parameter/clouds_change = true
+shader_parameter/cloud_change_rate = 0.6
+shader_parameter/pole_blend_shape = 0.05
+shader_parameter/pole_blend_strength = 0.05
+shader_parameter/pole_blend_brightness = 0.3
+shader_parameter/horizon_blend_shape = 0.0
+shader_parameter/horizon_blend_strength = 0.0
+shader_parameter/horizon_blend_brightness = 0.3
+shader_parameter/horizon_blend_width = 0.1
+
+[sub_resource type="Sky" id="Sky_l25oh"]
+sky_material = SubResource("ShaderMaterial_jbyx7")
+
+[sub_resource type="Environment" id="Environment_d6ovf"]
+background_mode = 2
+sky = SubResource("Sky_l25oh")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54ldx"]
+albedo_texture = ExtResource("1_p2w16")
+roughness_texture = ExtResource("4_o0xel")
+normal_enabled = true
+normal_texture = ExtResource("3_qni2h")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("2_jbyx7")
+uv1_scale = Vector3(100, 100, 100)
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y0lyg"]
+material = SubResource("StandardMaterial3D_54ldx")
+size = Vector2(200, 200)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vs2fu"]
+data = PackedVector3Array(100, 0, 100, -100, 0, 100, 100, 0, -100, -100, 0, 100, -100, 0, -100, 100, 0, -100)
+
+[node name="Environment" type="Node3D"]
+script = ExtResource("1_jbyx7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d6ovf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.261652, -0.483644, 0.835241, -0.283487, 0.865729, 0.412491, -0.922591, -0.128851, -0.363626, 0, 1.5, 0)
+shadow_enabled = true
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_y0lyg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_vs2fu")

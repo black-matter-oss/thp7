@@ -1,0 +1,32 @@
+~ start
+Rumia: Satori? Medi's mom told me to come visit you.
+Satori Komeiji: Yes, thank you for coming. Did she tell you why?
+Rumia: Ahhh...
+Rumia: [#e=happy] She told me about some picnic? For Medi!
+Satori Komeiji: Indeed. What do you think of her? Of Medicine?
+Rumia: Me? Hmm...
+Rumia: [#e=happy] She's super nice, she's fun to be around, and she always wears super pretty clothes!
+Satori Komeiji: Would you want to be friends with her?
+Rumia: Friends? But we're already friends?
+Satori Komeiji: [#e=surprise] You are...?
+Rumia: [#e=smile] We play together a lot, so I think we are!
+Satori Komeiji: I-Is that so...
+Satori Komeiji: (I suppose the picnic won't hurt. Perhaps Medicine just needs affirmation.)
+Satori Komeiji: [#e=happy] Medicine doesn't know that you are friends, and that's what the picnic is for.
+Satori Komeiji: [#e=happy] She's too shy to ask and worries that you're scared of her, so I want you and maybe Wriggle to accept her and tell her that you're her friends.
+Rumia: Well, okay! A picnic sounds fun!
+Satori Komeiji: Did Alice already ask you about what you'd like to her to prepare for all of you to eat?
+Rumia: Yes, she did.
+Satori Komeiji: [#e=happy] That's good.
+Satori Komeiji: Oh, by the way, I was meaning to ask;\nAre you scared of Medicine's poison manipulation?
+Rumia: It is a little scary, I guess...
+Rumia: [#e=smile] But it's fine! We just have to be a little careful around her.
+Satori Komeiji: (Maybe that's why Medicine didn't feel like they're friends?)\n(Perhaps they accidentally pushed her away...)
+Satori Komeiji: (I wonder if there's something I can do to temporarily neutralise her poison...)
+Satori Komeiji: I suppose that's all then. Thank you for coming all the way here.
+Rumia: [#e=happy] It's no problem! I and Wriggle will make sure Medi is happy!
+do CharacterTracker.getv("medicine").set_can_visit(true)
+set InteractionTracker.rumicine_poison = true
+do CharacterTracker.getv("marisa").set_can_call(true)
+do CharacterTracker.getv("patchouli").set_can_call(true)
+=> END
