@@ -143,7 +143,7 @@ func _ready() -> void:
 
 	GlobalAudio.player2d = $AudioStreamPlayer2D
 	GlobalAudio.player3d = $SubViewportContainer/SubViewport/World/AudioStreamPlayer3D
-	#$SubViewportContainer/SubViewport/World/DirectionalLight3D.rotate_x(deg_to_rad(-60))
+	$SubViewportContainer/SubViewport/World/DirectionalLight3D.rotate_x(deg_to_rad(-5))
 
 	if GGT.is_changing_scene(): # this will be false if starting the scene with "Run current scene" or F6 shortcut
 		await GGT.change_finished
@@ -246,11 +246,13 @@ func _on_day_tracker_day_end() -> void:
 	GlobalAudio.play2d(GlobalAudio.SFX_BELL_LARGE)
 
 	var dl := $SubViewportContainer/SubViewport/World/DirectionalLight3D as DirectionalLight3D
-	while dl.light_energy > 0.1:
+	while dl.light_energy > 0.0:
 		dl.light_energy -= 0.025
-		await get_tree().create_timer(0.05).timeout
-	dl.light_energy = 0.1
+		await get_tree().create_timer(0.07).timeout
+	dl.light_energy = 0.0
 	#dl.shadow_enabled = false
+
+	world.get_node("palace/lantern/OmniLight3D").visible = false
 
 	($SubViewportContainer/SubViewport/World/Player as CharacterBody3D).translate(Vector3(0, 0.2, 0))
 
@@ -288,11 +290,13 @@ func _on_day_tracker_day_start() -> void:
 	$%NewDayBtn.visible = false
 
 	var dl := $SubViewportContainer/SubViewport/World/DirectionalLight3D as DirectionalLight3D
-	while dl.light_energy < 1.5:
+	while dl.light_energy < 1.0:
 		dl.light_energy += 0.025
-		await get_tree().create_timer(0.05).timeout
-	dl.light_energy = 1.5
+		await get_tree().create_timer(0.07).timeout
+	dl.light_energy = 1.0
 	#dl.shadow_enabled = true
+
+	world.get_node("palace/lantern/OmniLight3D").visible = true
 
 	no_input = true
 	do_raycast = false

@@ -87,10 +87,10 @@ shadow_color = Color(1, 1, 1, 0.6)
 [resource]
 default_font = ExtResource("1_6yttj")
 default_font_size = 20
-Button/colors/font_pressed_color = Color(0.250213, 0.250213, 0.250213, 1)
 Button/styles/disabled = SubResource("StyleBoxFlat_i3yxg")
 Button/styles/focus = SubResource("StyleBoxFlat_hm15c")
 Button/styles/hover = SubResource("StyleBoxFlat_1woxf")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_1woxf")
 Button/styles/normal = SubResource("StyleBoxFlat_cqdqd")
 Button/styles/pressed = SubResource("StyleBoxFlat_22m66")
 LabelSmall/base_type = &"Label"

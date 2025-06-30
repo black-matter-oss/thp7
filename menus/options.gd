@@ -8,12 +8,15 @@ static var msaa := 1
 static var fxaa := true
 static var taa := false
 
+static var res_scale := 1.10
+static var scale_method := 0
+
 static var shadows := 2
 static var lights := true
 static var reflections := false
 
 static func set_viewport_options(viewport: SubViewport) -> void:
-	(viewport.get_parent() as SubViewportContainer).stretch_shrink = 2 if low_res else 1
+	#(viewport.get_parent() as SubViewportContainer).stretch_shrink = 2 if low_res else 1
 
 	match msaa:
 		0:
@@ -30,10 +33,13 @@ static func set_viewport_options(viewport: SubViewport) -> void:
 	viewport.screen_space_aa = Viewport.SCREEN_SPACE_AA_FXAA if fxaa else Viewport.SCREEN_SPACE_AA_DISABLED
 	viewport.use_taa = taa
 	
-	print("Low-res mode: " + str(low_res))
-	print("MSAA: " + str(viewport.msaa_3d))
-	print("FXAA: " + str(fxaa))
-	print("TAA: " + str(taa))
+	viewport.scaling_3d_scale = res_scale
+	viewport.scaling_3d_mode = scale_method as Viewport.Scaling3DMode
+	
+	# print("Low-res mode: " + str(low_res))
+	# print("MSAA: " + str(viewport.msaa_3d))
+	# print("FXAA: " + str(fxaa))
+	# print("TAA: " + str(taa))
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,11 +59,16 @@ func _ready() -> void:
 	shadows = GameConfig.file.get_value("options", "gfx_shadows", shadows)
 	lights = GameConfig.file.get_value("options", "gfx_lights", lights)
 	reflections = GameConfig.file.get_value("options", "gfx_ssr", reflections)
+	res_scale = GameConfig.file.get_value("options", "gfx_res_scale", res_scale)
+	scale_method = GameConfig.file.get_value("options", "gfx_scale_method", scale_method)
 
 	$%PixelArtCheckbox.button_pressed = low_res
 	$%MSAAOption.selected = msaa
 	$%FXAACheckBox.button_pressed = fxaa
 	$%TAACheckBox.button_pressed = taa
+
+	$%ResScaleSlider.value = res_scale * 100
+	$%SMOptionButton.selected = scale_method
 
 	$%ShadowOptions.selected = shadows
 	$%LightingQualityOption.selected = lights
@@ -68,6 +79,7 @@ func _process(delta: float) -> void:
 	$%MasterVol.text = str(roundi($%MasterSlider.value)) + "%"
 	$%SFXVol.text = str(roundi($%SFXSlide.value)) + "%"
 	$%BGMVol.text = str(roundi($%BGMSlide.value)) + "%"
+	$%ResScaleLabel.text = str(roundi(res_scale * 100)) + "%"
 
 func _on_master_slider_value_changed(value:float) -> void:
 	AudioServer.set_bus_volume_linear(0, value / 50.0)
@@ -135,3 +147,17 @@ func _on_ssr_check_box_toggled(toggled_on: bool) -> void:
 	GameConfig.file.set_value("options", "gfx_ssr", toggled_on)
 	if GameWorld.global:
 		GameWorld.global.graphic_options_change.emit()
+
+
+func _on_sm_option_button_item_selected(index: int) -> void:
+	scale_method = index
+	GameConfig.file.set_value("options", "gfx_scale_method", index)
+	if GameplayInterface.global:
+		set_viewport_options(GameplayInterface.global.get_node("SubViewportContainer/SubViewport") as SubViewport)
+
+
+func _on_res_scale_slider_value_changed(value: float) -> void:
+	res_scale = value / 100.0
+	GameConfig.file.set_value("options", "gfx_res_scale", res_scale)
+	if GameplayInterface.global:
+		set_viewport_options(GameplayInterface.global.get_node("SubViewportContainer/SubViewport") as SubViewport)

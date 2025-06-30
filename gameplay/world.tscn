@@ -77,7 +77,6 @@ size = Vector3(18.4828, 14.9814, 0.001)
 [sub_resource type="Environment" id="Environment_iiep6"]
 background_color = Color(0.607302, 0.607302, 0.607302, 1)
 ambient_light_source = 1
-ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 3
 ssil_enabled = true
 sdfgi_enabled = true
@@ -2412,6 +2411,7 @@ shape = SubResource("BoxShape3D_1or1s")
 
 [node name="Ceiling" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
+visible = false
 cast_shadow = 0
 ignore_occlusion_culling = true
 mesh = SubResource("PlaneMesh_8h2x8")
@@ -2422,8 +2422,10 @@ mesh = SubResource("PlaneMesh_8h2x8")
 shape = SubResource("BoxShape3D_8h2x8")
 
 [node name="palace" parent="." instance=ExtResource("7_1or1s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.34767)
 
 [node name="corridors" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.848)
 
 [node name="corridor" parent="corridors" instance=ExtResource("7_tv7he")]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0, 86.7311)
@@ -7177,8 +7179,7 @@ target_position = Vector3(0, 30, 0)
 target_position = Vector3(0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.073, 0)
-light_energy = 2.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.073, 5.4552)
 shadow_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -7206,7 +7207,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.135928, -30.5594)
 script = ExtResource("12_5nygg")
 
 [node name="clock" type="Node3D" parent="clocks"]
-transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 8.633, -16.323)
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 8.633, -14.9228)
 
 [node name="Cylinder" type="MeshInstance3D" parent="clocks/clock"]
 transform = Transform3D(1, 0, 0, 0, 0.0731279, 0, 0, 0, 1, 0, 0, 0)
@@ -7564,7 +7565,7 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.591363
+light_energy = 0.712307
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 
@@ -7583,7 +7584,7 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.770138
+light_energy = 0.523747
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 
@@ -7602,7 +7603,7 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.322158
+light_energy = 0.316101
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 

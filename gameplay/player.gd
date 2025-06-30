@@ -13,10 +13,16 @@ const JUMP_VELOCITY = 4.5
 @onready var palace_area2 := get_parent().get_node("Colliders/PalaceArea2") as Area3D
 @onready var palace := get_parent().get_node("palace") as Node3D
 @onready var collisions: Array[CollisionShape3D] = [
-	get_parent().get_node("palace/Cube_005/StaticBody3D/CollisionShape3D"),
-	get_parent().get_node("palace/Cube_006/StaticBody3D/CollisionShape3D"),
-	get_parent().get_node("palace/Cube_010/StaticBody3D/CollisionShape3D"),
-	get_parent().get_node("palace/Cube_011/StaticBody3D/CollisionShape3D")
+	get_parent().get_node("palace/room/Cylinder/StaticBody3D/CollisionShape3D"),
+	get_parent().get_node("palace/room/Cube_003/StaticBody3D/CollisionShape3D"),
+	get_parent().get_node("palace/room/Cube_004/StaticBody3D/CollisionShape3D"),
+	get_parent().get_node("palace/arch/StaticBody3D/CollisionShape3D"),
+	get_parent().get_node("palace/arch/StaticBody3D/CollisionShape3D2"),
+	get_parent().get_node("palace/desk/StaticBody3D/CollisionShape3D"),
+	get_parent().get_node("palace/desk/StaticBody3D/CollisionShape3D2"),
+	get_parent().get_node("palace/desk/StaticBody3D/CollisionShape3D3"),
+	get_parent().get_node("palace/desk/StaticBody3D/CollisionShape3D4"),
+	get_parent().get_node("palace/desk/StaticBody3D/CollisionShape3D5")
 ]
 @onready var thingies: Array[Node3D] = [
 	get_parent().get_node("book"),
@@ -26,6 +32,8 @@ const JUMP_VELOCITY = 4.5
 	get_parent().get_node("clocks"),
 	get_parent().get_node("radio")
 ]
+
+@onready var corridor_start_position := corridors.global_position
 
 func _physics_process(delta: float) -> void:
 	if GameplayInterface.global.state != GameplayInterface.GameState.IDLE or GameplayInterface.global.no_input:
@@ -59,7 +67,7 @@ func _physics_process(delta: float) -> void:
 	ceiling.global_position = Vector3(round(global_position.x / 50.0) * 50, ceiling.global_position.y, round(global_position.z / 50.0) * 50)
 	
 	if palace_area2.overlaps_body(self):
-		corridors.global_position = Vector3.ZERO
+		corridors.global_position = corridor_start_position
 
 		palace.visible = true
 		for x in thingies:
@@ -73,5 +81,5 @@ func _physics_process(delta: float) -> void:
 		for x in collisions:
 			x.disabled = true
 
-		corridors.global_position.z = (round((global_position.z - 25) / 90.7767) - 1) * 90.7767
-		corridors.global_position.x = (round(global_position.x / 54.3439)) * 54.3439
+		corridors.global_position.z = (round((global_position.z - 25) / 90.7391) - 1) * 90.7391 + corridor_start_position.z
+		corridors.global_position.x = (round(global_position.x / 54.3439)) * 54.3439 + corridor_start_position.x

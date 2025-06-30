@@ -32,6 +32,15 @@ grow_vertical = 2
 theme = ExtResource("1_jkw7x")
 script = ExtResource("1_xlg2h")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.329987, 0.164838, 0.223295, 1)
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -62,25 +71,23 @@ vertical_alignment = 1
 [node name="Label5" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "create.swf
-Walfas
+Walfas/Walfie/KirbyM
 https://walfas.org/
+https://walfie.carrd.co/
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label6" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "Satori & Koishi 3D Models"
+text = "Flandre & Koishi 3D Models"
 label_settings = SubResource("LabelSettings_5jbn1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label7" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "Satori Komeiji - anek
-https://bowlroll.net/file/83734
-
-Koishi Komeiji - anek
+text = "Koishi Komeiji - anek
 https://3d.nicovideo.jp/works/td24376
 
 Flandre Scarlet - Kensaku
@@ -170,7 +177,8 @@ http://creativecommons.org/licenses/by/4.0/
 
 \"Danse Morialta\" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
-http://creativecommons.org/licenses/by/4.0/"
+http://creativecommons.org/licenses/by/4.0/
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 

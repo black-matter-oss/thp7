@@ -20,12 +20,12 @@ var raycast_result: Dictionary
 
 @onready var world: Node3D = get_parent().get_parent().get_parent()
 
-@onready var lamp_area := world.get_node("Colliders/Lamp")
-@onready var lamp: Array[MeshInstance3D] = [
-	world.get_node("palace/Sphere") as MeshInstance3D,
-	world.get_node("palace/Cylinder_002") as MeshInstance3D,
-	world.get_node("palace/Cylinder_003") as MeshInstance3D
-]
+#@onready var lamp_area := world.get_node("Colliders/Lamp")
+#@onready var lamp: Array[MeshInstance3D] = [
+	#world.get_node("palace/Sphere") as MeshInstance3D,
+	#world.get_node("palace/Cylinder_002") as MeshInstance3D,
+	#world.get_node("palace/Cylinder_003") as MeshInstance3D
+#]
 
 @onready var phone_area := world.get_node("Colliders/Phone")
 @onready var phone: Array[MeshInstance3D] = [
@@ -76,7 +76,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if not gi.do_raycast:
 		raycast_result = {}
-		_unhighlight(lamp)
+		#_unhighlight(lamp)
 		_unhighlight(phone)
 		_unhighlight(book)
 		_unhighlight(radio)
@@ -96,7 +96,7 @@ func _physics_process(delta: float) -> void:
 	#print(raycast_result)
 
 	if raycast_result.is_empty():
-		_unhighlight(lamp)
+		#_unhighlight(lamp)
 		_unhighlight(phone)
 		_unhighlight(book)
 		_unhighlight(radio)

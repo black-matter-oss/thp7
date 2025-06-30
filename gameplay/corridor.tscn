@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://cytuybn45sf4i"]
+[gd_scene load_steps=42 format=4 uid="uid://cytuybn45sf4i"]
 
 [ext_resource type="Texture2D" uid="uid://b4ocmhscsekqx" path="res://resources/textures/Concrete044C_1K-JPG/Concrete044C_1K-JPG_Color.jpg" id="1_etslk"]
 [ext_resource type="Texture2D" uid="uid://lnmqtu5gvs8d" path="res://resources/textures/Marble012_1K-JPG/Marble012_1K-JPG_Color.jpg" id="1_i6daw"]
@@ -15,6 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://divvcybm4w4gu" path="res://resources/textures/Marble016_1K-JPG/Marble016_1K-JPG_NormalGL.jpg" id="9_cokjd"]
 [ext_resource type="Texture2D" uid="uid://d2rfylvfcwubk" path="res://resources/textures/Marble016_1K-JPG/Marble016_1K-JPG_Roughness.jpg" id="10_fxiq5"]
 [ext_resource type="PackedScene" uid="uid://4ggsrqh1cc8o" path="res://resources/scenes/tile_light.tscn" id="15_acdpu"]
+[ext_resource type="Texture2D" uid="uid://8tqhvisp1oqo" path="res://resources/textures/Rock022_1K-JPG/Rock022_1K-JPG_Color.jpg" id="16_0qfr7"]
+[ext_resource type="Texture2D" uid="uid://dhwbki51je8h7" path="res://resources/textures/Rock022_1K-JPG/Rock022_1K-JPG_AmbientOcclusion.jpg" id="17_yj5g2"]
+[ext_resource type="Texture2D" uid="uid://vmhgcqwnj2oy" path="res://resources/textures/Rock022_1K-JPG/Rock022_1K-JPG_Displacement.jpg" id="18_a3cs1"]
+[ext_resource type="Texture2D" uid="uid://b3ode5v3gr1ag" path="res://resources/textures/Rock022_1K-JPG/Rock022_1K-JPG_NormalGL.jpg" id="19_kl650"]
+[ext_resource type="Texture2D" uid="uid://cl0hve1lhmwdb" path="res://resources/textures/Rock022_1K-JPG/Rock022_1K-JPG_Roughness.jpg" id="20_ph127"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6daw"]
 resource_name = "pillar"
@@ -101,12 +106,10 @@ roughness_texture = ExtResource("6_cokjd")
 normal_enabled = true
 normal_texture = ExtResource("5_5h5a2")
 ao_enabled = true
+ao_light_affect = 1.0
 ao_texture = ExtResource("2_g11nk")
 heightmap_enabled = true
 heightmap_scale = 8.0
-heightmap_deep_parallax = true
-heightmap_min_layers = 4
-heightmap_max_layers = 32
 heightmap_texture = ExtResource("3_npc43")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_5b31e"]
@@ -223,11 +226,11 @@ shadow_mesh = SubResource("ArrayMesh_d6lmp")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3ix5w"]
 _surfaces = [{
-"aabb": AABB(-58.5947, -1, -1, 59.5947, 2, 2),
+"aabb": AABB(-58.5947, -1, -1, 59.5947, 2, 1.99887),
 "format": 34896613377,
 "index_count": 72,
 "index_data": PackedByteArray("AAABAAIAAAADAAEADAACAAEAAwAMAAEACQAAAAIAAwAAAAkADAAIAAIACQACAAgAAwANAAwAAwAJAA0ADQAIAAwADQAJAAgABAAFAAYABAAHAAUABgAFAA4ADgAFAAcABgAKAAQACgAHAAQABgAOAA8ABgAPAAoADgAHAAsADwAOAAsACgALAAcADwALAAoA"),
-"lods": [1.15468, PackedByteArray("AAABAAIACAACAAEACQAAAAIACQACAAgAAAADAAEAAwAAAAkAAwAIAAEAAwAJAAgABAAFAAYABAAHAAUABgAKAAQACgAHAAQABgAFAAoABQAHAAsACgALAAcACgAFAAsA"), 1.46759, PackedByteArray("AAABAAIAAwACAAEAAwAAAAIAAAADAAEABAAFAAYABgAFAAQABAAFAAcABAAHAAUA")],
+"lods": [1.15465, PackedByteArray("AAABAAIACAACAAEACQAAAAIACQACAAgAAAADAAEAAwAAAAkAAwAIAAEAAwAJAAgABAAFAAYABAAHAAUABgAKAAQACgAHAAQABgAFAAoABQAHAAsACgALAAcACgAFAAsA"), 1.46726, PackedByteArray("AAABAAIAAwACAAEAAwAAAAIAAAADAAEABAAFAAYABgAFAAQABAAFAAcABAAHAAUA")],
 "name": "wall deco",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -236,15 +239,15 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_7jjtx"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_5s0vv"]
 resource_name = "corridor_Cube_008"
 _surfaces = [{
-"aabb": AABB(-58.5947, -1, -1, 59.5947, 2, 2),
+"aabb": AABB(-58.5947, -1, -1, 59.5947, 2, 1.99887),
 "attribute_data": PackedByteArray("Zf2458YTqCX//5rlLRHGJ7qG84o3i/9/N4vzirqG/39l/bjnxhOoJS0Rxif//5rluobzijeL84q6hv9/N4v/fzeLpoO6hqaDs5SEDoZ23P8oeP//KHj//4Z23P+zlIQOuoamgzeLpoOzlIQOKHj//4Z23P+zlIQOhnbc/yh4//83i0yHuoZMh1aWpw5WlqcON4tMh7qGTIdWlqcOVpanDg=="),
 "format": 34896613399,
 "index_count": 72,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAgAAYABAAhACAAIQAQACAAIQARABAAEQAFABAAEQAHAAUAEgAUACIAEgATABQAIwAWABcAIwAVABYACAAJAAoACAALAAkADAAkACUADAANACQAJQAkABkAJQAZABgAGAAZAA8AGAAPAA4AGgAbABwAGgAmABsAJwAeAB8AJwAdAB4A"),
-"lods": [1.15468, PackedByteArray("AAABAAIAAAADAAEABAAQAAYABAARABAAEQAFABAAEQAHAAUAEgATABQAFQAWABcACAAJAAoACAALAAkADAANABgAGAANABkAGAAZAA8AGAAPAA4AGgAbABwAHQAeAB8A"), 1.46759, PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADgANAA8A")],
+"lods": [1.15465, PackedByteArray("AAABAAIAAAADAAEABAAQAAYABAARABAAEQAFABAAEQAHAAUAEgATABQAFQAWABcACAAJAAoACAALAAkADAANABgAGAANABkAGAAZAA8AGAAPAA4AGgAbABwAHQAeAB8A"), 1.46726, PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADgANAA8A")],
 "material": SubResource("StandardMaterial3D_vrxbo"),
 "name": "wall deco",
 "primitive": 3,
@@ -275,6 +278,25 @@ emission_energy_multiplier = 4.62
 [sub_resource type="BoxMesh" id="BoxMesh_ncf34"]
 material = SubResource("StandardMaterial3D_vdnhq")
 size = Vector3(4.3, 0.07, 4.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kl650"]
+albedo_color = Color(0.70173, 0.70173, 0.70173, 1)
+albedo_texture = ExtResource("16_0qfr7")
+roughness_texture = ExtResource("20_ph127")
+normal_enabled = true
+normal_texture = ExtResource("19_kl650")
+ao_enabled = true
+ao_light_affect = 1.0
+ao_texture = ExtResource("17_yj5g2")
+heightmap_enabled = true
+heightmap_scale = 7.0
+heightmap_texture = ExtResource("18_a3cs1")
+uv1_scale = Vector3(5.096, 8.508, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_acdpu"]
+material = SubResource("StandardMaterial3D_kl650")
+flip_faces = true
+size = Vector2(54.344, 90.739)
 
 [node name="corridor" type="Node3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
@@ -311,9 +333,9 @@ transform = Transform3D(0.5, 0, 0, 0, 7, 0, 0, 0, 0.65, 6.94933, 7, 16.0781)
 mesh = SubResource("ArrayMesh_2hqmn")
 skeleton = NodePath("")
 
-[node name="Cube_004" type="MeshInstance3D" parent="model"]
+[node name="Cube_005" type="MeshInstance3D" parent="model"]
 transform = Transform3D(0.25, 0, 0, 0, 0.5, 0, 0, 0, 45.3868, 7.19933, 11.0884, 43.3868)
-mesh = SubResource("ArrayMesh_7jjtx")
+mesh = SubResource("ArrayMesh_5s0vv")
 skeleton = NodePath("")
 
 [node name="Floor lights" type="Node3D" parent="."]
@@ -395,6 +417,7 @@ spot_range = 20.0
 spot_angle = 80.0
 
 [node name="Floor lights 2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.143247, 0)
 
 [node name="TileLight" parent="Floor lights 2" instance=ExtResource("15_acdpu")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 2)
@@ -410,3 +433,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 56)
 
 [node name="TileLight5" parent="Floor lights 2" instance=ExtResource("15_acdpu")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 74)
+
+[node name="Ceiling" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 43.369)
+mesh = SubResource("PlaneMesh_acdpu")

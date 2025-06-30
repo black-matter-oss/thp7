@@ -67,16 +67,16 @@ func start_new_day() -> void:
 			current_day.characters_to_visit.append(CharacterTracker.getv("okuu"))
 
 	if current_day.characters_to_visit.size() == 0 and not QuestTracker.any_quest_active():
-		if not final_day:
-			print("Activating the final day protocol")
-			final_day = true
+		# if not final_day:
+		# 	print("Activating the final day protocol")
+		# 	final_day = true
 
-			current_day.characters_to_visit.append(CharacterTracker.getv("kyouko"))
-			current_day.characters_to_visit.append(CharacterTracker.getv("remilia"))
-		else:
-			print("No characters able to visit and no quest is active, game has ended!")
-			GGT.change_scene("res://gameplay/game_end.tscn")
-			return
+		# 	current_day.characters_to_visit.append(CharacterTracker.getv("kyouko"))
+		# 	current_day.characters_to_visit.append(CharacterTracker.getv("remilia"))
+		# else:
+		print("No characters able to visit and no quest is active, game has ended!")
+		GGT.change_scene("res://gameplay/game_end.tscn")
+		return
 
 	day_start.emit.call_deferred()
 
