@@ -12,6 +12,7 @@ const wait_interface := preload("res://gameplay/wait.tscn")
 const call_menu := preload("res://gameplay/call_menu.tscn")
 const quest_menu := preload("res://gameplay/quest_menu.tscn")
 const pause_menu := preload("res://menus/options.tscn")
+const tootel_menu := preload("res://gameplay/tootel.tscn")
 
 @onready var day_tracker := $DayTracker as DayTracker
 @onready var sub := $SubInterface
@@ -21,6 +22,7 @@ var day_thread: Thread
 
 var cm: Node
 var qm: Node
+var tm: Node
 
 static var global: GameplayInterface
 
@@ -158,6 +160,7 @@ func _init() -> void:
 	CharacterTracker.load()
 
 	ResourceLoader.load_threaded_request("res://epilogue/test.tscn")
+	ResourceLoader.load_threaded_request("res://epilogue/viewporter.tscn")
 
 func _input(event: InputEvent) -> void:
 	if no_input or $DayPass.visible:
@@ -187,6 +190,8 @@ func _ready() -> void:
 
 	GlobalAudio.player2d = $AudioStreamPlayer2D
 	GlobalAudio.player3d = $SubViewportContainer/SubViewport/World/AudioStreamPlayer3D
+	GlobalAudio.player2dv2 = $NyaaSFX
+
 	$SubViewportContainer/SubViewport/World/DirectionalLight3D.rotate_x(deg_to_rad(-5))
 
 	if GGT.is_changing_scene(): # this will be false if starting the scene with "Run current scene" or F6 shortcut
@@ -275,11 +280,6 @@ func _on_day_tracker_character_hello(chara:Character) -> void:
 	world.change_character_sprite(chara.get_current_portrait())
 	await world.character_walkin($Footstep)
 
-	if not radio_player.stream:
-		radio_player.finished.connect(_radio_in)
-		chattered = true
-		_radio_in()
-
 	state = GameState.CONVERSATION
 	Utilities.remove_all_children(sub)
 	$Toolbar.visible = false
@@ -357,13 +357,20 @@ func _on_day_tracker_day_start() -> void:
 
 	#day_tracker.stop_what_you_are_doing = true
 	
-	_radio_out()
+	#_radio_out()
+	_radio_fo()
 	await show_day_count(day_tracker.current_day.number)
-	chattered = true
-	_radio_in()
+	#chattered = true
+	_radio_fi()
+	#_radio_in()
 	#$SubViewportContainer/SubViewport/World/Lights.visible = true
 	#$%NewDayBtn.visible = true
 	#day_tracker.stop_what_you_are_doing = false
+
+	if not radio_player.stream:
+		radio_player.finished.connect(_radio_in)
+		chattered = true
+		_radio_in()
 
 	#($SubViewportContainer/SubViewport/World/clocks as Clocks).set_volume(0)
 
@@ -382,31 +389,66 @@ func _on_call_menu_btn_pressed() -> void:
 	$Toolbar.visible = false
 
 	if day_tracker.final_day:
+		if OS.is_debug_build():
+			InteractionTracker.bad_choice(CharacterTracker.getv("remilia"))
+			InteractionTracker.bad_choice(CharacterTracker.getv("kyouko"))
+			InteractionTracker.bad_choice(CharacterTracker.getv("patchouli"))
+			InteractionTracker.bad_choice(CharacterTracker.getv("koakuma"))
+			InteractionTracker.bad_choice(CharacterTracker.getv("reimu"))
+			InteractionTracker.bad_choice(CharacterTracker.getv("marisa"))
+
+		no_input = true
+
 		print("The end is never the end is never the end is never the end")
 		var we := $SubViewportContainer/SubViewport/World/WorldEnvironment.environment as Environment
 		we.background_color = Environment.BG_KEEP
 		
-		var n := 0
-		while n < 500:
-			var m: float = 0.0003 * (n / 2.0)
+		# for x in world.get_all_children(world):
+		# 	if x is Light3D:
+		# 		x.visible = false
 
-			world.rotate_x(m)
-			world.scale.x += m / 4.0
-			world.scale.y += m
-			world.rotate_y(-m)
-			n += 1
-			print(n)
-			await get_tree().create_timer(0.007).timeout
+		GlobalAudio.play2d(GlobalAudio.SFX_NOISE1)
+
+		var s := $SubViewportContainer.material as ShaderMaterial
+		while s.get_shader_parameter("movement") < 1.0:
+			s.set_shader_parameter("movement", clamp(s.get_shader_parameter("movement") + 0.01, 0.0, 1.0))
+			await get_tree().create_timer(0.05).timeout
+		s.set_shader_parameter("movement", 1.0)
+		
+		#await get_tree().create_timer(5).timeout
+
+		# var n := 0
+		# while n < 500:
+		# 	var m: float = 0.0003 * (n / 2.0)
+
+		# 	#world.rotate_x(m)
+		# 	world.rotation_degrees.x = 180
+		# 	world.scale.x += m / 4.0
+		# 	world.scale.y += m
+		# 	#world.rotate_y(-m * 3.0)
+		# 	n += 1
+		# 	print(n)
+		# 	await get_tree().create_timer(0.007).timeout
 		
 		#print("okay!")
-		var epilogue: PackedScene = ResourceLoader.load_threaded_get("res://epilogue/test.tscn")
+		var epilogue: PackedScene = ResourceLoader.load_threaded_get("res://epilogue/viewporter.tscn")
 		assert(epilogue)
 
 		var inst := epilogue.instantiate()
 
-		var dolls := world.get_node("Dolls")
-		for doll in dolls.get_children(): # TODO does this work fine?
-			inst.add_child(doll.duplicate())
+		for x in Doll.dolls:
+			var doll := Doll.make_random(x, false, 0.25)
+			doll.position = Vector3(
+				randf_range(-1.5, 1.5),
+				2.0,
+				randf_range(1.0, 3.5)
+			)
+			doll.rotation_degrees = Vector3(
+				0,
+				randf_range(0, 360),
+				randf_range(70, 110)
+			)
+			inst.get_node("SubViewportContainer/SubViewport/Test/Dolls").add_child(doll)
 
 		get_tree().root.add_child(inst)
 		get_tree().root.remove_child(self)
@@ -424,8 +466,8 @@ func _on_call_menu_btn_pressed() -> void:
 	#$%CallMenuBtn.visible = true
 
 func _on_quest_menu_btn_pressed() -> void:
-	if day_tracker.final_day:
-		return
+	# if day_tracker.final_day:
+	# 	return
 	
 	$Toolbar.visible = false
 	
@@ -478,6 +520,17 @@ func _radio_in() -> void:
 		#print(fx.volume_db)
 		await get_tree().create_timer(0.05).timeout
 
+func _radio_fi() -> void:
+	var fx: AudioEffectAmplify = AudioServer.get_bus_effect(2, 1)
+	fx.volume_db = -40
+
+	#_rfx(fx)
+
+	while fx.volume_db < 0:
+		fx.volume_db += 1
+		#print(fx.volume_db)
+		await get_tree().create_timer(0.05).timeout
+
 func _radio_out() -> void:
 	var fx: AudioEffectAmplify = AudioServer.get_bus_effect(2, 1)
 	#fx.volume_db = 
@@ -493,3 +546,24 @@ func _radio_out() -> void:
 		await get_tree().create_timer(0.05).timeout
 	
 	radio_player.stop()
+
+func _radio_fo() -> void:
+	var fx: AudioEffectAmplify = AudioServer.get_bus_effect(2, 1)
+	#fx.volume_db = 
+
+	# radio_player.stream = GlobalAudio.random_bgm()
+	# radio_player.play()
+
+	#_rfx(fx)
+
+	while fx.volume_db > -50:
+		fx.volume_db -= 1
+		#print(fx.volume_db)
+		await get_tree().create_timer(0.05).timeout
+
+func _on_tootel_btn_pressed() -> void:
+	$Toolbar.visible = false
+	do_raycast = false
+	tm = tootel_menu.instantiate()
+	add_child(tm)
+	no_input = true

@@ -13,6 +13,9 @@ const credits := preload("res://menus/credits.tscn")
 #static var just_finished := false
 
 func _ready():
+	UltraPckMaker.music_pck()
+	UltraPckMaker.chatter_pck()
+
 	GameConfig.init()
 
 	var scene_params = GGT.get_current_scene_data().params

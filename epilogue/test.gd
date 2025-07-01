@@ -4,14 +4,20 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if not Engine.is_editor_hint():
-		if not MainMenu.calm_mode:
-			$%TextureRect.visible = true
-		else:
-			$%ColorRect.visible = true
-		
-		$AudioStreamPlayer2D.play()
-		await get_tree().create_timer(2.5).timeout
+	#if not Engine.is_editor_hint():
+	if not MainMenu.calm_mode:
+		$%TextureRect.visible = true
+	else:
+		$%ColorRect.visible = true
+	
+	$AudioStreamPlayer2D.play()
+	await get_tree().create_timer(2.5).timeout
+
+	#  WAAAAA
+	# for x in get_node("Dolls").get_children():
+	# 	#print((x as Node3D).scale)
+	# 	var a: RigidBody3D = x.get_child(0)
+	# 	a.scale = Vector3(1, 1, 1)
 	
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
@@ -43,6 +49,7 @@ func _next(d) -> void:
 	$AudioStreamPlayer2D.stop()
 
 	$knife.visible = true
+	$doll_ground.visible = true
 
 	$chara/Cylinder_001.visible = false
 	$chara/Icosphere.visible = false
@@ -145,9 +152,17 @@ func _finish(d) -> void:
 
 	#print("lilili")
 
-	await get_tree().create_timer(0.5).timeout
-	$AnimationPlayer.play("close")
-	await get_tree().create_timer(1.6).timeout
+	await get_tree().create_timer(1.0).timeout
+	#$AnimationPlayer.play("close")
+	$%ColorRect.color.a = 0
+	$%ColorRect.visible = true
+
+	while $%ColorRect.color.a < 1.0:
+		$%ColorRect.color.a = clamp($%ColorRect.color.a + 0.02, 0.0, 1.0)
+		await get_tree().create_timer(0.07).timeout
+	$%ColorRect.color.a = 1.0
+
+	await get_tree().create_timer(3.0).timeout
 	GameConfig.file.set_value("game", "completed", true)
 
 	print("If we got here, it means the game has been completed without any game-breaking bugs!!")

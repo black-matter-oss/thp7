@@ -1,0 +1,205 @@
+[gd_scene load_steps=5 format=3 uid="uid://3mbpa5wf1br5"]
+
+[ext_resource type="Theme" uid="uid://ducfept6pmkkm" path="res://resources/theme/theme-main.tres" id="1_luq01"]
+[ext_resource type="Script" uid="uid://b8ffihuu15dsw" path="res://gameplay/tootel.gd" id="2_id3pv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_luq01"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_id3pv"]
+
+[node name="Tootel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_luq01")
+script = ExtResource("2_id3pv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Day progression"
+label_settings = SubResource("LabelSettings_luq01")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "During the day characters will visit you in random intervals.
+The day finishes when all characters for the given day have visited,
+which is indicated by a bell and the light over the entrance going off.
+
+When the day finishes, the game switches into \"Free time\"."
+label_settings = SubResource("LabelSettings_id3pv")
+
+[node name="Label3" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Free time"
+label_settings = SubResource("LabelSettings_luq01")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "During free time you can interact with objects in the world
+(i.e. the radio, quest book, telephone, and chair) and walk
+around the palace.
+
+When you are ready to proceed to the next day, you can press
+the arrow icon in the bottom-right corner of the screen."
+label_settings = SubResource("LabelSettings_id3pv")
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/ScrollContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label5" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/ScrollContainer2/VBoxContainer"]
+layout_mode = 2
+text = "World movement"
+label_settings = SubResource("LabelSettings_luq01")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/ScrollContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Stand up by pressing shift.
+You can move the player character with WASD keys.
+Hold the right mouse button to rotate the first-person
+camera."
+label_settings = SubResource("LabelSettings_id3pv")
+
+[node name="Label7" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/ScrollContainer2/VBoxContainer"]
+layout_mode = 2
+text = "World interaction"
+label_settings = SubResource("LabelSettings_luq01")
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/ScrollContainer2/VBoxContainer"]
+layout_mode = 2
+text = "If not rotating the camera, move your mouse cursor
+around the screen. A black outline around an object
+indicates that it's an interactable object.
+
+Interact with objects using the left mouse button."
+label_settings = SubResource("LabelSettings_id3pv")
+
+[node name="ScrollContainer3" type="ScrollContainer" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/ScrollContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label5" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/ScrollContainer3/VBoxContainer"]
+layout_mode = 2
+text = "Quests"
+label_settings = SubResource("LabelSettings_luq01")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/ScrollContainer3/VBoxContainer"]
+layout_mode = 2
+text = "Sometimes, visiting characters will give you quests.
+They must be completed during free time and before
+the next day begins.
+
+Whenever a quest is available, a yellow exclamation mark
+will appear above the quest book.
+A (ding) sound indicates a new quest available.
+
+Interact with the quest book to access the quest list."
+label_settings = SubResource("LabelSettings_id3pv")
+
+[node name="ScrollContainer4" type="ScrollContainer" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/ScrollContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label5" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/ScrollContainer4/VBoxContainer"]
+layout_mode = 2
+text = "Telephone"
+label_settings = SubResource("LabelSettings_luq01")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/ScrollContainer4/VBoxContainer"]
+layout_mode = 2
+text = "The telephone can be used to call characters during
+free time.
+
+Do note that certain characters can only be called during
+their special events or quests.
+
+Interact with the telephone to display a list of characters
+that you can try calling."
+label_settings = SubResource("LabelSettings_id3pv")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -33.5
+offset_top = -44.0
+offset_right = 33.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Close"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

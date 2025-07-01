@@ -1,0 +1,44 @@
+~ start
+Remilia Scarlet: Satori! How are you doing?
+- I'm good
+	Remilia Scarlet: That's great to hear!
+- I'm alright
+	Remilia Scarlet: Well, every day has its ups and downs.
+- Not great
+	Remilia Scarlet: Aw, is something the matter?
+	Remilia Scarlet: Don't worry!\nI'm here whenever you need, Satori.
+~ talk
+Remilia Scarlet: Is there anything you want to talk about in particular?
+- Let's play rock, paper, scissors!
+	Remilia Scarlet: Oh, beware Satori! I'm very good at rock, paper, scissors.
+	~ rps
+	- Rock
+		% Remilia Scarlet: Rock!
+		% Remilia Scarlet: Paper!
+		% Remilia Scarlet: Scissors!
+		=> rps
+	- Paper
+		% Remilia Scarlet: Rock!
+		% Remilia Scarlet: Paper!
+		% Remilia Scarlet: Scissors!
+		=> rps
+	- Scissors
+		% Remilia Scarlet: Rock!
+		% Remilia Scarlet: Paper!
+		% Remilia Scarlet: Scissors!
+		=> rps
+	- End
+		=> talk
+- Tell me a fun fact
+	% Remilia Scarlet: Did you know that chickens can survive without a head?
+	% Remilia Scarlet: Did you know that in space no one can hear you scream? That's because there are no air particles to transfer sound vibrations.
+	% Remilia Scarlet: Did you know that ants don't have lungs?
+	% Remilia Scarlet: Did you know that snails have teeth?
+	% Remilia Scarlet: Did you know that bananas are radioactive? They contain potassium-40!
+	% Remilia Scarlet: Did you know that animals can be allergic to humans?
+	% Remilia Scarlet: Did you know that smells can pass through water?
+	=> talk
+- Good night
+	Remilia Scarlet: Yes, good night, Satori.\nMake sure to get lots of sleep for tomorrow to wake up full of energy.
+	=> END
+=> END

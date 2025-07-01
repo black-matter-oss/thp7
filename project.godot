@@ -10,7 +10,10 @@ config_version=5
 
 [application]
 
-config/name="thp7"
+config/name="SLC"
+config/name_localized={
+"en": "Satori's Love Counsel"
+}
 config/version="1.0.0"
 run/main_scene="res://menus/menu.tscn"
 config/features=PackedStringArray("4.4")
@@ -23,6 +26,7 @@ GGT_DebugShortcuts="*res://addons/ggt-debug-shortcuts/autoload/debug_shortcuts.t
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GlobalAudioPlayer="*res://global_audio_player.tscn"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
+SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
 
 [category]
 
@@ -50,7 +54,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/ggt-core/plugin.cfg", "res://addons/ggt-debug-shortcuts/plugin.cfg")
+enabled=PackedStringArray("res://addons/autoscreenshot/plugin.cfg", "res://addons/debug_menu/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/ggt-core/plugin.cfg", "res://addons/ggt-debug-shortcuts/plugin.cfg", "res://addons/simplegrasstextured/plugin.cfg")
 
 [gui]
 
@@ -170,14 +174,65 @@ stand_up={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://resources/dialogues/flandre/0.dialogue", "res://resources/dialogues/reimu/0.dialogue", "res://resources/dialogues/marisa/0.dialogue", "res://resources/dialogues/mokou/0.dialogue", "res://resources/dialogues/maribel/0.dialogue", "res://resources/dialogues/wriggle/0.dialogue", "res://resources/dialogues/orin/0.dialogue", "res://resources/dialogues/okuu/0.dialogue", "res://resources/dialogues/okuu/1.dialogue", "res://resources/dialogues/momiji/0.dialogue", "res://resources/dialogues/okuu/2.dialogue", "res://resources/dialogues/reimu/1.dialogue", "res://resources/generic_dialogues/call.dialogue", "res://resources/special_dialogues/momiji_call0.dialogue", "res://resources/dialogues/momiji/1.dialogue", "res://resources/dialogues/momiji/2.dialogue", "res://resources/dialogues/reimu/2.dialogue", "res://resources/special_dialogues/marisa_call0.dialogue", "res://resources/dialogues/sakuya/0.dialogue", "res://resources/dialogues/kyouko/0.dialogue", "res://resources/dialogues/kyouko/1.dialogue", "res://resources/dialogues/yukari/0.dialogue", "res://resources/generic_dialogues/call_no_answer.dialogue", "res://resources/dialogues/patchouli/0.dialogue", "res://resources/dialogues/koakuma/0.dialogue", "res://resources/dialogues/remilia/0.dialogue", "res://resources/dialogues/remilia/1.dialogue", "res://resources/dialogues/koakuma/1.dialogue", "res://resources/dialogues/kyouko/2.dialogue", "res://resources/dialogues/remilia/3.dialogue", "res://resources/dialogues/remilia/4.dialogue", "res://resources/dialogues/remilia/2.dialogue", "res://resources/special_dialogues/remilia_call0.dialogue", "res://resources/special_dialogues/aya_call0.dialogue", "res://resources/dialogues/kaguya/0.dialogue", "res://resources/dialogues/koakuma/2.dialogue", "res://resources/dialogues/koakuma/4.dialogue", "res://resources/dialogues/mokou/1.dialogue", "res://resources/special_dialogues/epilogue0.dialogue", "res://resources/special_dialogues/epilogue1.dialogue", "res://resources/special_dialogues/epilogue2.dialogue", "res://resources/special_dialogues/epilogue3.dialogue", "res://resources/special_dialogues/epilogue4.dialogue", "res://resources/dialogues/rinnosuke/0.dialogue", "res://resources/dialogues/medicine/0.dialogue", "res://resources/dialogues/rumia/0.dialogue", "res://resources/special_dialogues/alice_call0.dialogue", "res://resources/dialogues/medicine/1.dialogue", "res://resources/special_dialogues/patchouli_call0.dialogue", "res://resources/special_dialogues/marisa_call1.dialogue", "res://resources/special_dialogues/patchouli_call1.dialogue", "res://resources/special_dialogues/marisa_call2.dialogue", "res://resources/dialogues/mokou/2.dialogue", "res://resources/dialogues/rinnosuke/1.dialogue", "res://resources/dialogues/koakuma/3.dialogue")
+locale/translations_pot_files=PackedStringArray("res://resources/dialogues/flandre/0.dialogue", "res://resources/dialogues/reimu/0.dialogue", "res://resources/dialogues/marisa/0.dialogue", "res://resources/dialogues/mokou/0.dialogue", "res://resources/dialogues/maribel/0.dialogue", "res://resources/dialogues/wriggle/0.dialogue", "res://resources/dialogues/orin/0.dialogue", "res://resources/dialogues/okuu/0.dialogue", "res://resources/dialogues/okuu/1.dialogue", "res://resources/dialogues/momiji/0.dialogue", "res://resources/dialogues/okuu/2.dialogue", "res://resources/dialogues/reimu/1.dialogue", "res://resources/generic_dialogues/call.dialogue", "res://resources/special_dialogues/momiji_call0.dialogue", "res://resources/dialogues/momiji/1.dialogue", "res://resources/dialogues/momiji/2.dialogue", "res://resources/dialogues/reimu/2.dialogue", "res://resources/special_dialogues/marisa_call0.dialogue", "res://resources/dialogues/sakuya/0.dialogue", "res://resources/dialogues/kyouko/0.dialogue", "res://resources/dialogues/kyouko/1.dialogue", "res://resources/dialogues/yukari/0.dialogue", "res://resources/generic_dialogues/call_no_answer.dialogue", "res://resources/dialogues/patchouli/0.dialogue", "res://resources/dialogues/koakuma/0.dialogue", "res://resources/dialogues/remilia/0.dialogue", "res://resources/dialogues/remilia/1.dialogue", "res://resources/dialogues/koakuma/1.dialogue", "res://resources/dialogues/kyouko/2.dialogue", "res://resources/dialogues/remilia/3.dialogue", "res://resources/dialogues/remilia/4.dialogue", "res://resources/dialogues/remilia/2.dialogue", "res://resources/special_dialogues/remilia_call0.dialogue", "res://resources/special_dialogues/aya_call0.dialogue", "res://resources/dialogues/kaguya/0.dialogue", "res://resources/dialogues/koakuma/2.dialogue", "res://resources/dialogues/mokou/1.dialogue", "res://resources/special_dialogues/epilogue0.dialogue", "res://resources/special_dialogues/epilogue1.dialogue", "res://resources/special_dialogues/epilogue2.dialogue", "res://resources/special_dialogues/epilogue3.dialogue", "res://resources/special_dialogues/epilogue4.dialogue", "res://resources/dialogues/rinnosuke/0.dialogue", "res://resources/dialogues/medicine/0.dialogue", "res://resources/dialogues/rumia/0.dialogue", "res://resources/special_dialogues/alice_call0.dialogue", "res://resources/dialogues/medicine/1.dialogue", "res://resources/special_dialogues/patchouli_call0.dialogue", "res://resources/special_dialogues/marisa_call1.dialogue", "res://resources/special_dialogues/patchouli_call1.dialogue", "res://resources/special_dialogues/marisa_call2.dialogue", "res://resources/dialogues/mokou/2.dialogue", "res://resources/dialogues/rinnosuke/1.dialogue", "res://resources/dialogues/koakuma/3.dialogue", "res://builds/patch/resources/dialogues/flandre/0.dialogue", "res://builds/patch/resources/dialogues/wriggle/0.dialogue", "res://builds/patch/resources/dialogues/okuu/0.dialogue", "res://builds/patch/resources/dialogues/okuu/1.dialogue", "res://builds/patch/resources/dialogues/okuu/2.dialogue", "res://builds/patch/resources/dialogues/orin/0.dialogue", "res://builds/patch/resources/dialogues/momiji/0.dialogue", "res://builds/patch/resources/dialogues/momiji/1.dialogue", "res://builds/patch/resources/dialogues/momiji/2.dialogue", "res://builds/patch/resources/dialogues/maribel/0.dialogue", "res://builds/patch/resources/dialogues/mokou/0.dialogue", "res://builds/patch/resources/dialogues/mokou/1.dialogue", "res://builds/patch/resources/dialogues/mokou/2.dialogue", "res://builds/patch/resources/dialogues/reimu/1.dialogue", "res://builds/patch/resources/dialogues/reimu/2.dialogue", "res://builds/patch/resources/dialogues/reimu/0.dialogue", "res://builds/patch/resources/dialogues/marisa/0.dialogue", "res://builds/patch/resources/dialogues/kyouko/0.dialogue", "res://builds/patch/resources/dialogues/kyouko/1.dialogue", "res://builds/patch/resources/dialogues/kyouko/2.dialogue", "res://builds/patch/resources/dialogues/sakuya/0.dialogue", "res://builds/patch/resources/dialogues/yukari/0.dialogue", "res://builds/patch/resources/dialogues/patchouli/0.dialogue", "res://builds/patch/resources/dialogues/koakuma/0.dialogue", "res://builds/patch/resources/dialogues/koakuma/1.dialogue", "res://builds/patch/resources/dialogues/koakuma/2.dialogue", "res://builds/patch/resources/dialogues/koakuma/3.dialogue", "res://builds/patch/resources/dialogues/remilia/0.dialogue", "res://builds/patch/resources/dialogues/remilia/1.dialogue", "res://builds/patch/resources/dialogues/remilia/2.dialogue", "res://builds/patch/resources/dialogues/remilia/3.dialogue", "res://builds/patch/resources/dialogues/remilia/4.dialogue", "res://builds/patch/resources/dialogues/kaguya/0.dialogue", "res://builds/patch/resources/dialogues/rinnosuke/0.dialogue", "res://builds/patch/resources/dialogues/rinnosuke/1.dialogue", "res://builds/patch/resources/dialogues/medicine/0.dialogue", "res://builds/patch/resources/dialogues/medicine/1.dialogue", "res://builds/patch/resources/dialogues/rumia/0.dialogue", "res://resources/special_dialogues/remilia_call.dialogue")
+locale/locale_filter_mode=0
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=2
 textures/canvas_textures/default_texture_repeat=1
 textures/vram_compression/import_etc2_astc=true
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
 textures/default_filters/anisotropic_filtering_level=0
 limits/opengl/max_renderable_lights=256
 limits/opengl/max_lights_per_object=256
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+anti_aliasing/quality/use_debanding=true
 occlusion_culling/use_occlusion_culling=true
+
+[shader_globals]
+
+sgt_legacy_renderer={
+"type": "int",
+"value": 0
+}
+sgt_player_position={
+"type": "vec3",
+"value": Vector3(1e+06, 1e+06, 1e+06)
+}
+sgt_player_mov={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}
+sgt_normal_displacement={
+"type": "sampler2D",
+"value": "res://addons/simplegrasstextured/images/normal.png"
+}
+sgt_motion_texture={
+"type": "sampler2D",
+"value": "res://addons/simplegrasstextured/images/motion.png"
+}
+sgt_wind_direction={
+"type": "vec3",
+"value": Vector3(1, 0, 0)
+}
+sgt_wind_movement={
+"type": "vec3",
+"value": Vector2(0, 0)
+}
+sgt_wind_strength={
+"type": "float",
+"value": 0.15
+}
+sgt_wind_turbulence={
+"type": "float",
+"value": 1.0
+}
+sgt_wind_pattern={
+"type": "sampler2D",
+"value": "res://addons/simplegrasstextured/images/wind_pattern.png"
+}

@@ -45,7 +45,7 @@ func _ready() -> void:
 		# l.size_flags_horizontal	 = Control.SIZE_EXPAND_FILL
 		# hbc.add_child(l)
 
-		$PanelContainer/ScrollContainer/VBoxContainer.add_child(b)
+		$PanelContainer/MarginContainer/ScrollContainer/VBoxContainer.add_child(b)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

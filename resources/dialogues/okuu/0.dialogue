@@ -22,7 +22,7 @@ Utsuho Reiuji: But it's not a problem, right?
 	do InteractionTracker.change_relationship("orin", "satori", -1000)
 	
 	Satori Komeiji: [#e=annoyed] It's a huge problem.
-	Satori Komeiji: [#e=angry] You've got a job at this, and I don't want you slacking off.
+	Satori Komeiji: [#e=angry] You've got a job at the palace, and I don't want you slacking off.
 	#Satori Komeiji: [#e=angry] I mean, you're both women! Do you have the slightest idea of how insane what you just said is?!
 	Utsuho Reiuji: [#e=sad] [next=auto] I--
 	Satori Komeiji: Get back to work and forget about this entire relationship.
@@ -36,7 +36,7 @@ Utsuho Reiuji: But it's not a problem, right?
 - It isn't
 	set InteractionTracker.okuu_action = 1
 	Satori Komeiji: No, of course not.
-	Utsuho Reiuji: [#e=happy] So, as I was saying, in this week will be our first date.
+	Utsuho Reiuji: [#e=happy] Then, as I was saying, this week will be our first date.
 	Utsuho Reiuji: [#e=troubled] But, even though we've known each other for so long, I don't really know what Rin likes, ehe...
 	Utsuho Reiuji: [#e=troubled] So please, if you will!
 	Utsuho Reiuji: [#e=troubled] Would you try to learn from Rin what she'd like to do and where she'd like to go? I'll tell her to come here!

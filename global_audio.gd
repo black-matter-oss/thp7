@@ -29,6 +29,7 @@ const CHATTER_DIR = "res://resources/sfx/chatter"
 
 static var player2d : AudioStreamPlayer2D
 static var player3d : AudioStreamPlayer3D
+static var player2dv2 : AudioStreamPlayer2D
 
 static var last_bgm: String
 
@@ -51,6 +52,8 @@ static func play3d_p(p, audio) -> void:
 
 static func random_bgm() -> AudioStream:
 	var dir := DirAccess.open(BGM_DIR)
+	assert(dir)
+
 	var rfiles := dir.get_files()
 	var files: Array[String] = []
 

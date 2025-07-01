@@ -10,12 +10,16 @@ static var kyouko_propose: int = -1
 static var love_protocol: bool = false
 static var rumicine_poison: bool = false
 
-static func bad_choice() -> void:
+static func bad_choice(chh: Character = null) -> void:
 	#GlobalAudio.no = true
 	GameplayInterface.global.radio_player.stream_paused = true
 	GlobalAudio.play2d(GlobalAudio.SFX_NOISE1)
 
-	var doll := Doll.make_random(GameplayInterface.global.day_tracker.curernt_character.dialogue_color)
+	var c: Character = chh
+	if not c:
+		c = GameplayInterface.global.day_tracker.curernt_character
+
+	var doll := Doll.make_random(c.dialogue_color)
 	GameWorld.global.get_node("Dolls").add_child(doll)
 	if GameplayInterface.global.day_tracker.final_day:
 		doll.position = Vector3(

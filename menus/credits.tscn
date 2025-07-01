@@ -196,6 +196,18 @@ http://creativecommons.org/licenses/by/4.0/
 \"Danse Morialta\" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/
+
+\"Late Night Radio\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
+\"Easy Lemon\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
+\"Cool Vibes\" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -217,7 +229,38 @@ License: Attribution NonCommercial 4.0
 
 Book Closing by dersuperanton
 https://freesound.org/s/435558/
-License: Attribution 4.0"
+License: Attribution 4.0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Other"
+label_settings = SubResource("LabelSettings_do0px")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OtherCredits" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "\"Grass Patch (3 LODs)\" (https://skfb.ly/pwUwA) by EFX
+is licensed under
+Creative Commons Attribution
+(http://creativecommons.org/licenses/by/4.0/)
+
+\"LOD/Billboard Summer Trees Pack\" (https://skfb.ly/p7UMP) by EFX
+is licensed under
+Creative Commons Attribution
+(http://creativecommons.org/licenses/by/4.0/)
+
+\"Billboard Tree Pack\" (https://skfb.ly/oM8uB) by EFX
+is licensed under
+Creative Commons Attribution
+(http://creativecommons.org/licenses/by/4.0/).
+
+
+
+https://black-matter.org/"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -84,7 +84,7 @@ func reset2() -> void:
 	relationships[CharacterTracker.getv("satori")] = 0
 	to_reset = false
 
-func load_dialogues() -> void:
+func load_dialogues(epck: PCKPacker) -> void:
 	const base_path := "res://resources/dialogues/"
 
 	print_debug("Dialogue directory for character: " + base_path + id)
@@ -95,7 +95,6 @@ func load_dialogues() -> void:
 		return
 	
 	var files := dir.get_files()
-	#var file := dir.get_next()
 	print_debug("Files: " + ",".join(files))
 
 	#while file != "":
@@ -104,8 +103,15 @@ func load_dialogues() -> void:
 			#file = dir.get_next()
 			continue
 		
-		dialogues.append(load(base_path + id + "/" + file))
+		var dr := load(base_path + id + "/" + file)
+		
+		dialogues.append(dr)
 		print_debug("Loaded dialogue " + file + " for " + name)
+
+		# we need to do weird shit for dialogues because they're not being exported in the way i want them to be part 2
+		if OS.is_debug_build():
+			epck.add_file(base_path + id + "/" + file, base_path + id + "/" + file)
+			print("DEBUG BUILD: ADDED TO DIALOGUE PCK PATCH " + base_path + id + "/" + file)
 
 		#file = dir.get_next()
 	
@@ -116,7 +122,7 @@ func load_dialogues() -> void:
 		print("Warning: " + name + " has no dialogues; cannot visit")
 		return
 
-func load_portraits() -> void:
+func load_portraits(epck: PCKPacker) -> void:
 	const base_path := "res://resources/characters/"
 
 	var dir := DirAccess.open(base_path + id)
@@ -158,13 +164,20 @@ func load_portraits() -> void:
 		# 		printerr("UNKNOWN EMOTION: " + file)
 
 		var fp := base_path + id + "/" + file
+		var a := fp
 		var res := load(fp)
 
 		if not res:
+			a = fp.replace(id, "generic")
 			res = load(fp.replace(id, "generic"))
 			print_debug("Loaded generic portrait for " + name)
 		else:
 			print_debug("Loaded portrait " + file + " for " + name)
+
+		# we need to do weird shit for portraits too because they're not being exported in the way i want them to be part 2
+		if OS.is_debug_build():
+			epck.add_file(a, a)
+			print("DEBUG BUILD: ADDED TO CHARACTERS PCK PATCH " + a)
 
 		portraits[emote] = res
 		file = dir.get_next()

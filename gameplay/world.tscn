@@ -2467,8 +2467,7 @@ transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, -0.2, -25.25)
 script = ExtResource("8_tv7he")
 
 [node name="Sprite3D" type="Sprite3D" parent="Player"]
-transform = Transform3D(4.3, 0, 0, 0, 4.3, 0, 0, 0, 4.3, 0, 0.702732, 0)
-visible = false
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0.78, 0)
 pixel_size = 0.001
 billboard = 2
 texture = ExtResource("10_1or1s")
@@ -7186,6 +7185,7 @@ target_position = Vector3(0, 0, 0)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.073, 5.4552)
 shadow_enabled = true
+shadow_bias = 0.07
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -7304,7 +7304,7 @@ target_position = Vector3(0, 30, 0)
 target_position = Vector3(0, 0, 0)
 
 [node name="radio" type="Node3D" parent="."]
-transform = Transform3D(0.24319, 0, -0.278853, 0, 0.37, 0, 0.278853, 0, 0.24319, 1.83533, 1.80025, -22.6157)
+transform = Transform3D(0.24319, 0, -0.278853, 0, 0.37, 0, 0.278853, 0, 0.24319, 1.83533, 1.78992, -22.6157)
 
 [node name="Cube" type="MeshInstance3D" parent="radio"]
 transform = Transform3D(0.262778, 0, 0, 0, 0.615149, 0, 0, 0, 1, 0, 0.0929395, 0)
@@ -7317,7 +7317,7 @@ mesh = SubResource("ArrayMesh_1t5ky")
 skeleton = NodePath("")
 
 [node name="book" type="Node3D" parent="."]
-transform = Transform3D(-0.331411, 0, -0.0611185, 0, 0.337, 0, 0.0611185, 0, -0.331411, -0.872891, 1.65526, -22.9553)
+transform = Transform3D(-0.331411, 0, -0.0611185, 0, 0.337, 0, 0.0611185, 0, -0.331411, -0.872891, 1.65337, -22.9553)
 
 [node name="Cube" type="MeshInstance3D" parent="book"]
 transform = Transform3D(0.702274, 0, 0, 0, 0.149386, 0, 0, 0, 1, 0, 0, 0)
@@ -7408,7 +7408,7 @@ collision_mask = 2
 hit_back_faces = false
 
 [node name="telephone" type="Node3D" parent="."]
-transform = Transform3D(-0.287431, 0, 0.102022, 0, 0.305, 0, -0.102022, 0, -0.287431, -1.65342, 1.66357, -22.6976)
+transform = Transform3D(-0.287431, 0, 0.102022, 0, 0.305, 0, -0.102022, 0, -0.287431, -1.65342, 1.62794, -22.6976)
 
 [node name="Cube" type="MeshInstance3D" parent="telephone"]
 transform = Transform3D(0.831244, 0, 0, 0, 0.115626, 0, 0, 0, 1, 0, 0, 0)
@@ -7483,7 +7483,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.066803, -0.0308604, -0.026
 shape = SubResource("BoxShape3D_vdnhq")
 
 [node name="Phone" type="Area3D" parent="Colliders"]
-transform = Transform3D(-0.942396, 0, 0.334498, 0, 1, 0, -0.334498, 0, -0.942396, -1.69838, 1.92774, -22.681)
+transform = Transform3D(-0.942396, 0, 0.334498, 0, 1, 0, -0.334498, 0, -0.942396, -1.69838, 1.89211, -22.681)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Phone"]
@@ -7499,7 +7499,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000616312, -0.0886383, -0.
 shape = SubResource("BoxShape3D_0ohx2")
 
 [node name="Radio" type="Area3D" parent="Colliders"]
-transform = Transform3D(0.657375, 0, -0.753563, 0, 1, 0, 0.753563, 0, 0.657375, 1.82263, 1.73451, -22.6386)
+transform = Transform3D(0.657375, 0, -0.753563, 0, 1, 0, 0.753563, 0, 0.657375, 1.82263, 1.72418, -22.6386)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Colliders/Radio"]
@@ -7626,7 +7626,7 @@ omni_range = 10.0
 transform = Transform3D(0.953496, 0, -0.301405, 0, 1, 0, 0.301405, 0, 0.953496, 1.41036, 1.81291, -24.2959)
 
 [node name="candle" parent="Candles" instance=ExtResource("10_0ohx2")]
-transform = Transform3D(0.0701361, 0, 0.0384828, 0, 0.08, 0, -0.0384828, 0, 0.0701361, 0.614583, -0.217152, -0.502708)
+transform = Transform3D(0.0701361, 0, 0.0384828, 0, 0.08, 0, -0.0384828, 0, 0.0701361, 0.177057, -0.217152, 2.00856)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Candles/candle"]
 transform = Transform3D(12.5, 0, 0, 0, 12.5, 0, 0, 0, 12.5, 0, 2.10765, 0)
@@ -7640,13 +7640,13 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.59047
+light_energy = 0.816646
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 metadata/no_shadow = true
 
 [node name="candle2" parent="Candles" instance=ExtResource("10_0ohx2")]
-transform = Transform3D(0.00888005, 0, -0.0795056, 0, 0.08, 0, 0.0795056, 0, 0.00888005, 0.278619, -0.217152, -0.293785)
+transform = Transform3D(0.00888006, 0, -0.0795056, 0, 0.08, 0, 0.0795056, 0, 0.00888006, 0.301625, -0.217152, -0.968184)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Candles/candle2"]
 transform = Transform3D(12.5, 0, 0, 0, 12.5, 0, 0, 0, 12.5, 0, 2.10765, 0)
@@ -7660,13 +7660,33 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.756857
+light_energy = 0.577092
+omni_range = 0.62107
+script = ExtResource("12_wrmeg")
+metadata/no_shadow = true
+
+[node name="candle4" parent="Candles" instance=ExtResource("10_0ohx2")]
+transform = Transform3D(0.00888006, 0, -0.0795056, 0, 0.08, 0, 0.0795056, 0, 0.00888006, 0.115882, -0.217152, -0.705267)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Candles/candle4"]
+transform = Transform3D(12.5, 0, 0, 0, 12.5, 0, 0, 0, 12.5, 0, 2.10765, 0)
+visible = false
+amount = 6
+lifetime = 1.5
+randomness = 0.7
+process_material = SubResource("ParticleProcessMaterial_2lqfd")
+draw_pass_1 = SubResource("QuadMesh_sc5ct")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
+light_color = Color(0.72, 0.558, 0.3312, 1)
+light_energy = 0.520802
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 metadata/no_shadow = true
 
 [node name="candle3" parent="Candles" instance=ExtResource("10_0ohx2")]
-transform = Transform3D(-0.0396791, 0, 0.0694663, 0, 0.08, 0, -0.0694663, 0, -0.0396791, 0.167604, -0.217152, -0.652597)
+transform = Transform3D(-0.0396791, 0, 0.0694663, 0, 0.08, 0, -0.0694663, 0, -0.0396791, 0.255178, -0.217152, 1.7543)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Candles/candle3"]
 transform = Transform3D(12.5, 0, 0, 0, 12.5, 0, 0, 0, 12.5, 0, 2.10765, 0)
@@ -7680,7 +7700,7 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.442093
+light_energy = 0.673906
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 metadata/no_shadow = true
@@ -7753,6 +7773,10 @@ shape = SubResource("ConcavePolygonShape3D_68764")
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Chair/Area3D"]
 transform = Transform3D(0, 0, 0.0988061, 0, 0.338036, 0, -0.710804, 0, 0, -0.821593, 0.988598, -0.166218)
 shape = SubResource("ConcavePolygonShape3D_2n1xd")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.999079, 0.00314822, 0.0427887, -1.32915e-08, 0.997304, -0.0733778, -0.0429044, -0.0733102, -0.996386, 1.12928, 2.16476, -27.0047)
+fov = 45.0
 
 [connection signal="graphic_options_change" from="." to="." method="_on_graphic_options_change"]
 [connection signal="body_entered" from="corridors/CorridorMoveArea" to="." method="_on_corridor_move_area_body_entered"]

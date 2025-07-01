@@ -8,7 +8,7 @@ static var msaa := 1
 static var fxaa := true
 static var taa := false
 
-static var res_scale := 1.10
+static var res_scale := 1.0
 static var scale_method := 0
 
 static var shadows := 2

@@ -24,6 +24,7 @@ Satori Komeiji: Indeed, that is what I am doing for now.
 	- Do you enjoy when she does these things?
 		Momiji Inubashiri: [#e=blush] I-I do...
 		- She's just messing with you.
+			do InteractionTracker.bad_choice()
 			Momiji Inubashiri: [#e=confused] You... You think so?
 			Satori Komeiji: It's very possible.
 			Momiji Inubashiri: Hmm...\nAlright, I'll think about that.

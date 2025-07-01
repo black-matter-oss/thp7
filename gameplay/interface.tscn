@@ -1,13 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctfb8dprxsk8i"]
+[gd_scene load_steps=15 format=3 uid="uid://ctfb8dprxsk8i"]
 
 [ext_resource type="Script" uid="uid://c1dqbp0765kxt" path="res://gameplay/interface.gd" id="1_ctvng"]
 [ext_resource type="PackedScene" uid="uid://cauebywkv2ugs" path="res://gameplay/world.tscn" id="1_gemis"]
+[ext_resource type="Shader" uid="uid://dhynyy8txmchi" path="res://resources/shaders/melt.gdshader" id="1_riaec"]
 [ext_resource type="Script" uid="uid://c1pf0lfriod2r" path="res://data/day_tracker.gd" id="3_faidp"]
 [ext_resource type="Texture2D" uid="uid://blamfc3xk3g4c" path="res://resources/textures/bookb.png" id="4_4gceb"]
 [ext_resource type="Texture2D" uid="uid://bgsjtihi0vkjy" path="res://resources/textures/phoneb.png" id="5_4gceb"]
 [ext_resource type="Texture2D" uid="uid://bv8tg1prqdaos" path="res://resources/textures/arrowb.png" id="6_5qdjx"]
+[ext_resource type="Texture2D" uid="uid://cfunhaavo00xr" path="res://resources/textures/question4x.png" id="6_hentq"]
 [ext_resource type="AudioStream" uid="uid://56pnfpstucol" path="res://resources/sfx/noise0.wav" id="7_uv42p"]
 [ext_resource type="Theme" uid="uid://co17bgal6w6ut" path="res://resources/theme/dialogue.tres" id="7_xehbb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_riaec"]
+shader = ExtResource("1_riaec")
+shader_parameter/subdivisions = 60
+shader_parameter/movement = 0.0
 
 [sub_resource type="Gradient" id="Gradient_faidp"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 0, 1, 1)
@@ -29,6 +36,7 @@ grow_vertical = 2
 script = ExtResource("1_ctvng")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_riaec")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,7 +85,6 @@ disabled = true
 texture_normal = SubResource("GradientTexture2D_58vu7")
 
 [node name="Toolbar" type="PanelContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -92,6 +99,7 @@ layout_mode = 2
 
 [node name="QuestMenuBtn" type="TextureButton" parent="Toolbar/VBoxContainer"]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -101,6 +109,7 @@ stretch_mode = 0
 
 [node name="CallMenuBtn" type="TextureButton" parent="Toolbar/VBoxContainer"]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -108,8 +117,18 @@ tooltip_text = "Phone book"
 texture_normal = ExtResource("5_4gceb")
 stretch_mode = 0
 
+[node name="TootelBtn" type="TextureButton" parent="Toolbar/VBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 0
+tooltip_text = "Phone book"
+texture_normal = ExtResource("6_hentq")
+stretch_mode = 0
+
 [node name="NewDayBtn" type="TextureButton" parent="Toolbar/VBoxContainer"]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
@@ -133,6 +152,10 @@ bus = &"SFX"
 
 [node name="SubSFX" type="AudioStreamPlayer2D" parent="."]
 volume_db = 5.0
+bus = &"SFX"
+
+[node name="NyaaSFX" type="AudioStreamPlayer2D" parent="."]
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="DayPass" type="Panel" parent="."]
@@ -183,4 +206,5 @@ horizontal_alignment = 1
 [connection signal="pressed" from="ThirdEye" to="." method="_on_third_eye_pressed"]
 [connection signal="pressed" from="Toolbar/VBoxContainer/QuestMenuBtn" to="." method="_on_quest_menu_btn_pressed"]
 [connection signal="pressed" from="Toolbar/VBoxContainer/CallMenuBtn" to="." method="_on_call_menu_btn_pressed"]
+[connection signal="pressed" from="Toolbar/VBoxContainer/TootelBtn" to="." method="_on_tootel_btn_pressed"]
 [connection signal="pressed" from="Toolbar/VBoxContainer/NewDayBtn" to="." method="_on_new_day_btn_pressed"]

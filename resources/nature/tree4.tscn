@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbu48owxmxy3s"]
+
+[ext_resource type="ArrayMesh" uid="uid://dlmdgiuc8nesh" path="res://resources/nature/tree5.res" id="1_phrp0"]
+
+[node name="Tree4" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.153162, 0)
+mesh = ExtResource("1_phrp0")

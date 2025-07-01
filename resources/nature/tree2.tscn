@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dby63gx7xkjm5"]
+
+[ext_resource type="ArrayMesh" uid="uid://cm71bbbxrlm8c" path="res://resources/nature/tree2.res" id="1_pceyg"]
+
+[node name="Tree2" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.38024, 0)
+mesh = ExtResource("1_pceyg")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0.931742, 5.38024, -0.956575)
+mesh = ExtResource("1_pceyg")

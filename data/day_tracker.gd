@@ -24,7 +24,7 @@ func start_new_day() -> void:
 	else:
 		current_day = Day.new(current_day.number + 1)
 
-	seed(Time.get_ticks_usec())
+	seed(Time.get_unix_time_from_system())
 
 	# character picking
 	var k: Array[String] = []
@@ -101,7 +101,7 @@ func begin_loop() -> void:
 			#idle_time = randf_range(0, 1)
 			pass
 		else:
-			idle_time = randf_range(2, 10)
+			idle_time = randf_range(0, 8)
 		
 		#if first_chara:
 		#	idle_time += 6 # for the day info to have time to show :D

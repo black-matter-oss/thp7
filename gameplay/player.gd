@@ -12,7 +12,7 @@ const JUMP_VELOCITY = 4.5
 @onready var satori := $satori as Node3D
 
 @onready var floor := get_parent().get_node("Floor") as MeshInstance3D
-@onready var ceiling := get_parent().get_node("Ceiling") as MeshInstance3D
+#@onready var ceiling := get_parent().get_node("Ceiling") as MeshInstance3D
 @onready var corridors := get_parent().get_node("corridors") as Node3D
 @onready var palace_area := get_parent().get_node("Colliders/PalaceArea2") as Area3D
 @onready var palace_area2 := get_parent().get_node("Colliders/PalaceArea2") as Area3D

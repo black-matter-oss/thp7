@@ -381,27 +381,31 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -1, 0, 0)
 light_color = Color(0.88, 0.7964, 0.616, 1)
-light_energy = 4.0
+light_energy = 3.0
+light_indirect_energy = 2.0
 shadow_enabled = true
 omni_range = 35.0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 1, 0, 0)
 light_color = Color(0.88, 0.7964, 0.616, 1)
-light_energy = 4.0
+light_energy = 3.0
+light_indirect_energy = 2.0
 shadow_enabled = true
 omni_range = 35.0
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 0, 0, -1)
 light_color = Color(0.88, 0.7964, 0.616, 1)
-light_energy = 4.0
+light_energy = 3.0
+light_indirect_energy = 2.0
 shadow_enabled = true
 omni_range = 35.0
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 0, 0, 1)
 light_color = Color(0.88, 0.7964, 0.616, 1)
-light_energy = 4.0
+light_energy = 3.0
+light_indirect_energy = 2.0
 shadow_enabled = true
 omni_range = 35.0
