@@ -1,7 +1,7 @@
 class_name Rumicine0
 extends Object
 
-static var success: int = 40
+static var success: int = 50
 static var successful := -1
 static var antipoison := false
 
