@@ -17,6 +17,10 @@ static func create_quest(a: String) -> void:
 			q = Satoremi0Quest.new()
 		"rumicine0":
 			q = Rumicine0Quest.new()
+		"rumicine1":
+			q = Rumicine1Quest.new()
+		"rumicine2":
+			q = Rumicine2Quest.new()
 		_:
 			assert(false)
 	
