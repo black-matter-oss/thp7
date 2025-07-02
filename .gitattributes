@@ -1,4 +1,6 @@
 # Normalize EOL for all files that Git considers text files.
 * text=auto eol=lf
-
 *.hdr binary
+epilogue/test.tscn filter=lfs diff=lfs merge=lfs -text
+resources/blender/prev/koishi5.blend filter=lfs diff=lfs merge=lfs -text
+resources/blender/prev/koishi6.blend filter=lfs diff=lfs merge=lfs -text
