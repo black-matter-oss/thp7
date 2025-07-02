@@ -60,7 +60,7 @@ var sitting := true
 var stood_up := false
 
 func _unhandled_input(event: InputEvent) -> void:
-	if GameplayInterface.global.state != GameplayInterface.GameState.IDLE:
+	if GameplayInterface.global.state != GameplayInterface.GameState.IDLE or GameplayInterface.global.no_input:
 		return
 	
 	if Input.is_action_just_released("stand_up"):
@@ -69,6 +69,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		sitting = false
 
 func _process(delta: float) -> void:
+	if GameplayInterface.global.state == GameplayInterface.GameState.CONVERSATION:
+		sitting = true
+
 	if sitting:
 		(get_parent().get_node("Chair") as Node3D).rotation.y = get_node("satori").rotation.y
 
@@ -83,6 +86,7 @@ func _physics_process(delta: float) -> void:
 			# lighting breaks if we don't "restart" sdfgi after teleporting
 			if GameWorld.global.environment.sdfgi_enabled:
 				GameWorld.global.environment.sdfgi_enabled = false
+				await get_tree().create_timer(0.1).timeout
 				GameWorld.global.environment.sdfgi_enabled = true
 
 		palace.visible = true

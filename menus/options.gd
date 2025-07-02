@@ -163,3 +163,9 @@ func _on_res_scale_slider_value_changed(value: float) -> void:
 	GameConfig.file.set_value("options", "gfx_res_scale", res_scale)
 	if GameplayInterface.global:
 		set_viewport_options(GameplayInterface.global.get_node("SubViewportContainer/SubViewport") as SubViewport)
+
+func _on_fullscreen_button_pressed() -> void:
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

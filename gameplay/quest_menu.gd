@@ -74,4 +74,7 @@ func _on_close_pressed() -> void:
 	get_parent().get_node("Toolbar").visible = true
 	get_parent().remove_child(self)
 	GlobalAudio.play3d_p(GameWorld.global.get_node("book/SpatialAudioPlayer3D") as SpatialAudioPlayer3D, GlobalAudio.SFX_BOOK_CLOSE)
+	GameWorld.global.get_node("book/Cube").visible = true
+	GameWorld.global.get_node("book/Cube_002").visible = true
+	GameWorld.global.get_node("book/Cube_003").visible = true
 	self.queue_free()

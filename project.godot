@@ -14,7 +14,7 @@ config/name="SLC"
 config/name_localized={
 "en": "Satori's Love Counsel"
 }
-config/version="1.0.2"
+config/version="1.0.3"
 run/main_scene="res://menus/menu.tscn"
 config/features=PackedStringArray("4.4")
 config/icon="res://resources/sprites/icon.png"

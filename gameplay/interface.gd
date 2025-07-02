@@ -134,7 +134,7 @@ func call_character(c: Character) -> void:
 		DialogueManager.show_dialogue_balloon(load("res://resources/special_dialogues/patchouli_call1.dialogue"))
 	elif c.id == "marisa" and QuestTracker.is_incomplete("rumicine1"):
 		DialogueManager.show_dialogue_balloon(load("res://resources/special_dialogues/marisa_call2.dialogue"))
-	elif c.id == "remilia":
+	elif c.id == "remilia" and CharacterTracker.getv("remilia").can_visit.call():
 		DialogueManager.show_dialogue_balloon(load("res://resources/special_dialogues/remilia_call.dialogue"))
 	else:
 		print("EXTREME WARNING (it's almost an error): Can call character but didn't find resource: " + c.name)
@@ -474,6 +474,9 @@ func _on_quest_menu_btn_pressed() -> void:
 	#$%QuestMenuBtn.visible = false
 	do_raycast = false
 	qm = quest_menu.instantiate()
+	GameWorld.global.get_node("book/Cube").visible = false
+	GameWorld.global.get_node("book/Cube_002").visible = false
+	GameWorld.global.get_node("book/Cube_003").visible = false
 	GlobalAudio.play3d_p(world.get_node("book/SpatialAudioPlayer3D") as SpatialAudioPlayer3D, GlobalAudio.SFX_BOOK_OPEN)
 	add_child(qm)
 	no_input = true
