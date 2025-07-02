@@ -7640,7 +7640,7 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.382403
+light_energy = 0.680997
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 metadata/no_shadow = true
@@ -7660,7 +7660,7 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.439097
+light_energy = 0.777181
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 metadata/no_shadow = true
@@ -7680,7 +7680,7 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.9
+light_energy = 0.748806
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 metadata/no_shadow = true
@@ -7700,7 +7700,7 @@ draw_pass_1 = SubResource("QuadMesh_sc5ct")
 [node name="OmniLight3D" type="OmniLight3D" parent="Candles/candle3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00731, 0)
 light_color = Color(0.72, 0.558, 0.3312, 1)
-light_energy = 0.708095
+light_energy = 0.839587
 omni_range = 0.62107
 script = ExtResource("12_wrmeg")
 metadata/no_shadow = true
